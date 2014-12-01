@@ -1,10 +1,15 @@
 ﻿using System;
-using System.Web.Mvc;
 
 namespace sidekick
 {
-    public class Builder : BuilderBase
+    public class Builder
     {
+        private static ViewBuilder ViewBuilder { get; set; }
+
+        public Builder() {
+            ViewBuilder = new ViewBuilder();
+        }
+
         /// <summary>
         ///     Builds a partial view and returns the HTML of the view in a string.
         /// </summary>
@@ -17,7 +22,7 @@ namespace sidekick
             var element = new TElement();
             action(element);
 
-            return MyBuilder.RenderView(viewName, element);
+            return ViewBuilder.RenderView(viewName, element);
         }
     }
 }

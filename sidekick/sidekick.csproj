@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ajax\Builder.cs" />
-    <Compile Include="ajax\BuilderBase.cs" />
     <Compile Include="helpers\ActionHelpers.cs" />
     <Compile Include="helpers\DesignHelpers.cs" />
     <Compile Include="helpers\GeneralHelpers.cs" />
