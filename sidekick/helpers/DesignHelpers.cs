@@ -24,7 +24,6 @@ namespace sidekick
             Color c = ColorTranslator.FromHtml(backgroundColor);
 
             return (PerceivedBrightness(c) > 130 ? BLACK_TEXT : WHITE_TEXT);
-            
         }
 
         /// <summary>

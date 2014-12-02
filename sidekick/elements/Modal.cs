@@ -1,11 +1,5 @@
 ﻿namespace sidekick
 {
-    public enum ButtonColor
-    {
-        Success,
-        Danger,
-    }
-
     public class Modal : IModal
     {
         /// <summary>

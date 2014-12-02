@@ -46,10 +46,12 @@
   <ItemGroup>
     <Compile Include="ajax\Builder.cs" />
     <Compile Include="helpers\ActionHelpers.cs" />
+    <Compile Include="helpers\CustomSelectList.cs" />
     <Compile Include="helpers\DesignHelpers.cs" />
     <Compile Include="helpers\GeneralHelpers.cs" />
     <Compile Include="helpers\LabelHelpers.cs" />
     <Compile Include="helpers\SelectListHelpers.cs" />
+    <Compile Include="Types.cs" />
     <Compile Include="ViewBuilder.cs" />
     <Compile Include="elements\Alert.cs" />
     <Compile Include="elements\IAlert.cs" />
@@ -59,7 +61,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="validation\FileUploadAttribute.cs" />
     <Compile Include="validation\MaxFileSizeAttribute.cs" />
-    <Compile Include="validation\UploadType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

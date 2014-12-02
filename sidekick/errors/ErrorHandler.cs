@@ -4,14 +4,14 @@ using System.Web.Mvc;
 
 namespace sidekick
 {
-    public class ErrorHandler
+    public static class ErrorHandler
     {
         /// <summary>
         ///     Get a list of the errors in the ModelState
         /// </summary>
         /// <param name="modelState"></param>
         /// <returns></returns>
-        public static List<string> GetModelErrors(ModelStateDictionary modelState) {
+        public static List<string> GetModelErrors(this ModelStateDictionary modelState) {
 
             List<string> errorList = new List<string>();
 

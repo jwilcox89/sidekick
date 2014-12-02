@@ -2,17 +2,6 @@
 
 namespace sidekick
 {
-    /// <summary>
-    ///     Alert box style options
-    /// </summary>
-    public enum MessageTypes
-    {
-        Success,
-        Danger,
-        Warning,
-        Info
-    }
-
     public class AjaxAlert : IAlert
     {
         /// <summary>

@@ -28,20 +28,12 @@ namespace sidekick
         /// <typeparam name="T"></typeparam>
         /// <param name="action"></param>
         /// <returns></returns>
-        public static SelectList BuildSelectList<T>(Action<SelectListBuilder<T>> action) where T : class, new() {
+        public static SelectList BuildSelectList<T>(Action<CustomSelectList<T>> action) where T : class, new() {
 
-            var list = new SelectListBuilder<T>();
+            var list = new CustomSelectList<T>();
             action(list);
 
             return new SelectList(list.ItemList, list.Value, list.Display, list.SelectedValue);
         }
-    }
-
-    public class SelectListBuilder<T>
-    {
-        public string         Value         { get; set; }
-        public string         Display       { get; set; }
-        public object         SelectedValue { get; set; }
-        public IEnumerable<T> ItemList      { get; set; }
     }
 }
