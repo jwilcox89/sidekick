@@ -27,22 +27,33 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Lightens the color provided by the 'lightenBy' value.
+        ///     Makes the color lighter or darker
         /// </summary>
         /// <param name="helper"></param>
         /// <param name="color"></param>
-        /// <param name="lightenBy"></param>
+        /// <param name="correctionFactor">Must be between -1 and 1. Negative values produce darker colors. ex. 0.15 = 15%.</param>
         /// <returns></returns>
-        public static string LightenColor(this HtmlHelper helper, string color, float lightenBy) {
+        public static string ChangeColor(this HtmlHelper helper, string color, float correctionFactor) {
 
             if (!color.StartsWith("#"))
                 color = string.Format("#{0}", color);
 
             Color c = ColorTranslator.FromHtml(color);
 
-            float red   = (255 - c.R) * lightenBy + c.R;
-            float green = (255 - c.G) * lightenBy + c.G;
-            float blue  = (255 - c.B) * lightenBy + c.B;
+            float red = (float)c.R;
+            float green = (float)c.G;
+            float blue = (float)c.B;
+
+            if (correctionFactor < 0) {
+                correctionFactor = 1 + correctionFactor;
+                red   *= correctionFactor;
+                green *= correctionFactor;
+                blue  *= correctionFactor;
+            } else {
+                red   = (255 - red) * correctionFactor + red;
+                green = (255 - green) * correctionFactor + green;
+                blue  = (255 - blue) * correctionFactor + blue;
+            }
 
             return ColorTranslator.ToHtml(Color.FromArgb(c.A, (int)red, (int)green, (int)blue));
         }

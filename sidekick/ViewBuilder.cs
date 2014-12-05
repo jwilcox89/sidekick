@@ -15,8 +15,7 @@ namespace sidekick
                 CurrentHttpContext = new HttpContextWrapper(HttpContext.Current);
         }
 
-        protected override void ExecuteCore() {
-        }
+        protected override void ExecuteCore() {}
 
         public string RenderView(string viewName, object model, object additionalTempData = null) {
 

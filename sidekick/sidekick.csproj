@@ -53,6 +53,7 @@
     <Compile Include="helpers\SelectListHelpers.cs" />
     <Compile Include="TempDataManager.cs" />
     <Compile Include="Types.cs" />
+    <Compile Include="validation\GeneralValidation.cs" />
     <Compile Include="ViewBuilder.cs" />
     <Compile Include="elements\Alert.cs" />
     <Compile Include="elements\IAlert.cs" />

@@ -23,5 +23,9 @@ namespace sidekick
 
             return (!string.IsNullOrEmpty(activeClass)) ? activeClass : "active";
         }
+
+        public static MvcHtmlString ReadablePhoneNumber(this HtmlHelper helper, string number) {
+            return new MvcHtmlString(GeneralValidation.GetReadablePhoneNumber(number));
+        }
     }
 }
