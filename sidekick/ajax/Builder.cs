@@ -4,10 +4,10 @@ namespace sidekick
 {
     public class Builder
     {
-        private static ViewBuilder ViewBuilder { get; set; }
+        private static ViewBuilder PartialBuilder { get; set; }
 
         public Builder() {
-            ViewBuilder = new ViewBuilder();
+            PartialBuilder = new ViewBuilder();
         }
 
         /// <summary>
@@ -22,7 +22,16 @@ namespace sidekick
             var element = new T();
             action(element);
 
-            return ViewBuilder.RenderView(viewName, element);
+            return PartialBuilder.RenderView(viewName, element);
+        }
+
+        /// <summary>
+        ///     Builds a partial view and returns the HTML of a view that does not use a model.
+        /// </summary>
+        /// <param name="viewName">View name</param>
+        /// <returns></returns>
+        public static string BuildElement(string viewName) {
+            return PartialBuilder.RenderView(viewName);
         }
     }
 }

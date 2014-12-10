@@ -17,12 +17,13 @@ namespace sidekick
 
         protected override void ExecuteCore() {}
 
-        public string RenderView(string viewName, object model, object additionalTempData = null) {
+        public string RenderView(string viewName, object model = null, object additionalTempData = null) {
 
             if (ControllerContext == null)
                 CreateControllerContext();
 
-            ViewData.Model = model;
+            if (model != null)
+                ViewData.Model = model;
 
             if (additionalTempData != null) {
                 foreach( var p in additionalTempData.GetType().GetProperties()) {
