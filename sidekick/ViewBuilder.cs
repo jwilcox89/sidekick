@@ -17,7 +17,44 @@ namespace sidekick
 
         protected override void ExecuteCore() {}
 
-        public string RenderView(string viewName, object model = null, object additionalTempData = null) {
+        /// <summary>
+        ///     Returns a string of the HTML for a view
+        /// </summary>
+        /// <param name="viewName">View name</param>
+        /// <returns></returns>
+        public string RenderView(string viewName) {
+            return BuildView(viewName, null, null);
+        }
+
+        /// <summary>
+        ///     Returns a string of the HTML for a view
+        /// </summary>
+        /// <param name="viewName">View name</param>
+        /// <param name="model">Object model that the view uses</param>
+        /// <returns></returns>
+        public string RenderView(string viewName, object model) {
+            return BuildView(viewName, model, null);
+        }
+
+        /// <summary>
+        ///     Returns a string of the HTML for a view
+        /// </summary>
+        /// <param name="viewName">View name</param>
+        /// <param name="model">Object model that the view uses</param>
+        /// <param name="tempData">Temp data to be used in the view</param>
+        /// <returns></returns>
+        public string RenderView(string viewName, object model, object tempData) {
+            return BuildView(viewName, model, tempData);
+        }
+
+        /// <summary>
+        ///     Builds the view and returns a string of the HTML of the view
+        /// </summary>
+        /// <param name="viewName">View name</param>
+        /// <param name="model">Object model that the view uses</param>
+        /// <param name="additionalTempData">Temp data to be used in the view</param>
+        /// <returns></returns>
+        private string BuildView(string viewName, object model, object additionalTempData) {
 
             if (ControllerContext == null)
                 CreateControllerContext();
