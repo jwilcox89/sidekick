@@ -30,7 +30,7 @@ namespace sidekick
 
                     case UploadType.Single_Photo:
 
-                        var photo = value as HttpPostedFileBase;
+                        HttpPostedFileBase photo = value as HttpPostedFileBase;
 
                         if (_required && photo == null) {
                             ErrorMessage = "Please select at least one photo to upload!";
@@ -52,7 +52,7 @@ namespace sidekick
 
                     case UploadType.Multiple_Photos:
 
-                        var photos = value as HttpPostedFileBase[];
+                        HttpPostedFileBase[] photos = value as HttpPostedFileBase[];
 
                         if (_required && photos[0] == null) {
                             ErrorMessage = "Please select at least one photo to upload!";
@@ -76,7 +76,7 @@ namespace sidekick
 
                     case UploadType.Audio:
 
-                        var audio = value as HttpPostedFileBase;
+                        HttpPostedFileBase audio = value as HttpPostedFileBase;
 
                         if (_required && audio == null) {
                             ErrorMessage = "Please select an audio file to upload!";
@@ -97,7 +97,7 @@ namespace sidekick
 
                     case UploadType.Video:
 
-                        var video = value as HttpPostedFileBase;
+                        HttpPostedFileBase video = value as HttpPostedFileBase;
 
                         if (_required && video == null) {
                             ErrorMessage = "Please select a video to upload!";

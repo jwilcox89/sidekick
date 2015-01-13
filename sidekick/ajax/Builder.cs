@@ -4,13 +4,9 @@ using System.Web.Mvc;
 
 namespace sidekick
 {
-    public class Builder
+    public static class Builder
     {
-        private static ViewBuilder PartialBuilder { get; set; }
-
-        public Builder() {
-            PartialBuilder = new ViewBuilder();
-        }
+        private static ViewBuilder PartialBuilder = new ViewBuilder();
 
         /// <summary>
         ///     Builds a partial view and returns the HTML of the view in a string.
@@ -20,8 +16,7 @@ namespace sidekick
         /// <param name="action">Model with values that you wish to display in the element</param>
         /// <returns>A string of the HTML of the partial view specified.</returns>
         public static string BuildElement<T>(string viewName, Action<T> action) where T : class, new() {
-
-            var element = new T();
+            T element = new T();
             action(element);
 
             return PartialBuilder.RenderView(viewName, element);

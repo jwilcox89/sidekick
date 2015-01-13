@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Linq.Expressions;
+using System.Linq;
 
 namespace sidekick
 {
@@ -14,14 +15,21 @@ namespace sidekick
         /// <param name="falseValue"></param>
         /// <param name="defaultText"></param>
         /// <returns></returns>
-        public static SelectList YesNoDropdown(string trueValue = "Yes", string falseValue = "No", string defaultText = "") {
+        public static SelectList YesNoDropdown() {
+            List<SelectListItem> list = new List<SelectListItem>();
+            list.Add(new SelectListItem() { Text = "Yes", Value = "True" });
+            list.Add(new SelectListItem() { Text = "No", Value = "False" });
 
-            var list = new List<SelectListItem>();
+            return new SelectList(list, "");
+        }
+
+        public static SelectList YesNoDropdown(string trueValue, string falseValue, string defaultText = "") {
+            List<SelectListItem> list = new List<SelectListItem>();
             list.Add(new SelectListItem() { Text = trueValue, Value = "True" });
             list.Add(new SelectListItem() { Text = falseValue, Value = "False" });
 
             return new SelectList(list, defaultText);
-        }
+        } 
 
         /// <summary>
         ///     Generates a dropdown list dynamically.
@@ -29,12 +37,68 @@ namespace sidekick
         /// <typeparam name="T"></typeparam>
         /// <param name="action"></param>
         /// <returns></returns>
-        public static SelectList BuildSelectList<T>(Action<CustomSelectList<T>> action) where T : class, new() {
-
-            var list = new CustomSelectList<T>();
+        public static SelectList BuildSelectList<T>(Action<CustomSelectList<T>> action) {
+            CustomSelectList<T> list = new CustomSelectList<T>();
             action(list);
 
-            return new SelectList(list.ItemList, list.Value, list.Display, list.SelectedValue);
+            list.ItemList = list.ItemList as List<T> ?? list.ItemList.ToList(); 
+
+            return new SelectList(list.ItemList, GetMemberInfo(list.Value).Member.Name, GetMemberInfo(list.Display).Member.Name, list.SelectedValue);
+        }
+
+        /// <summary>
+        ///     Generates a dropdown list
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="items"></param>
+        /// <returns></returns>
+        public static SelectList BuildSelectList<T>(IEnumerable<T> items) {
+            return BuildSelectList(items, "", "", null);
+        }
+
+        /// <summary>
+        ///     Generates a dropdown list
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="items"></param>
+        /// <param name="selectedValue"></param>
+        /// <returns></returns>
+        public static SelectList BuildSelectList<T>(IEnumerable<T> items, object selectedValue) {
+            return BuildSelectList(items, "", "", selectedValue);
+        }
+
+        /// <summary>
+        ///     Generates a dropdown list
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="items"></param>
+        /// <param name="value"></param>
+        /// <param name="display"></param>
+        /// <param name="selectedValue"></param>
+        /// <returns></returns>
+        public static SelectList BuildSelectList<T>(IEnumerable<T> items, string value, string display, object selectedValue) {
+            items = items as List<T> ?? items.ToList();
+            return new SelectList(items, value, display, selectedValue);
+        }
+
+        private static MemberExpression GetMemberInfo(Expression method) {
+            LambdaExpression lambda = method as LambdaExpression;
+
+            if (lambda == null)
+                throw new ArgumentNullException("No method");
+
+            MemberExpression memberEx = null;
+
+            if (lambda.Body.NodeType == ExpressionType.Convert) {
+                memberEx = ((UnaryExpression)lambda.Body).Operand as MemberExpression;
+            } else if (lambda.Body.NodeType == ExpressionType.MemberAccess) {
+                memberEx = lambda.Body as MemberExpression;
+            }
+
+            if (memberEx == null)
+                throw new ArgumentNullException("No method");
+
+            return memberEx;
         }
     }
 }

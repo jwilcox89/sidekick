@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace sidekick
 {
@@ -14,9 +15,9 @@ namespace sidekick
         /// <returns></returns>
         public static string IsCurrentPage(this HtmlHelper helper, string action, string controller, string activeClass = null) {
 
-            var routeData         = helper.ViewContext.RouteData;
-            var currentAction     = (string)routeData.Values["action"];
-            var currentController = (string)routeData.Values["controller"];
+            RouteData routeData      = helper.ViewContext.RouteData;
+            string currentAction     = routeData.Values["action"].ToString();
+            string currentController = routeData.Values["controller"].ToString();
 
             if (!(currentAction == action && currentController == controller))
                 return string.Empty;
@@ -31,11 +32,11 @@ namespace sidekick
         /// <param name="number"></param>
         /// <returns></returns>
         public static MvcHtmlString ReadablePhoneNumber(this HtmlHelper helper, string number) {
-            return new MvcHtmlString(GeneralValidation.GetReadablePhoneNumber(number));
+            return new MvcHtmlString(number.GetReadablePhoneNumber());
         }
 
         public static MvcHtmlString ReadablePhoneNumber(this HtmlHelper helper, int number) {
-            return new MvcHtmlString(GeneralValidation.GetReadablePhoneNumber(number.ToString()));
+            return ReadablePhoneNumber(helper, number.ToString());
         }
     }
 }

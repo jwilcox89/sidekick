@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ajax\Builder.cs" />
+    <Compile Include="extentions\Extentions.cs" />
     <Compile Include="helpers\ActionHelpers.cs" />
     <Compile Include="helpers\CustomSelectList.cs" />
     <Compile Include="helpers\DesignHelpers.cs" />
@@ -53,7 +54,6 @@
     <Compile Include="helpers\SelectListHelpers.cs" />
     <Compile Include="TempDataManager.cs" />
     <Compile Include="Types.cs" />
-    <Compile Include="validation\GeneralValidation.cs" />
     <Compile Include="ViewBuilder.cs" />
     <Compile Include="elements\Alert.cs" />
     <Compile Include="elements\IAlert.cs" />

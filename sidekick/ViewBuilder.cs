@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using System.Web;
 using System.Web.Routing;
 using System.IO;
+using System.Reflection;
 
 namespace sidekick
 {
@@ -63,7 +64,7 @@ namespace sidekick
                 ViewData.Model = model;
 
             if (additionalTempData != null) {
-                foreach( var p in additionalTempData.GetType().GetProperties()) {
+                foreach(PropertyInfo p in additionalTempData.GetType().GetProperties()) {
                     if (TempData.ContainsKey(p.Name))
                         TempData.Remove(p.Name);
 
@@ -71,9 +72,9 @@ namespace sidekick
                 }
             }
 
-            using (var sw = new StringWriter()) {
-                var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
-                var viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+            using (StringWriter sw = new StringWriter()) {
+                ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                ViewContext viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
 
                 viewResult.View.Render(viewContext, sw);
                 return sw.GetStringBuilder().ToString();
@@ -85,7 +86,7 @@ namespace sidekick
             if (CurrentHttpContext == null)
                 throw new ArgumentNullException("CurrentHttpContext", "CurrentHttpContext cannot be null");
 
-            var routeData = RouteTable.Routes.GetRouteData(CurrentHttpContext);
+            RouteData routeData = RouteTable.Routes.GetRouteData(CurrentHttpContext);
             ControllerContext = new ControllerContext(CurrentHttpContext, routeData, this);
         }
     }

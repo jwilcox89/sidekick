@@ -28,7 +28,7 @@ namespace sidekick
 
         public override bool IsValid(object value) {
 
-            var file = value as HttpPostedFileBase;
+            HttpPostedFileBase file = value as HttpPostedFileBase;
 
             if (file != null && file.ContentLength > _maxFileSize) {
                 ErrorMessage = string.Format("The file you selected is too large. Maximum allowed size is {0} MB", (_maxFileSize / 1024).ToString());
