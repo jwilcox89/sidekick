@@ -12,7 +12,7 @@ namespace sidekick
         private readonly int _maxFileSize;
         
         /// <summary>
-        ///     Validates the file's size is no bigger than 1024 * 1024 * 500
+        ///     Validates the file's size is no bigger than 512 MB
         /// </summary>
         public MaxFileSizeAttribute() {
             _maxFileSize = 1024 * 1024 * 500;
@@ -27,7 +27,6 @@ namespace sidekick
         }
 
         public override bool IsValid(object value) {
-
             HttpPostedFileBase file = value as HttpPostedFileBase;
 
             if (file != null && file.ContentLength > _maxFileSize) {

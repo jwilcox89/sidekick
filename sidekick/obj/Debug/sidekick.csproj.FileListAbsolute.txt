@@ -7,3 +7,4 @@ C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\sidekick.dll
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\sidekick.pdb
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\obj\Debug\sidekick.dll
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\obj\Debug\sidekick.pdb
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\obj\Debug\sidekick.csprojResolveAssemblyReference.cache

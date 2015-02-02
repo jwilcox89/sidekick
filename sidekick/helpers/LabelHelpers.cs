@@ -35,7 +35,6 @@ namespace sidekick
         }
 
         private static MvcHtmlString LabelFor<TModel,TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, IDictionary<string,object> htmlAttributes) {
-
             ModelMetadata metadata = ModelMetadata.FromLambdaExpression(expression, helper.ViewData);
             string htmlFieldName   = ExpressionHelper.GetExpressionText(expression);
             string labelText       = metadata.DisplayName ?? metadata.PropertyName ?? htmlFieldName.Split('.').Last();

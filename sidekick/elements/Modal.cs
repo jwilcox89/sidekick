@@ -2,6 +2,8 @@
 {
     public class Modal : IModal
     {
+        public string ViewName { get; set; }
+
         /// <summary>
         ///     Document ID of the modal
         /// </summary>

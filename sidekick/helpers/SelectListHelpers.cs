@@ -11,9 +11,6 @@ namespace sidekick
         /// <summary>
         ///     Generates a simple True/False dropdown into a usable format.
         /// </summary>
-        /// <param name="trueValue"></param>
-        /// <param name="falseValue"></param>
-        /// <param name="defaultText"></param>
         /// <returns></returns>
         public static SelectList YesNoDropdown() {
             List<SelectListItem> list = new List<SelectListItem>();
@@ -23,6 +20,13 @@ namespace sidekick
             return new SelectList(list, "");
         }
 
+        /// <summary>
+        ///     Generates a simple True/False dropdown into a usable format.
+        /// </summary>
+        /// <param name="trueValue">What you want the true option to say (ex. "Yes")</param>
+        /// <param name="falseValue">What you want the false option to say (ex. "No)</param>
+        /// <param name="defaultText"></param>
+        /// <returns></returns>
         public static SelectList YesNoDropdown(string trueValue, string falseValue, string defaultText = "") {
             List<SelectListItem> list = new List<SelectListItem>();
             list.Add(new SelectListItem() { Text = trueValue, Value = "True" });

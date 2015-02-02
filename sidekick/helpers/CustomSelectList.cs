@@ -6,9 +6,9 @@ namespace sidekick
 {
     public class CustomSelectList<T>
     {
+        public IEnumerable<T>             ItemList      { get; set; }
         public Expression<Func<T,object>> Value         { get; set; }
         public Expression<Func<T,object>> Display       { get; set; }
         public object                     SelectedValue { get; set; }
-        public IEnumerable<T>             ItemList      { get; set; }
     }
 }

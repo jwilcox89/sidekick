@@ -25,7 +25,6 @@ namespace sidekick
         }
         
         public override bool IsValid(object value) {
-
                 switch (_type) {
 
                     case UploadType.Single_Photo:
@@ -42,7 +41,7 @@ namespace sidekick
 
                             if (_validExtensions.Where(x => x == singlePhotoEx).FirstOrDefault() == null) {
 
-                                var validTypes = string.Join(", ", _validExtensions.Select(x => x));
+                                string validTypes = string.Join(", ", _validExtensions.Select(x => x));
                                 ErrorMessage = string.Format("The file type {0} is not a valid file type. Please choose a valid audio file to upload. The valid types are {1}", singlePhotoEx, validTypes);
                                 return false;
                             }
@@ -60,12 +59,12 @@ namespace sidekick
                         }
 
                         if (photos[0] != null) {
-                            foreach (var p in photos) {
+                            foreach (HttpPostedFileBase p in photos) {
 
                                 string photoEx = Path.GetExtension(p.FileName).ToLower();
 
                                 if (_validExtensions.Where(x => x == photoEx).FirstOrDefault() == null) {
-                                    var validTypes = string.Join(", ", _validExtensions.Select(x => x));
+                                    string validTypes = string.Join(", ", _validExtensions.Select(x => x));
                                     ErrorMessage = string.Format("The file type {0} is not a valid file type. Please choose a valid photo to upload. The valid types are {1}.", photoEx, validTypes);
                                     return false;
                                 }
@@ -87,7 +86,7 @@ namespace sidekick
                             string audioEx = Path.GetExtension(audio.FileName).ToLower();
 
                             if (_validExtensions.Where(x => x == audioEx).FirstOrDefault() == null) {
-                                var validTypes = string.Join(", ", _validExtensions.Select(x => x));
+                                string validTypes = string.Join(", ", _validExtensions.Select(x => x));
                                 ErrorMessage = string.Format("The file type {0} is not a valid file type. Please choose a valid audio file to upload. The valid types are {1}", audioEx, validTypes);
                                 return false;
                             }
@@ -109,7 +108,7 @@ namespace sidekick
 
                             if (_validExtensions.Where(x => x == videoEx).FirstOrDefault() == null) {
 
-                                var validTypes = string.Join(", ", _validExtensions.Select(x => x));
+                                string validTypes = string.Join(", ", _validExtensions.Select(x => x));
                                 ErrorMessage = string.Format("The file type {0} is not a valid file type. Please choose a different video to upload. The valid types are {1}", videoEx, validTypes);
                                 return false;
                             }

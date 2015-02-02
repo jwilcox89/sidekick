@@ -3,7 +3,7 @@
     /// <summary>
     ///     Base elements for generating a modal
     /// </summary>
-    public interface IModal
+    public interface IModal : IElement
     {
         /// <summary>
         ///     Document ID of the modal

@@ -56,7 +56,6 @@ namespace sidekick
         /// <param name="additionalTempData">Temp data to be used in the view</param>
         /// <returns></returns>
         private string BuildView(string viewName, object model, object additionalTempData) {
-
             if (ControllerContext == null)
                 CreateControllerContext();
 
@@ -82,7 +81,6 @@ namespace sidekick
         }
 
         private void CreateControllerContext() {
-
             if (CurrentHttpContext == null)
                 throw new ArgumentNullException("CurrentHttpContext", "CurrentHttpContext cannot be null");
 

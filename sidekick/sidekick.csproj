@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ajax\Builder.cs" />
+    <Compile Include="elements\IElement.cs" />
     <Compile Include="extentions\Extentions.cs" />
     <Compile Include="helpers\ActionHelpers.cs" />
     <Compile Include="helpers\CustomSelectList.cs" />

@@ -14,7 +14,6 @@ namespace sidekick
         #region HTML
 
         public static MvcHtmlString ActionLinkWithIcon(this HtmlHelper helper, string action, string controller, object routeValues, string icon, string altText = null, object htmlAttributes = null) {
-
             HtmlTextWriter writer = new HtmlTextWriter(new StringWriter());
 
             writer.AddAttribute(HtmlTextWriterAttribute.Class, icon);
@@ -30,7 +29,6 @@ namespace sidekick
         }
 
         public static MvcHtmlString ActionLinkWithIconAndText(this HtmlHelper helper, string action, string controller, object routeValues, string icon, string text, string altText = null, object htmlAttributes = null) {
-
             HtmlTextWriter writer = new HtmlTextWriter(new StringWriter());
 
             writer.AddAttribute(HtmlTextWriterAttribute.Class, icon);
@@ -50,8 +48,7 @@ namespace sidekick
         #region AJAX
 
         public static MvcHtmlString ActionLinkWithIcon(this AjaxHelper helper, string action, string controller, object routeValues, string icon, AjaxOptions options, string altText = null, object htmlAttributes = null) {
-
-            var writer = new HtmlTextWriter(new StringWriter());
+            HtmlTextWriter writer = new HtmlTextWriter(new StringWriter());
 
             writer.AddAttribute(HtmlTextWriterAttribute.Class, icon);
             writer.AddAttribute(HtmlTextWriterAttribute.Alt, altText);
@@ -66,8 +63,7 @@ namespace sidekick
         }
 
         public static MvcHtmlString ActionLinkWithIconAndText(this AjaxHelper helper, string action, string controller, object routeValues, string icon, string text, AjaxOptions options, string altText = null, object htmlAttributes = null) {
-
-            var writer = new HtmlTextWriter(new StringWriter());
+            HtmlTextWriter writer = new HtmlTextWriter(new StringWriter());
 
             writer.AddAttribute(HtmlTextWriterAttribute.Class, icon);
             writer.AddAttribute(HtmlTextWriterAttribute.Alt, altText);

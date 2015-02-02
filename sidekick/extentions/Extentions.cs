@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Web;
+using System.Web.Mvc;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 
@@ -17,6 +19,21 @@ namespace sidekick
         }
 
         /// <summary>
+        ///     Converts a list of an object to a list of ints
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static IEnumerable<int> ToInt<T>(this IEnumerable<T> list) {
+            List<int> final = new List<int>();
+            foreach (T i in list) {
+                final.Add(i.ToInt());
+            }
+
+            return final;
+        }
+
+        /// <summary>
         ///     Converts an object to a short
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -27,15 +44,18 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Formats a string into the 555-555-5555 format.
+        ///     Converts a list of an object to a list of shorts
         /// </summary>
-        /// <param name="input"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
         /// <returns></returns>
-        public static string GetReadablePhoneNumber(this string input) {
-            if (string.IsNullOrEmpty(input))
-                return null;
+        public static IEnumerable<short> ToShort<T>(this IEnumerable<T> list) {
+            List<short> final = new List<short>();
+            foreach (T i in list) {
+                final.Add(i.ToShort());
+            }
 
-            return Regex.Replace(input, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3");
+            return final;
         }
 
         /// <summary>
@@ -69,6 +89,87 @@ namespace sidekick
                 throw new ArgumentException("Must be a type of System.Enum");
 
             return (T[])Enum.GetValues(typeof(T));
+        }
+
+        /// <summary>
+        ///     Formats decimal into currency
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public static string FormatCurrency(this HtmlHelper helper, decimal? amount) {
+            if (amount.HasValue)
+                return amount.Value.ToString("C");
+
+            return string.Empty;
+        }
+
+        /// <summary>
+        ///     Formats decimal into currency
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public static string FormatCurrency(this HtmlHelper hlper, decimal amount) {
+            return amount.ToString("C");
+        }
+
+        /// <summary>
+        ///     Formats int into currency
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public static string FormatCurrency(this HtmlHelper helper, int? amount) {
+            if (amount.HasValue)
+                return amount.Value.ToString("C");
+
+            return string.Empty;
+        }
+
+        /// <summary>
+        ///     Formats int into currency
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public static string FormatCurrency(this HtmlHelper helper, int amount) {
+            return amount.ToString("C");
+        }
+
+        /// <summary>
+        ///     Formats a string into a phone number
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="number"></param>
+        /// <param name="areaCodeParens"></param>
+        /// <returns></returns>
+        public static string FormatPhone(this HtmlHelper helper, string number, bool areaCodeParens = true) {
+            if (string.IsNullOrEmpty(number))
+                return string.Empty;
+
+            if (number.Trim().Length < 10) {
+                return Regex.Replace(number, "(\\d{3})(\\d{4})", "$1-$2");
+            } else {
+                if (areaCodeParens) {
+                    return Regex.Replace(number, "(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3");
+                } else {
+                    return Regex.Replace(number, "(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3");
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Formats a string into a readable SSN
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="ssn"></param>
+        /// <returns></returns>
+        public static string FormatSSN(this HtmlHelper helper, string ssn) {
+            if (string.IsNullOrEmpty(ssn))
+                return string.Empty;
+
+            return ssn.Insert(3,"-").Insert(6,"-");
         }
     }
 }

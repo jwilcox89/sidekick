@@ -2,8 +2,10 @@
 
 namespace sidekick
 {
-    public class AjaxAlert : IAlert
+    public class Alert : IAlert
     {
+        public string ViewName { get; set; }
+
         /// <summary>
         ///     Success, Failure, Warning etc
         /// </summary>
@@ -49,7 +51,7 @@ namespace sidekick
             }
         }
 
-        public AjaxAlert() {
+        public Alert() {
             MessageList = new List<string>();
         }
     }

@@ -2,7 +2,7 @@
 
 namespace sidekick
 {
-    public interface IAlert
+    public interface IAlert : IElement
     {
         /// <summary>
         ///     Success, Failure, Warning etc
