@@ -53,6 +53,7 @@
     <Compile Include="helpers\GeneralHelpers.cs" />
     <Compile Include="helpers\LabelHelpers.cs" />
     <Compile Include="helpers\SelectListHelpers.cs" />
+    <Compile Include="session\SessionManagerBase.cs" />
     <Compile Include="TempDataManager.cs" />
     <Compile Include="Types.cs" />
     <Compile Include="ViewBuilder.cs" />
