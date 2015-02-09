@@ -4,6 +4,13 @@ namespace sidekick
 {
     public static class ActiveDirectorySecurity
     {
+        /// <summary>
+        ///     Validates user's active directory credentials
+        /// </summary>
+        /// <param name="username">Active directory username</param>
+        /// <param name="password">Active directory password</param>
+        /// <param name="domain">Active directory domain</param>
+        /// <returns>Returns true if credentials are validated</returns>
         public static bool ValidateCredentials(string username, string password, string domain) {
             if (string.IsNullOrEmpty(domain))
                 return false;
