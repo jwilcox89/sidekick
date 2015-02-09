@@ -37,6 +37,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -49,6 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ajax\Builder.cs" />
+    <Compile Include="connection\NetworkConnection.cs" />
+    <Compile Include="connection\NetworkConnectionManager.cs" />
+    <Compile Include="connection\UserImpersonation.cs" />
     <Compile Include="elements\IElement.cs" />
     <Compile Include="extentions\Extentions.cs" />
     <Compile Include="helpers\ActionHelpers.cs" />
@@ -57,10 +61,12 @@
     <Compile Include="helpers\GeneralHelpers.cs" />
     <Compile Include="helpers\LabelHelpers.cs" />
     <Compile Include="helpers\SelectListHelpers.cs" />
-    <Compile Include="responses\JsonGenerator.cs" />
+    <Compile Include="responses\Json.cs" />
+    <Compile Include="responses\RenderDocument.cs" />
     <Compile Include="session\SessionManagerBase.cs" />
     <Compile Include="TempDataManager.cs" />
     <Compile Include="Types.cs" />
+    <Compile Include="validation\ActiveDirectorySecurity.cs" />
     <Compile Include="ViewBuilder.cs" />
     <Compile Include="elements\Alert.cs" />
     <Compile Include="elements\IAlert.cs" />
