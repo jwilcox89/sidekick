@@ -171,5 +171,14 @@ namespace sidekick
 
             return ssn.Insert(3,"-").Insert(6,"-");
         }
+
+        /// <summary>
+        ///     Returns the last 4 characters of a string (.pdf, .doc etc)
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static string GetFileExtention(this string text) {
+            return text.Substring(text.Length - 4);
+        }
     }
 }

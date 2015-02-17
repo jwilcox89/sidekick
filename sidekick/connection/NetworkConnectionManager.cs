@@ -1,8 +1,9 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 
 namespace sidekick
 {
-    public class NetworkConnectionManager
+    public class NetworkConnectionManager : IDisposable
     {
         private UserImpersonation _userImpersonation;
         private NetworkCredential _networkCredential;
@@ -27,6 +28,17 @@ namespace sidekick
         /// </summary>
         public void UndoImpersonateUser() {
             _userImpersonation.undoimpersonateUser();
+        }
+
+        public void Dispose() {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        public virtual void Dispose(bool disposing) {
+            if (disposing) {
+                _userImpersonation.undoimpersonateUser();
+            }
         }
     }
 }

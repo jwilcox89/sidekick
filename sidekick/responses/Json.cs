@@ -32,7 +32,7 @@ namespace sidekick
         ///     Renders the list of items into a Json response
         /// </summary>
         /// <returns></returns>
-        public object Build() {
+        public object Render() {
             return JsonConvert.SerializeObject(_response);
         }
     }
