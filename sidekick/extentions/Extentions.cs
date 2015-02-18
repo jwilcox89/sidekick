@@ -107,10 +107,31 @@ namespace sidekick
         /// <summary>
         ///     Formats decimal into currency
         /// </summary>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public static string FormatCurrency(this decimal? amount) {
+            if (amount.HasValue)
+                return amount.Value.ToString("C");
+
+            return string.Empty;
+        }
+
+        /// <summary>
+        ///     Formats decimal into currency
+        /// </summary>
         /// <param name="helper"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
         public static string FormatCurrency(this HtmlHelper hlper, decimal amount) {
+            return amount.ToString("C");
+        }
+
+        /// <summary>
+        ///     Formats decimal into currency
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public static string FormatCurrency(this decimal amount) {
             return amount.ToString("C");
         }
 
@@ -130,10 +151,31 @@ namespace sidekick
         /// <summary>
         ///     Formats int into currency
         /// </summary>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public static string FormatCurrency(this int? amount) {
+            if (amount.HasValue)
+                return amount.Value.ToString("C");
+
+            return string.Empty;
+        }
+
+        /// <summary>
+        ///     Formats int into currency
+        /// </summary>
         /// <param name="helper"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
         public static string FormatCurrency(this HtmlHelper helper, int amount) {
+            return amount.ToString("C");
+        }
+
+        /// <summary>
+        ///     Formats int into currency
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        public static string FormatCurrency(this int amount) {
             return amount.ToString("C");
         }
 
@@ -145,6 +187,27 @@ namespace sidekick
         /// <param name="areaCodeParens"></param>
         /// <returns></returns>
         public static string FormatPhone(this HtmlHelper helper, string number, bool areaCodeParens = true) {
+            if (string.IsNullOrEmpty(number))
+                return string.Empty;
+
+            if (number.Trim().Length < 10) {
+                return Regex.Replace(number, "(\\d{3})(\\d{4})", "$1-$2");
+            } else {
+                if (areaCodeParens) {
+                    return Regex.Replace(number, "(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3");
+                } else {
+                    return Regex.Replace(number, "(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3");
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Formats a string into a phone number
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="areaCodeParens"></param>
+        /// <returns></returns>
+        public static string FormatPhone(this string number, bool areaCodeParens = true) {
             if (string.IsNullOrEmpty(number))
                 return string.Empty;
 

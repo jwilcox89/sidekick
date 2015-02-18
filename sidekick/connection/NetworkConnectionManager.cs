@@ -36,9 +36,8 @@ namespace sidekick
         }
 
         public virtual void Dispose(bool disposing) {
-            if (disposing) {
-                _userImpersonation.undoimpersonateUser();
-            }
+            if (disposing)
+                UndoImpersonateUser();
         }
     }
 }
