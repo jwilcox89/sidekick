@@ -44,10 +44,31 @@ namespace sidekick
         public static SelectList BuildSelectList<T>(Action<CustomSelectList<T>> action) {
             CustomSelectList<T> list = new CustomSelectList<T>();
             action(list);
+            return BuildSelectList(list.ItemList, GetMemberInfo(list.Value).Member.Name, GetMemberInfo(list.Display).Member.Name, list.SelectedValue);
+        }
 
-            list.ItemList = list.ItemList as List<T> ?? list.ItemList.ToList(); 
+        /// <summary>
+        ///     Generates a dropdown list
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static SelectList BuildSelectList<T>(CustomSelectList<T> list) {
+            return BuildSelectList(list.ItemList, GetMemberInfo(list.Value).Member.Name, GetMemberInfo(list.Display).Member.Name, list.SelectedValue);
+        }
 
-            return new SelectList(list.ItemList, GetMemberInfo(list.Value).Member.Name, GetMemberInfo(list.Display).Member.Name, list.SelectedValue);
+
+        /// <summary>
+        ///     Generates a dropdown list
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="items"></param>
+        /// <param name="value"></param>
+        /// <param name="display"></param>
+        /// <param name="selectedValue"></param>
+        /// <returns></returns>
+        public static SelectList BuildSelectList<T>(IEnumerable<T> items, Expression<Func<T,object>> value, Expression<Func<T,object>> display, object selectedValue) {
+            return BuildSelectList(items, GetMemberInfo(value).Member.Name, GetMemberInfo(display).Member.Name, selectedValue);
         }
 
         /// <summary>

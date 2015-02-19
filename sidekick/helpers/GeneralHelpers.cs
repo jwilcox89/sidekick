@@ -13,7 +13,7 @@ namespace sidekick
         /// <param name="controller"></param>
         /// <param name="activeClass"></param>
         /// <returns></returns>
-        public static string IsCurrentPage(this HtmlHelper helper, string action, string controller, string activeClass = null) {
+        public static string IsActiveNavItem(this HtmlHelper helper, string action, string controller, string activeClass = null) {
             RouteData routeData      = helper.ViewContext.RouteData;
             string currentAction     = routeData.Values["action"].ToString();
             string currentController = routeData.Values["controller"].ToString();

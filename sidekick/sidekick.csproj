@@ -70,6 +70,7 @@
     <Compile Include="TempDataManager.cs" />
     <Compile Include="Types.cs" />
     <Compile Include="validation\ActiveDirectorySecurity.cs" />
+    <Compile Include="validation\CommonRegexes.cs" />
     <Compile Include="ViewBuilder.cs" />
     <Compile Include="elements\Alert.cs" />
     <Compile Include="elements\IAlert.cs" />
