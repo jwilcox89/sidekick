@@ -11,17 +11,28 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="action"></param>
         /// <param name="controller"></param>
+        /// <param name="area"></param>
         /// <param name="activeClass"></param>
         /// <returns></returns>
-        public static string IsActiveNavItem(this HtmlHelper helper, string action, string controller, string activeClass = null) {
+        public static string IsActiveNavItem(this HtmlHelper helper, string action, string controller, string area = null, string activeClass = null) {
             RouteData routeData      = helper.ViewContext.RouteData;
-            string currentAction     = routeData.Values["action"].ToString();
-            string currentController = routeData.Values["controller"].ToString();
+            string currentAction     = (string)routeData.Values["action"];
+            string currentController = (string)routeData.Values["controller"];
+            string currentArea       = (string)routeData.DataTokens["area"];
 
-            if (!(currentAction == action && currentController == controller))
-                return string.Empty;
+            action = (string.IsNullOrEmpty(action)) ? currentAction : action;
+            controller = (string.IsNullOrEmpty(controller)) ? currentController : controller;
+            area = (string.IsNullOrEmpty(area)) ? currentArea : area;
 
-            return (string.IsNullOrEmpty(activeClass)) ? "active" : activeClass;
+            if ((!string.IsNullOrEmpty(action + controller + area)) &&
+                (string.IsNullOrEmpty(action) || action == currentAction) &&
+                (string.IsNullOrEmpty(controller) || controller == currentController) &&
+                (string.IsNullOrEmpty(area) || area == currentArea)) {
+
+                return (string.IsNullOrEmpty(activeClass)) ? "active" : activeClass;
+            }
+
+            return string.Empty;
         }
     }
 }

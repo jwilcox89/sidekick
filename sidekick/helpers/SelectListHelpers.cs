@@ -6,18 +6,24 @@ using System.Linq;
 
 namespace sidekick
 {
+    public class CustomSelectList<T>
+    {
+        public IEnumerable<T>             ItemList      { get; set; }
+        public Expression<Func<T,object>> Value         { get; set; }
+        public Expression<Func<T,object>> Display       { get; set; }
+        public object                     SelectedValue { get; set; }
+    }
+
     public class SelectListHelpers
     {
         /// <summary>
         ///     Generates a simple True/False dropdown into a usable format.
         /// </summary>
         /// <returns></returns>
-        public static SelectList YesNoDropdown() {
-            List<SelectListItem> list = new List<SelectListItem>();
-            list.Add(new SelectListItem() { Text = "Yes", Value = "True" });
-            list.Add(new SelectListItem() { Text = "No", Value = "False" });
-
-            return new SelectList(list, "");
+        public static IEnumerable<SelectListItem> YesNoDropdown() {
+            return new List<SelectListItem> { new SelectListItem { Text = "", Value ="" },
+                                              new SelectListItem { Text = "Yes",  Value = "True" }, 
+                                              new SelectListItem { Text = "No", Value = "False" } };
         }
 
         /// <summary>
@@ -27,12 +33,12 @@ namespace sidekick
         /// <param name="falseValue">What you want the false option to say (ex. "No)</param>
         /// <param name="defaultText"></param>
         /// <returns></returns>
-        public static SelectList YesNoDropdown(string trueValue, string falseValue, string defaultText = "") {
+        public static IEnumerable<SelectListItem> YesNoDropdown(string trueValue, string falseValue, string defaultText = "") {
             List<SelectListItem> list = new List<SelectListItem>();
             list.Add(new SelectListItem() { Text = trueValue, Value = "True" });
             list.Add(new SelectListItem() { Text = falseValue, Value = "False" });
 
-            return new SelectList(list, defaultText);
+            return list;
         } 
 
         /// <summary>

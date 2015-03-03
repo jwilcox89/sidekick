@@ -58,13 +58,12 @@
     <Compile Include="connection\UserImpersonation.cs" />
     <Compile Include="elements\IElement.cs" />
     <Compile Include="extentions\Extentions.cs" />
+    <Compile Include="extentions\IdentityExtentions.cs" />
     <Compile Include="helpers\ActionHelpers.cs" />
-    <Compile Include="helpers\CustomSelectList.cs" />
     <Compile Include="helpers\DesignHelpers.cs" />
     <Compile Include="helpers\GeneralHelpers.cs" />
     <Compile Include="helpers\LabelHelpers.cs" />
     <Compile Include="helpers\SelectListHelpers.cs" />
-    <Compile Include="responses\Json.cs" />
     <Compile Include="responses\RenderDocument.cs" />
     <Compile Include="session\SessionManagerBase.cs" />
     <Compile Include="TempDataManager.cs" />

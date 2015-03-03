@@ -8,8 +8,8 @@ namespace sidekick
     {
         private static ViewBuilder PartialBuilder = new ViewBuilder();
 
-        public static string BuildElement<T>(Action<T> action) where T : IElement, new() {
-            T element = new T();
+        public static string BuildElement<TElement>(Action<TElement> action) where TElement : IElement, new() {
+            TElement element = new TElement();
             action(element);
 
             return PartialBuilder.RenderView(element.ViewName, element);
@@ -18,15 +18,15 @@ namespace sidekick
         /// <summary>
         ///     Builds a partial view using the AjaxAlert model that contains a list of the model state errors.
         /// </summary>
-        /// <typeparam name="T">Custom model that implements the IAlert interface.</typeparam>
+        /// <typeparam name="TAlert">Custom model that implements the IAlert interface.</typeparam>
         /// <param name="modelState"></param>
         /// <param name="viewName">View name</param>
         /// <returns></returns>
-        public static string BuildModelErrorAlert<T>(ModelStateDictionary modelState, string viewName) where T : class, IAlert, new() {
-            return BuildElement<T>(x => { x.ViewName    = viewName;
-                                          x.MessageType = MessageTypes.Danger;
-                                          x.Heading     = "Errors!";
-                                          x.MessageList = ErrorHandler.GetModelErrors(modelState); });
+        public static string BuildModelErrorAlert<TAlert>(ModelStateDictionary modelState, string viewName) where TAlert : class, IAlert, new() {
+            return BuildElement<TAlert>(x => { x.ViewName    = viewName;
+                                               x.MessageType = MessageTypes.Danger;
+                                               x.Heading     = "Errors!";
+                                               x.MessageList = ErrorHandler.GetModelErrors(modelState); });
         }
 
         /// <summary>
