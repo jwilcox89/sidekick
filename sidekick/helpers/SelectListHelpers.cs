@@ -6,16 +6,38 @@ using System.Linq;
 
 namespace sidekick
 {
-    public class CustomSelectList<T>
+    public class CustomSelectList<TElement>
     {
-        public IEnumerable<T>             ItemList      { get; set; }
-        public Expression<Func<T,object>> Value         { get; set; }
-        public Expression<Func<T,object>> Display       { get; set; }
-        public object                     SelectedValue { get; set; }
+        public IEnumerable<TElement>             ItemList      { get; set; }
+        public Expression<Func<TElement,object>> Value         { get; set; }
+        public Expression<Func<TElement,object>> Display       { get; set; }
+        public object                            SelectedValue { get; set; }
     }
 
     public class SelectListHelpers
     {
+        /// <summary>
+        ///     Generates a dropdown of years
+        /// </summary>
+        /// <param name="forwardCount">How many years forward do you want to display?</param>
+        /// <param name="backwardCount">How many years backward do you want to display?</param>
+        /// <returns></returns>
+        public static IEnumerable<SelectListItem> YearDropdown(int forwardCount, int backwardCount) {
+            List<SelectListItem> list = new List<SelectListItem>();
+
+            int currentYear = DateTime.Now.Year;
+            int start = currentYear - backwardCount;
+            int end = currentYear + forwardCount;
+            int placeholder = start;
+
+            while(placeholder >= start && placeholder <= end) {
+                list.Add(new SelectListItem { Text = placeholder.ToString(), Value = placeholder.ToString() });
+                placeholder++;
+            }
+
+            return list;
+        }
+
         /// <summary>
         ///     Generates a simple True/False dropdown into a usable format.
         /// </summary>

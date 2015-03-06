@@ -6,13 +6,11 @@ namespace sidekick
 {
     public static class Builder
     {
-        private static ViewBuilder PartialBuilder = new ViewBuilder();
-
         public static string BuildElement<TElement>(Action<TElement> action) where TElement : IElement, new() {
             TElement element = new TElement();
             action(element);
 
-            return PartialBuilder.RenderView(element.ViewName, element);
+            return new ViewBuilder().RenderView(element.ViewName, element);
         }
 
         /// <summary>
@@ -35,7 +33,7 @@ namespace sidekick
         /// <param name="viewName">View name</param>
         /// <returns></returns>
         public static string BuildElement(string viewName) {
-            return PartialBuilder.RenderView(viewName);
+            return new ViewBuilder().RenderView(viewName);
         }
     }
 }
