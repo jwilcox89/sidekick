@@ -38,15 +38,4 @@
         Success,
         Danger,
     }
-
-    /// <summary>
-    ///     Types of file uploads
-    /// </summary>
-    public enum UploadType
-    {
-        Multiple_Photos,
-        Single_Photo,
-        Audio,
-        Video
-    }
 }

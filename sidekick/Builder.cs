@@ -6,9 +6,18 @@ namespace sidekick
 {
     public static class Builder
     {
+        /// <summary>
+        ///     Builds a partial view using a model that implements the IElement interface.
+        /// </summary>
+        /// <typeparam name="TElement"></typeparam>
+        /// <param name="action">The default view name is _AjaxMessage. If the view name you are using is different please specify.</param>
+        /// <returns></returns>
         public static string BuildElement<TElement>(Action<TElement> action) where TElement : IElement, new() {
             TElement element = new TElement();
             action(element);
+
+            if (string.IsNullOrEmpty(element.ViewName))
+                element.ViewName = "_AjaxMessage";
 
             return new ViewBuilder().RenderView(element.ViewName, element);
         }
@@ -18,13 +27,13 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TAlert">Custom model that implements the IAlert interface.</typeparam>
         /// <param name="modelState"></param>
-        /// <param name="viewName">View name</param>
+        /// <param name="viewName">View name. The default view name is _AjaxMessage. If the view name you are using is different please specify.</param>
         /// <returns></returns>
-        public static string BuildModelErrorAlert<TAlert>(ModelStateDictionary modelState, string viewName) where TAlert : class, IAlert, new() {
+        public static string BuildModelErrorAlert<TAlert>(ModelStateDictionary modelState, string viewName = "_AjaxMessage") where TAlert : class, IAlert, new() {
             return BuildElement<TAlert>(x => { x.ViewName    = viewName;
                                                x.MessageType = MessageTypes.Danger;
                                                x.Heading     = "Errors!";
-                                               x.MessageList = ErrorHandler.GetModelErrors(modelState); });
+                                               x.MessageList = modelState.GetModelErrors(); });
         }
 
         /// <summary>

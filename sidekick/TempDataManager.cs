@@ -3,11 +3,15 @@
 namespace sidekick
 {
     /// <summary>
-    ///     Designed to help keep TempData values organized.
+    ///     Designed to help keep TempData values organized and unique.
     /// </summary>
     public class TempDataManager
     {
         public TempDataDictionary TempData { get; set; }
+
+        public TempDataManager(TempDataDictionary data) {
+            TempData = data;
+        }
 
         /// <summary>
         ///     Adds a key/value pair to temp data. If the key already exists in temp data it is removed prior to adding it.

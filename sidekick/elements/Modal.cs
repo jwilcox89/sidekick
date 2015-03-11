@@ -2,6 +2,9 @@
 {
     public class Modal : IModal
     {
+        /// <summary>
+        ///     View name that will be generated with Alert details
+        /// </summary>
         public string ViewName { get; set; }
 
         /// <summary>
@@ -33,5 +36,21 @@
         ///     Sets the color of the submit button
         /// </summary>
         public ButtonColor SubmitColor { get; set; }
+
+        /// <summary>
+        ///     Sets the button class here. Ex. "btn btn-success"
+        /// </summary>
+        public string SubmitClass {
+            get {
+                switch(SubmitColor) {
+                    case ButtonColor.Danger:
+                        return "btn btn-danger";
+                    case ButtonColor.Success:
+                        return "btn btn-success";
+                }
+
+                return string.Empty;
+            }
+        }
     }
 }

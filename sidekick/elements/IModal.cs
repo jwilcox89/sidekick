@@ -34,5 +34,10 @@
         ///     Sets the color of the submit button
         /// </summary>
         ButtonColor SubmitColor { get; set; }
+
+        /// <summary>
+        ///     Sets the button class here. Ex. "btn btn-success"
+        /// </summary>
+        string SubmitClass { get; }
     }
 }

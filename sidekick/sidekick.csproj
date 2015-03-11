@@ -68,7 +68,6 @@
     <Compile Include="responses\RenderDocument.cs" />
     <Compile Include="session\SessionManagerBase.cs" />
     <Compile Include="TempDataManager.cs" />
-    <Compile Include="Types.cs" />
     <Compile Include="validation\ActiveDirectorySecurity.cs" />
     <Compile Include="validation\CommonRegexes.cs" />
     <Compile Include="ViewBuilder.cs" />

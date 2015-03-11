@@ -4,6 +4,9 @@ namespace sidekick
 {
     public class Alert : IAlert
     {
+        /// <summary>
+        ///     View name that will be generated with Alert details
+        /// </summary>
         public string ViewName { get; set; }
 
         /// <summary>
@@ -36,18 +39,27 @@ namespace sidekick
         /// </summary>
         public string AlertClass {
             get {
+                string className = string.Empty;
+
                 switch (MessageType) {
                     case MessageTypes.Danger:
-                        return "alert alert-danger";
+                        className = "alert alert-danger";
+                        break;
                     case MessageTypes.Info:
-                        return "alert alert-info";
+                        className = "alert alert-info";
+                        break;
                     case MessageTypes.Success:
-                        return "alert alert-success";
+                        className = "alert alert-success";
+                        break;
                     case MessageTypes.Warning:
-                        return "alert alert-warning";
+                        className = "alert alert-warning";
+                        break;
                 }
 
-                return "alert alert-warning";
+                if (Dismissible)
+                    className = string.Format("{0} alert-dismissable", className);
+
+                return className;
             }
         }
 
