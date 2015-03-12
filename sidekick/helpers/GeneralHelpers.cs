@@ -20,9 +20,9 @@ namespace sidekick
             string currentController = (string)routeData.Values["controller"];
             string currentArea       = (string)routeData.DataTokens["area"];
 
-            action = (string.IsNullOrEmpty(action)) ? currentAction : action;
+            action     = (string.IsNullOrEmpty(action)) ? currentAction : action;
             controller = (string.IsNullOrEmpty(controller)) ? currentController : controller;
-            area = (string.IsNullOrEmpty(area)) ? currentArea : area;
+            area       = (string.IsNullOrEmpty(area)) ? currentArea : area;
 
             if ((!string.IsNullOrEmpty(action + controller + area)) &&
                 (string.IsNullOrEmpty(action) || action == currentAction) &&

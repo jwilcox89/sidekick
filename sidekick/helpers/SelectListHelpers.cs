@@ -6,12 +6,12 @@ using System.Linq;
 
 namespace sidekick
 {
-    public class CustomSelectList<TElement>
+    public class CustomSelectList<TSource>
     {
-        public IEnumerable<TElement>             ItemList      { get; set; }
-        public Expression<Func<TElement,object>> Value         { get; set; }
-        public Expression<Func<TElement,object>> Display       { get; set; }
-        public object                            SelectedValue { get; set; }
+        public IEnumerable<TSource>             ItemList      { get; set; }
+        public Expression<Func<TSource,object>> Value         { get; set; }
+        public Expression<Func<TSource,object>> Display       { get; set; }
+        public object                           SelectedValue { get; set; }
     }
 
     public class SelectListHelpers
@@ -66,11 +66,11 @@ namespace sidekick
         /// <summary>
         ///     Generates a dropdown list dynamically.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TSource"></typeparam>
         /// <param name="action"></param>
         /// <returns></returns>
-        public static SelectList BuildSelectList<T>(Action<CustomSelectList<T>> action) {
-            CustomSelectList<T> list = new CustomSelectList<T>();
+        public static SelectList BuildSelectList<TSource>(Action<CustomSelectList<TSource>> action) {
+            CustomSelectList<TSource> list = new CustomSelectList<TSource>();
             action(list);
             return BuildSelectList(list.ItemList, GetMemberInfo(list.Value).Member.Name, GetMemberInfo(list.Display).Member.Name, list.SelectedValue);
         }
@@ -78,10 +78,10 @@ namespace sidekick
         /// <summary>
         ///     Generates a dropdown list
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TSource"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static SelectList BuildSelectList<T>(CustomSelectList<T> list) {
+        public static SelectList BuildSelectList<TSource>(CustomSelectList<TSource> list) {
             return BuildSelectList(list.ItemList, GetMemberInfo(list.Value).Member.Name, GetMemberInfo(list.Display).Member.Name, list.SelectedValue);
         }
 
@@ -89,48 +89,48 @@ namespace sidekick
         /// <summary>
         ///     Generates a dropdown list
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TSource"></typeparam>
         /// <param name="items"></param>
         /// <param name="value"></param>
         /// <param name="display"></param>
         /// <param name="selectedValue"></param>
         /// <returns></returns>
-        public static SelectList BuildSelectList<T>(IEnumerable<T> items, Expression<Func<T,object>> value, Expression<Func<T,object>> display, object selectedValue) {
+        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, Expression<Func<TSource,object>> value, Expression<Func<TSource,object>> display, object selectedValue) {
             return BuildSelectList(items, GetMemberInfo(value).Member.Name, GetMemberInfo(display).Member.Name, selectedValue);
         }
 
         /// <summary>
         ///     Generates a dropdown list
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TSource"></typeparam>
         /// <param name="items"></param>
         /// <returns></returns>
-        public static SelectList BuildSelectList<T>(IEnumerable<T> items) {
+        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items) {
             return BuildSelectList(items, "", "", null);
         }
 
         /// <summary>
         ///     Generates a dropdown list
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TSource"></typeparam>
         /// <param name="items"></param>
         /// <param name="selectedValue"></param>
         /// <returns></returns>
-        public static SelectList BuildSelectList<T>(IEnumerable<T> items, object selectedValue) {
+        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, object selectedValue) {
             return BuildSelectList(items, "", "", selectedValue);
         }
 
         /// <summary>
         ///     Generates a dropdown list
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TSource"></typeparam>
         /// <param name="items"></param>
         /// <param name="value"></param>
         /// <param name="display"></param>
         /// <param name="selectedValue"></param>
         /// <returns></returns>
-        public static SelectList BuildSelectList<T>(IEnumerable<T> items, string value, string display, object selectedValue) {
-            items = items as List<T> ?? items.ToList();
+        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, string value, string display, object selectedValue) {
+            items = items as List<TSource> ?? items.ToList();
             return new SelectList(items, value, display, selectedValue);
         }
 

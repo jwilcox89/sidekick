@@ -40,7 +40,7 @@
         /// <summary>
         ///     Sets the button class here. Ex. "btn btn-success"
         /// </summary>
-        public string SubmitClass {
+        public virtual string SubmitClass {
             get {
                 switch(SubmitColor) {
                     case ButtonColor.Danger:

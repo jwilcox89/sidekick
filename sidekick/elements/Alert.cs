@@ -37,7 +37,7 @@ namespace sidekick
         /// <summary>
         ///     Sets the alert class here. Ex. "alert alert-success"
         /// </summary>
-        public string AlertClass {
+        public virtual string AlertClass {
             get {
                 string className = string.Empty;
 
