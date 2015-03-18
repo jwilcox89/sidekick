@@ -6,14 +6,6 @@ using System.Linq;
 
 namespace sidekick
 {
-    public class CustomSelectList<TSource>
-    {
-        public IEnumerable<TSource>             ItemList      { get; set; }
-        public Expression<Func<TSource,object>> Value         { get; set; }
-        public Expression<Func<TSource,object>> Display       { get; set; }
-        public object                           SelectedValue { get; set; }
-    }
-
     public class SelectListHelpers
     {
         /// <summary>
@@ -43,8 +35,7 @@ namespace sidekick
         /// </summary>
         /// <returns></returns>
         public static IEnumerable<SelectListItem> YesNoDropdown() {
-            return new List<SelectListItem> { new SelectListItem { Text = "", Value ="" },
-                                              new SelectListItem { Text = "Yes",  Value = "True" }, 
+            return new List<SelectListItem> { new SelectListItem { Text = "Yes",  Value = "True" }, 
                                               new SelectListItem { Text = "No", Value = "False" } };
         }
 
@@ -62,29 +53,6 @@ namespace sidekick
 
             return list;
         } 
-
-        /// <summary>
-        ///     Generates a dropdown list dynamically.
-        /// </summary>
-        /// <typeparam name="TSource"></typeparam>
-        /// <param name="action"></param>
-        /// <returns></returns>
-        public static SelectList BuildSelectList<TSource>(Action<CustomSelectList<TSource>> action) {
-            CustomSelectList<TSource> list = new CustomSelectList<TSource>();
-            action(list);
-            return BuildSelectList(list.ItemList, GetMemberInfo(list.Value).Member.Name, GetMemberInfo(list.Display).Member.Name, list.SelectedValue);
-        }
-
-        /// <summary>
-        ///     Generates a dropdown list
-        /// </summary>
-        /// <typeparam name="TSource"></typeparam>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        public static SelectList BuildSelectList<TSource>(CustomSelectList<TSource> list) {
-            return BuildSelectList(list.ItemList, GetMemberInfo(list.Value).Member.Name, GetMemberInfo(list.Display).Member.Name, list.SelectedValue);
-        }
-
 
         /// <summary>
         ///     Generates a dropdown list

@@ -11,3 +11,4 @@ C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\obj\Debug\sidekick.csprojRes
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Newtonsoft.Json.dll
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Newtonsoft.Json.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Microsoft.AspNet.Identity.Core.xml

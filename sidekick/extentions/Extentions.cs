@@ -11,22 +11,22 @@ namespace sidekick
         /// <summary>
         ///     Converts an object to an int
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TObject"></typeparam>
         /// <param name="item"></param>
         /// <returns></returns>
-        public static int ToInt<T>(this T item) {
+        public static int ToInt<TObject>(this TObject item) {
             return Convert.ToInt32(item);
         }
 
         /// <summary>
         ///     Converts a list of an object to a list of ints
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TObject"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static IEnumerable<int> ToInt<T>(this IEnumerable<T> list) {
+        public static IEnumerable<int> ToInt<TObject>(this IEnumerable<TObject> list) {
             List<int> final = new List<int>();
-            foreach (T i in list) {
+            foreach (TObject i in list) {
                 final.Add(i.ToInt());
             }
 
@@ -36,22 +36,22 @@ namespace sidekick
         /// <summary>
         ///     Converts an object to a short
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TObject"></typeparam>
         /// <param name="item"></param>
         /// <returns></returns>
-        public static short ToShort<T>(this T item) {
+        public static short ToShort<TObject>(this TObject item) {
             return Convert.ToInt16(item);
         }
 
         /// <summary>
         ///     Converts a list of an object to a list of shorts
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TObject"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static IEnumerable<short> ToShort<T>(this IEnumerable<T> list) {
+        public static IEnumerable<short> ToShort<TObject>(this IEnumerable<TObject> list) {
             List<short> final = new List<short>();
-            foreach (T i in list) {
+            foreach (TObject i in list) {
                 final.Add(i.ToShort());
             }
 
@@ -82,13 +82,13 @@ namespace sidekick
         /// <summary>
         ///     Makes list of enums.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TEnum"></typeparam>
         /// <returns></returns>
-        public static IEnumerable<T> GetEnumValues<T>() {
-            if (typeof(T).BaseType != typeof(Enum))
+        public static IEnumerable<TEnum> GetEnumValues<TEnum>() {
+            if (typeof(TEnum).BaseType != typeof(Enum))
                 throw new ArgumentException("Must be a type of System.Enum");
 
-            return (T[])Enum.GetValues(typeof(T));
+            return (TEnum[])Enum.GetValues(typeof(TEnum));
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public static string FormatCurrency(this HtmlHelper hlper, decimal amount) {
+        public static string FormatCurrency(this HtmlHelper helper, decimal amount) {
             return amount.ToString("C");
         }
 
