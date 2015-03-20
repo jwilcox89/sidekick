@@ -44,14 +44,10 @@ namespace sidekick
         /// </summary>
         /// <param name="trueValue">What you want the true option to say (ex. "Yes")</param>
         /// <param name="falseValue">What you want the false option to say (ex. "No)</param>
-        /// <param name="defaultText"></param>
         /// <returns></returns>
-        public static IEnumerable<SelectListItem> YesNoDropdown(string trueValue, string falseValue, string defaultText = "") {
-            List<SelectListItem> list = new List<SelectListItem>();
-            list.Add(new SelectListItem() { Text = trueValue, Value = "True" });
-            list.Add(new SelectListItem() { Text = falseValue, Value = "False" });
-
-            return list;
+        public static IEnumerable<SelectListItem> YesNoDropdown(string trueValue, string falseValue) {
+            return new List<SelectListItem> { new SelectListItem { Text = trueValue, Value = "True" },
+                                              new SelectListItem { Text = falseValue, Value = "False" } };
         } 
 
         /// <summary>

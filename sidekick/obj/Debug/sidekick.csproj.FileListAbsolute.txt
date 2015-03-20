@@ -12,3 +12,16 @@ C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Newtonsoft.Json.dl
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Newtonsoft.Json.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.Helpers.dll
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.Mvc.dll
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.Razor.dll
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.dll
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.Helpers.xml
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.Mvc.xml
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.Razor.xml
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.xml
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.Razor.xml

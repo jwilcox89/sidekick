@@ -63,9 +63,25 @@ namespace sidekick
             }
         }
 
+        public virtual string Icon {
+            get {
+                switch (MessageType) {
+                    case MessageTypes.Danger:
+                        return "fa fa-fire";
+                    case MessageTypes.Info:
+                        return "fa fa-info";
+                    case MessageTypes.Success:
+                        return "fa fa-check";
+                    case MessageTypes.Warning:
+                        return "fa fa-exclamation-triangle";
+                }
+
+                return string.Empty;
+            }
+        }
+
         public Alert() {
             MessageList = new List<string>();
         }
     }
 }
-

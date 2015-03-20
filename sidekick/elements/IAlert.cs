@@ -33,5 +33,10 @@ namespace sidekick
         ///     Sets the alert class here. Ex. "alert alert-success"
         /// </summary>
         string AlertClass { get; }
+
+        /// <summary>
+        ///     Sets the alert icon here. Ex "fa fa-fire"
+        /// </summary>
+        string Icon { get; }
     }
 }
