@@ -4,7 +4,7 @@ using System.Security.Principal;
 
 namespace sidekick
 {
-    public static class IdentityExtentions
+    public static class IdentityExtensions
     {
         public static string GetIdentityProperty(this IIdentity identity, string propertyName) {
             return ((ClaimsIdentity)identity).Claims.FirstOrDefault(x => x.Type == propertyName).Value;

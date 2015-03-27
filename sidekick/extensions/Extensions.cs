@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace sidekick
 {
-    public static class Extentions
+    public static class Extensions
     {
         /// <summary>
         ///     Converts an object to an int
@@ -27,6 +27,21 @@ namespace sidekick
         public static IEnumerable<int> ToInt<TObject>(this IEnumerable<TObject> list) {
             List<int> final = new List<int>();
             foreach (TObject i in list) {
+                final.Add(i.ToInt());
+            }
+
+            return final;
+        }
+
+        /// <summary>
+        ///     Converts an array of strings to a list of ints
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static IEnumerable<int> ToInt(this string[] list) {
+            List<int> final = new List<int>();
+            foreach (string i in list) {
                 final.Add(i.ToInt());
             }
 
