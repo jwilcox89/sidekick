@@ -34,21 +34,6 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Converts an array of strings to a list of ints
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        public static IEnumerable<int> ToInt(this string[] list) {
-            List<int> final = new List<int>();
-            foreach (string i in list) {
-                final.Add(i.ToInt());
-            }
-
-            return final;
-        }
-
-        /// <summary>
         ///     Converts an object to a short
         /// </summary>
         /// <typeparam name="TObject"></typeparam>

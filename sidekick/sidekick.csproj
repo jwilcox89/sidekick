@@ -91,6 +91,9 @@
     <Compile Include="helpers\GeneralHelpers.cs" />
     <Compile Include="helpers\LabelHelpers.cs" />
     <Compile Include="helpers\SelectListHelpers.cs" />
+    <Compile Include="htmlbuilders\HtmlBuilder.cs" />
+    <Compile Include="htmlbuilders\HtmlConverters.cs" />
+    <Compile Include="htmlbuilders\ModalBuilder.cs" />
     <Compile Include="Misc.cs" />
     <Compile Include="responses\RenderDocument.cs" />
     <Compile Include="session\SessionManagerBase.cs" />

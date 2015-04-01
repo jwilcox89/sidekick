@@ -37,5 +37,9 @@
     {
         Success,
         Danger,
+        Primary,
+        Warning,
+        Info,
+        Default
     }
 }

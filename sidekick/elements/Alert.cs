@@ -39,23 +39,7 @@ namespace sidekick
         /// </summary>
         public virtual string AlertClass {
             get {
-                string className = string.Empty;
-
-                switch (MessageType) {
-                    case MessageTypes.Danger:
-                        className = "alert alert-danger";
-                        break;
-                    case MessageTypes.Info:
-                        className = "alert alert-info";
-                        break;
-                    case MessageTypes.Success:
-                        className = "alert alert-success";
-                        break;
-                    case MessageTypes.Warning:
-                        className = "alert alert-warning";
-                        break;
-                }
-
+                string className = HtmlConverters.MessageTypeConverter(MessageType);
                 if (Dismissible)
                     className = string.Format("{0} alert-dismissable", className);
 
@@ -65,18 +49,7 @@ namespace sidekick
 
         public virtual string Icon {
             get {
-                switch (MessageType) {
-                    case MessageTypes.Danger:
-                        return "fa fa-fire";
-                    case MessageTypes.Info:
-                        return "fa fa-info";
-                    case MessageTypes.Success:
-                        return "fa fa-check";
-                    case MessageTypes.Warning:
-                        return "fa fa-exclamation-triangle";
-                }
-
-                return string.Empty;
+                return HtmlConverters.IconConverter(MessageType);
             }
         }
 
@@ -85,3 +58,4 @@ namespace sidekick
         }
     }
 }
+

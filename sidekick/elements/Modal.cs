@@ -42,14 +42,7 @@
         /// </summary>
         public virtual string SubmitClass {
             get {
-                switch(SubmitColor) {
-                    case ButtonColor.Danger:
-                        return "btn btn-danger";
-                    case ButtonColor.Success:
-                        return "btn btn-success";
-                }
-
-                return string.Empty;
+                return HtmlConverters.ButtonColorConverter(SubmitColor);
             }
         }
     }
