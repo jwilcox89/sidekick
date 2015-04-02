@@ -36,6 +36,11 @@
         string SubmitText { get; set; }
 
         /// <summary>
+        ///     True if the modal is dismissible. Defaults to true.
+        /// </summary>
+        bool Dismissable { get; set; }
+
+        /// <summary>
         ///     Sets the color of the submit button
         /// </summary>
         ButtonColor SubmitColor { get; set; }

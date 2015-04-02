@@ -38,6 +38,11 @@
         public string SubmitText { get; set; }
 
         /// <summary>
+        ///     True if the modal is dismissible. Defaults to true.
+        /// </summary>
+        public bool Dismissable { get; set; }
+
+        /// <summary>
         ///     Sets the color of the submit button
         /// </summary>
         public ButtonColor SubmitColor { get; set; }
@@ -49,6 +54,10 @@
             get {
                 return HtmlConverters.ButtonColorConverter(SubmitColor);
             }
+        }
+
+        public Modal() {
+            Dismissable = true;
         }
     }
 }

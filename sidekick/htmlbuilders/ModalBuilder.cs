@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace sidekick
@@ -26,11 +22,11 @@ namespace sidekick
         }
 
         public ModalBody BuildBody() {
-            return new ModalBody(_helper, _modal.ErrorAreaID);
+            return new ModalBody(_helper, _modal);
         }
 
         public ModalFooter BuildFooter() {
-            return new ModalFooter(_helper, _modal.SubmitText, _modal.SubmitColor);
+            return new ModalFooter(_helper, _modal);
         }
 
         public void Dispose() {
@@ -44,12 +40,12 @@ namespace sidekick
     {
         private HtmlHelper _helper;
 
-        public ModalBody(HtmlHelper helper, string errorAreaID = null) {
+        public ModalBody(HtmlHelper helper, IModal modal) {
             _helper = helper;
             _helper.ViewContext.Writer.Write("<div class='modal-body'>");
 
-            if (!string.IsNullOrEmpty(errorAreaID))
-                _helper.ViewContext.Writer.Write(string.Format("<div id='{0}'></div>", errorAreaID));
+            if (!string.IsNullOrEmpty(modal.ErrorAreaID))
+                _helper.ViewContext.Writer.Write(string.Format("<div id='{0}'></div>", modal.ErrorAreaID));
         }
 
         public void Dispose() {
@@ -61,12 +57,18 @@ namespace sidekick
     {
         private HtmlHelper _helper;
 
-        public ModalFooter(HtmlHelper helper, string submitText, ButtonColor submitColor) {
+        public ModalFooter(HtmlHelper helper, IModal modal) {
             _helper = helper;
 
             _helper.ViewContext.Writer.Write("<div class='modal-footer'>");
-            _helper.ViewContext.Writer.Write("<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>");
-            _helper.ViewContext.Writer.Write(string.Format("<button type='submit' class='{0}'>{1}</button>", HtmlConverters.ButtonColorConverter(submitColor), submitText));
+
+            if (modal.Dismissable) {
+                string closeText = (!string.IsNullOrEmpty(modal.CloseText)) ? modal.CloseText : "Close";
+                _helper.ViewContext.Writer.Write(string.Format("<button type='button' class='btn btn-default' data-dismiss='modal'>{0}</button>", closeText));
+            }
+
+            string submitText = (!string.IsNullOrEmpty(modal.SubmitText)) ? modal.SubmitText : "Submit";
+            _helper.ViewContext.Writer.Write(string.Format("<button type='submit' class='{0}'>{1}</button>", HtmlConverters.ButtonColorConverter(modal.SubmitColor), submitText));
         }
 
         public void Dispose() {
