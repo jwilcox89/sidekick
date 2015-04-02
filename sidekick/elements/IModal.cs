@@ -16,6 +16,11 @@
         string Title { get; set; }
 
         /// <summary>
+        ///     Html ID of the error div. Used for display errors via Ajax/Json
+        /// </summary>
+        string ErrorAreaID { get; set; }
+
+        /// <summary>
         ///     Body of the modal
         /// </summary>
         string Body { get; set; }

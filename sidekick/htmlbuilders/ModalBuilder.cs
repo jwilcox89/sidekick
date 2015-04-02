@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace sidekick
@@ -6,17 +10,27 @@ namespace sidekick
     public class ModalBuilder : IDisposable
     {
         private HtmlHelper _helper;
+        private IModal _modal;
 
-        public ModalBuilder(HtmlHelper helper, string modalID, string modalTitle) {
+        public ModalBuilder(HtmlHelper helper, IModal modal) {
             _helper = helper;
+            _modal = modal;
 
-            _helper.ViewContext.Writer.Write(string.Format("<div class='modal fade' id='{0}'>", modalID));
+            _helper.ViewContext.Writer.Write(string.Format("<div class='modal fade' id='{0}'>", _modal.ID));
             _helper.ViewContext.Writer.Write("<div class='modal-dialog'>");
             _helper.ViewContext.Writer.Write("<div class='modal-content'>");
             _helper.ViewContext.Writer.Write("<div class='modal-header'>");
             _helper.ViewContext.Writer.Write("<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>");
-            _helper.ViewContext.Writer.Write(string.Format("<h4 class='modal-title'>{0}</h4>", modalTitle));
+            _helper.ViewContext.Writer.Write(string.Format("<h4 class='modal-title'>{0}</h4>", _modal.Title));
             _helper.ViewContext.Writer.Write("</div>");
+        }
+
+        public ModalBody BuildBody() {
+            return new ModalBody(_helper, _modal.ErrorAreaID);
+        }
+
+        public ModalFooter BuildFooter() {
+            return new ModalFooter(_helper, _modal.SubmitText, _modal.SubmitColor);
         }
 
         public void Dispose() {
