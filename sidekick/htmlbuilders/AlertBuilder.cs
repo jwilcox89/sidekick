@@ -13,10 +13,10 @@ namespace sidekick
             _helper = helper;
             _alert = alert;
 
-            if (!customBody) {
-                BuildAlert();
-            } else {
+            if (customBody) {
                 BuildAlertShell();
+            } else {
+                BuildAlert();
             }
         }
 

@@ -12,8 +12,9 @@ namespace sidekick
             return new AlertBuilder(helper, alert, true);
         }
 
-        public static AlertBuilder BuildAlert(this HtmlHelper helper, IAlert alert) {
-            return new AlertBuilder(helper, alert, false);
+        public static MvcHtmlString BuildAlert(this HtmlHelper helper, IAlert alert) {
+            new AlertBuilder(helper, alert, false);
+            return new MvcHtmlString(string.Empty);
         }
     }
 }
