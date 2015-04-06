@@ -87,6 +87,7 @@
     <Compile Include="extensions\Extensions.cs" />
     <Compile Include="extensions\IdentityExtensions.cs" />
     <Compile Include="helpers\ActionHelpers.cs" />
+    <Compile Include="helpers\ActionLink.cs" />
     <Compile Include="helpers\DesignHelpers.cs" />
     <Compile Include="helpers\GeneralHelpers.cs" />
     <Compile Include="helpers\LabelHelpers.cs" />

@@ -13,7 +13,15 @@ namespace sidekick
 
         #region HTML
 
-        public static MvcHtmlString ActionLinkWithIcon(this HtmlHelper helper, string action, string controller, object routeValues, string icon, string altText = null, object htmlAttributes = null) {
+        public static MvcHtmlString ActionLink(this HtmlHelper helper, ActionLink properties) {
+            if (string.IsNullOrEmpty(properties.Text)) {
+                return ActionLinkWithIcon(helper, properties.Action, properties.Controller, properties.RouteValues, properties.Icon, null, properties.HtmlAttributes);
+            } else {
+                return ActionLinkWithIconAndText(helper, properties.Action, properties.Controller, properties.RouteValues, properties.Icon, properties.Text, properties.Text, properties.HtmlAttributes);
+            }
+        }
+
+        public static MvcHtmlString ActionLinkWithIcon (this HtmlHelper helper, string action, string controller, object routeValues, string icon, string altText = null, object htmlAttributes = null) {
             HtmlTextWriter writer = new HtmlTextWriter(new StringWriter());
 
             writer.AddAttribute(HtmlTextWriterAttribute.Class, icon);
@@ -46,6 +54,14 @@ namespace sidekick
         #endregion
 
         #region AJAX
+
+        public static MvcHtmlString ActionLink(this AjaxHelper helper, AjaxActionLink properties) {
+            if (string.IsNullOrEmpty(properties.Text)) {
+                return ActionLinkWithIcon(helper, properties.Action, properties.Controller, properties.RouteValues, properties.Icon, properties.Options, null, properties.HtmlAttributes);
+            } else {
+                return ActionLinkWithIconAndText(helper, properties.Action, properties.Controller, properties.RouteValues, properties.Icon, properties.Text, properties.Options, properties.Text, properties.HtmlAttributes);
+            }
+        }
 
         public static MvcHtmlString ActionLinkWithIcon(this AjaxHelper helper, string action, string controller, object routeValues, string icon, AjaxOptions options, string altText = null, object htmlAttributes = null) {
             HtmlTextWriter writer = new HtmlTextWriter(new StringWriter());
