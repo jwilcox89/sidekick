@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Web;
 using System.Web.Mvc;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
@@ -229,6 +228,18 @@ namespace sidekick
         /// <param name="ssn"></param>
         /// <returns></returns>
         public static string FormatSSN(this HtmlHelper helper, string ssn) {
+            if (string.IsNullOrEmpty(ssn))
+                return string.Empty;
+
+            return ssn.Insert(3,"-").Insert(6,"-");
+        }
+
+        /// <summary>
+        ///     Formats a string into a readable SSN
+        /// </summary>
+        /// <param name="ssn"></param>
+        /// <returns></returns>
+        public static string FormatSSN(this string ssn) {
             if (string.IsNullOrEmpty(ssn))
                 return string.Empty;
 

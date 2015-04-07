@@ -21,7 +21,7 @@ namespace sidekick
         }
 
         private void BuildAlert() {
-            _helper.ViewContext.Writer.Write(string.Format("<div class='{0}'>", _alert.AlertClass));
+            _helper.ViewContext.Writer.Write(string.Format("<div class='{0}' role='alert'>", _alert.AlertClass));
 
             if (_alert.Dismissible)
                 _helper.ViewContext.Writer.Write("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");

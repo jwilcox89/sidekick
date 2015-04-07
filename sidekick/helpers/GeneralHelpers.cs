@@ -39,7 +39,7 @@ namespace sidekick
         ///     Will return the active link css class if the current page is the link that was clicked.
         /// </summary>
         /// <param name="helper"></param>
-        /// <param name="action"></param>
+        /// <param name="action">Current action</param>
         /// <param name="area">If this is not applicable then leave it as a null or empty string</param>
         /// <param name="activeClass">If this is not applicable then leave it as a null or empty string</param>
         /// <param name="controller">If "Home", "About", "Manage" is entered then this menu item will be marked as active if either of those three controllers are the current controllers</param>
