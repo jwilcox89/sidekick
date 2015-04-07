@@ -254,5 +254,14 @@ namespace sidekick
         public static string GetFileExtention(this string text) {
             return text.Substring(text.Length - 4);
         }
+
+        /// <summary>
+        ///     If the string is null then the value is set to an empty ("") string.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string SetEmptyIfNull(this string value) {
+            return (value == null) ? string.Empty : value;
+        }
     }
 }
