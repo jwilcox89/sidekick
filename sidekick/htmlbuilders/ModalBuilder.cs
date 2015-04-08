@@ -13,7 +13,7 @@ namespace sidekick
             _modal = modal;
 
             _helper.ViewContext.Writer.Write(string.Format("<div class='modal fade' id='{0}'>", _modal.ID));
-            _helper.ViewContext.Writer.Write("<div class='modal-dialog'>");
+            _helper.ViewContext.Writer.Write(string.Format("<div class='modal-dialog {0}'>", _modal.ModalSizeClass));
             _helper.ViewContext.Writer.Write("<div class='modal-content'>");
             _helper.ViewContext.Writer.Write("<div class='modal-header'>");
             _helper.ViewContext.Writer.Write("<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>");
@@ -68,7 +68,7 @@ namespace sidekick
             }
 
             string submitText = (!string.IsNullOrEmpty(modal.SubmitText)) ? modal.SubmitText : "Submit";
-            _helper.ViewContext.Writer.Write(string.Format("<button type='submit' class='{0}'>{1}</button>", HtmlConverters.ButtonColorConverter(modal.SubmitColor), submitText));
+            _helper.ViewContext.Writer.Write(string.Format("<button type='submit' class='{0}'>{1}</button>", Extentions.GetDisplayName<ButtonColor>(modal.SubmitColor), submitText));
         }
 
         public void Dispose() {

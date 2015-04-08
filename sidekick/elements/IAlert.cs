@@ -7,7 +7,7 @@ namespace sidekick
         /// <summary>
         ///     Success, Failure, Warning etc
         /// </summary>
-        MessageTypes MessageType { get; set; }
+        AlertType AlertType { get; set; }
 
         /// <summary>
         ///     If true the alert box will be dismissible

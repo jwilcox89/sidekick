@@ -8,6 +8,11 @@
         public string ViewName { get; set; }
 
         /// <summary>
+        ///     Specify the size of the modal
+        /// </summary>
+        public ModalSize ModalSize { get; set; }
+
+        /// <summary>
         ///     Document ID of the modal
         /// </summary>
         public string ID { get; set; }
@@ -52,12 +57,22 @@
         /// </summary>
         public virtual string SubmitClass {
             get {
-                return HtmlConverters.ButtonColorConverter(SubmitColor);
+                return Extentions.GetDisplayName<ButtonColor>(SubmitColor);
+            }
+        }
+
+        /// <summary>
+        ///     Sets the modal size class here. Ex. "modal-sm".
+        /// </summary>
+        public virtual string ModalSizeClass {
+            get {
+                return Extentions.GetDisplayName<ModalSize>(ModalSize);
             }
         }
 
         public Modal() {
             Dismissable = true;
+            ModalSize = ModalSize.Regular;
         }
     }
 }

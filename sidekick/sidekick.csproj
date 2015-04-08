@@ -94,7 +94,6 @@
     <Compile Include="helpers\SelectListHelpers.cs" />
     <Compile Include="htmlbuilders\AlertBuilder.cs" />
     <Compile Include="htmlbuilders\HtmlBuilder.cs" />
-    <Compile Include="htmlbuilders\HtmlConverters.cs" />
     <Compile Include="htmlbuilders\ModalBuilder.cs" />
     <Compile Include="Misc.cs" />
     <Compile Include="responses\RenderDocument.cs" />

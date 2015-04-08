@@ -12,7 +12,7 @@ namespace sidekick
         /// <summary>
         ///     Success, Failure, Warning etc
         /// </summary>
-        public MessageTypes MessageType { get; set; }
+        public AlertType AlertType { get; set; }
 
         /// <summary>
         ///     If true the alert box will be dismissible
@@ -39,7 +39,7 @@ namespace sidekick
         /// </summary>
         public virtual string AlertClass {
             get {
-                string className = HtmlConverters.MessageTypeConverter(MessageType);
+                string className = Extentions.GetDisplayName<AlertType>(AlertType);
                 if (Dismissible)
                     className = string.Format("{0} alert-dismissable", className);
 
@@ -52,7 +52,7 @@ namespace sidekick
         /// </summary>
         public virtual string Icon {
             get {
-                return HtmlConverters.IconConverter(MessageType);
+                return Extentions.GetDescription<AlertType>(AlertType);
             }
         }
 

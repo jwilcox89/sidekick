@@ -6,6 +6,11 @@
     public interface IModal : IElement
     {
         /// <summary>
+        ///     Specify the size of the modal
+        /// </summary>
+        ModalSize ModalSize { get; set; }
+
+        /// <summary>
         ///     Document ID of the modal
         /// </summary>
         string ID { get; set; }
@@ -49,5 +54,10 @@
         ///     Sets the button class here. Ex. "btn btn-success"
         /// </summary>
         string SubmitClass { get; }
+
+        /// <summary>
+        ///     Sets the modal size class here. Ex. "modal-lg"
+        /// </summary>
+        string ModalSizeClass { get; }
     }
 }

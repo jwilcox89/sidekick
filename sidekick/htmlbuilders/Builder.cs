@@ -40,7 +40,7 @@ namespace sidekick
         /// <returns></returns>
         public static string BuildAlert<TAlert>(ModelStateDictionary modelState, string viewName = "_AjaxMessage") where TAlert : class, IAlert, new() {
             return BuildElement<TAlert>(x => { x.ViewName = viewName;
-                                               x.MessageType = MessageTypes.Danger;
+                                               x.AlertType = AlertType.Danger;
                                                x.Heading     = "Errors!";
                                                x.MessageList = modelState.GetModelErrors(); });
         }

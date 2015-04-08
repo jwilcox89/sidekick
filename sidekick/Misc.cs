@@ -1,4 +1,6 @@
-﻿namespace sidekick
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace sidekick
 {
     /// <summary>
     ///     Months in the year
@@ -20,13 +22,32 @@
     }
 
     /// <summary>
+    ///     File types
+    /// </summary>
+    public enum FileType
+    {
+        PDF,
+        Excel,
+        Csv,
+        Word,
+        Other
+    }
+
+    /// <summary>
     ///     Alert box style options
     /// </summary>
-    public enum MessageTypes
+    public enum AlertType
     {
+        [Display(Name="alert alert-success", Description="fa fa-check")]
         Success,
+
+        [Display(Name="alert alert-danger", Description="fa fa-fire")]
         Danger,
+
+        [Display(Name="alert alert-warning", Description="fa fa-exclamation-triangle")]
         Warning,
+
+        [Display(Name="alert alert-info", Description="fa fa-info")]
         Info
     }
 
@@ -35,11 +56,29 @@
     /// </summary>
     public enum ButtonColor
     {
+        [Display(Name="btn btn-success")]
         Success,
+
+        [Display(Name="btn btn-danger")]
         Danger,
+
+        [Display(Name="btn btn-primary")]
         Primary,
+
+        [Display(Name="btn btn-warning")]
         Warning,
+
+        [Display(Name="btn btn-info")]
         Info,
+
+        [Display(Name="btn btn-default")]
         Default
+    }
+
+    public enum ModalSize
+    {
+        Regular,
+        Small,
+        Large
     }
 }
