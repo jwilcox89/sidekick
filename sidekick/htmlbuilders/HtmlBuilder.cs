@@ -16,5 +16,9 @@ namespace sidekick
             new AlertBuilder(helper, alert, false);
             return new MvcHtmlString(string.Empty);
         }
+
+        public static TabBuilder BeginPanel(this HtmlHelper helper) {
+            return new TabBuilder(helper);
+        }
     }
 }
