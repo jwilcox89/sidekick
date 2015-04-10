@@ -47,15 +47,6 @@ namespace sidekick
             }
         }
 
-        /// <summary>
-        ///     Sets the alert icon here.
-        /// </summary>
-        public virtual string Icon {
-            get {
-                return Extentions.GetDescription<AlertType>(AlertType);
-            }
-        }
-
         public Alert() {
             MessageList = new List<string>();
         }

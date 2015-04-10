@@ -79,7 +79,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="elements\IPanel.cs" />
     <Compile Include="elements\ITab.cs" />
+    <Compile Include="elements\Panel.cs" />
     <Compile Include="elements\Tab.cs" />
     <Compile Include="htmlbuilders\Builder.cs" />
     <Compile Include="connection\NetworkConnection.cs" />
@@ -97,6 +99,7 @@
     <Compile Include="htmlbuilders\AlertBuilder.cs" />
     <Compile Include="htmlbuilders\HtmlBuilder.cs" />
     <Compile Include="htmlbuilders\ModalBuilder.cs" />
+    <Compile Include="htmlbuilders\PanelBuilder.cs" />
     <Compile Include="htmlbuilders\TabBuilder.cs" />
     <Compile Include="Misc.cs" />
     <Compile Include="responses\RenderDocument.cs" />

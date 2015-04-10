@@ -77,8 +77,52 @@ namespace sidekick
 
     public enum ModalSize
     {
+        [Display(Name="")]
         Regular,
+
+        [Display(Name="modal-sm")]
         Small,
+
+        [Display(Name="modal-lg")]
         Large
+    }
+
+    public enum HeadingSize
+    {
+        [Display(Name="h1")]
+        H1,
+        
+        [Display(Name="h2")]
+        H2,
+
+        [Display(Name="h3")]
+        H3,
+
+        [Display(Name="h4")]
+        H4,
+
+        [Display(Name="h5")]
+        H5
+    }
+
+    public enum PanelColor
+    {
+        [Display(Name="default")]
+        Default,
+
+        [Display(Name="primary")]
+        Primary,
+        
+        [Display(Name="success")]
+        Success,
+
+        [Display(Name="info")]
+        Info,
+
+        [Display(Name="warning")]
+        Warning,
+
+        [Display(Name="danger")]
+        Danger
     }
 }

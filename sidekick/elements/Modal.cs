@@ -52,27 +52,10 @@
         /// </summary>
         public ButtonColor SubmitColor { get; set; }
 
-        /// <summary>
-        ///     Sets the button class here. Ex. "btn btn-success"
-        /// </summary>
-        public virtual string SubmitClass {
-            get {
-                return Extentions.GetDisplayName<ButtonColor>(SubmitColor);
-            }
-        }
-
-        /// <summary>
-        ///     Sets the modal size class here. Ex. "modal-sm".
-        /// </summary>
-        public virtual string ModalSizeClass {
-            get {
-                return Extentions.GetDisplayName<ModalSize>(ModalSize);
-            }
-        }
-
         public Modal() {
             Dismissable = true;
             ModalSize = ModalSize.Regular;
+            SubmitColor = ButtonColor.Primary;
         }
     }
 }

@@ -49,15 +49,5 @@
         ///     Sets the color of the submit button
         /// </summary>
         ButtonColor SubmitColor { get; set; }
-
-        /// <summary>
-        ///     Sets the button class here. Ex. "btn btn-success"
-        /// </summary>
-        string SubmitClass { get; }
-
-        /// <summary>
-        ///     Sets the modal size class here. Ex. "modal-lg"
-        /// </summary>
-        string ModalSizeClass { get; }
     }
 }

@@ -17,8 +17,12 @@ namespace sidekick
             return new MvcHtmlString(string.Empty);
         }
 
-        public static TabBuilder BeginPanel(this HtmlHelper helper) {
+        public static TabBuilder BeginTabs(this HtmlHelper helper) {
             return new TabBuilder(helper);
+        }
+
+        public static PanelBuilder BeingPanel(this HtmlHelper helper, IPanel panel) {
+            return new PanelBuilder(helper, panel);
         }
     }
 }
