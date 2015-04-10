@@ -99,7 +99,7 @@ namespace sidekick
         /// <typeparam name="TEnum"></typeparam>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static string GetDisplayName<TEnum>(object value) {
+        public static string GetDisplayName<TEnum>(this object value) {
             if (typeof(TEnum).BaseType != typeof(Enum))
                 throw new ArgumentException("Must be a type of System.Enum");
 
@@ -116,7 +116,7 @@ namespace sidekick
         /// <typeparam name="TEnum"></typeparam>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static string GetDescription<TEnum>(object value) {
+        public static string GetDescription<TEnum>(this object value) {
             if (typeof(TEnum).BaseType != typeof(Enum))
                 throw new ArgumentException("Must be a type of System.Enum");
 
@@ -125,6 +125,17 @@ namespace sidekick
             MemberInfo[] memInfo = type.GetMember(enumValue.ToString());
             Object[] attr = memInfo[0].GetCustomAttributes(typeof(DisplayAttribute), false);
             return ((DisplayAttribute)attr[0]).Description;
+        }
+
+        public static HtmlBuilderAttribute GetHtmlAttributes<TEnum>(this object value) {
+            if (typeof(TEnum).BaseType != typeof(Enum))
+                throw new ArgumentException("Must be a type of System.Enum");
+
+            TEnum enumValue = (TEnum)Enum.Parse(typeof(TEnum), value.ToString());
+            Type type = enumValue.GetType();
+            MemberInfo[] memInfo = type.GetMember(enumValue.ToString());
+            Object[] attr = memInfo[0].GetCustomAttributes(typeof(HtmlBuilderAttribute), false);
+            return (HtmlBuilderAttribute)attr[0];
         }
 
         /// <summary>

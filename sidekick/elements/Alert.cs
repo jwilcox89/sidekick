@@ -39,7 +39,7 @@ namespace sidekick
         /// </summary>
         public virtual string AlertClass {
             get {
-                string className = Extentions.GetDisplayName<AlertType>(AlertType);
+                string className = AlertType.GetHtmlAttributes<AlertType>().Class;
                 if (Dismissible)
                     className = string.Format("{0} alert-dismissable", className);
 

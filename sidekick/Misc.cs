@@ -38,16 +38,16 @@ namespace sidekick
     /// </summary>
     public enum AlertType
     {
-        [Display(Name="alert alert-success", Description="fa fa-check")]
+        [HtmlBuilder(Class="alert alert-success", Icon="fa fa-check")]
         Success,
 
-        [Display(Name="alert alert-danger", Description="fa fa-fire")]
+        [HtmlBuilder(Class="alert alert-danger", Icon="fa fa-fire")]
         Danger,
 
-        [Display(Name="alert alert-warning", Description="fa fa-exclamation-triangle")]
+        [HtmlBuilder(Class="alert alert-warning", Icon="fa fa-exclamation-triangle")]
         Warning,
 
-        [Display(Name="alert alert-info", Description="fa fa-info")]
+        [HtmlBuilder(Class="alert alert-info", Icon="fa fa-info")]
         Info
     }
 
@@ -56,73 +56,73 @@ namespace sidekick
     /// </summary>
     public enum ButtonColor
     {
-        [Display(Name="btn btn-success")]
+        [HtmlBuilder(Class="btn btn-success")]
         Success,
 
-        [Display(Name="btn btn-danger")]
+        [HtmlBuilder(Class="btn btn-danger")]
         Danger,
 
-        [Display(Name="btn btn-primary")]
+        [HtmlBuilder(Class="btn btn-primary")]
         Primary,
 
-        [Display(Name="btn btn-warning")]
+        [HtmlBuilder(Class="btn btn-warning")]
         Warning,
 
-        [Display(Name="btn btn-info")]
+        [HtmlBuilder(Class="btn btn-info")]
         Info,
 
-        [Display(Name="btn btn-default")]
+        [HtmlBuilder(Class="btn btn-default")]
         Default
     }
 
     public enum ModalSize
     {
-        [Display(Name="")]
+        [HtmlBuilder(Class="")]
         Regular,
 
-        [Display(Name="modal-sm")]
+        [HtmlBuilder(Class="modal-sm")]
         Small,
 
-        [Display(Name="modal-lg")]
+        [HtmlBuilder(Class="modal-lg")]
         Large
     }
 
     public enum HeadingSize
     {
-        [Display(Name="h1")]
+        [HtmlBuilder(Tag="h1")]
         H1,
         
-        [Display(Name="h2")]
+        [HtmlBuilder(Tag="h2")]
         H2,
 
-        [Display(Name="h3")]
+        [HtmlBuilder(Tag="h3")]
         H3,
 
-        [Display(Name="h4")]
+        [HtmlBuilder(Tag="h4")]
         H4,
 
-        [Display(Name="h5")]
+        [HtmlBuilder(Tag="h5")]
         H5
     }
 
     public enum PanelColor
     {
-        [Display(Name="default")]
+        [HtmlBuilder(Class="default")]
         Default,
 
-        [Display(Name="primary")]
+        [HtmlBuilder(Class="primary")]
         Primary,
         
-        [Display(Name="success")]
+        [HtmlBuilder(Class="success")]
         Success,
 
-        [Display(Name="info")]
+        [HtmlBuilder(Class="info")]
         Info,
 
-        [Display(Name="warning")]
+        [HtmlBuilder(Class="warning")]
         Warning,
 
-        [Display(Name="danger")]
+        [HtmlBuilder(Class="danger")]
         Danger
     }
 }

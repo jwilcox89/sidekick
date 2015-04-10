@@ -114,6 +114,7 @@
     <Compile Include="elements\Modal.cs" />
     <Compile Include="errors\ErrorHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="validation\HtmlBuilderAttribute.cs" />
     <Compile Include="validation\MaxFileSizeAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
