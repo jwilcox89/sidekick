@@ -48,6 +48,6 @@
         /// <summary>
         ///     Sets the color of the submit button
         /// </summary>
-        ButtonColor SubmitColor { get; set; }
+        Colors SubmitColor { get; set; }
     }
 }

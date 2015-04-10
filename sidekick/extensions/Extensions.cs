@@ -127,6 +127,12 @@ namespace sidekick
             return ((DisplayAttribute)attr[0]).Description;
         }
 
+        /// <summary>
+        ///     Returns the HtmlBuilder attribute associated with an enum
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static HtmlBuilderAttribute GetHtmlAttributes<TEnum>(this object value) {
             if (typeof(TEnum).BaseType != typeof(Enum))
                 throw new ArgumentException("Must be a type of System.Enum");

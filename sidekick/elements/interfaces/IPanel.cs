@@ -10,7 +10,7 @@
         /// <summary>
         ///     Color of the panel. Defaults to "default"
         /// </summary>
-        PanelColor Color { get; set; }
+        Colors Color { get; set; }
 
         /// <summary>
         ///     Title heading size

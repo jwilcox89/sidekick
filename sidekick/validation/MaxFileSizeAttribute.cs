@@ -37,5 +37,4 @@ namespace sidekick
             return true;
         }
     }
-
 }

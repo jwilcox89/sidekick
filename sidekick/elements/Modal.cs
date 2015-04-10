@@ -50,12 +50,12 @@
         /// <summary>
         ///     Sets the color of the submit button
         /// </summary>
-        public ButtonColor SubmitColor { get; set; }
+        public Colors SubmitColor { get; set; }
 
         public Modal() {
             Dismissable = true;
             ModalSize = ModalSize.Regular;
-            SubmitColor = ButtonColor.Primary;
+            SubmitColor = Colors.Primary;
         }
     }
 }

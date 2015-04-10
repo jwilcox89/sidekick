@@ -65,7 +65,7 @@ namespace sidekick
             }
 
             string submitText = (!string.IsNullOrEmpty(modal.SubmitText)) ? modal.SubmitText : "Submit";
-            helper.ViewContext.Writer.Write(string.Format("<button type='submit' class='{0}'>{1}</button>", modal.SubmitColor.GetHtmlAttributes<ButtonColor>().Class, submitText));
+            helper.ViewContext.Writer.Write(string.Format("<button type='submit' class='btn btn-{0}'>{1}</button>", modal.SubmitColor.GetHtmlAttributes<Colors>().Class, submitText));
 
             helper.ViewContext.Writer.Write("</div>");
         }

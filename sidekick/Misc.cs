@@ -22,90 +22,30 @@ namespace sidekick
     }
 
     /// <summary>
-    ///     File types
+    ///     File types. HtmlBuilder attribute: Tag = ContentType
     /// </summary>
     public enum FileType
     {
+        [HtmlBuilder(Tag="application/pdf")]
         PDF,
+
+        [HtmlBuilder(Tag="application/x-msexcel")]
         Excel,
+
+        [HtmlBuilder(Tag="application/x-csv")]
         Csv,
+
+        [HtmlBuilder(Tag="application/msword")]
         Word,
+
+        [HtmlBuilder(Tag="application/octet-stream")]
         Other
     }
 
     /// <summary>
-    ///     Alert box style options
+    ///     Bootstrap color options. HtmlBuilder attribute: Class = bootstrap color css
     /// </summary>
-    public enum AlertType
-    {
-        [HtmlBuilder(Class="alert alert-success", Icon="fa fa-check")]
-        Success,
-
-        [HtmlBuilder(Class="alert alert-danger", Icon="fa fa-fire")]
-        Danger,
-
-        [HtmlBuilder(Class="alert alert-warning", Icon="fa fa-exclamation-triangle")]
-        Warning,
-
-        [HtmlBuilder(Class="alert alert-info", Icon="fa fa-info")]
-        Info
-    }
-
-    /// <summary>
-    ///     Button color options
-    /// </summary>
-    public enum ButtonColor
-    {
-        [HtmlBuilder(Class="btn btn-success")]
-        Success,
-
-        [HtmlBuilder(Class="btn btn-danger")]
-        Danger,
-
-        [HtmlBuilder(Class="btn btn-primary")]
-        Primary,
-
-        [HtmlBuilder(Class="btn btn-warning")]
-        Warning,
-
-        [HtmlBuilder(Class="btn btn-info")]
-        Info,
-
-        [HtmlBuilder(Class="btn btn-default")]
-        Default
-    }
-
-    public enum ModalSize
-    {
-        [HtmlBuilder(Class="")]
-        Regular,
-
-        [HtmlBuilder(Class="modal-sm")]
-        Small,
-
-        [HtmlBuilder(Class="modal-lg")]
-        Large
-    }
-
-    public enum HeadingSize
-    {
-        [HtmlBuilder(Tag="h1")]
-        H1,
-        
-        [HtmlBuilder(Tag="h2")]
-        H2,
-
-        [HtmlBuilder(Tag="h3")]
-        H3,
-
-        [HtmlBuilder(Tag="h4")]
-        H4,
-
-        [HtmlBuilder(Tag="h5")]
-        H5
-    }
-
-    public enum PanelColor
+    public enum Colors
     {
         [HtmlBuilder(Class="default")]
         Default,
@@ -124,5 +64,59 @@ namespace sidekick
 
         [HtmlBuilder(Class="danger")]
         Danger
+    }
+
+    /// <summary>
+    ///     Alert box style options. HtmlBuilder attribute: Class = html class, Icon = font awesome icon
+    /// </summary>
+    public enum AlertType
+    {
+        [HtmlBuilder(Class="success", Icon="fa fa-check")]
+        Success,
+
+        [HtmlBuilder(Class="danger", Icon="fa fa-fire")]
+        Danger,
+
+        [HtmlBuilder(Class="warning", Icon="fa fa-exclamation-triangle")]
+        Warning,
+
+        [HtmlBuilder(Class="info", Icon="fa fa-info")]
+        Info
+    }
+
+    /// <summary>
+    ///     Modal sizes. HtmlBuilder attribute: Class = modal size class
+    /// </summary>
+    public enum ModalSize
+    {
+        [HtmlBuilder(Class="")]
+        Regular,
+
+        [HtmlBuilder(Class="modal-sm")]
+        Small,
+
+        [HtmlBuilder(Class="modal-lg")]
+        Large
+    }
+
+    /// <summary>
+    ///     Heading tags. HtmlBuilder attribute: Tag = html tag value
+    /// </summary>
+    public enum HeadingSize
+    {
+        [HtmlBuilder(Tag="h1")]
+        H1,
+        
+        [HtmlBuilder(Tag="h2")]
+        H2,
+
+        [HtmlBuilder(Tag="h3")]
+        H3,
+
+        [HtmlBuilder(Tag="h4")]
+        H4,
+
+        [HtmlBuilder(Tag="h5")]
+        H5
     }
 }

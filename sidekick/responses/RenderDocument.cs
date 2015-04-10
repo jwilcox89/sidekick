@@ -44,5 +44,35 @@ namespace sidekick
 	        response.BinaryWrite(fileData);
 	        HttpContext.Current.ApplicationInstance.CompleteRequest();
         }
+
+        /// <summary>
+        ///     Render a document byte array.
+        /// </summary>
+        /// <param name="fileData"></param>
+        /// <param name="fileName"></param>
+        /// <param name="displayInBrowser"></param>
+        public static void Render(byte[] fileData, FileType fileType, string fileName, bool displayInBrowser) {
+	        HttpResponse response = HttpContext.Current.Response;
+
+	        response.Clear();
+	        response.ClearHeaders();
+	        response.Buffer = true;
+	        response.AddHeader("Content-Length", fileData.Length.ToString());
+	        response.AddHeader("Expires", "0");
+	        response.AddHeader("Pragma", "cache");
+	        response.AddHeader("Cache-Control", "private");
+            response.ContentType = fileType.GetHtmlAttributes<FileType>().Tag;
+
+	        string contentDisposition = "attachment";
+	        if (displayInBrowser)
+		        contentDisposition = "inline";
+
+	        //this causes it to download as a file - comment out or change "attachment" to "inline" to open in Adobe Reader
+	        response.AddHeader("Content-Disposition", "" + contentDisposition + "; filename=" + fileName);
+
+	        //Output the file
+	        response.BinaryWrite(fileData);
+	        HttpContext.Current.ApplicationInstance.CompleteRequest();
+        }
     }
 }

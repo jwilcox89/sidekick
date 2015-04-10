@@ -79,15 +79,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="elements\IPanel.cs" />
-    <Compile Include="elements\ITab.cs" />
+    <Compile Include="elements\interfaces\IPanel.cs" />
+    <Compile Include="elements\interfaces\ITab.cs" />
     <Compile Include="elements\Panel.cs" />
     <Compile Include="elements\Tab.cs" />
     <Compile Include="htmlbuilders\Builder.cs" />
     <Compile Include="connection\NetworkConnection.cs" />
     <Compile Include="connection\NetworkConnectionManager.cs" />
     <Compile Include="connection\UserImpersonation.cs" />
-    <Compile Include="elements\IElement.cs" />
+    <Compile Include="elements\interfaces\IElement.cs" />
     <Compile Include="extensions\Extensions.cs" />
     <Compile Include="extensions\IdentityExtensions.cs" />
     <Compile Include="helpers\ActionHelpers.cs" />
@@ -109,8 +109,8 @@
     <Compile Include="validation\CommonRegexes.cs" />
     <Compile Include="htmlbuilders\ViewBuilder.cs" />
     <Compile Include="elements\Alert.cs" />
-    <Compile Include="elements\IAlert.cs" />
-    <Compile Include="elements\IModal.cs" />
+    <Compile Include="elements\interfaces\IAlert.cs" />
+    <Compile Include="elements\interfaces\IModal.cs" />
     <Compile Include="elements\Modal.cs" />
     <Compile Include="errors\ErrorHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

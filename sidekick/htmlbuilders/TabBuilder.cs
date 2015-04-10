@@ -14,13 +14,13 @@ namespace sidekick
             _helper.ViewContext.Writer.Write("<div role='tabpanel'>");
         }
 
-        public TabNav BeginNav() {
+        public TabNav BeginNavSection() {
             TabNav nav = new TabNav(_helper);
             _tabList = nav.TabList;
             return nav;
         }
 
-        public TabContent BeginContent() {
+        public TabContent BeginContentSection() {
             return new TabContent(_helper, _tabList);
         }
 
@@ -40,7 +40,7 @@ namespace sidekick
             _helper.ViewContext.Writer.Write("<ul role='tablist' class='nav nav-tabs'>");
         }
 
-        public MvcHtmlString BeginTabNav(ITab tab, string displayText) {
+        public MvcHtmlString BuildTab(ITab tab, string displayText) {
             TabList.Enqueue(tab);
             new TabNavBuilder(_helper, tab, displayText);
             return new MvcHtmlString(string.Empty);

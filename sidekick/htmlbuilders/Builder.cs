@@ -39,8 +39,8 @@ namespace sidekick
         /// <param name="modelState"></param>
         /// <returns></returns>
         public static string BuildAlert<TAlert>(ModelStateDictionary modelState, string viewName = "_AjaxMessage") where TAlert : class, IAlert, new() {
-            return BuildElement<TAlert>(x => { x.ViewName = viewName;
-                                               x.AlertType = AlertType.Danger;
+            return BuildElement<TAlert>(x => { x.ViewName    = viewName;
+                                               x.Type        = AlertType.Danger;
                                                x.Heading     = "Errors!";
                                                x.MessageList = modelState.GetModelErrors(); });
         }

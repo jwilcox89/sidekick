@@ -12,7 +12,7 @@ namespace sidekick
         /// <summary>
         ///     Success, Failure, Warning etc
         /// </summary>
-        public AlertType AlertType { get; set; }
+        public AlertType Type { get; set; }
 
         /// <summary>
         ///     If true the alert box will be dismissible
@@ -39,7 +39,7 @@ namespace sidekick
         /// </summary>
         public virtual string AlertClass {
             get {
-                string className = AlertType.GetHtmlAttributes<AlertType>().Class;
+                string className = Type.GetHtmlAttributes<AlertType>().Class;
                 if (Dismissible)
                     className = string.Format("{0} alert-dismissable", className);
 
@@ -48,6 +48,11 @@ namespace sidekick
         }
 
         public Alert() {
+            MessageList = new List<string>();
+        }
+
+        public Alert(AlertType type) {
+            Type = type;
             MessageList = new List<string>();
         }
     }

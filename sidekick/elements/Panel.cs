@@ -10,7 +10,7 @@
         /// <summary>
         ///     Color of the panel. Defaults to "default"
         /// </summary>
-        public PanelColor Color { get; set; }
+        public Colors Color { get; set; }
 
         /// <summary>
         ///     Title heading size
@@ -28,7 +28,7 @@
         public string Title { get; set; }
 
         public Panel() {
-            Color = PanelColor.Default;
+            Color = Colors.Default;
             HeadingSize = HeadingSize.H3;
         }
     }
