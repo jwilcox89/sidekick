@@ -26,7 +26,7 @@ namespace sidekick
         }
 
         public MvcHtmlString BuildFooter() {
-            new ModalFooter(_helper, _modal);
+            ModalFooter.Build(_helper, _modal);
             return new MvcHtmlString(string.Empty);
         }
 
@@ -54,9 +54,9 @@ namespace sidekick
         }
     }
 
-    public class ModalFooter
+    public static class ModalFooter
     {
-        public ModalFooter(HtmlHelper helper, IModal modal) {
+        public static void Build(HtmlHelper helper, IModal modal) {
             helper.ViewContext.Writer.Write("<div class='modal-footer'>");
 
             if (modal.Dismissable) {

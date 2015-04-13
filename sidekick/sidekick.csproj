@@ -80,8 +80,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="elements\interfaces\IPanel.cs" />
+    <Compile Include="elements\interfaces\IStep.cs" />
     <Compile Include="elements\interfaces\ITab.cs" />
     <Compile Include="elements\Panel.cs" />
+    <Compile Include="elements\Step.cs" />
     <Compile Include="elements\Tab.cs" />
     <Compile Include="htmlbuilders\Builder.cs" />
     <Compile Include="connection\NetworkConnection.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="htmlbuilders\HtmlBuilder.cs" />
     <Compile Include="htmlbuilders\ModalBuilder.cs" />
     <Compile Include="htmlbuilders\PanelBuilder.cs" />
+    <Compile Include="htmlbuilders\StepsBuilder.cs" />
     <Compile Include="htmlbuilders\TabBuilder.cs" />
     <Compile Include="Misc.cs" />
     <Compile Include="responses\RenderDocument.cs" />
@@ -121,6 +124,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\bootstrap-progress.css" />
     <Content Include="sampleviews\_Alert.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

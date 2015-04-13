@@ -42,7 +42,7 @@ namespace sidekick
 
         public MvcHtmlString BuildTab(ITab tab, string displayText) {
             TabList.Enqueue(tab);
-            new TabNavBuilder(_helper, tab, displayText);
+            TabNavBuilder.Build(_helper, tab, displayText);
             return new MvcHtmlString(string.Empty);
         }
 
@@ -71,18 +71,14 @@ namespace sidekick
         }
     }
 
-    public class TabNavBuilder
+    public static class TabNavBuilder
     {
-        private HtmlHelper _helper;
-
-        public TabNavBuilder(HtmlHelper helper, ITab tab, string displayText) {
-            _helper = helper;
-
+        public static void Build(HtmlHelper helper, ITab tab, string displayText) {
             string active = (tab.Active) ? "class='active'" : null;
-            _helper.ViewContext.Writer.Write(string.Format("<li role='presentation' {0}>", active));
-            _helper.ViewContext.Writer.Write(string.Format("<a href='#{0}' aria-controls='{0}' role='tab' data-toggle='tab'>", tab.Name));
-            _helper.ViewContext.Writer.Write(displayText);
-            _helper.ViewContext.Writer.Write("</a></li>");
+            helper.ViewContext.Writer.Write(string.Format("<li role='presentation' {0}>", active));
+            helper.ViewContext.Writer.Write(string.Format("<a href='#{0}' aria-controls='{0}' role='tab' data-toggle='tab'>", tab.Name));
+            helper.ViewContext.Writer.Write(displayText);
+            helper.ViewContext.Writer.Write("</a></li>");
         }
     }
 

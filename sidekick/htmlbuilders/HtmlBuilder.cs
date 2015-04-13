@@ -21,8 +21,12 @@ namespace sidekick
             return new TabBuilder(helper);
         }
 
-        public static PanelBuilder BeingPanel(this HtmlHelper helper, IPanel panel) {
+        public static PanelBuilder BeginPanel(this HtmlHelper helper, IPanel panel) {
             return new PanelBuilder(helper, panel);
+        }
+
+        public static StepsBuilder BeginSteps(this HtmlHelper helper, int totalSteps) {
+            return new StepsBuilder(helper, totalSteps);
         }
     }
 }
