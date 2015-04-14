@@ -1,0 +1,15 @@
+﻿@using sidekick
+
+@model IModal
+
+@using (var modal = Html.BeginModal(Model)) {
+	using (Html.BeginForm()) {
+		using (modal.BuildBody()) {
+			<p>
+				@Model.Body
+			</p>
+		}
+
+		@modal.BuilderFooter()
+	}
+}

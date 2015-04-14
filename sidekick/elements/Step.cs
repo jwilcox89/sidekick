@@ -8,6 +8,11 @@
         public string Title { get; set; }
 
         /// <summary>
+        ///     Icon associated with the step
+        /// </summary>
+        public string Icon { get; set; }
+
+        /// <summary>
         ///     Content for the popover
         /// </summary>
         public string Description { get; set; }

@@ -1,26 +1,5 @@
 ﻿@using sidekick
 
-@model sidekick.IAlert
+@model IAlert
 
-<div class="@Model.AlertClass">
-    @if (Model.Dismissible) {
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    }
-    <strong>
-        <i class="@Model.Icon"></i>
-        @Model.Heading
-    </strong>
-    <p>
-        @if (Model.MessageList.Count() > 0) {
-            <ul>
-                @foreach (string m in Model.MessageList) {
-                    <li>@m</li>   
-                }
-            </ul>           
-        } else {           
-            if (!string.IsNullOrEmpty(Model.Body)) {
-                @Model.Body   
-            }
-        }
-    </p>
-</div>
+@Html.BuildAlert(Model)
