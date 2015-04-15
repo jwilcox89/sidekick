@@ -17,7 +17,7 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="expression"></param>
         /// <returns></returns>
-        public static MvcHtmlString LabelForWithColon<TModel,TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression) {
+        public static MvcHtmlString LabelForWithColon<TModel,TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TValue>> expression) {
             return LabelFor(helper, expression, null);
         }
 
@@ -30,11 +30,11 @@ namespace sidekick
         /// <param name="expression"></param>
         /// <param name="htmlAttributes"></param>
         /// <returns></returns>
-        public static MvcHtmlString LabelForWithColon<TModel,TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, object htmlAttributes) {
+        public static MvcHtmlString LabelForWithColon<TModel,TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TValue>> expression, object htmlAttributes) {
             return LabelFor(helper, expression, new RouteValueDictionary(htmlAttributes));
         }
 
-        private static MvcHtmlString LabelFor<TModel,TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, IDictionary<string,object> htmlAttributes) {
+        private static MvcHtmlString LabelFor<TModel,TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TValue>> expression, IDictionary<string,object> htmlAttributes) {
             ModelMetadata metadata = ModelMetadata.FromLambdaExpression(expression, helper.ViewData);
             string htmlFieldName   = ExpressionHelper.GetExpressionText(expression);
             string labelText       = metadata.DisplayName ?? metadata.PropertyName ?? htmlFieldName.Split('.').Last();

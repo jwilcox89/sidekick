@@ -33,12 +33,12 @@
         public string Body { get; set; }
 
         /// <summary>
-        ///     Text for the close modal button
+        ///     Text for the close modal button. Default value "Close"
         /// </summary>
         public string CloseText { get; set; }
 
         /// <summary>
-        ///     Text for the submit button
+        ///     Text for the submit button. Default value "Submit"
         /// </summary>
         public string SubmitText { get; set; }
 
@@ -54,6 +54,8 @@
 
         public Modal() {
             Dismissable = true;
+            CloseText = "Close";
+            SubmitText = "Submit";
             ModalSize = ModalSize.Regular;
             SubmitColor = Colors.Primary;
         }

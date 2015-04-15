@@ -10,12 +10,12 @@ namespace sidekick
         public string ViewName { get; set; }
 
         /// <summary>
-        ///     Success, Failure, Warning etc
+        ///     Success, Failure, Warning etc. Default value "Info"
         /// </summary>
         public AlertType Type { get; set; }
 
         /// <summary>
-        ///     If true the alert box will be dismissible
+        ///     If true the alert box will be dismissible. Default value false.
         /// </summary>
         public bool Dismissible { get; set; }
 
@@ -48,6 +48,7 @@ namespace sidekick
         }
 
         public Alert() {
+            Type = AlertType.Info;
             MessageList = new List<string>();
         }
 

@@ -59,13 +59,10 @@ namespace sidekick
         public static void Build(HtmlHelper helper, IModal modal) {
             helper.ViewContext.Writer.Write("<div class='modal-footer'>");
 
-            if (modal.Dismissable) {
-                string closeText = (!string.IsNullOrEmpty(modal.CloseText)) ? modal.CloseText : "Close";
-                helper.ViewContext.Writer.Write(string.Format("<button type='button' class='btn btn-default' data-dismiss='modal'>{0}</button>", closeText));
-            }
+            if (modal.Dismissable)
+                helper.ViewContext.Writer.Write(string.Format("<button type='button' class='btn btn-default' data-dismiss='modal'>{0}</button>", modal.CloseText));
 
-            string submitText = (!string.IsNullOrEmpty(modal.SubmitText)) ? modal.SubmitText : "Submit";
-            helper.ViewContext.Writer.Write(string.Format("<button type='submit' class='btn btn-{0}'>{1}</button>", modal.SubmitColor.GetHtmlAttributes<Colors>().Class, submitText));
+            helper.ViewContext.Writer.Write(string.Format("<button type='submit' class='btn btn-{0}'>{1}</button>", modal.SubmitColor.GetHtmlAttributes<Colors>().Class, modal.SubmitText));
 
             helper.ViewContext.Writer.Write("</div>");
         }
