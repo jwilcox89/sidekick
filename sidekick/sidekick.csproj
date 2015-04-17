@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -79,12 +85,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="database\BaseRepository.cs" />
+    <Compile Include="database\RandomNumber.cs" />
+    <Compile Include="database\RepositoryException.cs" />
+    <Compile Include="database\RepositoryExtentions.cs" />
     <Compile Include="elements\interfaces\IPanel.cs" />
     <Compile Include="elements\interfaces\IStep.cs" />
     <Compile Include="elements\interfaces\ITab.cs" />
     <Compile Include="elements\Panel.cs" />
     <Compile Include="elements\Step.cs" />
     <Compile Include="elements\Tab.cs" />
+    <Compile Include="errorlogger\ErrorLogExtentions.cs" />
+    <Compile Include="errorlogger\ErrorLogger.cs" />
+    <Compile Include="errorlogger\IErrorLog.cs" />
     <Compile Include="htmlbuilders\Builder.cs" />
     <Compile Include="connection\NetworkConnection.cs" />
     <Compile Include="connection\NetworkConnectionManager.cs" />
@@ -121,6 +134,7 @@
     <Compile Include="validation\MaxFileSizeAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

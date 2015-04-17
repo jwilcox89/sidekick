@@ -5,6 +5,8 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
+using System.Linq.Expressions;
+using System.Linq;
 
 namespace sidekick
 {
@@ -317,6 +319,26 @@ namespace sidekick
         /// <returns></returns>
         public static string SetEmptyIfNull(this string value) {
             return (value == null) ? string.Empty : value;
+        }
+
+        public static MemberExpression GetMemberInfo(this Expression method) {
+            LambdaExpression lambda = method as LambdaExpression;
+
+            if (lambda == null)
+                throw new ArgumentNullException("No method");
+
+            MemberExpression memberEx = null;
+
+            if (lambda.Body.NodeType == ExpressionType.Convert) {
+                memberEx = ((UnaryExpression)lambda.Body).Operand as MemberExpression;
+            } else if (lambda.Body.NodeType == ExpressionType.MemberAccess) {
+                memberEx = lambda.Body as MemberExpression;
+            }
+
+            if (memberEx == null)
+                throw new ArgumentNullException("No method");
+
+            return memberEx;
         }
     }
 }

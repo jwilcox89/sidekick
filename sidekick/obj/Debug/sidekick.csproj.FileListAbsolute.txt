@@ -25,3 +25,8 @@ C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.Razor.x
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\sidekick.dll.config
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\EntityFramework.dll
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\EntityFramework.xml
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\EntityFramework.SqlServer.xml

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace sidekick
 {
-    public class SelectListHelpers
+    public static class SelectListHelpers
     {
         /// <summary>
         ///     Generates a dropdown of years
@@ -44,11 +44,12 @@ namespace sidekick
         /// </summary>
         /// <param name="trueValue">What you want the true option to say (ex. "Yes")</param>
         /// <param name="falseValue">What you want the false option to say (ex. "No)</param>
+        /// <param name="defaultText"></param>
         /// <returns></returns>
-        public static IEnumerable<SelectListItem> YesNoDropdown(string trueValue, string falseValue) {
+        public static IEnumerable<SelectListItem> YesNoDropdown(string trueValue, string falseValue, string defaultText = "") {
             return new List<SelectListItem> { new SelectListItem { Text = trueValue, Value = "True" },
                                               new SelectListItem { Text = falseValue, Value = "False" } };
-        } 
+        }
 
         /// <summary>
         ///     Generates a dropdown list
@@ -60,7 +61,7 @@ namespace sidekick
         /// <param name="selectedValue"></param>
         /// <returns></returns>
         public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, Expression<Func<TSource,object>> value, Expression<Func<TSource,object>> display, object selectedValue) {
-            return BuildSelectList(items, GetMemberInfo(value).Member.Name, GetMemberInfo(display).Member.Name, selectedValue);
+            return BuildSelectList(items, value.GetMemberInfo().Member.Name, display.GetMemberInfo().Member.Name, selectedValue);
         }
 
         /// <summary>
@@ -96,26 +97,6 @@ namespace sidekick
         public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, string value, string display, object selectedValue) {
             items = items as List<TSource> ?? items.ToList();
             return new SelectList(items, value, display, selectedValue);
-        }
-
-        private static MemberExpression GetMemberInfo(Expression method) {
-            LambdaExpression lambda = method as LambdaExpression;
-
-            if (lambda == null)
-                throw new ArgumentNullException("No method");
-
-            MemberExpression memberEx = null;
-
-            if (lambda.Body.NodeType == ExpressionType.Convert) {
-                memberEx = ((UnaryExpression)lambda.Body).Operand as MemberExpression;
-            } else if (lambda.Body.NodeType == ExpressionType.MemberAccess) {
-                memberEx = lambda.Body as MemberExpression;
-            }
-
-            if (memberEx == null)
-                throw new ArgumentNullException("No method");
-
-            return memberEx;
         }
     }
 }
