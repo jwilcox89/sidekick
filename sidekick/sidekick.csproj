@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="database\BaseRepository.cs" />
+    <Compile Include="database\IEntity.cs" />
     <Compile Include="database\RandomNumber.cs" />
     <Compile Include="database\RepositoryException.cs" />
     <Compile Include="database\RepositoryExtentions.cs" />
@@ -98,12 +99,16 @@
     <Compile Include="errorlogger\ErrorLogExtentions.cs" />
     <Compile Include="errorlogger\ErrorLogger.cs" />
     <Compile Include="errorlogger\IErrorLog.cs" />
+    <Compile Include="extensions\ConversionExtensions.cs" />
+    <Compile Include="extensions\EnumExtensions.cs" />
+    <Compile Include="extensions\FormattingExtensions.cs" />
+    <Compile Include="extensions\ValidationExtensions.cs" />
     <Compile Include="htmlbuilders\Builder.cs" />
     <Compile Include="connection\NetworkConnection.cs" />
     <Compile Include="connection\NetworkConnectionManager.cs" />
     <Compile Include="connection\UserImpersonation.cs" />
     <Compile Include="elements\interfaces\IElement.cs" />
-    <Compile Include="extensions\Extensions.cs" />
+    <Compile Include="extensions\GeneralExtensions.cs" />
     <Compile Include="extensions\IdentityExtensions.cs" />
     <Compile Include="helpers\ActionHelpers.cs" />
     <Compile Include="helpers\ActionLink.cs" />
