@@ -182,8 +182,8 @@ namespace sidekick
         /// <param name="property">Property you wish to toggle</param>
         /// <param name="primaryKey">Value of the primary key of the row you wish to toggle</param>
         /// <returns></returns>
-        public bool ToggleProperty<TEntity,TKey>(Expression<Func<TEntity,object>> property, TKey primaryKey) where TEntity : class where TKey : IConvertible {
-            return ToggleProperty<TEntity,TKey>(property.GetMemberInfo().Member.Name, primaryKey);
+        public bool ToggleProperty<TEntity,TKey>(TKey primaryKey, Expression<Func<TEntity,object>> property) where TEntity : class where TKey : IConvertible {
+            return ToggleProperty<TEntity,TKey>(primaryKey, property.GetMemberInfo().Member.Name);
         }
 
         /// <summary>
@@ -197,11 +197,11 @@ namespace sidekick
         /// <param name="primaryKey">Value of the primary key of the row you wish to toggle</param>
         /// <returns>Returns the value that the property was toggled to.</returns>
         /// <returns></returns>
-        public async Task<bool> TogglePropertyAsync<TEntity,TKey>(Expression<Func<TEntity,object>> property, TKey primaryKey) where TEntity : class where TKey : IConvertible {
-            return await Task.Run(() => ToggleProperty<TEntity,TKey>(property.GetMemberInfo().Member.Name, primaryKey));
+        public async Task<bool> TogglePropertyAsync<TEntity,TKey>(TKey primaryKey, Expression<Func<TEntity,object>> property) where TEntity : class where TKey : IConvertible {
+            return await Task.Run(() => ToggleProperty<TEntity,TKey>(primaryKey, property.GetMemberInfo().Member.Name));
         }
 
-        private bool ToggleProperty<TEntity,TKey>(string propertyName, TKey primaryKey) where TEntity : class where TKey : IConvertible {
+        private bool ToggleProperty<TEntity,TKey>(TKey primaryKey, string propertyName) where TEntity : class where TKey : IConvertible {
             TEntity entity = Get<TEntity,TKey>(primaryKey);
 
             if (entity == null)

@@ -16,9 +16,10 @@ namespace sidekick
         /// <typeparam name="TValue"></typeparam>
         /// <param name="helper"></param>
         /// <param name="expression"></param>
+        /// <param name="required"></param>
         /// <returns></returns>
-        public static MvcHtmlString LabelForWithColon<TModel,TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TValue>> expression) {
-            return LabelFor(helper, expression, null);
+        public static MvcHtmlString LabelForWithColon<TModel,TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TValue>> expression, bool required = false) {
+            return LabelFor(helper, expression, null, required);
         }
 
         /// <summary>
@@ -29,12 +30,13 @@ namespace sidekick
         /// <param name="html"></param>
         /// <param name="expression"></param>
         /// <param name="htmlAttributes"></param>
+        /// <param name="required"></param>
         /// <returns></returns>
-        public static MvcHtmlString LabelForWithColon<TModel,TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TValue>> expression, object htmlAttributes) {
-            return LabelFor(helper, expression, new RouteValueDictionary(htmlAttributes));
+        public static MvcHtmlString LabelForWithColon<TModel,TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TValue>> expression, object htmlAttributes, bool required = false) {
+            return LabelFor(helper, expression, new RouteValueDictionary(htmlAttributes), required);
         }
 
-        private static MvcHtmlString LabelFor<TModel,TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TValue>> expression, IDictionary<string,object> htmlAttributes) {
+        private static MvcHtmlString LabelFor<TModel,TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TValue>> expression, IDictionary<string,object> htmlAttributes, bool required) {
             ModelMetadata metadata = ModelMetadata.FromLambdaExpression(expression, helper.ViewData);
             string htmlFieldName   = ExpressionHelper.GetExpressionText(expression);
             string labelText       = metadata.DisplayName ?? metadata.PropertyName ?? htmlFieldName.Split('.').Last();
@@ -49,7 +51,17 @@ namespace sidekick
 
             tag.Attributes.Add("for", helper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldId(htmlFieldName));
             tag.SetInnerText(labelText + ":");
-            return MvcHtmlString.Create(tag.ToString(TagRenderMode.Normal));
+
+            string result = tag.ToString(TagRenderMode.Normal);
+
+            if (required) {
+                TagBuilder requiredTag = new TagBuilder("span");
+                requiredTag.Attributes.Add("class", "required");
+                requiredTag.SetInnerText("*");
+                result = string.Format("{0} {1}", result, requiredTag.ToString(TagRenderMode.Normal));
+            }
+
+            return MvcHtmlString.Create(result);
         }
     }
 }
