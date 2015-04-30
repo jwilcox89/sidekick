@@ -1,0 +1,83 @@
+﻿@using sidekick
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Breadcrumbs</h2>
+@using (var breadcrumbs = Html.BeginBreadcrumbs()) {
+    @breadcrumbs.AddCrumb(Url.Action("Index", "Home"), "Home")
+    @breadcrumbs.AddCrumb(Url.Action("About", "Home"), "Page 2", true)
+}
+
+<hr />
+
+<h2>Alerts</h2>
+@using (Html.BeginAlert(new Alert(AlertType.Danger) { Heading = "Uh Oh!", Dismissible = true })) {
+    <p>There was an error on the page!</p>   
+}
+
+@Html.BuildAlert(new Alert(AlertType.Success) { Heading = "Good Job!", Body = "Congrats! You won the prize!" })
+
+<hr />
+
+<h2>Modal</h2>
+<button id="modal-button" class="btn btn-default">Open Modal</button>
+
+@using (var modal = Html.BeginModal(new Modal { ID = "test-modal", Title = "My Modal" })) {
+    
+    using (modal.BuildBody()) {
+        <p>This is the modal content</p>
+    }
+    
+    @modal.BuildFooter()
+}
+
+<hr />
+
+<h2>Panel</h2>
+@using (Html.BeginPanel(new Panel { Title = "My Panel", Icon = "fa fa-truck" })) {
+    <p>
+        Panel content
+    </p>   
+}
+
+<hr />
+
+<h2>Tab</h2>
+@using (var tab = Html.BeginTabs()) {
+    using (var nav = tab.BeginNavSection()) {
+        @nav.BuildTab(new Tab { Name = "baseball", Active = true }, "Baseball")
+        @nav.BuildTab(new Tab { Name = "football" }, "Football")
+    }   
+    
+    using (var content = tab.BeginContentSection()) {
+        using (content.BeginTabContent()) {
+            <p>The baseball tab</p>   
+        }   
+        
+        using (content.BeginTabContent()) {
+            <p>The football tab</p>   
+        }
+    }
+}
+
+<hr />
+
+<h2>Steps</h2>
+@using (var steps = Html.BeginSteps(2)) {
+    @steps.AddStep(new Step { Title = "Step 1", Icon = "fa fa-truck", Complete = true, Description = "Description of the step" })   
+    @steps.AddStep(new Step { Title = "Step 2", Icon = "fa fa-briefcase", Description = "Description of the next step" })
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $().ready(function () {
+            $('#modal-button').on('click', function () {
+                $('#test-modal').modal('show');
+            });
+
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+}

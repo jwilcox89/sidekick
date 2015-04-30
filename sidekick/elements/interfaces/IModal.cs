@@ -49,5 +49,10 @@
         ///     Sets the color of the submit button
         /// </summary>
         Colors SubmitColor { get; set; }
+
+        /// <summary>
+        ///     Sets the color of the close button
+        /// </summary>
+        Colors CloseColor { get; set; }
     }
 }

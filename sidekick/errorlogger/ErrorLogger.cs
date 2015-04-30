@@ -63,7 +63,7 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Clears out all the log entries from the table.
+        ///     Clears out all the log entries.
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         public static void ClearLogs<TEntity>() where TEntity : class, IErrorLog {
@@ -72,7 +72,7 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Asynchronously clears out all the log entries from the table/
+        ///     Asynchronously clears out all the log entries.
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <returns></returns>

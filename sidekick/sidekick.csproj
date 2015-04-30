@@ -103,6 +103,7 @@
     <Compile Include="extensions\EnumExtensions.cs" />
     <Compile Include="extensions\FormattingExtensions.cs" />
     <Compile Include="extensions\ValidationExtensions.cs" />
+    <Compile Include="htmlbuilders\BreadcrumbBuilder.cs" />
     <Compile Include="htmlbuilders\Builder.cs" />
     <Compile Include="connection\NetworkConnection.cs" />
     <Compile Include="connection\NetworkConnectionManager.cs" />

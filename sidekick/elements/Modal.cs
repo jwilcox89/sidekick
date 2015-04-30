@@ -52,12 +52,18 @@
         /// </summary>
         public Colors SubmitColor { get; set; }
 
+        /// <summary>
+        ///     Sets the color of the close button
+        /// </summary>
+        public Colors CloseColor { get; set; }
+
         public Modal() {
             Dismissable = true;
             CloseText = "Close";
             SubmitText = "Submit";
             ModalSize = ModalSize.Regular;
             SubmitColor = Colors.Primary;
+            CloseColor = Colors.Default;
         }
     }
 }

@@ -30,5 +30,9 @@ namespace sidekick
         public static StepsBuilder BeginSteps(this HtmlHelper helper, int totalSteps) {
             return new StepsBuilder(helper, totalSteps);
         }
+
+        public static BreadcrumbBuilder BeginBreadcrumbs(this HtmlHelper helper) {
+            return new BreadcrumbBuilder(helper);
+        }
     }
 }

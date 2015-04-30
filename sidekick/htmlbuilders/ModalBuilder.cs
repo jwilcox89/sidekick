@@ -60,9 +60,13 @@ namespace sidekick
             helper.ViewContext.Writer.Write("<div class='modal-footer'>");
 
             if (modal.Dismissable)
-                helper.ViewContext.Writer.Write(string.Format("<button type='button' class='btn btn-default' data-dismiss='modal'>{0}</button>", modal.CloseText));
+                helper.ViewContext.Writer.Write(string.Format("<button type='button' class='btn btn-{0}' data-dismiss='modal'>{1}</button>", 
+                                                              modal.CloseColor.GetHtmlAttributes<Colors>().Class, 
+                                                              modal.CloseText));
 
-            helper.ViewContext.Writer.Write(string.Format("<button type='submit' class='btn btn-{0}'>{1}</button>", modal.SubmitColor.GetHtmlAttributes<Colors>().Class, modal.SubmitText));
+            helper.ViewContext.Writer.Write(string.Format("<button type='submit' class='btn btn-{0}'>{1}</button>", 
+                                                          modal.SubmitColor.GetHtmlAttributes<Colors>().Class, 
+                                                          modal.SubmitText));
 
             helper.ViewContext.Writer.Write("</div>");
         }
