@@ -31,13 +31,8 @@ namespace sidekick
         }
 
         public void Dispose() {
-            Dispose(true);
+            UndoImpersonateUser();
             GC.SuppressFinalize(this);
-        }
-
-        public virtual void Dispose(bool disposing) {
-            if (disposing)
-                UndoImpersonateUser();
         }
     }
 }

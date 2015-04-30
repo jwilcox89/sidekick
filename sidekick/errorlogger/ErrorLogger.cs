@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Runtime.InteropServices;
 
 namespace sidekick
 {
@@ -30,12 +31,37 @@ namespace sidekick
         }
 
         /// <summary>
+        ///     Logs the error using the Exception data provided.
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="ex"></param>
+        public static void LogError<TEntity>(_Exception ex) where TEntity : class, IErrorLog, new() {
+            TEntity log = new TEntity() { Time           = DateTime.Now,
+                                          Exception      = ex.GetExceptionMessage(),
+                                          InnerException = ex.GetInnerExceptionMessage(),
+                                          StackTrace     = ex.GetStackTraceMessage() };
+
+            DB.Set<TEntity>().Add(log);
+            DB.SaveChanges();
+        }
+
+        /// <summary>
         ///     Logs the error asynchronously using the ExceptionContext data provided.
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="ex"></param>
         /// <returns></returns>
         public static async Task LogErrorAsync<TEntity>(ExceptionContext ex) where TEntity : class, IErrorLog, new() {
+            await Task.Run(() => LogError<TEntity>(ex));
+        }
+
+        /// <summary>
+        ///     Logs the error asynchronously using the Exception data provided.
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="ex"></param>
+        /// <returns></returns>
+        public static async Task LogErrorAsync<TEntity>(_Exception ex) where TEntity : class, IErrorLog, new() {
             await Task.Run(() => LogError<TEntity>(ex));
         }
 

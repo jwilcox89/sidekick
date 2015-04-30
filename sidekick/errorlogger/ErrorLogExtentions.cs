@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using System.Runtime.InteropServices;
 
 namespace sidekick
 {
@@ -13,6 +14,18 @@ namespace sidekick
         public static string GetExceptionMessage(this ExceptionContext ex) {
             if (ex != null && ex.Exception != null)
                 return ex.Exception.Message;
+
+            return string.Empty;
+        }
+
+        /// <summary>
+        ///     Returns the exception or a null string
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <returns></returns>
+        public static string GetExceptionMessage(this _Exception ex) {
+            if (ex != null)
+                return ex.Message;
 
             return string.Empty;
         }
@@ -38,6 +51,26 @@ namespace sidekick
         }
 
         /// <summary>
+        ///     Returns the inner exception message or a null string
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <returns></returns>
+        public static string GetInnerExceptionMessage(this _Exception ex) {
+            if (ex != null && ex.InnerException != null) {
+
+                if (!string.IsNullOrEmpty(ex.InnerException.Message))
+                    return ex.InnerException.Message;
+
+                Exception originalException = ex.InnerException.GetBaseException();
+
+                if (originalException.InnerException != null)
+                    return originalException.InnerException.Message;
+            }
+
+            return string.Empty;
+        }
+
+        /// <summary>
         ///     Returns the stack trace message or a null string
         /// </summary>
         /// <param name="ex"></param>
@@ -45,6 +78,18 @@ namespace sidekick
         public static string GetStackTraceMessage(this ExceptionContext ex) {
             if (ex != null && ex.Exception != null && !string.IsNullOrEmpty(ex.Exception.StackTrace))
                 return ex.Exception.StackTrace;
+
+            return string.Empty;
+        }
+
+        /// <summary>
+        ///     Returns the stack trace message or a null string
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <returns></returns>
+        public static string GetStackTraceMessage(this _Exception ex) {
+            if (ex != null && !string.IsNullOrEmpty(ex.StackTrace))
+                return ex.StackTrace;
 
             return string.Empty;
         }

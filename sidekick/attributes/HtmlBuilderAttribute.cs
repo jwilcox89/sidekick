@@ -10,7 +10,7 @@ namespace sidekick
         public string Class { get; set; }
 
         /// <summary>
-        ///     Primarily used to hold an icons css class
+        ///     Primarily used to hold an icon's css class
         /// </summary>
         public string Icon { get; set; }
 
