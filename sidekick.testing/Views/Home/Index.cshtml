@@ -67,9 +67,10 @@
 <hr />
 
 <h2>Steps</h2>
-@using (var steps = Html.BeginSteps(2)) {
+@using (var steps = Html.BeginSteps(3)) {
     @steps.AddStep(new Step { Title = "Step 1", Icon = "fa fa-truck", Complete = true, Description = "Description of the step" })   
-    @steps.AddStep(new Step { Title = "Step 2", Icon = "fa fa-briefcase", Description = "Description of the next step" })
+    @steps.AddStep(new Step { Title = "Step 2", Icon = "fa fa-briefcase", Complete = true, Description = "Description of the next step" })
+    @steps.AddStep(new Step { Title = "Step 3", Icon = "fa fa-user", Description = "Description of the last step" })
 }
 
 <hr />

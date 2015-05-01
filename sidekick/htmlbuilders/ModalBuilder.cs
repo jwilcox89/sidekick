@@ -11,7 +11,6 @@ namespace sidekick
         public ModalBuilder(HtmlHelper helper, IModal modal) {
             _helper = helper;
             _modal = modal;
-
             _helper.ViewContext.Writer.Write(string.Format("<div class='modal fade' id='{0}'>", _modal.ID));
             _helper.ViewContext.Writer.Write(string.Format("<div class='modal-dialog {0}'>", _modal.ModalSize.GetHtmlAttributes<ModalSize>().Class));
             _helper.ViewContext.Writer.Write("<div class='modal-content'>");

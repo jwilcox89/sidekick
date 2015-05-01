@@ -9,7 +9,6 @@ namespace sidekick
 
         public StepsBuilder(HtmlHelper helper, int totalSteps) {
             _helper = helper;
-            
             _helper.ViewContext.Writer.Write("<div class='col-md-12 progress-area'>");
             _helper.ViewContext.Writer.Write(string.Format("<ol class='progtrckr' data-progtrckr-steps='{0}'>", totalSteps));
         }

@@ -9,7 +9,6 @@ namespace sidekick
 
         public BreadcrumbBuilder(HtmlHelper helper) {
             _helper = helper;
-
             _helper.ViewContext.Writer.Write("<ol class='breadcrumb'>");
         }
 

@@ -18,15 +18,15 @@ namespace sidekick
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="ex"></param>
         public static void LogError<TEntity>(ExceptionContext ex) where TEntity : class, IErrorLog, new() {
-            TEntity log = new TEntity() { Time           = DateTime.Now,
-                                          Exception      = ex.GetExceptionMessage(),
-                                          InnerException = ex.GetInnerExceptionMessage(),
-                                          StackTrace     = ex.GetStackTraceMessage(),
-                                          User           = Thread.CurrentPrincipal.Identity.Name,
-                                          Route          = ex.GetRoute(),
-                                          Query          = ex.GetQuery() };
+            TEntity error = new TEntity() { Time           = DateTime.Now,
+                                            Exception      = ex.GetExceptionMessage(),
+                                            InnerException = ex.GetInnerExceptionMessage(),
+                                            StackTrace     = ex.GetStackTraceMessage(),
+                                            User           = Thread.CurrentPrincipal.Identity.Name,
+                                            Route          = ex.GetRoute(),
+                                            Query          = ex.GetQuery() };
 
-            DB.Set<TEntity>().Add(log);
+            DB.Set<TEntity>().Add(error);
             DB.SaveChanges();
         }
 
@@ -37,13 +37,13 @@ namespace sidekick
         /// <param name="ex"></param>
         /// <param name="route"></param>
         public static void LogError<TEntity>(_Exception ex, string route) where TEntity : class, IErrorLog, new() {
-            TEntity log = new TEntity() { Time           = DateTime.Now,
-                                          Exception      = ex.GetExceptionMessage(),
-                                          InnerException = ex.GetInnerExceptionMessage(),
-                                          StackTrace     = ex.GetStackTraceMessage(),
-                                          Route          = route };
+            TEntity error = new TEntity() { Time           = DateTime.Now,
+                                            Exception      = ex.GetExceptionMessage(),
+                                            InnerException = ex.GetInnerExceptionMessage(),
+                                            StackTrace     = ex.GetStackTraceMessage(),
+                                            Route          = route };
 
-            DB.Set<TEntity>().Add(log);
+            DB.Set<TEntity>().Add(error);
             DB.SaveChanges();
         }
 
@@ -74,10 +74,10 @@ namespace sidekick
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="action"></param>
         public static void LogError<TEntity>(Action<TEntity> action) where TEntity : class, IErrorLog, new() {
-            TEntity log = new TEntity();
-            action(log);
+            TEntity error = new TEntity();
+            action(error);
 
-            DB.Set<TEntity>().Add(log);
+            DB.Set<TEntity>().Add(error);
             DB.SaveChanges();
         }
 
