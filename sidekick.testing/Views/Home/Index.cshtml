@@ -1,5 +1,7 @@
 ﻿@using sidekick
 
+@model sidekick.testing.Models.LoginViewModel
+
 @{
     ViewBag.Title = "Home Page";
 }
@@ -68,6 +70,16 @@
 @using (var steps = Html.BeginSteps(2)) {
     @steps.AddStep(new Step { Title = "Step 1", Icon = "fa fa-truck", Complete = true, Description = "Description of the step" })   
     @steps.AddStep(new Step { Title = "Step 2", Icon = "fa fa-briefcase", Description = "Description of the next step" })
+}
+
+<hr />
+
+<h2>Input Groups</h2>
+@using (Html.BeginForm()) {
+    <div class="form-group">
+        @Html.LabelForWithColon(x => x.Email)
+        @Html.InputGroupFor(x => x.Email, new { @class = "form-control", @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope")
+    </div>
 }
 
 @section scripts {

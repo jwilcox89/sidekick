@@ -90,6 +90,8 @@
     <Compile Include="database\RandomNumber.cs" />
     <Compile Include="database\RepositoryException.cs" />
     <Compile Include="database\RepositoryExtentions.cs" />
+    <Compile Include="elements\InputGroup.cs" />
+    <Compile Include="elements\interfaces\IInputGroup.cs" />
     <Compile Include="elements\interfaces\IPanel.cs" />
     <Compile Include="elements\interfaces\IStep.cs" />
     <Compile Include="elements\interfaces\ITab.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="helpers\SelectListHelpers.cs" />
     <Compile Include="htmlbuilders\AlertBuilder.cs" />
     <Compile Include="htmlbuilders\HtmlBuilder.cs" />
+    <Compile Include="htmlbuilders\InputGroupBuilder.cs" />
     <Compile Include="htmlbuilders\ModalBuilder.cs" />
     <Compile Include="htmlbuilders\PanelBuilder.cs" />
     <Compile Include="htmlbuilders\StepsBuilder.cs" />

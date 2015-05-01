@@ -34,5 +34,9 @@ namespace sidekick
         public static BreadcrumbBuilder BeginBreadcrumbs(this HtmlHelper helper) {
             return new BreadcrumbBuilder(helper);
         }
+
+        public static InputGroupBuilder<TModel,TProperty> InputGroupFor<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object htmlAttributes = null) {
+            return new InputGroupBuilder<TModel,TProperty>(helper, expression, htmlAttributes);
+        }
     }
 }

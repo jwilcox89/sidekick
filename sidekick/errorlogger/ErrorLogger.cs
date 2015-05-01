@@ -35,11 +35,13 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="ex"></param>
-        public static void LogError<TEntity>(_Exception ex) where TEntity : class, IErrorLog, new() {
+        /// <param name="route"></param>
+        public static void LogError<TEntity>(_Exception ex, string route) where TEntity : class, IErrorLog, new() {
             TEntity log = new TEntity() { Time           = DateTime.Now,
                                           Exception      = ex.GetExceptionMessage(),
                                           InnerException = ex.GetInnerExceptionMessage(),
-                                          StackTrace     = ex.GetStackTraceMessage() };
+                                          StackTrace     = ex.GetStackTraceMessage(),
+                                          Route          = route };
 
             DB.Set<TEntity>().Add(log);
             DB.SaveChanges();
@@ -60,9 +62,10 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="ex"></param>
+        /// <param name="route"></param>
         /// <returns></returns>
-        public static async Task LogErrorAsync<TEntity>(_Exception ex) where TEntity : class, IErrorLog, new() {
-            await Task.Run(() => LogError<TEntity>(ex));
+        public static async Task LogErrorAsync<TEntity>(_Exception ex, string route) where TEntity : class, IErrorLog, new() {
+            await Task.Run(() => LogError<TEntity>(ex, route));
         }
 
         /// <summary>
