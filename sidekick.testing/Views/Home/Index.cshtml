@@ -83,6 +83,12 @@
     </div>
 }
 
+<h2>Form Groups</h2>
+@using (Html.BeginForm()) {
+    @Html.FormGroupFor(x => x.Email, new { @class = "form-control", @placeholder = "Email Address..." }).IsRequired()   
+}
+
+
 @section scripts {
     <script type="text/javascript">
         $().ready(function () {

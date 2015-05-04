@@ -38,5 +38,9 @@ namespace sidekick
         public static InputGroupBuilder<TModel,TProperty> InputGroupFor<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object htmlAttributes = null) {
             return new InputGroupBuilder<TModel,TProperty>(helper, expression, htmlAttributes);
         }
+
+        public static FormGroupBuilder<TModel,TProperty> FormGroupFor<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes = null) {
+            return new FormGroupBuilder<TModel,TProperty>(helper, expression, textboxHtmlAttributes);
+        }
     }
 }

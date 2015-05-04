@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace sidekick
 {
-    public class InputGroup<TModel,TProperty> : IInputGroup<TModel,TProperty>
+    public class InputGroup<TModel,TProperty>
     {
         public Expression<Func<TModel,TProperty>> Expression { get; set; }
         public object HtmlAttributes { get; set; }

@@ -91,13 +91,13 @@
     <Compile Include="database\RepositoryException.cs" />
     <Compile Include="database\RepositoryExtentions.cs" />
     <Compile Include="elements\InputGroup.cs" />
-    <Compile Include="elements\interfaces\IInputGroup.cs" />
     <Compile Include="elements\interfaces\IPanel.cs" />
     <Compile Include="elements\interfaces\IStep.cs" />
     <Compile Include="elements\interfaces\ITab.cs" />
     <Compile Include="elements\Panel.cs" />
     <Compile Include="elements\Step.cs" />
     <Compile Include="elements\Tab.cs" />
+    <Compile Include="elements\FormGroup.cs" />
     <Compile Include="errorlogger\ErrorLogExtentions.cs" />
     <Compile Include="errorlogger\ErrorLogger.cs" />
     <Compile Include="errorlogger\IErrorLog.cs" />
@@ -126,7 +126,8 @@
     <Compile Include="htmlbuilders\PanelBuilder.cs" />
     <Compile Include="htmlbuilders\StepsBuilder.cs" />
     <Compile Include="htmlbuilders\TabBuilder.cs" />
-    <Compile Include="Misc.cs" />
+    <Compile Include="htmlbuilders\FormGroupBuilder.cs" />
+    <Compile Include="SideskickConstants.cs" />
     <Compile Include="responses\RenderDocument.cs" />
     <Compile Include="session\SessionManagerBase.cs" />
     <Compile Include="TempDataManager.cs" />

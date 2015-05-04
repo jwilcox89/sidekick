@@ -11,7 +11,7 @@ namespace sidekick
     public class InputGroupBuilder<TModel,TProperty> : IHtmlString
     {
         private HtmlHelper<TModel> _helper;
-        private IInputGroup<TModel,TProperty> _model;
+        private InputGroup<TModel,TProperty> _model;
 
         public InputGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object htmlAttributes) {
             _helper = helper;
@@ -52,7 +52,7 @@ namespace sidekick
 
                 if (!string.IsNullOrEmpty(_model.PrependIcon) || !string.IsNullOrEmpty(_model.PrependText)) {
                     writer.AddAttribute(HtmlTextWriterAttribute.Class, "input-group-addon");
-                    writer.RenderBeginTag(HtmlTextWriterTag.Span);
+                    writer.RenderBeginTag(HtmlTextWriterTag.Div);
 
                     if (!string.IsNullOrEmpty(_model.PrependIcon))
                         writer.Write(string.Format("<i class='{0}'></i>", _model.PrependIcon));
@@ -67,7 +67,7 @@ namespace sidekick
 
                 if (!string.IsNullOrEmpty(_model.AppendIcon) || !string.IsNullOrEmpty(_model.AppendText)) {
                     writer.AddAttribute(HtmlTextWriterAttribute.Class, "input-group-addon");
-                    writer.RenderBeginTag(HtmlTextWriterTag.Span);
+                    writer.RenderBeginTag(HtmlTextWriterTag.Div);
 
                     if (!string.IsNullOrEmpty(_model.AppendIcon))
                         writer.Write(string.Format("<i class='{0}'></i>", _model.AppendIcon));
