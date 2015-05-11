@@ -41,19 +41,19 @@ namespace sidekick
     /// </summary>
     public enum FileType
     {
-        [HtmlBuilder(Tag="application/pdf")]
+        [HtmlBuilder(Class="fa fa-file-pdf-o", Tag="application/pdf")]
         PDF,
 
-        [HtmlBuilder(Tag="application/x-msexcel")]
+        [HtmlBuilder(Class="fa fa-file-excel-o", Tag="application/x-msexcel")]
         Excel,
 
-        [HtmlBuilder(Tag="application/x-csv")]
+        [HtmlBuilder(Class="fa fa-file-excel-o", Tag="application/x-csv")]
         Csv,
 
-        [HtmlBuilder(Tag="application/msword")]
+        [HtmlBuilder(Class="fa fa-file-word-o", Tag="application/msword")]
         Word,
 
-        [HtmlBuilder(Tag="application/octet-stream")]
+        [HtmlBuilder(Class="fa fa-file-o", Tag="application/octet-stream")]
         Other
     }
 

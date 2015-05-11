@@ -3,7 +3,7 @@
     /// <summary>
     ///     Base elements for generating a modal
     /// </summary>
-    public interface IModal : IElement
+    public interface IModal : IView
     {
         /// <summary>
         ///     Specify the size of the modal

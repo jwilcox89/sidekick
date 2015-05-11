@@ -1,12 +1,7 @@
-﻿using System;
-using System.Linq.Expressions;
-
-namespace sidekick
+﻿namespace sidekick
 {
-    public class InputGroup<TModel,TProperty>
+    public class InputGroup<TModel,TProperty> : HtmlElement<TModel,TProperty>
     {
-        public Expression<Func<TModel,TProperty>> Expression { get; set; }
-        public object HtmlAttributes { get; set; }
         public string AppendText { get; set; }
         public string PrependText { get; set; }
         public string AppendIcon { get; set; }

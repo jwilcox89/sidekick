@@ -49,7 +49,7 @@
 <h2>Tab</h2>
 @using (var tab = Html.BeginTabs()) {
     using (var nav = tab.BeginNavSection()) {
-        @nav.BuildTab(new Tab { Name = "baseball", Active = true }, "Baseball")
+        @nav.BuildTab(new Tab { Name = "baseball", Icon = "fa fa-user", Active = true }, "Baseball")
         @nav.BuildTab(new Tab { Name = "football" }, "Football")
     }   
     
@@ -85,7 +85,7 @@
 
 <h2>Form Groups</h2>
 @using (Html.BeginForm()) {
-    @Html.FormGroupFor(x => x.Email, new { @class = "form-control", @placeholder = "Email Address..." }).IsRequired()   
+    @Html.FormGroupFor(x => x.Email, new { @class = "form-control", @placeholder = "Email Address..." }).IsRequired()
 }
 
 

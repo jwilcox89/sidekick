@@ -9,11 +9,11 @@ namespace sidekick
         /// <summary>
         ///     Builds a partial view using a model that implements the IElement interface.
         /// </summary>
-        /// <typeparam name="TElement"></typeparam>
+        /// <typeparam name="TModel"></typeparam>
         /// <param name="action">The default view name is _AjaxMessage. If the view name you are using is different please specify.</param>
         /// <returns></returns>
-        public static string BuildElement<TElement>(Action<TElement> action) where TElement : IElement, new() {
-            TElement element = new TElement();
+        public static string BuildElement<TModel>(Action<TModel> action) where TModel : IView, new() {
+            TModel element = new TModel();
             action(element);
 
             if (string.IsNullOrEmpty(element.ViewName))

@@ -11,5 +11,10 @@
         ///     HTML name of the tab
         /// </summary>
         string Name { get; set; }
+
+        /// <summary>
+        ///     Icon for the tab
+        /// </summary>
+        string Icon { get; set; }
     }
 }

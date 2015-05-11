@@ -76,7 +76,12 @@ namespace sidekick
         public static void Build(HtmlHelper helper, ITab tab, string displayText) {
             string active = (tab.Active) ? "class='active'" : null;
             helper.ViewContext.Writer.Write(string.Format("<li role='presentation' {0}>", active));
+
             helper.ViewContext.Writer.Write(string.Format("<a href='#{0}' aria-controls='{0}' role='tab' data-toggle='tab'>", tab.Name));
+
+            if (!string.IsNullOrEmpty(tab.Icon))
+                helper.ViewContext.Writer.Write(string.Format("<i class='{0}'></i>&nbsp;", tab.Icon));
+
             helper.ViewContext.Writer.Write(displayText);
             helper.ViewContext.Writer.Write("</a></li>");
         }

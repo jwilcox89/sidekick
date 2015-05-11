@@ -1,6 +1,6 @@
 ﻿namespace sidekick
 {
-    public interface IElement
+    public interface IView
     {
         /// <summary>
         ///     View name that will be used to create the html string

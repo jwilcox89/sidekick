@@ -1,13 +1,7 @@
-﻿using System;
-using System.Linq.Expressions;
-
-namespace sidekick
+﻿namespace sidekick
 {
-    public class FormGroup<TModel,TProperty>
+    public class FormGroup<TModel,TProperty> : HtmlElement<TModel,TProperty>
     {
-        public Expression<Func<TModel,TProperty>> Expression { get; set; }
-        public object HtmlAttributes { get; set; }
-
         /// <summary>
         ///     True if label has no colon. Default value = false
         /// </summary>

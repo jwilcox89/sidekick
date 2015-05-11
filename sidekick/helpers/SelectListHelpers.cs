@@ -17,9 +17,8 @@ namespace sidekick
         public static IEnumerable<SelectListItem> YearDropdown(int forwardCount, int backwardCount) {
             List<SelectListItem> list = new List<SelectListItem>();
 
-            int currentYear = DateTime.Now.Year;
-            int start = currentYear - backwardCount;
-            int end = currentYear + forwardCount;
+            int start = DateTime.Now.Year - backwardCount;
+            int end = DateTime.Now.Year + forwardCount;
             int placeholder = start;
 
             while(placeholder >= start && placeholder <= end) {
@@ -35,8 +34,7 @@ namespace sidekick
         /// </summary>
         /// <returns></returns>
         public static IEnumerable<SelectListItem> YesNoDropdown() {
-            return new List<SelectListItem> { new SelectListItem { Text = "Yes",  Value = "True" }, 
-                                              new SelectListItem { Text = "No", Value = "False" } };
+            return YesNoDropdown("Yes", "No");
         }
 
         /// <summary>
@@ -46,7 +44,7 @@ namespace sidekick
         /// <param name="falseValue">What you want the false option to say (ex. "No)</param>
         /// <param name="defaultText"></param>
         /// <returns></returns>
-        public static IEnumerable<SelectListItem> YesNoDropdown(string trueValue, string falseValue, string defaultText = "") {
+        public static IEnumerable<SelectListItem> YesNoDropdown(string trueValue, string falseValue) {
             return new List<SelectListItem> { new SelectListItem { Text = trueValue, Value = "True" },
                                               new SelectListItem { Text = falseValue, Value = "False" } };
         }

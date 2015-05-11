@@ -90,6 +90,7 @@
     <Compile Include="database\RandomNumber.cs" />
     <Compile Include="database\RepositoryException.cs" />
     <Compile Include="database\RepositoryExtentions.cs" />
+    <Compile Include="elements\HtmlElement.cs" />
     <Compile Include="elements\InputGroup.cs" />
     <Compile Include="elements\interfaces\IPanel.cs" />
     <Compile Include="elements\interfaces\IStep.cs" />
@@ -110,7 +111,7 @@
     <Compile Include="connection\NetworkConnection.cs" />
     <Compile Include="connection\NetworkConnectionManager.cs" />
     <Compile Include="connection\UserImpersonation.cs" />
-    <Compile Include="elements\interfaces\IElement.cs" />
+    <Compile Include="elements\interfaces\IView.cs" />
     <Compile Include="extensions\GeneralExtensions.cs" />
     <Compile Include="extensions\IdentityExtensions.cs" />
     <Compile Include="helpers\ActionHelpers.cs" />
