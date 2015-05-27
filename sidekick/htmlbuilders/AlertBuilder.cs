@@ -7,9 +7,9 @@ namespace sidekick
     public class AlertBuilder : IDisposable
     {
         private HtmlHelper _helper;
-        private IAlert _alert;
+        private Alert _alert;
 
-        public AlertBuilder(HtmlHelper helper, IAlert alert, bool customBody) {
+        public AlertBuilder(HtmlHelper helper, Alert alert, bool customBody) {
             _helper = helper;
             _alert = alert;
 

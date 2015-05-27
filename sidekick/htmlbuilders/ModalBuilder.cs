@@ -6,9 +6,9 @@ namespace sidekick
     public class ModalBuilder : IDisposable
     {
         private HtmlHelper _helper;
-        private IModal _modal;
+        private Modal _modal;
 
-        public ModalBuilder(HtmlHelper helper, IModal modal) {
+        public ModalBuilder(HtmlHelper helper, Modal modal) {
             _helper = helper;
             _modal = modal;
             _helper.ViewContext.Writer.Write(string.Format("<div class='modal fade' id='{0}'>", _modal.ID));
@@ -40,7 +40,7 @@ namespace sidekick
     {
         private HtmlHelper _helper;
 
-        public ModalBody(HtmlHelper helper, IModal modal) {
+        public ModalBody(HtmlHelper helper, Modal modal) {
             _helper = helper;
             _helper.ViewContext.Writer.Write("<div class='modal-body'>");
 
@@ -55,7 +55,7 @@ namespace sidekick
 
     public static class ModalFooter
     {
-        public static void Build(HtmlHelper helper, IModal modal) {
+        public static void Build(HtmlHelper helper, Modal modal) {
             helper.ViewContext.Writer.Write("<div class='modal-footer'>");
 
             if (modal.Dismissable)

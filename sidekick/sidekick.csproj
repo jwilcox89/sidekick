@@ -92,9 +92,6 @@
     <Compile Include="database\RepositoryExtentions.cs" />
     <Compile Include="elements\HtmlElement.cs" />
     <Compile Include="elements\InputGroup.cs" />
-    <Compile Include="elements\interfaces\IPanel.cs" />
-    <Compile Include="elements\interfaces\IStep.cs" />
-    <Compile Include="elements\interfaces\ITab.cs" />
     <Compile Include="elements\Panel.cs" />
     <Compile Include="elements\Step.cs" />
     <Compile Include="elements\Tab.cs" />
@@ -111,7 +108,7 @@
     <Compile Include="connection\NetworkConnection.cs" />
     <Compile Include="connection\NetworkConnectionManager.cs" />
     <Compile Include="connection\UserImpersonation.cs" />
-    <Compile Include="elements\interfaces\IView.cs" />
+    <Compile Include="elements\IView.cs" />
     <Compile Include="extensions\GeneralExtensions.cs" />
     <Compile Include="extensions\IdentityExtensions.cs" />
     <Compile Include="helpers\ActionHelpers.cs" />
@@ -123,6 +120,7 @@
     <Compile Include="htmlbuilders\AlertBuilder.cs" />
     <Compile Include="htmlbuilders\HtmlBuilder.cs" />
     <Compile Include="htmlbuilders\InputGroupBuilder.cs" />
+    <Compile Include="htmlbuilders\LabelBuilder.cs" />
     <Compile Include="htmlbuilders\ModalBuilder.cs" />
     <Compile Include="htmlbuilders\PanelBuilder.cs" />
     <Compile Include="htmlbuilders\StepsBuilder.cs" />
@@ -136,8 +134,6 @@
     <Compile Include="validation\CommonRegexes.cs" />
     <Compile Include="htmlbuilders\ViewBuilder.cs" />
     <Compile Include="elements\Alert.cs" />
-    <Compile Include="elements\interfaces\IAlert.cs" />
-    <Compile Include="elements\interfaces\IModal.cs" />
     <Compile Include="elements\Modal.cs" />
     <Compile Include="errors\ErrorHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,4 +1,5 @@
 ﻿@using sidekick
+@using sidekick.testing.Models
 
 @model sidekick.testing.Models.LoginViewModel
 
@@ -27,7 +28,6 @@
 <button id="modal-button" class="btn btn-default">Open Modal</button>
 
 @using (var modal = Html.BeginModal(new Modal { ID = "test-modal", Title = "My Modal" })) {
-    
     using (modal.BuildBody()) {
         <p>This is the modal content</p>
     }
@@ -50,7 +50,7 @@
 @using (var tab = Html.BeginTabs()) {
     using (var nav = tab.BeginNavSection()) {
         @nav.BuildTab(new Tab { Name = "baseball", Icon = "fa fa-user", Active = true }, "Baseball")
-        @nav.BuildTab(new Tab { Name = "football" }, "Football")
+        @nav.BuildTab(new Tab { Name = "football", Icon = "fa fa-truck" }, "Football")
     }   
     
     using (var content = tab.BeginContentSection()) {
@@ -88,6 +88,11 @@
     @Html.FormGroupFor(x => x.Email, new { @class = "form-control", @placeholder = "Email Address..." }).IsRequired()
 }
 
+<h2>Labels</h2>
+<div class="form-group">
+    @Html.BuildLabel(Colors.Danger, "Help!")
+    @Html.BuildLabel(Colors.Primary, "Help!")
+</div>
 
 @section scripts {
     <script type="text/javascript">

@@ -2,37 +2,37 @@
 
 namespace sidekick
 {
-    public class Alert : IAlert
+    public class Alert : IView
     {
         /// <summary>
         ///     View name that will be generated with Alert details
         /// </summary>
-        public string ViewName { get; set; }
+        public virtual string ViewName { get; set; }
 
         /// <summary>
         ///     Success, Failure, Warning etc. Default value "Info"
         /// </summary>
-        public AlertType Type { get; set; }
+        public virtual AlertType Type { get; set; }
 
         /// <summary>
         ///     If true the alert box will be dismissible. Default value false.
         /// </summary>
-        public bool Dismissible { get; set; }
+        public virtual bool Dismissible { get; set; }
 
         /// <summary>
         ///     The heading (ex. Error or Add User)
         /// </summary>
-        public string Heading { get; set; }
+        public virtual string Heading { get; set; }
 
         /// <summary>
         ///     The body of the message (ex. User was added successfully)
         /// </summary>
-        public string Body { get; set; }
+        public virtual string Body { get; set; }
 
         /// <summary>
         ///     Used for multiple errors or success messages that are generally generated from a list of ModelState errors or AspIdentity IdentityErrors 
         /// </summary>
-        public List<string> MessageList { get; set; }
+        public virtual List<string> MessageList { get; set; }
 
         /// <summary>
         ///     Sets the alert class here. Ex. "alert alert-success"

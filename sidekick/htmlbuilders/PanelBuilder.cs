@@ -7,7 +7,7 @@ namespace sidekick
     {
         private HtmlHelper _helper;
 
-        public PanelBuilder(HtmlHelper helper, IPanel panel) {
+        public PanelBuilder(HtmlHelper helper, Panel panel) {
             _helper = helper;
             _helper.ViewContext.Writer.Write(string.Format("<div class='panel panel-{0} {1}'>", panel.Color.GetHtmlAttributes<Colors>().Class, panel.Class));
             _helper.ViewContext.Writer.Write("<div class='panel-heading'>");

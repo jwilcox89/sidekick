@@ -12,7 +12,7 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="modal"></param>
         /// <returns></returns>
-        public static ModalBuilder BeginModal(this HtmlHelper helper, IModal modal) {
+        public static ModalBuilder BeginModal(this HtmlHelper helper, Modal modal) {
             return new ModalBuilder(helper, modal);
         }
 
@@ -22,7 +22,7 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="alert"></param>
         /// <returns></returns>
-        public static AlertBuilder BeginAlert(this HtmlHelper helper, IAlert alert) {
+        public static AlertBuilder BeginAlert(this HtmlHelper helper, Alert alert) {
             return new AlertBuilder(helper, alert, true);
         }
 
@@ -32,7 +32,7 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="alert"></param>
         /// <returns></returns>
-        public static MvcHtmlString BuildAlert(this HtmlHelper helper, IAlert alert) {
+        public static MvcHtmlString BuildAlert(this HtmlHelper helper, Alert alert) {
             new AlertBuilder(helper, alert, false);
             return new MvcHtmlString(string.Empty);
         }
@@ -52,7 +52,7 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="panel"></param>
         /// <returns></returns>
-        public static PanelBuilder BeginPanel(this HtmlHelper helper, IPanel panel) {
+        public static PanelBuilder BeginPanel(this HtmlHelper helper, Panel panel) {
             return new PanelBuilder(helper, panel);
         }
 
@@ -99,6 +99,17 @@ namespace sidekick
         /// <returns></returns>
         public static FormGroupBuilder<TModel,TProperty> FormGroupFor<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes = null) {
             return new FormGroupBuilder<TModel,TProperty>(helper, expression, textboxHtmlAttributes);
+        }
+
+        /// <summary>
+        ///     Builds a Bootstrap label.
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="color"></param>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static MvcHtmlString BuildLabel(this HtmlHelper helper, Colors color, string text) {
+            return LabelBuilder.Build(color, text);
         }
     }
 }

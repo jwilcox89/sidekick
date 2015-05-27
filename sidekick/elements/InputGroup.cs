@@ -2,11 +2,11 @@
 {
     public class InputGroup<TModel,TProperty> : HtmlElement<TModel,TProperty>
     {
-        public string AppendText { get; set; }
-        public string PrependText { get; set; }
-        public string AppendIcon { get; set; }
-        public string PrependIcon { get; set; }
-        public InputGroupSize Size { get; set; }
+        public virtual string AppendText { get; set; }
+        public virtual string PrependText { get; set; }
+        public virtual string AppendIcon { get; set; }
+        public virtual string PrependIcon { get; set; }
+        public virtual InputGroupSize Size { get; set; }
 
         public InputGroup() {
             Size = InputGroupSize.Regular;

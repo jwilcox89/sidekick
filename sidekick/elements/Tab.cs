@@ -1,20 +1,20 @@
 ﻿namespace sidekick
 {
-    public class Tab : ITab
+    public class Tab
     {
         /// <summary>
         ///     True if the tab is active. Defaults as false
         /// </summary>
-        public bool Active { get; set; }
+        public virtual bool Active { get; set; }
 
         /// <summary>
         ///     HTML name of the tab
         /// </summary>
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         /// <summary>
         ///     Icon for the tab
         /// </summary>
-        public string Icon { get; set; }
+        public virtual string Icon { get; set; }
     }
 }

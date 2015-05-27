@@ -7,7 +7,7 @@ namespace sidekick
     public class TabBuilder : IDisposable
     {
         private HtmlHelper _helper;
-        private Queue<ITab> _tabList;
+        private Queue<Tab> _tabList;
 
         public TabBuilder(HtmlHelper helper) {
             _helper = helper;
@@ -31,16 +31,16 @@ namespace sidekick
 
     public class TabNav : IDisposable
     {
-        public Queue<ITab> TabList;
+        public Queue<Tab> TabList;
         private HtmlHelper _helper;
 
         public TabNav(HtmlHelper helper) {
-            TabList = new Queue<ITab>();
+            TabList = new Queue<Tab>();
             _helper = helper;
             _helper.ViewContext.Writer.Write("<ul role='tablist' class='nav nav-tabs'>");
         }
 
-        public MvcHtmlString BuildTab(ITab tab, string displayText) {
+        public MvcHtmlString BuildTab(Tab tab, string displayText) {
             TabList.Enqueue(tab);
             TabNavBuilder.Build(_helper, tab, displayText);
             return new MvcHtmlString(string.Empty);
@@ -54,9 +54,9 @@ namespace sidekick
     public class TabContent : IDisposable
     {
         private HtmlHelper _helper;
-        private Queue<ITab> _tabList;
+        private Queue<Tab> _tabList;
 
-        public TabContent(HtmlHelper helper, Queue<ITab> tabList) {
+        public TabContent(HtmlHelper helper, Queue<Tab> tabList) {
             _helper = helper;
             _tabList = tabList;
             _helper.ViewContext.Writer.Write("<div class='tab-content'>");
@@ -73,7 +73,7 @@ namespace sidekick
 
     public static class TabNavBuilder
     {
-        public static void Build(HtmlHelper helper, ITab tab, string displayText) {
+        public static void Build(HtmlHelper helper, Tab tab, string displayText) {
             string active = (tab.Active) ? "class='active'" : null;
             helper.ViewContext.Writer.Write(string.Format("<li role='presentation' {0}>", active));
 
@@ -91,7 +91,7 @@ namespace sidekick
     {
         private HtmlHelper _helper;
 
-        public TabContentBuilder(HtmlHelper helper, ITab tab) {
+        public TabContentBuilder(HtmlHelper helper, Tab tab) {
             _helper = helper;
 
             string active = (tab.Active) ? "active" : null;

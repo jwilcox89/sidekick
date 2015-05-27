@@ -1,25 +1,25 @@
 ﻿namespace sidekick
 {
-    public class Step : IStep
+    public class Step
     {
         /// <summary>
         ///     Title of the step
         /// </summary>
-        public string Title { get; set; }
+        public virtual string Title { get; set; }
 
         /// <summary>
         ///     Icon associated with the step
         /// </summary>
-        public string Icon { get; set; }
+        public virtual string Icon { get; set; }
 
         /// <summary>
         ///     Content for the popover
         /// </summary>
-        public string Description { get; set; }
+        public virtual string Description { get; set; }
 
         /// <summary>
         ///     True if the step is complete
         /// </summary>
-        public bool Complete { get; set; }
+        public virtual bool Complete { get; set; }
     }
 }
