@@ -15,9 +15,7 @@ namespace sidekick
 
         public InputGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object htmlAttributes) {
             _helper = helper;
-            _model = new InputGroup<TModel,TProperty>();
-            _model.Expression = expression;
-            _model.HtmlAttributes = htmlAttributes;
+            _model = new InputGroup<TModel,TProperty>(expression, htmlAttributes);
         }
 
         public InputGroupBuilder<TModel,TProperty> PrependIcon(string icon) {
@@ -25,13 +23,13 @@ namespace sidekick
             return this;
         }
 
-        public InputGroupBuilder<TModel,TProperty> PrependText(string text) {
-            _model.PrependText = text;
+        public InputGroupBuilder<TModel,TProperty> AppendIcon(string icon) {
+            _model.AppendIcon = icon;
             return this;
         }
 
-        public InputGroupBuilder<TModel,TProperty> AppendIcon(string icon) {
-            _model.AppendIcon = icon;
+        public InputGroupBuilder<TModel,TProperty> PrependText(string text) {
+            _model.PrependText = text;
             return this;
         }
 

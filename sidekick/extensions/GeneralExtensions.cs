@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace sidekick
 {
     public static class GeneralExtentions
     {
+        /// <summary>
+        ///     Returns the member information for the expression
+        /// </summary>
+        /// <param name="method"></param>
+        /// <returns></returns>
         public static MemberExpression GetMemberInfo(this Expression method) {
             LambdaExpression lambda = method as LambdaExpression;
 
@@ -23,6 +29,19 @@ namespace sidekick
                 throw new ArgumentNullException("No method");
 
             return memberEx;
+        }
+
+        /// <summary>
+        ///     Returns the member name from the member expression
+        /// </summary>
+        /// <param name="method"></param>
+        /// <returns></returns>
+        public static string GetMemberName(this Expression method) {
+            return method.GetMemberInfo().Member.Name;
+        }
+
+        public static PropertyInfo GetProperty<TEntity>(this TEntity entity, string name) {
+            return entity.GetType().GetProperty(name);
         }
     }
 }

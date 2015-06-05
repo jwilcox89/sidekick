@@ -40,22 +40,20 @@ namespace sidekick
         ///     Returns an entity object based on the specified entity and primary key value.
         /// </summary>
         /// <typeparam name="TEntity">Entity object type to be returned</typeparam>
-        /// <typeparam name="TKey">Primary key type (int, short etc)</typeparam>
         /// <param name="primaryKey">Primary key value</param>
         /// <returns></returns>
-        public TEntity Get<TEntity,TKey>(TKey id) where TEntity : class where TKey : IConvertible {
-            return DB.Set<TEntity>().Find((TKey)id);
+        public TEntity Get<TEntity>(params object[] keys) where TEntity : class {
+            return DB.Set<TEntity>().Find(keys);
         }
 
         /// <summary>
         ///     Asynchronously returns an entity object based on the specified entity and primary key value.
         /// </summary>
         /// <typeparam name="TEntity">Entity object type to be returned</typeparam>
-        /// <typeparam name="TKey">Primary key type (int, short etc)</typeparam>
         /// <param name="primaryKey">Primary key value</param>
         /// <returns></returns>
-        public async Task<TEntity> GetAsync<TEntity,TKey>(TKey id) where TEntity : class where TKey : IConvertible {
-            return await Task.Run(() => Get<TEntity,TKey>(id));
+        public async Task<TEntity> GetAsync<TEntity>(params object[] keys) where TEntity : class {
+            return await Task.Run(() => Get<TEntity>(keys));
         }
 
         /// <summary>
@@ -138,8 +136,8 @@ namespace sidekick
         /// <typeparam name="TEntity"></typeparam>
         /// <typeparam name="TKey"></typeparam>
         /// <param name="id"></param>
-        public void Remove<TEntity,TKey>(TKey id) where TEntity : class where TKey : IConvertible {
-            TEntity entity = Get<TEntity,TKey>(id);
+        public void Remove<TEntity>(params object[] id) where TEntity : class {
+            TEntity entity = Get<TEntity>(id);
 
             if (entity != null)
                 Remove<TEntity>(entity);
@@ -182,8 +180,8 @@ namespace sidekick
         /// <param name="property">Property you wish to toggle</param>
         /// <param name="primaryKey">Value of the primary key of the row you wish to toggle</param>
         /// <returns></returns>
-        public bool ToggleProperty<TEntity,TKey>(TKey primaryKey, Expression<Func<TEntity,object>> property) where TEntity : class where TKey : IConvertible {
-            return ToggleProperty<TEntity,TKey>(primaryKey, property.GetMemberInfo().Member.Name);
+        public bool ToggleProperty<TEntity>(Expression<Func<TEntity,object>> property, params object[] primaryKey) where TEntity : class {
+            return ToggleProperty<TEntity>(property.GetMemberName(), primaryKey);
         }
 
         /// <summary>
@@ -197,17 +195,17 @@ namespace sidekick
         /// <param name="primaryKey">Value of the primary key of the row you wish to toggle</param>
         /// <returns>Returns the value that the property was toggled to.</returns>
         /// <returns></returns>
-        public async Task<bool> TogglePropertyAsync<TEntity,TKey>(TKey primaryKey, Expression<Func<TEntity,object>> property) where TEntity : class where TKey : IConvertible {
-            return await Task.Run(() => ToggleProperty<TEntity,TKey>(primaryKey, property.GetMemberInfo().Member.Name));
+        public async Task<bool> TogglePropertyAsync<TEntity>(Expression<Func<TEntity,object>> property, params object[] primaryKey) where TEntity : class {
+            return await Task.Run(() => ToggleProperty<TEntity>(property.GetMemberName(), primaryKey));
         }
 
-        private bool ToggleProperty<TEntity,TKey>(TKey primaryKey, string propertyName) where TEntity : class where TKey : IConvertible {
-            TEntity entity = Get<TEntity,TKey>(primaryKey);
+        private bool ToggleProperty<TEntity>(string propertyName, params object[] primaryKey) where TEntity : class {
+            TEntity entity = Get<TEntity>(primaryKey);
 
             if (entity == null)
                 throw new NullReferenceException("no record found");
 
-            PropertyInfo currentProperty = entity.GetType().GetProperty(propertyName);
+            PropertyInfo currentProperty = entity.GetProperty(propertyName);
 
             if (currentProperty.PropertyType != (typeof(Boolean)))
                 throw new ArgumentException("not a boolean type");
@@ -270,7 +268,15 @@ namespace sidekick
         #region Dispose
 
         public void Dispose() {
-            DB.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool dispose) {
+            if (dispose) {
+                if (DB != null)
+                    DB.Dispose();
+            }
         }
 
         #endregion

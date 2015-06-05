@@ -41,6 +41,11 @@ namespace sidekick
         ///     Route that caused the exception
         /// </summary>
         string Route { get; set; }
+
+        /// <summary>
+        ///     Custom comments
+        /// </summary>
+        string Comments { get; set; }
     }
 }
 

@@ -1,4 +1,7 @@
-﻿namespace sidekick
+﻿using System;
+using System.Linq.Expressions;
+
+namespace sidekick
 {
     public class FormGroup<TModel,TProperty> : HtmlElement<TModel,TProperty>
     {
@@ -22,7 +25,9 @@
         /// </summary>
         public virtual bool IsRequired { get; set; }
 
-        public FormGroup() {
+        public FormGroup(Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes) {
+            Expression = expression;
+            HtmlAttributes = textboxHtmlAttributes;
             HasLabelWithColon = true;
             HasValidation = true;
         }

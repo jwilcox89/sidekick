@@ -16,9 +16,7 @@ namespace sidekick
 
         public FormGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes) {
             _helper = helper;
-            _model = new FormGroup<TModel,TProperty>();
-            _model.Expression = expression;
-            _model.HtmlAttributes = textboxHtmlAttributes;
+            _model = new FormGroup<TModel,TProperty>(expression, textboxHtmlAttributes);
         }
 
         /// <summary>

@@ -59,7 +59,7 @@ namespace sidekick
         /// <param name="selectedValue"></param>
         /// <returns></returns>
         public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, Expression<Func<TSource,object>> value, Expression<Func<TSource,object>> display, object selectedValue) {
-            return BuildSelectList(items, value.GetMemberInfo().Member.Name, display.GetMemberInfo().Member.Name, selectedValue);
+            return BuildSelectList(items, value.GetMemberName(), display.GetMemberName(), selectedValue);
         }
 
         /// <summary>
