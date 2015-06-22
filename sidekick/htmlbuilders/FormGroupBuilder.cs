@@ -68,7 +68,7 @@ namespace sidekick
                 if (_model.HasLabel)
                     writer.Write(_helper.LabelFor(_model.Expression));
 
-                writer.Write(_helper.TextBoxFor(_model.Expression, _model.HtmlAttributes).ToString());
+                writer.Write(_helper.TextBoxFor(_model.Expression, _model.HtmlAttributes));
 
                 if (_model.HasValidation)
                     writer.Write(_helper.ValidationMessageFor(_model.Expression));

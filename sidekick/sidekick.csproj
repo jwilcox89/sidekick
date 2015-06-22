@@ -118,6 +118,7 @@
     <Compile Include="helpers\LabelHelpers.cs" />
     <Compile Include="helpers\SelectListHelpers.cs" />
     <Compile Include="htmlbuilders\AlertBuilder.cs" />
+    <Compile Include="htmlbuilders\HeadingBuilder.cs" />
     <Compile Include="htmlbuilders\HtmlBuilder.cs" />
     <Compile Include="htmlbuilders\InputGroupBuilder.cs" />
     <Compile Include="htmlbuilders\LabelBuilder.cs" />

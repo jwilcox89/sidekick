@@ -111,5 +111,18 @@ namespace sidekick
         public static MvcHtmlString BuildLabel(this HtmlHelper helper, Colors color, string text) {
             return LabelBuilder.Build(color, text);
         }
+
+        /// <summary>
+        ///     Builds a Bootstrap heading with a subtext
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="size"></param>
+        /// <param name="text"></param>
+        /// <param name="subtext"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static MvcHtmlString BuildHeading(this HtmlHelper helper, HeadingSize size, string text, string subtext = null, Colors color = Colors.Default) {
+            return HeadingBuilder.Build(size, text, subtext, color);
+        }
     }
 }

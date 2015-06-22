@@ -40,20 +40,20 @@ namespace sidekick
         ///     Returns an entity object based on the specified entity and primary key value.
         /// </summary>
         /// <typeparam name="TEntity">Entity object type to be returned</typeparam>
-        /// <param name="primaryKey">Primary key value</param>
+        /// <param name="id">Primary key value</param>
         /// <returns></returns>
-        public TEntity Get<TEntity>(params object[] keys) where TEntity : class {
-            return DB.Set<TEntity>().Find(keys);
+        public TEntity Get<TEntity>(params object[] id) where TEntity : class {
+            return DB.Set<TEntity>().Find(id);
         }
 
         /// <summary>
         ///     Asynchronously returns an entity object based on the specified entity and primary key value.
         /// </summary>
         /// <typeparam name="TEntity">Entity object type to be returned</typeparam>
-        /// <param name="primaryKey">Primary key value</param>
+        /// <param name="id">Primary key value</param>
         /// <returns></returns>
-        public async Task<TEntity> GetAsync<TEntity>(params object[] keys) where TEntity : class {
-            return await Task.Run(() => Get<TEntity>(keys));
+        public async Task<TEntity> GetAsync<TEntity>(params object[] id) where TEntity : class {
+            return await Task.Run(() => Get<TEntity>(id));
         }
 
         /// <summary>
@@ -178,10 +178,10 @@ namespace sidekick
         /// <typeparam name="TEntity">Database table object</typeparam>
         /// <typeparam name="TKey">Primary key column type (int, short etc)</typeparam>
         /// <param name="property">Property you wish to toggle</param>
-        /// <param name="primaryKey">Value of the primary key of the row you wish to toggle</param>
+        /// <param name="id">Value of the primary key of the row you wish to toggle</param>
         /// <returns></returns>
-        public bool ToggleProperty<TEntity>(Expression<Func<TEntity,object>> property, params object[] primaryKey) where TEntity : class {
-            return ToggleProperty<TEntity>(property.GetMemberName(), primaryKey);
+        public bool ToggleProperty<TEntity>(Expression<Func<TEntity,object>> property, params object[] id) where TEntity : class {
+            return ToggleProperty<TEntity>(property.GetMemberName(), id);
         }
 
         /// <summary>
@@ -192,15 +192,15 @@ namespace sidekick
         /// <typeparam name="TEntity">Database table object</typeparam>
         /// <typeparam name="TKey">Primary key column type (int, short etc)</typeparam>
         /// <param name="property">Property you wish to toggle ("Active", "Locked" etc)</param>
-        /// <param name="primaryKey">Value of the primary key of the row you wish to toggle</param>
+        /// <param name="id">Value of the primary key of the row you wish to toggle</param>
         /// <returns>Returns the value that the property was toggled to.</returns>
         /// <returns></returns>
-        public async Task<bool> TogglePropertyAsync<TEntity>(Expression<Func<TEntity,object>> property, params object[] primaryKey) where TEntity : class {
-            return await Task.Run(() => ToggleProperty<TEntity>(property.GetMemberName(), primaryKey));
+        public async Task<bool> TogglePropertyAsync<TEntity>(Expression<Func<TEntity,object>> property, params object[] id) where TEntity : class {
+            return await Task.Run(() => ToggleProperty<TEntity>(property.GetMemberName(), id));
         }
 
-        private bool ToggleProperty<TEntity>(string propertyName, params object[] primaryKey) where TEntity : class {
-            TEntity entity = Get<TEntity>(primaryKey);
+        private bool ToggleProperty<TEntity>(string propertyName, params object[] id) where TEntity : class {
+            TEntity entity = Get<TEntity>(id);
 
             if (entity == null)
                 throw new NullReferenceException("no record found");

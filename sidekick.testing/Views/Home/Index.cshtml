@@ -94,6 +94,10 @@
     @Html.BuildLabel(Colors.Primary, "Good Job!")
 </div>
 
+<h2>Headings</h2>
+@Html.BuildHeading(HeadingSize.H3, "Schools", "St. Mary's High School", Colors.Success)
+@Html.BuildHeading(HeadingSize.H3, "Users")
+
 @section scripts {
     <script type="text/javascript">
         $().ready(function () {
