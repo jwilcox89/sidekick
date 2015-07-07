@@ -140,6 +140,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="attributes\HtmlBuilderAttribute.cs" />
     <Compile Include="validation\MaxFileSizeAttribute.cs" />
+    <Compile Include="viewmodel\BaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

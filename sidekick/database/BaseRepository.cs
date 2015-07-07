@@ -144,33 +144,6 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Updates a single entity
-        /// </summary>
-        /// <typeparam name="TEntity"></typeparam>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        public TEntity Update<TEntity>(TEntity entity) where TEntity : class {
-            DB.Set<TEntity>().Attach(entity);
-            DB.Entry(entity).State = EntityState.Modified;
-            return entity;
-        }
-
-        /// <summary>
-        ///     Updates multiple entities
-        /// </summary>
-        /// <typeparam name="TEntity"></typeparam>
-        /// <param name="entities"></param>
-        /// <returns></returns>
-        public IEnumerable<TEntity> Update<TEntity>(IEnumerable<TEntity> entities) where TEntity : class {
-            foreach (TEntity e in entities) {
-                DB.Set<TEntity>().Attach(e);
-                DB.Entry(e).State = EntityState.Modified;
-            }
-
-            return entities;
-        }
-
-        /// <summary>
         ///     Method will toggle the boolean type property name that is supplied.
         ///     *Note : Will only work if you provide a boolean property and the primary key of the table you wish to toggle.
         ///     Otherwise will need to write a custom method.
