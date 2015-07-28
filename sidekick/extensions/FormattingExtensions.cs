@@ -18,8 +18,6 @@ namespace sidekick
             return Regex.Replace(input, @"[^\d]+", string.Empty);
         }
 
-        #region Currency
-
         /// <summary>
         ///     Formats decimal into currency
         /// </summary>
@@ -108,10 +106,6 @@ namespace sidekick
             return amount.ToString("C");
         }
 
-        #endregion
-
-        #region Phone Number
-
         /// <summary>
         ///     Formats a string into a phone number
         /// </summary>
@@ -155,10 +149,6 @@ namespace sidekick
             }
         }
 
-        #endregion
-
-        #region SSN
-
         /// <summary>
         ///     Formats a string into a readable SSN
         /// </summary>
@@ -184,7 +174,5 @@ namespace sidekick
 
             return ssn.Insert(3,"-").Insert(6,"-");
         }
-
-        #endregion
     }
 }

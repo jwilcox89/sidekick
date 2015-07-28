@@ -57,8 +57,14 @@
         /// </summary>
         public virtual Colors CloseColor { get; set; }
 
+        /// <summary>
+        ///     Submit button will show if true. Default value "True"
+        /// </summary>
+        public virtual bool ShowSubmitButton { get; set; }
+
         public Modal() {
             Dismissable = true;
+            ShowSubmitButton = true;
             CloseText = "Close";
             SubmitText = "Submit";
             ModalSize = ModalSize.Regular;

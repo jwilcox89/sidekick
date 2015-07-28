@@ -63,9 +63,10 @@ namespace sidekick
                                                               modal.CloseColor.GetHtmlAttributes<Colors>().Class, 
                                                               modal.CloseText));
 
-            helper.ViewContext.Writer.Write(string.Format("<button type='submit' class='btn btn-{0}'>{1}</button>", 
-                                                          modal.SubmitColor.GetHtmlAttributes<Colors>().Class, 
-                                                          modal.SubmitText));
+            if (modal.ShowSubmitButton)
+                helper.ViewContext.Writer.Write(string.Format("<button type='submit' class='btn btn-{0}'>{1}</button>", 
+                                                              modal.SubmitColor.GetHtmlAttributes<Colors>().Class, 
+                                                              modal.SubmitText));
 
             helper.ViewContext.Writer.Write("</div>");
         }

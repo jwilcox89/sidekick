@@ -211,8 +211,6 @@ namespace sidekick
             return await Task.Run(() => Save());
         }
 
-        #region SQL Scripts
-
         /// <summary>
         ///     Execute a custom SQL script on the database.
         /// </summary>
@@ -236,10 +234,6 @@ namespace sidekick
             await Task.Run(() => ExecuteSqlScript(sql, ensureTransaction));
         }
 
-        #endregion
-
-        #region Dispose
-
         public void Dispose() {
             Dispose(true);
             GC.SuppressFinalize(this);
@@ -251,7 +245,5 @@ namespace sidekick
                     DB.Dispose();
             }
         }
-
-        #endregion
     }
 }

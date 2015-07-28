@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Linq.Expressions;
 
@@ -102,6 +103,21 @@ namespace sidekick
         }
 
         /// <summary>
+        ///     Builds a Bootstrap form group. Includes a label, dropdown list and validation if nessecary
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <typeparam name="TProperty"></typeparam>
+        /// <param name="helper"></param>
+        /// <param name="expression"></param>
+        /// <param name="itemList"></param>
+        /// <param name="optionLabel"></param>
+        /// <param name="textboxHtmlAttributes"></param>
+        /// <returns></returns>
+        public static FormGroupBuilder<TModel,TProperty> FormGroupFor<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, IEnumerable<SelectListItem> itemList, string optionLabel, object textboxHtmlAttributes = null) {
+            return new FormGroupBuilder<TModel,TProperty>(helper, expression, itemList, textboxHtmlAttributes, optionLabel);
+        }
+
+        /// <summary>
         ///     Builds a Bootstrap label.
         /// </summary>
         /// <param name="helper"></param>
@@ -110,19 +126,6 @@ namespace sidekick
         /// <returns></returns>
         public static MvcHtmlString BuildLabel(this HtmlHelper helper, Colors color, string text) {
             return LabelBuilder.Build(color, text);
-        }
-
-        /// <summary>
-        ///     Builds a Bootstrap heading with a subtext
-        /// </summary>
-        /// <param name="helper"></param>
-        /// <param name="size"></param>
-        /// <param name="text"></param>
-        /// <param name="subtext"></param>
-        /// <param name="color"></param>
-        /// <returns></returns>
-        public static MvcHtmlString BuildHeading(this HtmlHelper helper, HeadingSize size, string text, string subtext = null, Colors color = Colors.Default) {
-            return HeadingBuilder.Build(size, text, subtext, color);
         }
     }
 }

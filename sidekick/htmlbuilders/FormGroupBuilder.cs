@@ -19,6 +19,11 @@ namespace sidekick
             _model = new FormGroup<TModel,TProperty>(expression, textboxHtmlAttributes);
         }
 
+        public FormGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, IEnumerable<SelectListItem> listItems, object textboxHtmlAttributes, string optionLabel) {
+            _helper = helper;
+            _model = new FormGroup<TModel,TProperty>(expression, listItems, textboxHtmlAttributes, optionLabel);
+        }
+
         /// <summary>
         ///     Will hide label
         /// </summary>
@@ -58,6 +63,10 @@ namespace sidekick
         }
 
         private MvcHtmlString CreateFormGroup() {
+            return (_model.SelectListItems == null) ? BuildTextBoxFormGroup() : BuildDropdownFormGroup();
+        }
+
+        private MvcHtmlString BuildTextBoxFormGroup() {
             using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter())) {
                 writer.AddAttribute(HtmlTextWriterAttribute.Class, "form-group");
                 writer.RenderBeginTag(HtmlTextWriterTag.Div); // <div class=form-group>
@@ -69,6 +78,28 @@ namespace sidekick
                     writer.Write(_helper.LabelFor(_model.Expression));
 
                 writer.Write(_helper.TextBoxFor(_model.Expression, _model.HtmlAttributes));
+
+                if (_model.HasValidation)
+                    writer.Write(_helper.ValidationMessageFor(_model.Expression));
+
+                writer.RenderEndTag(); // </div>
+
+                return new MvcHtmlString(writer.InnerWriter.ToString());
+            }
+        }
+
+        private MvcHtmlString BuildDropdownFormGroup() {
+            using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter())) {
+                writer.AddAttribute(HtmlTextWriterAttribute.Class, "form-group");
+                writer.RenderBeginTag(HtmlTextWriterTag.Div); // <div class=form-group>
+
+                if (_model.HasLabelWithColon)
+                    writer.Write(_helper.LabelForWithColon(_model.Expression, _model.IsRequired));
+
+                if (_model.HasLabel)
+                    writer.Write(_helper.LabelFor(_model.Expression));
+
+                writer.Write(_helper.DropDownListFor(_model.Expression, _model.SelectListItems, _model.OptionLabel, _model.HtmlAttributes));
 
                 if (_model.HasValidation)
                     writer.Write(_helper.ValidationMessageFor(_model.Expression));
