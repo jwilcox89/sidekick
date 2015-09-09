@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace sidekick
@@ -20,19 +21,19 @@ namespace sidekick
             string currentController = (string)routeData.Values["controller"];
             string currentArea       = (string)routeData.DataTokens["area"];
 
-            action     = (string.IsNullOrEmpty(action)) ? currentAction : action;
-            controller = (string.IsNullOrEmpty(controller)) ? currentController : controller;
-            area       = (string.IsNullOrEmpty(area)) ? currentArea : area;
+            action     = (String.IsNullOrEmpty(action)) ? currentAction : action;
+            controller = (String.IsNullOrEmpty(controller)) ? currentController : controller;
+            area       = (String.IsNullOrEmpty(area)) ? currentArea : area;
 
-            if ((!string.IsNullOrEmpty(action + controller + area)) &&
-                (string.IsNullOrEmpty(action) || action == currentAction) &&
-                (string.IsNullOrEmpty(controller) || controller == currentController) &&
-                (string.IsNullOrEmpty(area) || area == currentArea)) {
+            if ((!String.IsNullOrEmpty(action + controller + area)) &&
+                (String.IsNullOrEmpty(action) || action == currentAction) &&
+                (String.IsNullOrEmpty(controller) || controller == currentController) &&
+                (String.IsNullOrEmpty(area) || area == currentArea)) {
 
-                return (string.IsNullOrEmpty(activeClass)) ? "active" : activeClass;
+                return (String.IsNullOrEmpty(activeClass)) ? "active" : activeClass;
             }
 
-            return string.Empty;
+            return String.Empty;
         }
 
         /// <summary>
@@ -50,24 +51,24 @@ namespace sidekick
             string currentController = (string)routeData.Values["controller"];
             string currentArea       = (string)routeData.DataTokens["area"];
 
-            action = (string.IsNullOrEmpty(action)) ? currentAction : action;
-            area   = (string.IsNullOrEmpty(area)) ? currentArea : area;
+            action = (String.IsNullOrEmpty(action)) ? currentAction : action;
+            area   = (String.IsNullOrEmpty(area)) ? currentArea : area;
 
-            if ((!string.IsNullOrEmpty(action + area)) &&
-                (string.IsNullOrEmpty(action) || action == currentAction) &&
-                (string.IsNullOrEmpty(area) || area == currentArea)) {
+            if ((!String.IsNullOrEmpty(action + area)) &&
+                (String.IsNullOrEmpty(action) || action == currentAction) &&
+                (String.IsNullOrEmpty(area) || area == currentArea)) {
 
                 foreach (string c in controller) {
-                    string controllerName = (string.IsNullOrEmpty(c)) ? currentController : c;
+                    string controllerName = (String.IsNullOrEmpty(c)) ? currentController : c;
 
-                    if (string.IsNullOrEmpty(c) || controllerName == currentController)
-                        return (string.IsNullOrEmpty(activeClass)) ? "active" : activeClass; 
+                    if (String.IsNullOrEmpty(c) || controllerName == currentController)
+                        return (String.IsNullOrEmpty(activeClass)) ? "active" : activeClass; 
                 }
 
-                return (string.IsNullOrEmpty(activeClass)) ? "active" : activeClass;
+                return (String.IsNullOrEmpty(activeClass)) ? "active" : activeClass;
             }
 
-            return string.Empty;
+            return String.Empty;
         }
     }
 }

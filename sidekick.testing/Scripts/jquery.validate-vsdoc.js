@@ -237,7 +237,7 @@ $.validator.format = function(source, params) {
 	/// <summary>
 	/// Replaces {n} placeholders with arguments.
 	/// One or more arguments can be passed, in addition to the string template itself, to insert
-	/// into the string.
+	/// into the String.
 	/// </summary>
 	/// <param name="source" type="String">
 	/// The string to format.

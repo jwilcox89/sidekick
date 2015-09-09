@@ -22,7 +22,7 @@ namespace sidekick
                                                     DisplayType = ResourceDisplaytype.Share,
                                                     RemoteName = networkName };
 
-            dynamic userName = string.IsNullOrEmpty(credentials.Domain) ? credentials.UserName : string.Format("{0}\\{1}", credentials.Domain, credentials.UserName);
+            dynamic userName = String.IsNullOrEmpty(credentials.Domain) ? credentials.UserName : String.Format("{0}\\{1}", credentials.Domain, credentials.UserName);
             dynamic result = WNetAddConnection2(netResource, credentials.Password, userName, 0);
 
             if (result != 0)

@@ -18,7 +18,7 @@ namespace sidekick
         /// <returns></returns>
         public static string SetTextColor(this HtmlHelper helper, string backgroundColor) {
             if (!backgroundColor.StartsWith("#"))
-                backgroundColor = string.Format("#{0}", backgroundColor);
+                backgroundColor = String.Format("#{0}", backgroundColor);
 
             Color c = ColorTranslator.FromHtml(backgroundColor);
 
@@ -34,7 +34,7 @@ namespace sidekick
         /// <returns></returns>
         public static string ChangeColor(this HtmlHelper helper, string color, float correctionFactor) {
             if (!color.StartsWith("#"))
-                color = string.Format("#{0}", color);
+                color = String.Format("#{0}", color);
 
             Color c = ColorTranslator.FromHtml(color);
 

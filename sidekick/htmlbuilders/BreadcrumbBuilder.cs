@@ -14,12 +14,12 @@ namespace sidekick
 
         public MvcHtmlString AddCrumb(string url, string title, bool active = false) {
             if (active) {
-                _helper.ViewContext.Writer.Write(string.Format("<li class='active'>{0}</li>", title));
+                _helper.ViewContext.Writer.Write(String.Format("<li class='active'>{0}</li>", title));
             } else {
-                _helper.ViewContext.Writer.Write(string.Format("<li><a href='{0}'>{1}</a></li>", url, title));
+                _helper.ViewContext.Writer.Write(String.Format("<li><a href='{0}'>{1}</a></li>", url, title));
             }
             
-            return new MvcHtmlString(string.Empty);
+            return new MvcHtmlString(String.Empty);
         }
 
         public void Dispose() {

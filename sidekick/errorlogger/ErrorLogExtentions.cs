@@ -15,7 +15,7 @@ namespace sidekick
             if (ex != null && ex.Exception != null)
                 return ex.Exception.Message;
 
-            return string.Empty;
+            return String.Empty;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace sidekick
             if (ex != null)
                 return ex.Message;
 
-            return string.Empty;
+            return String.Empty;
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace sidekick
         public static string GetInnerExceptionMessage(this ExceptionContext ex) {
             if (ex != null && ex.Exception != null && ex.Exception.InnerException != null) {
 
-                if (!string.IsNullOrEmpty(ex.Exception.InnerException.Message))
+                if (!String.IsNullOrEmpty(ex.Exception.InnerException.Message))
                     return ex.Exception.InnerException.Message;
 
                 Exception originalException = ex.Exception.InnerException.GetBaseException();
@@ -47,7 +47,7 @@ namespace sidekick
                     return originalException.InnerException.Message;
             }
 
-            return string.Empty;
+            return String.Empty;
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace sidekick
         public static string GetInnerExceptionMessage(this _Exception ex) {
             if (ex != null && ex.InnerException != null) {
 
-                if (!string.IsNullOrEmpty(ex.InnerException.Message))
+                if (!String.IsNullOrEmpty(ex.InnerException.Message))
                     return ex.InnerException.Message;
 
                 Exception originalException = ex.InnerException.GetBaseException();
@@ -67,7 +67,7 @@ namespace sidekick
                     return originalException.InnerException.Message;
             }
 
-            return string.Empty;
+            return String.Empty;
         }
 
         /// <summary>
@@ -76,10 +76,10 @@ namespace sidekick
         /// <param name="ex"></param>
         /// <returns></returns>
         public static string GetStackTraceMessage(this ExceptionContext ex) {
-            if (ex != null && ex.Exception != null && !string.IsNullOrEmpty(ex.Exception.StackTrace))
+            if (ex != null && ex.Exception != null && !String.IsNullOrEmpty(ex.Exception.StackTrace))
                 return ex.Exception.StackTrace;
 
-            return string.Empty;
+            return String.Empty;
         }
 
         /// <summary>
@@ -88,10 +88,10 @@ namespace sidekick
         /// <param name="ex"></param>
         /// <returns></returns>
         public static string GetStackTraceMessage(this _Exception ex) {
-            if (ex != null && !string.IsNullOrEmpty(ex.StackTrace))
+            if (ex != null && !String.IsNullOrEmpty(ex.StackTrace))
                 return ex.StackTrace;
 
-            return string.Empty;
+            return String.Empty;
         }
 
         /// <summary>
@@ -101,11 +101,11 @@ namespace sidekick
         /// <returns></returns>
         public static string GetRoute(this ExceptionContext ex) {
             if (ex != null && ex.RequestContext != null && ex.RequestContext.RouteData != null) {
-                string route = string.Join(", ", ex.RequestContext.RouteData.Values);
-                return !string.IsNullOrEmpty(route) ? route : string.Empty;
+                string route = String.Join(", ", ex.RequestContext.RouteData.Values);
+                return !String.IsNullOrEmpty(route) ? route : String.Empty;
             }
 
-            return string.Empty;
+            return String.Empty;
         }
 
         /// <summary>
@@ -115,11 +115,11 @@ namespace sidekick
         /// <returns></returns>
         public static string GetQuery(this ExceptionContext ex) {
             if (ex != null && ex.RequestContext != null && ex.RequestContext.HttpContext != null && ex.RequestContext.HttpContext.Request != null) {
-                string query = string.Join(", ", ex.RequestContext.HttpContext.Request.QueryString);
-                return !string.IsNullOrEmpty(query) ? query : string.Empty;
+                string query = String.Join(", ", ex.RequestContext.HttpContext.Request.QueryString);
+                return !String.IsNullOrEmpty(query) ? query : String.Empty;
             }
 
-            return string.Empty;
+            return String.Empty;
         }
     }
 }

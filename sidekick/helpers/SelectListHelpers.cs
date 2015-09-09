@@ -11,14 +11,14 @@ namespace sidekick
         /// <summary>
         ///     Generates a dropdown of years
         /// </summary>
-        /// <param name="forwardCount">How many years forward from the current year do you want to display?</param>
-        /// <param name="backwardCount">How many years backward from the current year do you want to display?</param>
+        /// <param name="yearsForward">How many years forward from the current year do you want to display?</param>
+        /// <param name="yearsBackward">How many years backward from the current year do you want to display?</param>
         /// <returns></returns>
-        public static IEnumerable<SelectListItem> YearDropdown(int forwardCount, int backwardCount) {
+        public static IEnumerable<SelectListItem> YearDropdown(int yearsForward, int yearsBackward) {
             List<SelectListItem> list = new List<SelectListItem>();
 
-            int start = DateTime.Now.Year - backwardCount;
-            int end = DateTime.Now.Year + forwardCount;
+            int start = DateTime.Now.Year - yearsBackward;
+            int end = DateTime.Now.Year + yearsForward;
             int placeholder = start;
 
             while(placeholder >= start && placeholder <= end) {

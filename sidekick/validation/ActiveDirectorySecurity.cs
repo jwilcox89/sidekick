@@ -1,4 +1,5 @@
-﻿using System.DirectoryServices.AccountManagement;
+﻿using System;
+using System.DirectoryServices.AccountManagement;
 
 namespace sidekick
 {
@@ -12,11 +13,11 @@ namespace sidekick
         /// <param name="contextName">Active directory domain</param>
         /// <returns>Returns true if credentials are validated</returns>
         public static bool ValidateCredentials(string username, string password, string domain) {
-            if (string.IsNullOrEmpty(domain))
+            if (String.IsNullOrEmpty(domain))
                 return false;
 
             using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, domain)) {
-                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
                     return false;
 
                 if (pc.ValidateCredentials(username, password))
@@ -35,11 +36,11 @@ namespace sidekick
         /// <param name="contextName"></param>
         /// <returns></returns>
         public static bool ValidateCredentials(string username, string password, ContextType contextType, string contextName) {
-            if (string.IsNullOrEmpty(contextName))
+            if (String.IsNullOrEmpty(contextName))
                 return false;
 
             using (PrincipalContext pc = new PrincipalContext(contextType, contextName)) {
-                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
                     return false;
 
                 if (pc.ValidateCredentials(username, password))

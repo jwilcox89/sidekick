@@ -27,7 +27,6 @@ namespace sidekick
         /// </summary>
         public virtual bool IsRequired { get; set; }
 
-
         /// <summary>
         ///     List of items for a dropdown list
         /// </summary>

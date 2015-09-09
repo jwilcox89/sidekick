@@ -399,7 +399,7 @@ intellisense.annotate(jQuery, {
   },
   'trim': function() {
     /// <signature>
-    ///   <summary>Remove the whitespace from the beginning and end of a string.</summary>
+    ///   <summary>Remove the whitespace from the beginning and end of a String.</summary>
     ///   <param name="str" type="String">The string to trim.</param>
     ///   <returns type="String" />
     /// </signature>
@@ -885,37 +885,37 @@ intellisense.annotate(jQuery.fn, {
   },
   'attributeContains': function() {
     /// <signature>
-    ///   <summary>Selects elements that have the specified attribute with a value containing the a given substring.</summary>
+    ///   <summary>Selects elements that have the specified attribute with a value containing the a given subString.</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
-    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted string.</param>
+    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted String.</param>
     /// </signature>
   },
   'attributeContainsPrefix': function() {
     /// <signature>
     ///   <summary>Selects elements that have the specified attribute with a value either equal to a given string or starting with that string followed by a hyphen (-).</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
-    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted string.</param>
+    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted String.</param>
     /// </signature>
   },
   'attributeContainsWord': function() {
     /// <signature>
     ///   <summary>Selects elements that have the specified attribute with a value containing a given word, delimited by spaces.</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
-    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted string.</param>
+    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted String.</param>
     /// </signature>
   },
   'attributeEndsWith': function() {
     /// <signature>
-    ///   <summary>Selects elements that have the specified attribute with a value ending exactly with a given string. The comparison is case sensitive.</summary>
+    ///   <summary>Selects elements that have the specified attribute with a value ending exactly with a given String. The comparison is case sensitive.</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
-    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted string.</param>
+    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted String.</param>
     /// </signature>
   },
   'attributeEquals': function() {
     /// <signature>
     ///   <summary>Selects elements that have the specified attribute with a value exactly equal to a certain value.</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
-    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted string.</param>
+    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted String.</param>
     /// </signature>
   },
   'attributeHas': function() {
@@ -936,14 +936,14 @@ intellisense.annotate(jQuery.fn, {
     /// <signature>
     ///   <summary>Select elements that either don't have the specified attribute, or do have the specified attribute but not with a certain value.</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
-    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted string.</param>
+    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted String.</param>
     /// </signature>
   },
   'attributeStartsWith': function() {
     /// <signature>
-    ///   <summary>Selects elements that have the specified attribute with a value beginning exactly with a given string.</summary>
+    ///   <summary>Selects elements that have the specified attribute with a value beginning exactly with a given String.</summary>
     ///   <param name="attribute" type="String">An attribute name.</param>
-    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted string.</param>
+    ///   <param name="value" type="String">An attribute value. Can be either an unquoted single word or a quoted String.</param>
     /// </signature>
   },
   'before': function() {

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace sidekick
@@ -16,7 +15,7 @@ namespace sidekick
             TModel element = new TModel();
             action(element);
 
-            if (string.IsNullOrEmpty(element.ViewName))
+            if (String.IsNullOrEmpty(element.ViewName))
                 element.ViewName = "_AjaxMessage";
 
             return new ViewBuilder().RenderView(element.ViewName, element);
@@ -29,7 +28,7 @@ namespace sidekick
         /// <param name="action"></param>
         /// <returns></returns>
         public static string BuildAlert<TAlert>(Action<TAlert> action) where TAlert : Alert, new() {
-            return BuildElement<TAlert>(action);
+            return BuildElement(action);
         }
 
         /// <summary>
@@ -52,7 +51,7 @@ namespace sidekick
         /// <param name="action"></param>
         /// <returns></returns>
         public static string BuildModal<TModal>(Action<TModal> action) where TModal : Modal, new() {
-            return BuildElement<TModal>(action);
+            return BuildElement(action);
         }
 
         /// <summary>
@@ -65,4 +64,3 @@ namespace sidekick
         }
     }
 }
-

@@ -54,5 +54,24 @@ namespace sidekick
 
             return final;
         }
+
+        /// <summary>
+        ///     Converts a long integer to a double value that represents the size in MBs. Rounded to 2 decimal places.
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
+        public static double ConvertToMB(this long bytes) {
+            return Math.Round((bytes / 1024f) / 1024f, 2);
+        }
+
+        /// <summary>
+        ///     Converts a long integer to a double value that represents the size in MBs.
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <param name="decimalPlaces">Round to this decimal place</param>
+        /// <returns></returns>
+        public static double ConvertToMB(this long bytes, int decimalPlaces) {
+            return Math.Round((bytes / 1024f) / 1024f, decimalPlaces);
+        }
     }
 }

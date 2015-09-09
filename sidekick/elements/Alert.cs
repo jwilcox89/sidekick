@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace sidekick
 {
@@ -41,7 +42,7 @@ namespace sidekick
             get {
                 string className = Type.GetHtmlAttributes<AlertType>().Class;
                 if (Dismissible)
-                    className = string.Format("{0} alert-dismissable", className);
+                    className = String.Format("{0} alert-dismissable", className);
 
                 return className;
             }

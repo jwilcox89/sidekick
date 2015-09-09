@@ -36,7 +36,7 @@ namespace sidekick
             writer.RenderEndTag();
 
             string result = helper.ActionLink(REPLACEMENT_TEXT, action, controller, routeValues, htmlAttributes).ToString();
-            result = result.Replace(REPLACEMENT_TEXT, string.Format("{0} {1}", writer.InnerWriter.ToString(), text));
+            result = result.Replace(REPLACEMENT_TEXT, String.Format("{0} {1}", writer.InnerWriter.ToString(), text));
 
             return new MvcHtmlString(result);
         }
@@ -66,7 +66,7 @@ namespace sidekick
             writer.RenderEndTag();
 
             string result = helper.ActionLink(REPLACEMENT_TEXT, action, controller, routeValues, options, htmlAttributes).ToString();
-            result = result.Replace(REPLACEMENT_TEXT, string.Format("{0} {1}", writer.InnerWriter.ToString(), text));
+            result = result.Replace(REPLACEMENT_TEXT, String.Format("{0} {1}", writer.InnerWriter.ToString(), text));
 
             return new MvcHtmlString(result);
         }

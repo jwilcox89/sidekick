@@ -45,33 +45,33 @@ namespace sidekick
 
         private MvcHtmlString CreateInputGroup() {
             using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter())) {
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, string.Format("input-group {0}", _model.Size.GetHtmlAttributes<InputGroupSize>().Class));
+                writer.AddAttribute(HtmlTextWriterAttribute.Class, String.Format("input-group {0}", _model.Size.GetHtmlAttributes<InputGroupSize>().Class));
                 writer.RenderBeginTag(HtmlTextWriterTag.Div); // <div class=input-group>
 
-                if (!string.IsNullOrEmpty(_model.PrependIcon) || !string.IsNullOrEmpty(_model.PrependText)) {
+                if (!String.IsNullOrEmpty(_model.PrependIcon) || !String.IsNullOrEmpty(_model.PrependText)) {
                     writer.AddAttribute(HtmlTextWriterAttribute.Class, "input-group-addon");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
 
-                    if (!string.IsNullOrEmpty(_model.PrependIcon))
-                        writer.Write(string.Format("<i class='{0}'></i>", _model.PrependIcon));
+                    if (!String.IsNullOrEmpty(_model.PrependIcon))
+                        writer.Write(String.Format("<i class='{0}'></i>", _model.PrependIcon));
 
-                    if (!string.IsNullOrEmpty(_model.PrependText))
-                        writer.Write(string.Format(" {0}", _model.PrependText)); 
+                    if (!String.IsNullOrEmpty(_model.PrependText))
+                        writer.Write(String.Format(" {0}", _model.PrependText)); 
 
                     writer.RenderEndTag();
                 }
 
                 writer.Write(_helper.TextBoxFor(_model.Expression, _model.HtmlAttributes).ToString());
 
-                if (!string.IsNullOrEmpty(_model.AppendIcon) || !string.IsNullOrEmpty(_model.AppendText)) {
+                if (!String.IsNullOrEmpty(_model.AppendIcon) || !String.IsNullOrEmpty(_model.AppendText)) {
                     writer.AddAttribute(HtmlTextWriterAttribute.Class, "input-group-addon");
                     writer.RenderBeginTag(HtmlTextWriterTag.Div);
 
-                    if (!string.IsNullOrEmpty(_model.AppendIcon))
-                        writer.Write(string.Format("<i class='{0}'></i>", _model.AppendIcon));
+                    if (!String.IsNullOrEmpty(_model.AppendIcon))
+                        writer.Write(String.Format("<i class='{0}'></i>", _model.AppendIcon));
 
-                    if (!string.IsNullOrEmpty(_model.AppendText))
-                        writer.Write(string.Format(" {0}", _model.AppendText)); 
+                    if (!String.IsNullOrEmpty(_model.AppendText))
+                        writer.Write(String.Format(" {0}", _model.AppendText)); 
 
                     writer.RenderEndTag();
                 }

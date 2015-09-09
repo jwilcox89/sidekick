@@ -12,10 +12,10 @@ namespace sidekick
         /// <param name="input"></param>
         /// <returns></returns>
         public static string GetDigits(this string input) {
-            if (string.IsNullOrEmpty(input))
+            if (String.IsNullOrEmpty(input))
                 return null;
 
-            return Regex.Replace(input, @"[^\d]+", string.Empty);
+            return Regex.Replace(input, @"[^\d]+", String.Empty);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace sidekick
             if (amount.HasValue)
                 return amount.Value.ToString("C");
 
-            return string.Empty;
+            return String.Empty;
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace sidekick
             if (amount.HasValue)
                 return amount.Value.ToString("C");
 
-            return string.Empty;
+            return String.Empty;
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace sidekick
             if (amount.HasValue)
                 return amount.Value.ToString("C");
 
-            return string.Empty;
+            return String.Empty;
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace sidekick
             if (amount.HasValue)
                 return amount.Value.ToString("C");
 
-            return string.Empty;
+            return String.Empty;
         }
 
         /// <summary>
@@ -114,8 +114,8 @@ namespace sidekick
         /// <param name="areaCodeParens"></param>
         /// <returns></returns>
         public static string FormatPhone(this HtmlHelper helper, string number, bool areaCodeParens = true) {
-            if (string.IsNullOrEmpty(number))
-                return string.Empty;
+            if (String.IsNullOrEmpty(number))
+                return String.Empty;
 
             if (number.Trim().Length < 10) {
                 return Regex.Replace(number, "(\\d{3})(\\d{4})", "$1-$2");
@@ -135,8 +135,8 @@ namespace sidekick
         /// <param name="areaCodeParens"></param>
         /// <returns></returns>
         public static string FormatPhone(this string number, bool areaCodeParens = true) {
-            if (string.IsNullOrEmpty(number))
-                return string.Empty;
+            if (String.IsNullOrEmpty(number))
+                return String.Empty;
 
             if (number.Trim().Length < 10) {
                 return Regex.Replace(number, "(\\d{3})(\\d{4})", "$1-$2");
@@ -156,8 +156,8 @@ namespace sidekick
         /// <param name="ssn"></param>
         /// <returns></returns>
         public static string FormatSSN(this HtmlHelper helper, string ssn) {
-            if (string.IsNullOrEmpty(ssn))
-                return string.Empty;
+            if (String.IsNullOrEmpty(ssn))
+                return String.Empty;
 
             return ssn.Insert(3,"-").Insert(6,"-");
         }
@@ -169,8 +169,8 @@ namespace sidekick
         /// <param name="ssn"></param>
         /// <returns></returns>
         public static string FormatSSN(this string ssn) {
-            if (string.IsNullOrEmpty(ssn))
-                return string.Empty;
+            if (String.IsNullOrEmpty(ssn))
+                return String.Empty;
 
             return ssn.Insert(3,"-").Insert(6,"-");
         }

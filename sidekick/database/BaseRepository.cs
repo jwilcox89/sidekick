@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     Generic repository designed to account for all generic query functionality
+    /// </summary>
+    /// <typeparam name="TContext">The database context you would like to query</typeparam>
     public class BaseRepository<TContext> : IDisposable where TContext : DbContext, new()
     {
         private TContext _context;

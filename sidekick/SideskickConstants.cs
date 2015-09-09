@@ -95,7 +95,7 @@ namespace sidekick
         [HtmlBuilder(Class="warning", Icon="fa fa-exclamation-triangle")]
         Warning,
 
-        [HtmlBuilder(Class="info", Icon="fa fa-info")]
+        [HtmlBuilder(Class="info", Icon="fa fa-info-circle")]
         Info
     }
 

@@ -3,30 +3,30 @@ C:\Personal Development\sidekick\sidekick\bin\Debug\sidekick.dll
 C:\Personal Development\sidekick\sidekick\bin\Debug\sidekick.pdb
 C:\Personal Development\sidekick\sidekick\obj\Debug\sidekick.dll
 C:\Personal Development\sidekick\sidekick\obj\Debug\sidekick.pdb
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\sidekick.dll.config
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\sidekick.dll
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\sidekick.pdb
-C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\obj\Debug\sidekick.dll
-C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\obj\Debug\sidekick.pdb
-C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Newtonsoft.Json.dll
-C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\EntityFramework.dll
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Microsoft.AspNet.Identity.Core.dll
-C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Newtonsoft.Json.dll
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.Helpers.dll
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.Mvc.dll
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.Razor.dll
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.Deployment.dll
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.dll
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\EntityFramework.xml
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\Newtonsoft.Json.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.Helpers.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.Mvc.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.Razor.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.Razor.xml
-C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\sidekick.dll.config
-C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\EntityFramework.dll
-C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\EntityFramework.xml
-C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\obj\Debug\sidekick.csprojResolveAssemblyReference.cache
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\obj\Debug\sidekick.dll
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\obj\Debug\sidekick.pdb

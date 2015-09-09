@@ -14,7 +14,7 @@ namespace sidekick
         /// <param name="input"></param>
         /// <returns></returns>
         public static bool IsValidNumber(this string input) {
-            return !string.IsNullOrEmpty(input) && Regex.IsMatch(input, @"^\d+$");
+            return !String.IsNullOrEmpty(input) && Regex.IsMatch(input, @"^\d+$");
         }
 
         /// <summary>
@@ -27,12 +27,12 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     If the string is null then the value is set to an empty ("") string.
+        ///     If the string is null then the value is set to an empty ("") String.
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static string SetEmptyIfNull(this string value) {
-            return (value == null) ? string.Empty : value;
+            return (value == null) ? String.Empty : value;
         }
     }
 }

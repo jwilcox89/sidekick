@@ -1,4 +1,3 @@
-C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick.testing\obj\Debug\sidekick.testing.csprojResolveAssemblyReference.cache
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick.testing\bin\sidekick.testing.dll.config
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick.testing\bin\sidekick.testing.dll
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick.testing\bin\sidekick.testing.pdb
@@ -53,5 +52,6 @@ C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick.testing\bin\Microsoft.Owin.S
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick.testing\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick.testing\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick.testing\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick.testing\obj\Debug\sidekick.testing.csprojResolveAssemblyReference.cache
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick.testing\obj\Debug\sidekick.testing.dll
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick.testing\obj\Debug\sidekick.testing.pdb

@@ -58,7 +58,7 @@ namespace sidekick
                 TagBuilder requiredTag = new TagBuilder("span");
                 requiredTag.Attributes.Add("class", "required");
                 requiredTag.SetInnerText("*");
-                result = string.Format("{0} {1}", result, requiredTag.ToString(TagRenderMode.Normal));
+                result = String.Format("{0} {1}", result, requiredTag.ToString(TagRenderMode.Normal));
             }
 
             return MvcHtmlString.Create(result);

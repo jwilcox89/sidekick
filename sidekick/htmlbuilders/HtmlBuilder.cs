@@ -35,7 +35,7 @@ namespace sidekick
         /// <returns></returns>
         public static MvcHtmlString BuildAlert(this HtmlHelper helper, Alert alert) {
             new AlertBuilder(helper, alert, false);
-            return new MvcHtmlString(string.Empty);
+            return new MvcHtmlString(String.Empty);
         }
 
         /// <summary>

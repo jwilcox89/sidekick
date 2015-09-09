@@ -21,19 +21,19 @@ namespace sidekick
         }
 
         private void BuildAlert() {
-            _helper.ViewContext.Writer.Write(string.Format("<div class='alert alert-{0}' role='alert'>", _alert.AlertClass));
+            _helper.ViewContext.Writer.Write(String.Format("<div class='alert alert-{0}' role='alert'>", _alert.AlertClass));
 
             if (_alert.Dismissible)
                 _helper.ViewContext.Writer.Write("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
 
-            _helper.ViewContext.Writer.Write(string.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _alert.Type.GetHtmlAttributes<AlertType>().Icon, _alert.Heading));
+            _helper.ViewContext.Writer.Write(String.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _alert.Type.GetHtmlAttributes<AlertType>().Icon, _alert.Heading));
             _helper.ViewContext.Writer.Write("<p>");
 
             if (_alert.MessageList.Count() > 0) {
                  _helper.ViewContext.Writer.Write("<ul>");
 
                 foreach (string m in _alert.MessageList) {
-                     _helper.ViewContext.Writer.Write(string.Format("<li>{0}</li>", m));
+                     _helper.ViewContext.Writer.Write(String.Format("<li>{0}</li>", m));
                 }
 
                  _helper.ViewContext.Writer.Write("</ul>");
@@ -47,12 +47,12 @@ namespace sidekick
         }
 
         private void BuildAlertShell() {
-            _helper.ViewContext.Writer.Write(string.Format("<div class='alert alert-{0}'>", _alert.AlertClass));
+            _helper.ViewContext.Writer.Write(String.Format("<div class='alert alert-{0}'>", _alert.AlertClass));
 
             if (_alert.Dismissible)
                 _helper.ViewContext.Writer.Write("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
 
-            _helper.ViewContext.Writer.Write(string.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _alert.Type.GetHtmlAttributes<AlertType>().Icon, _alert.Heading));
+            _helper.ViewContext.Writer.Write(String.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _alert.Type.GetHtmlAttributes<AlertType>().Icon, _alert.Heading));
         }
 
         public void Dispose() {
