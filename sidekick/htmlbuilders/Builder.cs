@@ -22,6 +22,17 @@ namespace sidekick
         }
 
         /// <summary>
+        ///     Builds a custom partial view
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="element"></param>
+        /// <param name="viewName"></param>
+        /// <returns></returns>
+        public static string BuildElement<TModel>(TModel element, string viewName){
+            return new ViewBuilder().RenderView(viewName, element);
+        }
+
+        /// <summary>
         ///     Builds a custom partial view that uses the AjaxAlert model
         /// </summary>
         /// <typeparam name="TAlert">Custom model that implements the IAlert interface</typeparam>

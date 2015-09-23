@@ -77,7 +77,7 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Builds a Bootstrap textbox with an input group
+        ///     Builds a Bootstrap textbox with an input group. No label.
         /// </summary>
         /// <typeparam name="TModel"></typeparam>
         /// <typeparam name="TProperty"></typeparam>
@@ -87,6 +87,20 @@ namespace sidekick
         /// <returns></returns>
         public static InputGroupBuilder<TModel,TProperty> InputGroupFor<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object htmlAttributes = null) {
             return new InputGroupBuilder<TModel,TProperty>(helper, expression, htmlAttributes);
+        }
+
+        /// <summary>
+        ///     Builds a Bootstrap datetimepicker. No label.
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <typeparam name="TProperty"></typeparam>
+        /// <param name="helper"></param>
+        /// <param name="expression"></param>
+        /// <param name="id"></param>
+        /// <param name="htmlAttributes"></param>
+        /// <returns></returns>
+        public static DatetimepickerBuilder<TModel,TProperty> DatetimepickerFor<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, string id, object htmlAttributes = null) {
+            return new DatetimepickerBuilder<TModel,TProperty>(helper, expression, id, htmlAttributes);
         }
 
         /// <summary>

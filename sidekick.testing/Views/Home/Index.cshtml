@@ -76,12 +76,14 @@
 <hr />
 
 <h2>Input Groups</h2>
-@using (Html.BeginForm()) {
-    <div class="form-group">
-        @Html.LabelForWithColon(x => x.Email)
-        @Html.InputGroupFor(x => x.Email, new { @class = "form-control", @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope")
-    </div>
-}
+<div class="form-group">
+    @Html.LabelForWithColon(x => x.Email)
+    @Html.InputGroupFor(x => x.Email, new { @class = "form-control", @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope")
+</div>
+
+<h2>Datetimepicker</h2>
+
+@Html.DatetimepickerFor(x => x.Email, "datetimepicker1", new { @class = "form-control" }).AppendIcon("fa fa-calendar")
 
 <h2>Form Groups</h2>
 @using (Html.BeginForm()) {
@@ -94,10 +96,6 @@
     @Html.BuildLabel(Colors.Primary, "Good Job!")
 </div>
 
-<h2>Headings</h2>
-@Html.BuildHeading(HeadingSize.H3, "Schools", "St. Mary's High School", Colors.Success)
-@Html.BuildHeading(HeadingSize.H3, "Users")
-
 @section scripts {
     <script type="text/javascript">
         $().ready(function () {
@@ -106,6 +104,8 @@
             });
 
             $('[data-toggle="tooltip"]').tooltip();
+
+            $('#datetimepicker1').datetimepicker();
         });
     </script>
 }

@@ -50,7 +50,7 @@ namespace sidekick
 
                 if (!String.IsNullOrEmpty(_model.PrependIcon) || !String.IsNullOrEmpty(_model.PrependText)) {
                     writer.AddAttribute(HtmlTextWriterAttribute.Class, "input-group-addon");
-                    writer.RenderBeginTag(HtmlTextWriterTag.Div);
+                    writer.RenderBeginTag(HtmlTextWriterTag.Span);
 
                     if (!String.IsNullOrEmpty(_model.PrependIcon))
                         writer.Write(String.Format("<i class='{0}'></i>", _model.PrependIcon));
@@ -65,7 +65,7 @@ namespace sidekick
 
                 if (!String.IsNullOrEmpty(_model.AppendIcon) || !String.IsNullOrEmpty(_model.AppendText)) {
                     writer.AddAttribute(HtmlTextWriterAttribute.Class, "input-group-addon");
-                    writer.RenderBeginTag(HtmlTextWriterTag.Div);
+                    writer.RenderBeginTag(HtmlTextWriterTag.Span);
 
                     if (!String.IsNullOrEmpty(_model.AppendIcon))
                         writer.Write(String.Format("<i class='{0}'></i>", _model.AppendIcon));
