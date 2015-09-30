@@ -83,7 +83,7 @@
 
 <h2>Datetimepicker</h2>
 
-@Html.DatetimepickerFor(x => x.Email, "datetimepicker1", new { @class = "form-control" }).AppendIcon("fa fa-calendar")
+@Html.InputGroupFor(x => x.Email, new { @class = "form-control" }).AppendIcon("fa fa-calendar").ShowLabel().DatetimepickerCss("datetimepicker")
 
 <h2>Form Groups</h2>
 @using (Html.BeginForm()) {
@@ -104,8 +104,7 @@
             });
 
             $('[data-toggle="tooltip"]').tooltip();
-
-            $('#datetimepicker1').datetimepicker();
+            $('.datetimepicker').datetimepicker();
         });
     </script>
 }

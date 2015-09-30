@@ -90,7 +90,6 @@
     <Compile Include="database\RandomNumber.cs" />
     <Compile Include="database\RepositoryException.cs" />
     <Compile Include="database\RepositoryExtentions.cs" />
-    <Compile Include="elements\Datetimepicker.cs" />
     <Compile Include="elements\HtmlElement.cs" />
     <Compile Include="elements\InputGroup.cs" />
     <Compile Include="elements\Panel.cs" />
@@ -118,7 +117,6 @@
     <Compile Include="helpers\LabelHelpers.cs" />
     <Compile Include="helpers\SelectListHelpers.cs" />
     <Compile Include="htmlbuilders\AlertBuilder.cs" />
-    <Compile Include="htmlbuilders\DatetimepickerBuilder.cs" />
     <Compile Include="htmlbuilders\HeadingBuilder.cs" />
     <Compile Include="htmlbuilders\HtmlBuilder.cs" />
     <Compile Include="htmlbuilders\InputGroupBuilder.cs" />

@@ -43,9 +43,36 @@ namespace sidekick
             return this;
         }
 
+        public InputGroupBuilder<TModel,TProperty> ShowLabel() {
+            _model.ShowLabel = true;
+            return this;
+        }
+
+        public InputGroupBuilder<TModel,TProperty> IsRequired() {
+            _model.IsRequired = true;
+            return this;
+        }
+
+        public InputGroupBuilder<TModel,TProperty> DatetimepickerCss(string @class) {
+            _model.DatetimepickerClass = @class;
+            return this;
+        }
+
+        public InputGroupBuilder<TModel,TProperty> DatetimepickerId(string id) {
+            _model.DatetimepickerId = id;
+            return this;
+        }
+
         private MvcHtmlString CreateInputGroup() {
             using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter())) {
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, String.Format("input-group {0}", _model.Size.GetHtmlAttributes<InputGroupSize>().Class));
+                writer.AddAttribute(HtmlTextWriterAttribute.Class, "form-group");
+                writer.RenderBeginTag(HtmlTextWriterTag.Div);
+
+                if (_model.ShowLabel)
+                    writer.Write(_helper.LabelForWithColon(_model.Expression, _model.IsRequired));
+
+                writer.AddAttribute(HtmlTextWriterAttribute.Class, String.Format("input-group {0} {1}", _model.Size.GetHtmlAttributes<InputGroupSize>().Class, _model.DatetimepickerClass));
+                writer.AddAttribute(HtmlTextWriterAttribute.Id, _model.DatetimepickerId);
                 writer.RenderBeginTag(HtmlTextWriterTag.Div); // <div class=input-group>
 
                 if (!String.IsNullOrEmpty(_model.PrependIcon) || !String.IsNullOrEmpty(_model.PrependText)) {
@@ -77,6 +104,7 @@ namespace sidekick
                 }
 
                 writer.RenderEndTag(); // </div>
+                writer.RenderEndTag();
 
                 return new MvcHtmlString(writer.InnerWriter.ToString());
             }

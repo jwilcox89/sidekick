@@ -30,6 +30,26 @@ namespace sidekick
         /// </summary>
         public virtual InputGroupSize Size { get; set; }
 
+        /// <summary>
+        ///     If true label for element will be displayed. Defaults to false.
+        /// </summary>
+        public virtual bool ShowLabel { get; set; }
+
+        /// <summary>
+        ///     If true label for element will appear with red '*' to the right. Defaults to false.
+        /// </summary>
+        public virtual bool IsRequired { get; set; }
+
+        /// <summary>
+        ///     Css class for datetimepicker
+        /// </summary>
+        public virtual string DatetimepickerClass { get; set; }
+
+        /// <summary>
+        ///     Id for datetimepicker
+        /// </summary>
+        public virtual string DatetimepickerId { get; set; }
+
         public InputGroup(Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes) {
             Expression = expression;
             HtmlAttributes = textboxHtmlAttributes;
