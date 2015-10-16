@@ -24,6 +24,10 @@ namespace sidekick
             return new MvcHtmlString(String.Empty);
         }
 
+        public MvcHtmlString AddStep(string title, string icon, string description, bool complete = false) {
+            return AddStep(new Step(title, icon, description, complete));
+        }
+
         public void Dispose() {
             _helper.ViewContext.Writer.Write("</ol>");
             _helper.ViewContext.Writer.Write("</div>");

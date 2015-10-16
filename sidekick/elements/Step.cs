@@ -21,5 +21,14 @@
         ///     True if the step is complete
         /// </summary>
         public virtual bool Complete { get; set; }
+
+        public Step() {}
+
+        public Step(string title, string icon, string description, bool complete = false) {
+            Title = title;
+            Icon = icon;
+            Description = description;
+            Complete = complete;
+        }
     }
 }

@@ -7,7 +7,7 @@ using sidekick.testing.Models;
 
 namespace sidekick.testing.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {

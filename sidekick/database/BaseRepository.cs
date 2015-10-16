@@ -57,7 +57,7 @@ namespace sidekick
         /// <param name="id">Primary key value</param>
         /// <returns></returns>
         public async Task<TEntity> GetAsync<TEntity>(params object[] id) where TEntity : class {
-            return await Task.Run(() => Get<TEntity>(id));
+            return await Task.Run(() => Get<TEntity>(id)).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace sidekick
         /// <typeparam name="TEntity">Entity object type to be returned</typeparam>
         /// <returns></returns>
         public async Task<IQueryable<TEntity>> GetAllAsync<TEntity>() where TEntity : class {
-            return await Task.Run(() => GetAll<TEntity>());
+            return await Task.Run(() => GetAll<TEntity>()).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace sidekick
         /// <param name="query"></param>
         /// <returns></returns>
         public async Task<IQueryable<TEntity>> FindByAsync<TEntity>(Expression<Func<TEntity,bool>> query) where TEntity : class {
-            return await Task.Run(() => FindBy<TEntity>(query));
+            return await Task.Run(() => FindBy<TEntity>(query)).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -112,8 +112,8 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="entities"></param>
-        public void Add<TEntity>(IEnumerable<TEntity> entities) where TEntity : class {
-            DB.Set<TEntity>().AddRange(entities);
+        public void Add<TEntity>(IEnumerable<TEntity> collection) where TEntity : class {
+            DB.Set<TEntity>().AddRange(collection);
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace sidekick
         /// <returns>Returns the value that the property was toggled to.</returns>
         /// <returns></returns>
         public async Task<bool> TogglePropertyAsync<TEntity>(Expression<Func<TEntity,object>> property, params object[] id) where TEntity : class {
-            return await Task.Run(() => ToggleProperty<TEntity>(property.GetMemberName(), id));
+            return await Task.Run(() => ToggleProperty<TEntity>(property.GetMemberName(), id)).ConfigureAwait(false);
         }
 
         private bool ToggleProperty<TEntity>(string propertyName, params object[] id) where TEntity : class {
@@ -212,7 +212,7 @@ namespace sidekick
         /// </summary>
         /// <returns></returns>
         public async Task<int> SaveAsync() {
-            return await Task.Run(() => Save());
+            return await Task.Run(() => Save()).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace sidekick
         /// <param name="ensureTransaction"></param>
         /// <returns></returns>
         public async Task ExecuteSqlScriptAsync(string sql, bool ensureTransaction = true) {
-            await Task.Run(() => ExecuteSqlScript(sql, ensureTransaction));
+            await Task.Run(() => ExecuteSqlScript(sql, ensureTransaction)).ConfigureAwait(false);
         }
 
         public void Dispose() {

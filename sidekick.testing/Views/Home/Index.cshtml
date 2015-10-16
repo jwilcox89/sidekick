@@ -1,7 +1,7 @@
 ﻿@using sidekick
 @using sidekick.testing.Models
 
-@model sidekick.testing.Models.LoginViewModel
+@model LoginViewModel
 
 @{
     ViewBag.Title = "Home Page";
@@ -68,27 +68,22 @@
 
 <h2>Steps</h2>
 @using (var steps = Html.BeginSteps(3)) {
-    @steps.AddStep(new Step { Title = "Step 1", Icon = "fa fa-truck", Complete = true, Description = "Description of the step" })   
-    @steps.AddStep(new Step { Title = "Step 2", Icon = "fa fa-briefcase", Complete = true, Description = "Description of the next step" })
-    @steps.AddStep(new Step { Title = "Step 3", Icon = "fa fa-user", Description = "Description of the last step" })
+    @steps.AddStep("Step 1", "fa fa-truck", "Description of the step", true)   
+    @steps.AddStep("Step 2", "fa fa-briefcase", "Description of the next step", true)
+    @steps.AddStep("Step 3", "fa fa-user", "Description of the last step")
 }
 
 <hr />
 
 <h2>Input Groups</h2>
-<div class="form-group">
-    @Html.LabelForWithColon(x => x.Email)
-    @Html.InputGroupFor(x => x.Email, new { @class = "form-control", @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope")
-</div>
+@Html.InputGroupFor(x => x.Email, new { @class = "form-control", @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").ShowLabel()
 
 <h2>Datetimepicker</h2>
 
 @Html.InputGroupFor(x => x.Email, new { @class = "form-control" }).AppendIcon("fa fa-calendar").ShowLabel().DatetimepickerCss("datetimepicker")
 
 <h2>Form Groups</h2>
-@using (Html.BeginForm()) {
-    @Html.FormGroupFor(x => x.Email, new { @class = "form-control", @placeholder = "Email Address..." }).IsRequired()
-}
+@Html.FormGroupFor(x => x.Email, new { @class = "form-control", @placeholder = "Email Address..." }).IsRequired()
 
 <h2>Labels</h2>
 <div class="form-group">

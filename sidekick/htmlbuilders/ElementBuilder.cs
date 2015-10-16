@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace sidekick
 {
-    public static class Builder
+    public static class ElementBuilder
     {
         /// <summary>
         ///     Builds a partial view using a model that implements the IElement interface.
@@ -19,17 +19,6 @@ namespace sidekick
                 element.ViewName = "_AjaxMessage";
 
             return new ViewBuilder().RenderView(element.ViewName, element);
-        }
-
-        /// <summary>
-        ///     Builds a custom partial view
-        /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="element"></param>
-        /// <param name="viewName"></param>
-        /// <returns></returns>
-        public static string BuildElement<TModel>(TModel element, string viewName){
-            return new ViewBuilder().RenderView(viewName, element);
         }
 
         /// <summary>
@@ -72,6 +61,17 @@ namespace sidekick
         /// <returns></returns>
         public static string BuildElement(string viewName) {
             return new ViewBuilder().RenderView(viewName);
+        }
+
+        /// <summary>
+        ///     Builds a custom partial view
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="element"></param>
+        /// <param name="viewName"></param>
+        /// <returns></returns>
+        public static string BuildElement<TModel>(TModel element, string viewName) {
+            return new ViewBuilder().RenderView(viewName, element);
         }
     }
 }

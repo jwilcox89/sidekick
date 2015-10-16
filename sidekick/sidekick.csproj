@@ -85,6 +85,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controllers\BaseController.cs" />
     <Compile Include="database\BaseRepository.cs" />
     <Compile Include="database\IEntity.cs" />
     <Compile Include="database\RandomNumber.cs" />
@@ -104,7 +105,7 @@
     <Compile Include="extensions\FormattingExtensions.cs" />
     <Compile Include="extensions\ValidationExtensions.cs" />
     <Compile Include="htmlbuilders\BreadcrumbBuilder.cs" />
-    <Compile Include="htmlbuilders\Builder.cs" />
+    <Compile Include="htmlbuilders\ElementBuilder.cs" />
     <Compile Include="connection\NetworkConnection.cs" />
     <Compile Include="connection\NetworkConnectionManager.cs" />
     <Compile Include="connection\UserImpersonation.cs" />
@@ -114,7 +115,6 @@
     <Compile Include="helpers\ActionHelpers.cs" />
     <Compile Include="helpers\DesignHelpers.cs" />
     <Compile Include="helpers\GeneralHelpers.cs" />
-    <Compile Include="helpers\LabelHelpers.cs" />
     <Compile Include="helpers\SelectListHelpers.cs" />
     <Compile Include="htmlbuilders\AlertBuilder.cs" />
     <Compile Include="htmlbuilders\HeadingBuilder.cs" />
@@ -127,7 +127,7 @@
     <Compile Include="htmlbuilders\TabBuilder.cs" />
     <Compile Include="htmlbuilders\FormGroupBuilder.cs" />
     <Compile Include="results\JsonErrorResult.cs" />
-    <Compile Include="SideskickConstants.cs" />
+    <Compile Include="SideskickEnums.cs" />
     <Compile Include="responses\RenderDocument.cs" />
     <Compile Include="session\SessionManagerBase.cs" />
     <Compile Include="TempDataManager.cs" />

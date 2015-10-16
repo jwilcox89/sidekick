@@ -63,7 +63,7 @@ namespace sidekick
             if (ContentEncoding != null)
                 response.ContentEncoding = ContentEncoding;
 
-            response.Write(JsonConvert.SerializeObject(new { success = false, view = (String.IsNullOrEmpty(_viewName) ? Builder.BuildAlert<Alert>(context.Controller.ViewData.ModelState) : Builder.BuildAlert<Alert>(context.Controller.ViewData.ModelState, _viewName)) }));
+            response.Write(JsonConvert.SerializeObject(new { success = false, view = (String.IsNullOrEmpty(_viewName) ? ElementBuilder.BuildAlert<Alert>(context.Controller.ViewData.ModelState) : ElementBuilder.BuildAlert<Alert>(context.Controller.ViewData.ModelState, _viewName)) }));
         }
     }
 }
