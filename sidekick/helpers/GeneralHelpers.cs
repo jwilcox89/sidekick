@@ -64,8 +64,6 @@ namespace sidekick
                     if (String.IsNullOrEmpty(c) || controllerName == currentController)
                         return (String.IsNullOrEmpty(activeClass)) ? "active" : activeClass; 
                 }
-
-                return (String.IsNullOrEmpty(activeClass)) ? "active" : activeClass;
             }
 
             return String.Empty;

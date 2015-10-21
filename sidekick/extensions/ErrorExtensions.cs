@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity;
 
 namespace sidekick
 {
-    public static class ErrorHandler
+    public static class ErrorExtensions
     {
         /// <summary>
         ///     Get a list of the errors in the ModelState

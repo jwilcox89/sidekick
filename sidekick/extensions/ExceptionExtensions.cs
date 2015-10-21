@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace sidekick
 {
-    public static class ErrorLogExtentions
+    public static class ExceptionExtensions
     {
         /// <summary>
         ///     Returns the exception or a null string

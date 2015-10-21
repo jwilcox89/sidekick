@@ -11,7 +11,7 @@ namespace sidekick
     {
         private const string REPLACEMENT_TEXT = "_replace_";
 
-        public static MvcHtmlString ActionLinkWithIcon (this HtmlHelper helper, string action, string controller, object routeValues, string icon, string altText = null, object htmlAttributes = null) {
+        public static MvcHtmlString ActionLinkWithIcon(this HtmlHelper helper, string action, string controller, object routeValues, string icon, string altText = null, object htmlAttributes = null) {
             HtmlTextWriter writer = new HtmlTextWriter(new StringWriter());
 
             writer.AddAttribute(HtmlTextWriterAttribute.Class, icon);

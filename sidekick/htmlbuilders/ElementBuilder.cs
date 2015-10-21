@@ -55,7 +55,7 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Builds a partial view and returns the HTML of a view that does not use a model.
+        ///     Builds a partial view and returns the HTML
         /// </summary>
         /// <param name="viewName">View name</param>
         /// <returns></returns>
@@ -64,7 +64,7 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Builds a custom partial view
+        ///     Builds a custom partial view and returns the HTML
         /// </summary>
         /// <typeparam name="TModel"></typeparam>
         /// <param name="element"></param>
@@ -72,6 +72,18 @@ namespace sidekick
         /// <returns></returns>
         public static string BuildElement<TModel>(TModel element, string viewName) {
             return new ViewBuilder().RenderView(viewName, element);
+        }
+
+        /// <summary>
+        ///     Builds a custom partial view and returns the HTML
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="element"></param>
+        /// <param name="viewName"></param>
+        /// <param name="tempData"></param>
+        /// <returns></returns>
+        public static string BuildElement<TModel>(TModel element, string viewName, object tempData) {
+            return new ViewBuilder().RenderView(viewName, element, tempData);
         }
     }
 }

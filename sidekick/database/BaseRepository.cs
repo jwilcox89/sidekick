@@ -180,12 +180,12 @@ namespace sidekick
             TEntity entity = Get<TEntity>(id);
 
             if (entity == null)
-                throw new NullReferenceException("no record found");
+                throw new NullReferenceException("No record found");
 
             PropertyInfo currentProperty = entity.GetProperty(propertyName);
 
-            if (currentProperty.PropertyType != (typeof(Boolean)))
-                throw new ArgumentException("not a boolean type");
+            if (currentProperty.PropertyType != (typeof(Boolean)) && currentProperty.PropertyType != (typeof(Nullable<Boolean>)))
+                throw new ArgumentException("Not a boolean or nullable boolean type");
 
             object currentValue = currentProperty.GetValue(entity, null);
             bool newValue = Convert.ToBoolean(currentValue).Toggle();

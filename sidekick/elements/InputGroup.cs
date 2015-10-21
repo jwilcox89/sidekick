@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace sidekick
 {
-    public class InputGroup<TModel,TProperty> : HtmlElement<TModel,TProperty>
+    public class InputGroup<TModel,TProperty> : FormControl<TModel,TProperty>
     {
         /// <summary>
         ///     Text to append to the input group
@@ -29,16 +29,6 @@ namespace sidekick
         ///     Size of the input group
         /// </summary>
         public virtual InputGroupSize Size { get; set; }
-
-        /// <summary>
-        ///     If true label for element will be displayed. Defaults to false.
-        /// </summary>
-        public virtual bool ShowLabel { get; set; }
-
-        /// <summary>
-        ///     If true label for element will appear with red '*' to the right. Defaults to false.
-        /// </summary>
-        public virtual bool IsRequired { get; set; }
 
         /// <summary>
         ///     Css class for datetimepicker

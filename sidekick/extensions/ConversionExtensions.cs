@@ -73,5 +73,52 @@ namespace sidekick
         public static double ConvertToMB(this long bytes, int decimalPlaces) {
             return Math.Round((bytes / 1024f) / 1024f, decimalPlaces);
         }
+
+        /// <summary>
+        ///     Loops through each day in a date range
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static IEnumerable<DateTime> ForEachDay(this DateTime start, DateTime end) {
+            DateTime currentDay = new DateTime(start.Year, start.Month, 1);
+            while(currentDay <= end) {
+                yield return currentDay;
+                currentDay = currentDay.AddDays(1);
+            }
+        }
+
+        /// <summary>
+        ///     Loops through each month in a date range
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static IEnumerable<DateTime> ForEachMonth(this DateTime start, DateTime end) {
+            DateTime currentMonth = new DateTime(start.Year, start.Month, 1);
+            while(currentMonth <= end) {
+                yield return currentMonth;
+                currentMonth = currentMonth.AddMonths(1);
+            }
+        }
+
+        /// <summary>
+        ///     Loops through each year in a date range.
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static IEnumerable<DateTime> ForEachYear(this DateTime start, DateTime end) {
+            DateTime currentMonth = new DateTime(start.Year, start.Month, 1);
+            int currentYear = currentMonth.Year;
+            while(currentMonth <= end) {
+                if (currentMonth.Year != currentYear) {
+                    currentYear = currentMonth.Year;
+                    yield return currentMonth;
+                }
+
+                currentMonth = currentMonth.AddMonths(1);
+            }
+        }
     }
 }

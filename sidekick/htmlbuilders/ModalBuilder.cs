@@ -30,9 +30,7 @@ namespace sidekick
         }
 
         public void Dispose() {
-            _helper.ViewContext.Writer.Write("</div>");
-            _helper.ViewContext.Writer.Write("</div>");
-            _helper.ViewContext.Writer.Write("</div>");
+            _helper.ViewContext.Writer.Write("</div></div></div>");
         }
     }
 

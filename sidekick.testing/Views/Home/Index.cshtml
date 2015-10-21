@@ -76,11 +76,11 @@
 <hr />
 
 <h2>Input Groups</h2>
-@Html.InputGroupFor(x => x.Email, new { @class = "form-control", @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").ShowLabel()
+@Html.InputGroupFor(x => x.Email, new { @class = "form-control", @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").HasLabelWithColon().HasValidation()
 
 <h2>Datetimepicker</h2>
 
-@Html.InputGroupFor(x => x.Email, new { @class = "form-control" }).AppendIcon("fa fa-calendar").ShowLabel().DatetimepickerCss("datetimepicker")
+@Html.InputGroupFor(x => x.Email, new { @class = "form-control" }).AppendIcon("fa fa-calendar").HasLabelWithColon().DatetimepickerCss("datetimepicker")
 
 <h2>Form Groups</h2>
 @Html.FormGroupFor(x => x.Email, new { @class = "form-control", @placeholder = "Email Address..." }).IsRequired()
