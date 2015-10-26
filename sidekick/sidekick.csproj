@@ -88,7 +88,6 @@
     <Compile Include="controllers\BaseController.cs" />
     <Compile Include="database\BaseRepository.cs" />
     <Compile Include="database\IEntity.cs" />
-    <Compile Include="database\RandomNumber.cs" />
     <Compile Include="database\RepositoryException.cs" />
     <Compile Include="database\RepositoryExtentions.cs" />
     <Compile Include="elements\FormControl.cs" />

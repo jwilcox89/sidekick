@@ -43,5 +43,14 @@ namespace sidekick
         public static PropertyInfo GetProperty<TEntity>(this TEntity entity, string name) {
             return entity.GetType().GetProperty(name);
         }
+
+        /// <summary>
+        ///     Returns the opposite of the provided bool's value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static bool Toggle(this bool value) {
+            return !value;
+        }
     }
 }
