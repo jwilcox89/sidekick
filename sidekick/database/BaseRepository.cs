@@ -203,7 +203,7 @@ namespace sidekick
             try {
                 return DB.SaveChanges();
             } catch (Exception ex) {
-                throw new RepositoryException("An error has occured when trying to save.", ex);
+                throw new Exception("An error has occured when trying to save.", ex);
             }
         }
 

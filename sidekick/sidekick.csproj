@@ -88,8 +88,7 @@
     <Compile Include="controllers\BaseController.cs" />
     <Compile Include="database\BaseRepository.cs" />
     <Compile Include="database\IEntity.cs" />
-    <Compile Include="database\RepositoryException.cs" />
-    <Compile Include="database\RepositoryExtentions.cs" />
+    <Compile Include="database\RepositoryExtensions.cs" />
     <Compile Include="elements\FormControl.cs" />
     <Compile Include="elements\HtmlElement.cs" />
     <Compile Include="elements\InputGroup.cs" />
