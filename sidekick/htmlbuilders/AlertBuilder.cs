@@ -4,13 +4,13 @@ using System.Web.Mvc;
 
 namespace sidekick
 {
-    public class AlertBuilder : IDisposable
+    public class AlertBuilder<TModel> : BuilderBase<TModel>, IDisposable
     {
-        private HtmlHelper _helper;
         private Alert _alert;
 
-        public AlertBuilder(HtmlHelper helper, Alert alert, bool customBody) {
-            _helper = helper;
+        public AlertBuilder(HtmlHelper<TModel> helper, Alert alert, bool customBody)
+            : base(helper) {
+
             _alert = alert;
 
             if (!customBody) {
@@ -21,42 +21,42 @@ namespace sidekick
         }
 
         private void BuildAlert() {
-            _helper.ViewContext.Writer.Write(String.Format("<div class='alert alert-{0}' role='alert'>", _alert.AlertClass));
+            WriteLine(String.Format("<div class='alert alert-{0}' role='alert'>", _alert.AlertClass));
 
             if (_alert.Dismissible)
-                _helper.ViewContext.Writer.Write("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
+                WriteLine("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
 
-            _helper.ViewContext.Writer.Write(String.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _alert.Type.GetHtmlAttributes<AlertType>().Icon, _alert.Heading));
-            _helper.ViewContext.Writer.Write("<p>");
+            WriteLine(String.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _alert.Type.GetHtmlAttributes<AlertType>().Icon, _alert.Heading));
+            WriteLine("<p>");
 
             if (_alert.MessageList.Count() > 0) {
-                 _helper.ViewContext.Writer.Write("<ul>");
+                 WriteLine("<ul>");
 
                 foreach (string m in _alert.MessageList) {
-                     _helper.ViewContext.Writer.Write(String.Format("<li>{0}</li>", m));
+                     WriteLine(String.Format("<li>{0}</li>", m));
                 }
 
-                 _helper.ViewContext.Writer.Write("</ul>");
+                 WriteLine("</ul>");
             } else {
-                 _helper.ViewContext.Writer.Write(_alert.Body);
+                 WriteLine(_alert.Body);
             }
 
-            _helper.ViewContext.Writer.Write("</p>");
+            WriteLine("</p>");
 
             Dispose();
         }
 
         private void BuildAlertShell() {
-            _helper.ViewContext.Writer.Write(String.Format("<div class='alert alert-{0}'>", _alert.AlertClass));
+            WriteLine(String.Format("<div class='alert alert-{0}'>", _alert.AlertClass));
 
             if (_alert.Dismissible)
-                _helper.ViewContext.Writer.Write("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
+                WriteLine("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
 
-            _helper.ViewContext.Writer.Write(String.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _alert.Type.GetHtmlAttributes<AlertType>().Icon, _alert.Heading));
+            WriteLine(String.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _alert.Type.GetHtmlAttributes<AlertType>().Icon, _alert.Heading));
         }
 
         public void Dispose() {
-            _helper.ViewContext.Writer.Write("</div>");
+            WriteLine("</div>");
         }
     }
 }

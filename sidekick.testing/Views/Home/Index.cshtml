@@ -47,20 +47,16 @@
 <hr />
 
 <h2>Tab</h2>
-@using (var tab = Html.BeginTabs()) {
-    using (var nav = tab.BeginNavSection()) {
-        @nav.BuildTab(new Tab { Name = "baseball", Icon = "fa fa-user", Active = true }, "Baseball")
-        @nav.BuildTab(new Tab { Name = "football", Icon = "fa fa-truck" }, "Football")
-    }   
+@using (var tabs = Html.BeginTabs()) {
+    @tabs.Tab(new Tab { Name = "baseball", Icon = "fa fa-user", Active = true }, "Baseball")
+    @tabs.Tab(new Tab { Name = "football", Icon = "fa fa-truck" }, "Football")
     
-    using (var content = tab.BeginContentSection()) {
-        using (content.BeginTabContent()) {
-            <p>The baseball tab</p>   
-        }   
-        
-        using (content.BeginTabContent()) {
-            <p>The football tab</p>   
-        }
+    using (tabs.BeginTab()) {
+        <p>The baseball tab</p>
+    }
+    
+    using (tabs.BeginTab()) {
+        <p>the football tab</p>
     }
 }
 

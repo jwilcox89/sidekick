@@ -13,8 +13,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="modal"></param>
         /// <returns></returns>
-        public static ModalBuilder BeginModal(this HtmlHelper helper, Modal modal) {
-            return new ModalBuilder(helper, modal);
+        public static ModalBuilder<TModel> BeginModal<TModel>(this HtmlHelper<TModel> helper, Modal modal) {
+            return new ModalBuilder<TModel>(helper, modal);
         }
 
         /// <summary>
@@ -23,8 +23,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="alert"></param>
         /// <returns></returns>
-        public static AlertBuilder BeginAlert(this HtmlHelper helper, Alert alert) {
-            return new AlertBuilder(helper, alert, true);
+        public static AlertBuilder<TModel> BeginAlert<TModel>(this HtmlHelper<TModel> helper, Alert alert) {
+            return new AlertBuilder<TModel>(helper, alert, true);
         }
 
         /// <summary>
@@ -33,8 +33,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="alert"></param>
         /// <returns></returns>
-        public static MvcHtmlString BuildAlert(this HtmlHelper helper, Alert alert) {
-            new AlertBuilder(helper, alert, false);
+        public static MvcHtmlString BuildAlert<TModel>(this HtmlHelper<TModel> helper, Alert alert) {
+            new AlertBuilder<TModel>(helper, alert, false);
             return new MvcHtmlString(String.Empty);
         }
 
@@ -43,8 +43,8 @@ namespace sidekick
         /// </summary>
         /// <param name="helper"></param>
         /// <returns></returns>
-        public static TabBuilder BeginTabs(this HtmlHelper helper) {
-            return new TabBuilder(helper);
+        public static TabsBuilder<TModel> BeginTabs<TModel>(this HtmlHelper<TModel> helper) {
+            return new TabsBuilder<TModel>(helper);
         }
 
         /// <summary>
@@ -53,8 +53,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="panel"></param>
         /// <returns></returns>
-        public static PanelBuilder BeginPanel(this HtmlHelper helper, Panel panel) {
-            return new PanelBuilder(helper, panel);
+        public static PanelBuilder<TModel> BeginPanel<TModel>(this HtmlHelper<TModel> helper, Panel panel) {
+            return new PanelBuilder<TModel>(helper, panel);
         }
 
         /// <summary>
@@ -63,8 +63,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="totalSteps"></param>
         /// <returns></returns>
-        public static StepsBuilder BeginSteps(this HtmlHelper helper, int totalSteps) {
-            return new StepsBuilder(helper, totalSteps);
+        public static StepsBuilder<TModel> BeginSteps<TModel>(this HtmlHelper<TModel> helper, int totalSteps) {
+            return new StepsBuilder<TModel>(helper, totalSteps);
         }
 
         /// <summary>
@@ -72,8 +72,8 @@ namespace sidekick
         /// </summary>
         /// <param name="helper"></param>
         /// <returns></returns>
-        public static BreadcrumbBuilder BeginBreadcrumbs(this HtmlHelper helper) {
-            return new BreadcrumbBuilder(helper);
+        public static BreadcrumbBuilder<TModel> BeginBreadcrumbs<TModel>(this HtmlHelper<TModel> helper) {
+            return new BreadcrumbBuilder<TModel>(helper);
         }
 
         /// <summary>

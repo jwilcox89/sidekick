@@ -9,18 +9,17 @@ using System.Collections.Generic;
 
 namespace sidekick
 {
-    public class FormGroupBuilder<TModel,TProperty> : IHtmlString
+    public class FormGroupBuilder<TModel,TProperty> : BuilderBase<TModel>, IHtmlString
     {
-        private HtmlHelper<TModel> _helper;
         private FormGroup<TModel,TProperty> _model;
 
-        public FormGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes) {
-            _helper = helper;
+        public FormGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes)
+            : base(helper) {
             _model = new FormGroup<TModel,TProperty>(expression, textboxHtmlAttributes);
         }
 
-        public FormGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, IEnumerable<SelectListItem> listItems, object textboxHtmlAttributes, string optionLabel) {
-            _helper = helper;
+        public FormGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, IEnumerable<SelectListItem> listItems, object textboxHtmlAttributes, string optionLabel)
+            : base(helper) {
             _model = new FormGroup<TModel,TProperty>(expression, listItems, textboxHtmlAttributes, optionLabel);
         }
 
@@ -67,47 +66,41 @@ namespace sidekick
         }
 
         private MvcHtmlString BuildTextBoxFormGroup() {
-            using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter())) {
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, "form-group");
-                writer.RenderBeginTag(HtmlTextWriterTag.Div); // <div class=form-group>
+                WriteLine("<div class='form-group'>");
 
                 if (_model.HasLabelWithColon)
-                    writer.Write(_helper.LabelForWithColon(_model.Expression, _model.IsRequired));
+                    WriteLine(_helper.LabelForWithColon(_model.Expression, _model.IsRequired));
 
                 if (_model.HasLabel)
-                    writer.Write(_helper.LabelFor(_model.Expression));
+                    WriteLine(_helper.LabelFor(_model.Expression));
 
-                writer.Write(_helper.TextBoxFor(_model.Expression, _model.HtmlAttributes));
+                WriteLine(_helper.TextBoxFor(_model.Expression, _model.HtmlAttributes));
 
                 if (_model.HasValidation)
-                    writer.Write(_helper.ValidationMessageFor(_model.Expression));
+                    WriteLine(_helper.ValidationMessageFor(_model.Expression));
 
-                writer.RenderEndTag(); // </div>
+                WriteLine("</div>");
 
-                return new MvcHtmlString(writer.InnerWriter.ToString());
-            }
+                return new MvcHtmlString(String.Empty);
         }
 
         private MvcHtmlString BuildDropdownFormGroup() {
-            using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter())) {
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, "form-group");
-                writer.RenderBeginTag(HtmlTextWriterTag.Div); // <div class=form-group>
+            WriteLine("<div class='form-group'>");
 
-                if (_model.HasLabelWithColon)
-                    writer.Write(_helper.LabelForWithColon(_model.Expression, _model.IsRequired));
+            if (_model.HasLabelWithColon)
+                WriteLine(_helper.LabelForWithColon(_model.Expression, _model.IsRequired));
 
-                if (_model.HasLabel)
-                    writer.Write(_helper.LabelFor(_model.Expression));
+            if (_model.HasLabel)
+                WriteLine(_helper.LabelFor(_model.Expression));
 
-                writer.Write(_helper.DropDownListFor(_model.Expression, _model.SelectListItems, _model.OptionLabel, _model.HtmlAttributes));
+            WriteLine(_helper.DropDownListFor(_model.Expression, _model.SelectListItems, _model.OptionLabel, _model.HtmlAttributes));
 
-                if (_model.HasValidation)
-                    writer.Write(_helper.ValidationMessageFor(_model.Expression));
+            if (_model.HasValidation)
+                WriteLine(_helper.ValidationMessageFor(_model.Expression));
 
-                writer.RenderEndTag(); // </div>
+            WriteLine("</div>");
 
-                return new MvcHtmlString(writer.InnerWriter.ToString());
-            }
+            return new MvcHtmlString(String.Empty);
         }
 
         public string ToHtmlString() {

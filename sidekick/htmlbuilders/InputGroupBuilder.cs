@@ -8,13 +8,12 @@ using System.IO;
 
 namespace sidekick
 {
-    public class InputGroupBuilder<TModel,TProperty> : IHtmlString
+    public class InputGroupBuilder<TModel,TProperty> : BuilderBase<TModel>, IHtmlString
     {
-        private HtmlHelper<TModel> _helper;
         private InputGroup<TModel,TProperty> _model;
 
-        public InputGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object htmlAttributes) {
-            _helper = helper;
+        public InputGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object htmlAttributes)
+            : base(helper) {
             _model = new InputGroup<TModel,TProperty>(expression, htmlAttributes);
         }
 
@@ -94,56 +93,49 @@ namespace sidekick
         #endregion
 
         private MvcHtmlString CreateInputGroup() {
-            using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter())) {
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, "form-group");
-                writer.RenderBeginTag(HtmlTextWriterTag.Div);
+            WriteLine("<div class='form-group'>");
 
-                if (_model.HasLabelWithColon)
-                    writer.Write(_helper.LabelForWithColon(_model.Expression, _model.IsRequired));
+            if (_model.HasLabelWithColon)
+                WriteLine(_helper.LabelForWithColon(_model.Expression, _model.IsRequired));
 
-                if (_model.HasLabel)
-                    writer.Write(_helper.LabelFor(_model.Expression, _model.IsRequired));
+            if (_model.HasLabel)
+                WriteLine(_helper.LabelFor(_model.Expression, _model.IsRequired));
 
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, String.Format("input-group {0} {1}", _model.Size.GetHtmlAttributes<InputGroupSize>().Class, _model.DatetimepickerClass));
-                writer.AddAttribute(HtmlTextWriterAttribute.Id, _model.DatetimepickerId);
-                writer.RenderBeginTag(HtmlTextWriterTag.Div); // <div class=input-group>
+            WriteLine(String.Format("<div class='input-group {0} {1}' id='{2}'>", _model.Size.GetHtmlAttributes<InputGroupSize>().Class, _model.DatetimepickerClass, _model.DatetimepickerId));
 
-                if (!String.IsNullOrEmpty(_model.PrependIcon) || !String.IsNullOrEmpty(_model.PrependText)) {
-                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "input-group-addon");
-                    writer.RenderBeginTag(HtmlTextWriterTag.Span);
+            if (!String.IsNullOrEmpty(_model.PrependIcon) || !String.IsNullOrEmpty(_model.PrependText)) {
+                WriteLine("<span class='input-group-addon'>");
 
-                    if (!String.IsNullOrEmpty(_model.PrependIcon))
-                        writer.Write(String.Format("<i class='{0}'></i>", _model.PrependIcon));
+                if (!String.IsNullOrEmpty(_model.PrependIcon))
+                    WriteLine(String.Format("<i class='{0}'></i>", _model.PrependIcon));
 
-                    if (!String.IsNullOrEmpty(_model.PrependText))
-                        writer.Write(String.Format(" {0}", _model.PrependText)); 
+                if (!String.IsNullOrEmpty(_model.PrependText))
+                    WriteLine(String.Format(" {0}", _model.PrependText));
 
-                    writer.RenderEndTag();
-                }
-
-                writer.Write(_helper.TextBoxFor(_model.Expression, _model.HtmlAttributes).ToString());
-
-                if (!String.IsNullOrEmpty(_model.AppendIcon) || !String.IsNullOrEmpty(_model.AppendText)) {
-                    writer.AddAttribute(HtmlTextWriterAttribute.Class, "input-group-addon");
-                    writer.RenderBeginTag(HtmlTextWriterTag.Span);
-
-                    if (!String.IsNullOrEmpty(_model.AppendIcon))
-                        writer.Write(String.Format("<i class='{0}'></i>", _model.AppendIcon));
-
-                    if (!String.IsNullOrEmpty(_model.AppendText))
-                        writer.Write(String.Format(" {0}", _model.AppendText)); 
-
-                    writer.RenderEndTag();
-                }
-
-                if (_model.HasValidation)
-                    writer.Write(_helper.ValidationMessageFor(_model.Expression));
-
-                writer.RenderEndTag(); // </div>
-                writer.RenderEndTag();
-
-                return new MvcHtmlString(writer.InnerWriter.ToString());
+                WriteLine("</span>");
             }
+
+            WriteLine(_helper.TextBoxFor(_model.Expression, _model.HtmlAttributes).ToString());
+
+            if (!String.IsNullOrEmpty(_model.AppendIcon) || !String.IsNullOrEmpty(_model.AppendText)) {
+                WriteLine("<span class='input-group-addon'>");
+
+                if (!String.IsNullOrEmpty(_model.AppendIcon))
+                    WriteLine(String.Format("<i class='{0}'></i>", _model.AppendIcon));
+
+                if (!String.IsNullOrEmpty(_model.AppendText))
+                    WriteLine(String.Format(" {0}", _model.AppendText));
+
+                WriteLine("</span>");
+            }
+
+            if (_model.HasValidation)
+                WriteLine(_helper.ValidationMessageFor(_model.Expression));
+
+            WriteLine("</div>");
+            WriteLine("</div>");
+
+            return new MvcHtmlString(String.Empty);
         }
 
         public string ToHtmlString() {

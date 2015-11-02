@@ -27,6 +27,5 @@ C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.Razor.x
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.Razor.xml
-C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\obj\Debug\sidekick.csprojResolveAssemblyReference.cache
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\obj\Debug\sidekick.dll
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\obj\Debug\sidekick.pdb
