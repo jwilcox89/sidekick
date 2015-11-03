@@ -72,14 +72,17 @@
 <hr />
 
 <h2>Input Groups</h2>
-@Html.InputGroupFor(x => x.Email, new { @class = "form-control", @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").HasLabelWithColon().HasValidation()
+@Html.InputGroupFor(x => x.Email, new { @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").HasLabelWithColon().HasValidation()
 
 <h2>Datetimepicker</h2>
 
-@Html.InputGroupFor(x => x.Email, new { @class = "form-control" }).AppendIcon("fa fa-calendar").HasLabelWithColon().DatetimepickerCss("datetimepicker")
+@Html.InputGroupFor(x => x.Email).AppendIcon("fa fa-calendar").HasLabelWithColon().DatetimepickerCss("datetimepicker")
 
 <h2>Form Groups</h2>
-@Html.FormGroupFor(x => x.Email, new { @class = "form-control", @placeholder = "Email Address..." }).IsRequired()
+@Html.FormGroupFor(x => x.Email, new { @placeholder = "Email Address..." }).IsRequired()
+
+<h2>Text Area</h2>
+@Html.TextAreaBuilder(x => x.Email, new { @placeholder = "Enter text..." }).Rows(6).Columns(1)
 
 <h2>Labels</h2>
 <div class="form-group">

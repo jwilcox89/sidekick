@@ -1,4 +1,6 @@
-﻿namespace sidekick
+﻿using System.ComponentModel;
+
+namespace sidekick
 {
     public class FormControl<TModel,TProperty> : HtmlElement<TModel,TProperty>
     {
@@ -21,5 +23,15 @@
         ///     True if the field is required and you want to include a required '*' next to the label.
         /// </summary>
         public virtual bool IsRequired { get; set; }
+
+        /// <summary>
+        ///     Base html attributes
+        /// </summary>
+        public virtual object BaseAttributes { get; set; }
+
+        public FormControl() {
+            if (BaseAttributes == null)
+                BaseAttributes = new { @class = "form-control" };
+        }
     }
 }

@@ -127,5 +127,9 @@ namespace sidekick
         public static MvcHtmlString BuildLabel(this HtmlHelper helper, Colors color, string text) {
             return LabelBuilder.Build(color, text);
         }
+
+        public static TextAreaBuilder<TModel,TProperty> TextAreaBuilder<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes = null) {
+            return new TextAreaBuilder<TModel,TProperty>(helper, expression, textboxHtmlAttributes);
+        }
     }
 }

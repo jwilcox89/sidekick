@@ -96,6 +96,7 @@
     <Compile Include="elements\Step.cs" />
     <Compile Include="elements\Tab.cs" />
     <Compile Include="elements\FormGroup.cs" />
+    <Compile Include="elements\TextArea.cs" />
     <Compile Include="errorlogger\ErrorLogger.cs" />
     <Compile Include="errorlogger\IErrorLog.cs" />
     <Compile Include="extensions\ConversionExtensions.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="htmlbuilders\StepsBuilder.cs" />
     <Compile Include="htmlbuilders\FormGroupBuilder.cs" />
     <Compile Include="htmlbuilders\TabsBuilder.cs" />
+    <Compile Include="htmlbuilders\TextAreaBuilder.cs" />
     <Compile Include="results\JsonErrorResult.cs" />
     <Compile Include="SidekickEnums.cs" />
     <Compile Include="responses\RenderDocument.cs" />

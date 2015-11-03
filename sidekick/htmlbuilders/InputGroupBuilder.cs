@@ -53,44 +53,75 @@ namespace sidekick
             return this;
         }
 
-        #region Input Group Specific
-
+        /// <summary>
+        ///     Adds an icon in front of the textbox
+        /// </summary>
+        /// <param name="icon"></param>
+        /// <returns></returns>
         public InputGroupBuilder<TModel,TProperty> PrependIcon(string icon) {
             _model.PrependIcon = icon;
             return this;
         }
 
+        /// <summary>
+        ///     Adds an icon at the end of the textbox
+        /// </summary>
+        /// <param name="icon"></param>
+        /// <returns></returns>
         public InputGroupBuilder<TModel,TProperty> AppendIcon(string icon) {
             _model.AppendIcon = icon;
             return this;
         }
 
+        /// <summary>
+        ///     Adds text at the front of the textbox
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public InputGroupBuilder<TModel,TProperty> PrependText(string text) {
             _model.PrependText = text;
             return this;
         }
 
+        /// <summary>
+        ///     Adds text at the end of the textbox
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public InputGroupBuilder<TModel,TProperty> AppendText(string text) {
             _model.AppendText = text;
             return this;
         }
 
+        /// <summary>
+        ///     Sets the size of the input group
+        /// </summary>
+        /// <param name="size"></param>
+        /// <returns></returns>
         public InputGroupBuilder<TModel,TProperty> Size(InputGroupSize size) {
             _model.Size = size;
             return this;
         }
 
+        /// <summary>
+        ///     Sets the class that will be referenced when initializing a datetimepicker
+        /// </summary>
+        /// <param name="class"></param>
+        /// <returns></returns>
         public InputGroupBuilder<TModel,TProperty> DatetimepickerCss(string @class) {
             _model.DatetimepickerClass = @class;
             return this;
         }
 
+        /// <summary>
+        ///     Sets the id that will be referenced when initializing a datetimepicker
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public InputGroupBuilder<TModel,TProperty> DatetimepickerId(string id) {
             _model.DatetimepickerId = id;
             return this;
         }
-
-        #endregion
 
         private MvcHtmlString CreateInputGroup() {
             WriteLine("<div class='form-group'>");
@@ -115,7 +146,7 @@ namespace sidekick
                 WriteLine("</span>");
             }
 
-            WriteLine(_helper.TextBoxFor(_model.Expression, _model.HtmlAttributes).ToString());
+            WriteLine(_helper.TextBoxFor(_model.Expression, MergeAttributes(_model)).ToString());
 
             if (!String.IsNullOrEmpty(_model.AppendIcon) || !String.IsNullOrEmpty(_model.AppendText)) {
                 WriteLine("<span class='input-group-addon'>");

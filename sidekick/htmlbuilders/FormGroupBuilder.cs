@@ -66,22 +66,21 @@ namespace sidekick
         }
 
         private MvcHtmlString BuildTextBoxFormGroup() {
-                WriteLine("<div class='form-group'>");
+            WriteLine("<div class='form-group'>");
 
-                if (_model.HasLabelWithColon)
-                    WriteLine(_helper.LabelForWithColon(_model.Expression, _model.IsRequired));
+            if (_model.HasLabelWithColon)
+                WriteLine(_helper.LabelForWithColon(_model.Expression, _model.IsRequired));
 
-                if (_model.HasLabel)
-                    WriteLine(_helper.LabelFor(_model.Expression));
+            if (_model.HasLabel)
+                WriteLine(_helper.LabelFor(_model.Expression));
 
-                WriteLine(_helper.TextBoxFor(_model.Expression, _model.HtmlAttributes));
+            WriteLine(_helper.TextBoxFor(_model.Expression, MergeAttributes(_model)));
 
-                if (_model.HasValidation)
-                    WriteLine(_helper.ValidationMessageFor(_model.Expression));
+            if (_model.HasValidation)
+                WriteLine(_helper.ValidationMessageFor(_model.Expression));
 
-                WriteLine("</div>");
-
-                return new MvcHtmlString(String.Empty);
+            WriteLine("</div>");
+            return new MvcHtmlString(String.Empty);
         }
 
         private MvcHtmlString BuildDropdownFormGroup() {
@@ -93,13 +92,12 @@ namespace sidekick
             if (_model.HasLabel)
                 WriteLine(_helper.LabelFor(_model.Expression));
 
-            WriteLine(_helper.DropDownListFor(_model.Expression, _model.SelectListItems, _model.OptionLabel, _model.HtmlAttributes));
+            WriteLine(_helper.DropDownListFor(_model.Expression, _model.SelectListItems, _model.OptionLabel, MergeAttributes(_model)));
 
             if (_model.HasValidation)
                 WriteLine(_helper.ValidationMessageFor(_model.Expression));
 
             WriteLine("</div>");
-
             return new MvcHtmlString(String.Empty);
         }
 
