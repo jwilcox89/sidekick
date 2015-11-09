@@ -24,7 +24,7 @@ namespace sidekick
             HasValidation = true;
         }
 
-        public FormGroup(Expression<Func<TModel,TProperty>> expression, IEnumerable<SelectListItem> listItems, object textboxHtmlAttributes, string optionLabel) {
+        public FormGroup(Expression<Func<TModel,TProperty>> expression, IEnumerable<SelectListItem> listItems, string optionLabel, object textboxHtmlAttributes) {
             Expression = expression;
             HtmlAttributes = textboxHtmlAttributes;
             SelectListItems = listItems;

@@ -54,7 +54,7 @@ namespace sidekick
         /// <param name="ex"></param>
         /// <returns></returns>
         public static async Task LogErrorAsync<TEntity>(ExceptionContext ex, string comments = null) where TEntity : class, IErrorLog, new() {
-            await Task.Run(() => LogError<TEntity>(ex, comments));
+            await Task.Run(() => LogError<TEntity>(ex, comments)).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace sidekick
         /// <param name="route"></param>
         /// <returns></returns>
         public static async Task LogErrorAsync<TEntity>(_Exception ex, string comments = null) where TEntity : class, IErrorLog, new() {
-            await Task.Run(() => LogError<TEntity>(ex, comments));
+            await Task.Run(() => LogError<TEntity>(ex, comments)).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace sidekick
         /// <param name="action"></param>
         /// <returns></returns>
         public static async Task LogErrorAsync<TEntity>(Action<TEntity> action) where TEntity : class, IErrorLog, new() {
-            await Task.Run(() => LogError<TEntity>(action));
+            await Task.Run(() => LogError<TEntity>(action)).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace sidekick
         /// <typeparam name="TEntity"></typeparam>
         /// <returns></returns>
         public static async Task ClearLogsAsync<TEntity>() where TEntity : class, IErrorLog {
-            await Task.Run(() => ClearLogs<TEntity>());
+            await Task.Run(() => ClearLogs<TEntity>()).ConfigureAwait(false);
         }
     }
 }

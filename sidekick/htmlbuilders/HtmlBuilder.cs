@@ -114,7 +114,7 @@ namespace sidekick
         /// <param name="textboxHtmlAttributes"></param>
         /// <returns></returns>
         public static FormGroupBuilder<TModel,TProperty> FormGroupFor<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, IEnumerable<SelectListItem> itemList, string optionLabel, object textboxHtmlAttributes = null) {
-            return new FormGroupBuilder<TModel,TProperty>(helper, expression, itemList, textboxHtmlAttributes, optionLabel);
+            return new FormGroupBuilder<TModel,TProperty>(helper, expression, itemList, optionLabel, textboxHtmlAttributes);
         }
 
         /// <summary>
@@ -128,6 +128,15 @@ namespace sidekick
             return LabelBuilder.Build(color, text);
         }
 
+        /// <summary>
+        ///     Builds a textarea
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <typeparam name="TProperty"></typeparam>
+        /// <param name="helper"></param>
+        /// <param name="expression"></param>
+        /// <param name="textboxHtmlAttributes"></param>
+        /// <returns></returns>
         public static TextAreaBuilder<TModel,TProperty> TextAreaBuilder<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes = null) {
             return new TextAreaBuilder<TModel,TProperty>(helper, expression, textboxHtmlAttributes);
         }

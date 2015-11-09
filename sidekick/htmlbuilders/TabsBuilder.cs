@@ -51,7 +51,6 @@ namespace sidekick
     {
         public TabsContent(HtmlHelper<TModel> helper, Tab tab)
             : base(helper) {
-
             string active = (tab.Active) ? "active" : null;
             WriteLine(String.Format("<div role='tabpanel' class='tab-pane {0}' id='{1}'>", active, tab.Name));
         }

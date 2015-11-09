@@ -18,9 +18,9 @@ namespace sidekick
             _model = new FormGroup<TModel,TProperty>(expression, textboxHtmlAttributes);
         }
 
-        public FormGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, IEnumerable<SelectListItem> listItems, object textboxHtmlAttributes, string optionLabel)
+        public FormGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, IEnumerable<SelectListItem> listItems, string optionLabel, object textboxHtmlAttributes)
             : base(helper) {
-            _model = new FormGroup<TModel,TProperty>(expression, listItems, textboxHtmlAttributes, optionLabel);
+            _model = new FormGroup<TModel,TProperty>(expression, listItems, optionLabel, textboxHtmlAttributes);
         }
 
         /// <summary>

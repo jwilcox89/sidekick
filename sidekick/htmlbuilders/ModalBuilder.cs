@@ -9,7 +9,6 @@ namespace sidekick
 
         public ModalBuilder(HtmlHelper<TModel> helper, Modal modal) 
             : base(helper) {
-
             _modal = modal;
             WriteLine(String.Format("<div class='modal fade' id='{0}'>", _modal.ID));
             WriteLine(String.Format("<div class='modal-dialog {0}'>", _modal.ModalSize.GetHtmlAttributes<ModalSize>().Class));
@@ -50,7 +49,6 @@ namespace sidekick
     {
         public ModalBody(HtmlHelper<TModel> helper, Modal modal)
             : base(helper) {
-
             WriteLine("<div class='modal-body'>");
             if (!String.IsNullOrEmpty(modal.ErrorAreaID))
                 WriteLine(String.Format("<div id='{0}'></div>", modal.ErrorAreaID));

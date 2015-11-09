@@ -11,20 +11,28 @@ namespace sidekick
 {
     public class TextAreaBuilder<TModel,TProperty> : BuilderBase<TModel>, IHtmlString
     {
-        private TextArea<TModel, TProperty> _model;
+        private TextArea<TModel,TProperty> _model;
 
         public TextAreaBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object htmlAttributes = null)
             : base(helper) {
-            _model = new TextArea<TModel, TProperty>();
-            _model.Expression = expression;
-            _model.HtmlAttributes = htmlAttributes;
+            _model = new TextArea<TModel,TProperty>(expression, htmlAttributes);
         }
 
+        /// <summary>
+        ///     Number of rows in the textarea
+        /// </summary>
+        /// <param name="rows"></param>
+        /// <returns></returns>
         public TextAreaBuilder<TModel,TProperty> Rows(int rows) {
             _model.Rows = rows;
             return this;
         }
 
+        /// <summary>
+        ///     Number of columns in the textarea
+        /// </summary>
+        /// <param name="columns"></param>
+        /// <returns></returns>
         public TextAreaBuilder<TModel,TProperty> Columns(int columns) {
             _model.Columns = columns;
             return this;
