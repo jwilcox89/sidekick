@@ -63,8 +63,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="totalSteps"></param>
         /// <returns></returns>
-        public static StepsBuilder<TModel> BeginSteps<TModel>(this HtmlHelper<TModel> helper, int totalSteps) {
-            return new StepsBuilder<TModel>(helper, totalSteps);
+        public static StepsBuilder<TModel> BeginSteps<TModel>(this HtmlHelper<TModel> helper) {
+            return new StepsBuilder<TModel>(helper);
         }
 
         /// <summary>

@@ -16,11 +16,16 @@ namespace sidekick
             WriteLine("<ul role='tablist' class='nav nav-tabs'>");
         }
 
+        /// <summary>
+        ///     Builds the tab nav
+        /// </summary>
+        /// <param name="tab"></param>
+        /// <param name="displayText"></param>
+        /// <returns></returns>
         public MvcHtmlString Tab(Tab tab, string displayText) {
             _tabList.Enqueue(tab);
             string active = (tab.Active) ? "class='active'" : null;
             WriteLine(String.Format("<li role='presentation' {0}>", active));
-
             WriteLine(String.Format("<a href='#{0}' aria-controls='{0}' role='tab' data-toggle='tab'>", tab.Name));
 
             if (!String.IsNullOrEmpty(tab.Icon))
@@ -32,6 +37,10 @@ namespace sidekick
             return new MvcHtmlString(String.Empty);
         }
 
+        /// <summary>
+        ///     Builds the tab content area
+        /// </summary>
+        /// <returns></returns>
         public TabsContent<TModel> BeginTab() {
             if (_firstTab) {
                 WriteLine("</ul>");

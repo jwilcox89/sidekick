@@ -63,7 +63,7 @@
 <hr />
 
 <h2>Steps</h2>
-@using (var steps = Html.BeginSteps(3)) {
+@using (var steps = Html.BeginSteps()) {
     @steps.AddStep("Step 1", "fa fa-truck", "Description of the step", true)   
     @steps.AddStep("Step 2", "fa fa-briefcase", "Description of the next step", true)
     @steps.AddStep("Step 3", "fa fa-user", "Description of the last step")
