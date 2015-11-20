@@ -24,6 +24,16 @@ namespace sidekick
         }
 
         /// <summary>
+        ///     Help text that will show below the form control
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public FormGroupBuilder<TModel,TProperty> HelpText(string text) {
+            _model.HelpText = text;
+            return this;
+        }
+
+        /// <summary>
         ///     Will hide label
         /// </summary>
         /// <returns></returns>
@@ -76,6 +86,9 @@ namespace sidekick
 
             WriteLine(_helper.TextBoxFor(_model.Expression, MergeAttributes(_model)));
 
+            if (!String.IsNullOrEmpty(_model.HelpText))
+                WriteLine(String.Format("<span class='help-block'>{0}</span>", _model.HelpText));
+
             if (_model.HasValidation)
                 WriteLine(_helper.ValidationMessageFor(_model.Expression));
 
@@ -93,6 +106,9 @@ namespace sidekick
                 WriteLine(_helper.LabelFor(_model.Expression));
 
             WriteLine(_helper.DropDownListFor(_model.Expression, _model.SelectListItems, _model.OptionLabel, MergeAttributes(_model)));
+
+            if (!String.IsNullOrEmpty(_model.HelpText))
+                WriteLine(String.Format("<span class='help-block'>{0}</span>", _model.HelpText));
 
             if (_model.HasValidation)
                 WriteLine(_helper.ValidationMessageFor(_model.Expression));

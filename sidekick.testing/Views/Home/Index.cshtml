@@ -75,11 +75,10 @@
 @Html.InputGroupFor(x => x.Email, new { @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").HasLabelWithColon().HasValidation()
 
 <h2>Datetimepicker</h2>
-
 @Html.InputGroupFor(x => x.Email).AppendIcon("fa fa-calendar").HasLabelWithColon().DatetimepickerCss("datetimepicker")
 
 <h2>Form Groups</h2>
-@Html.FormGroupFor(x => x.Email, new { @placeholder = "Email Address..." }).IsRequired()
+@Html.FormGroupFor(x => x.Email, new { @placeholder = "Email Address..." }).IsRequired().HelpText("This is the help text")
 
 <h2>Text Area</h2>
 @Html.TextAreaBuilder(x => x.Email, new { @placeholder = "Enter text..." }).Rows(10).Columns(4)

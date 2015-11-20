@@ -29,6 +29,11 @@ namespace sidekick
         /// </summary>
         public virtual object BaseAttributes { get; set; }
 
+        /// <summary>
+        ///     Help text that will show below the form control
+        /// </summary>
+        public virtual string HelpText { get; set; }
+
         public FormControl() {
             if (BaseAttributes == null)
                 BaseAttributes = new { @class = "form-control" };
