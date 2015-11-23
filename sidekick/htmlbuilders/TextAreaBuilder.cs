@@ -76,6 +76,16 @@ namespace sidekick
             return this;
         }
 
+        /// <summary>
+        ///     Help text that will show below the form control
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public TextAreaBuilder<TModel,TProperty> HelpText(string text) {
+            _model.HelpText = text;
+            return this;
+        }
+
         private MvcHtmlString CreateTextArea() {
             WriteLine("<div class='form-group'>");
 
@@ -86,6 +96,9 @@ namespace sidekick
                 WriteLine(_helper.LabelFor(_model.Expression));
 
             WriteLine(_helper.TextAreaFor(_model.Expression, _model.Rows, _model.Columns, MergeAttributes(_model)));
+            
+            if (!String.IsNullOrEmpty(_model.HelpText))
+                WriteLine(String.Format("<span class='help-block'>{0}</span>", _model.HelpText));
 
             if (_model.HasValidation)
                 WriteLine(_helper.ValidationMessageFor(_model.Expression));

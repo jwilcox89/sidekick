@@ -48,6 +48,11 @@
         public virtual bool Dismissable { get; set; }
 
         /// <summary>
+        ///     True if the footer section will be hidden. Defaults to false.
+        /// </summary>
+        public virtual bool HideFooter { get; set; }
+
+        /// <summary>
         ///     Sets the color of the submit button
         /// </summary>
         public virtual Colors SubmitColor { get; set; }

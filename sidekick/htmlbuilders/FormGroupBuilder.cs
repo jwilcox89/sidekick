@@ -24,16 +24,6 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Help text that will show below the form control
-        /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
-        public FormGroupBuilder<TModel,TProperty> HelpText(string text) {
-            _model.HelpText = text;
-            return this;
-        }
-
-        /// <summary>
         ///     Will hide label
         /// </summary>
         /// <returns></returns>
@@ -68,6 +58,16 @@ namespace sidekick
         /// <returns></returns>
         public FormGroupBuilder<TModel,TProperty> IsRequired() {
             _model.IsRequired = true;
+            return this;
+        }
+
+        /// <summary>
+        ///     Help text that will show below the form control
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public FormGroupBuilder<TModel,TProperty> HelpText(string text) {
+            _model.HelpText = text;
             return this;
         }
 
