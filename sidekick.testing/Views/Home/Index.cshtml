@@ -27,7 +27,13 @@
 <h2>Modal</h2>
 <button id="modal-button" class="btn btn-default">Open Modal</button>
 @using (var modal = Html.BeginModal(new Modal { ID = "test-modal", Title = "My Modal" })) {
-    <p>This is the modal content</p>
+    using (modal.BuildBody()) {
+        <p>
+            Modal content
+        </p>
+    }
+    
+    @modal.BuildFooter()
 }
 
 <hr />

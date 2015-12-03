@@ -18,5 +18,10 @@ namespace sidekick
         ///     Primarily used to hold the html tag value
         /// </summary>
         public string Tag { get; set; }
+
+        /// <summary>
+        ///     Used to hold the bootstrap color value
+        /// </summary>
+        public Colors Color { get; set; }
     }
 }
