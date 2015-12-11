@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace sidekick.testing.Models
@@ -51,6 +52,7 @@ namespace sidekick.testing.Models
         [Required]
         [Display(Name = "Email")]
         [EmailAddress]
+        [ExcludeChar("!@#$%^&*")]
         public string Email { get; set; }
 
         [Required]
@@ -60,6 +62,23 @@ namespace sidekick.testing.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        [NoFutureDate]
+        public DateTime PastDate { get; set; }
+
+        [NoPastDate]
+        public DateTime FutureDate { get; set; }
+
+        public TestEnum TestEnumProperty = TestEnum.Yes;
+
+        public enum TestEnum
+        {
+            //[Display(Name="The answer is yes")]
+            Yes = 1,
+
+            [Display(Name="The answer is no")]
+            No = 2
+        }
     }
 
     public class RegisterViewModel

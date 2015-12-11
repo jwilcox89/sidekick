@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
@@ -19,6 +20,11 @@ namespace sidekick
             return (TEnum[])Enum.GetValues(typeof(TEnum));
         }
 
+        /// <summary>
+        ///     Returns the value of the 'Name' property in the DisplayAttribute attribute
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static DisplayAttribute GetDisplayAttribute<TEnum>(this object value) {
             if (typeof(TEnum).BaseType != typeof(Enum))
                 throw new ArgumentException("Must be a type of System.Enum");

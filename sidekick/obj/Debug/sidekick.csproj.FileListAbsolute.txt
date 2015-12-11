@@ -29,4 +29,3 @@ C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPage
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\obj\Debug\sidekick.dll
 C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\obj\Debug\sidekick.pdb
-C:\Users\jwilcox\Documents\GitHub\sidekick\sidekick\obj\Debug\sidekick.csprojResolveAssemblyReference.cache

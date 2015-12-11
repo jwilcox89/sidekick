@@ -11,7 +11,7 @@ namespace sidekick.testing.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View(new LoginViewModel());
         }
 
         public ActionResult About()

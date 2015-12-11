@@ -14,11 +14,7 @@ namespace sidekick
         /// <returns></returns>
         public static List<string> GetModelErrors(this ModelStateDictionary modelState) {
             List<string> errorList = new List<string>();
-
-            foreach (ModelError e in modelState.Values.SelectMany(m => m.Errors)) {
-                errorList.Add(e.ErrorMessage);
-            }
-
+            errorList.AddRange(modelState.Values.SelectMany(m => m.Errors).Select(x => x.ErrorMessage));
             return errorList;
         }
 

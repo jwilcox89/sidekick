@@ -4,7 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace sidekick
 {
-    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple=false, Inherited=false)]
+    /// <summary>
+    ///     Validate the size of an uploaded document, photo, video etc.
+    /// </summary>
     public class MaxFileSizeAttribute : ValidationAttribute
     {
         private readonly int _maxFileSize;
@@ -24,15 +26,15 @@ namespace sidekick
             _maxFileSize = maxFileSize;
         }
 
-        public override bool IsValid(object value) {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext) {
+            if (value == null)
+                return ValidationResult.Success;
+
             HttpPostedFileBase file = value as HttpPostedFileBase;
+            if (file.ContentLength > _maxFileSize)
+                return new ValidationResult(String.Format("The file you selected is too large. Maximum allowed size is {0} MB", (_maxFileSize / 1024).ToString()));
 
-            if (file != null && file.ContentLength > _maxFileSize) {
-                ErrorMessage = String.Format("The file you selected is too large. Maximum allowed size is {0} MB", (_maxFileSize / 1024).ToString());
-                return false;
-            }
-
-            return true;
+            return ValidationResult.Success;
         }
     }
 }
