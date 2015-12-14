@@ -160,10 +160,11 @@ namespace sidekick
                 WriteLine("</span>");
             }
 
+            WriteLine("</div>");
+
             if (_model.HasValidation)
                 WriteLine(_helper.ValidationMessageFor(_model.Expression));
 
-            WriteLine("</div>");
             WriteLine("</div>");
 
             return new MvcHtmlString(String.Empty);

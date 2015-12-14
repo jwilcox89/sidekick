@@ -51,7 +51,6 @@ namespace sidekick.testing.Models
     {
         [Required]
         [Display(Name = "Email")]
-        [EmailAddress]
         [ExcludeChar("!@#$%^&*")]
         public string Email { get; set; }
 
@@ -64,10 +63,10 @@ namespace sidekick.testing.Models
         public bool RememberMe { get; set; }
 
         [NoFutureDate]
-        public DateTime PastDate { get; set; }
+        public DateTime NoFutureDate { get; set; }
 
         [NoPastDate]
-        public DateTime FutureDate { get; set; }
+        public DateTime NoPastDate { get; set; }
 
         public TestEnum TestEnumProperty = TestEnum.Yes;
 

@@ -24,8 +24,8 @@ namespace sidekick
                 return ValidationResult.Success;
 
             string stringValue = value.ToString();
-            foreach (char c in stringValue.ToCharArray()) {
-                if (stringValue.Contains(c))
+            foreach (char excludedChar in _excludedChars.ToCharArray()) {
+                if (stringValue.ToCharArray().Contains(excludedChar))
                     return new ValidationResult(FormatErrorMessage(validationContext.DisplayName));
             }
 

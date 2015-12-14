@@ -14,6 +14,15 @@ namespace sidekick.testing.Controllers
             return View(new LoginViewModel());
         }
 
+        [HttpPost]
+        public ActionResult Index(LoginViewModel vm) {
+            if (ModelState.IsValid) {
+                return View(vm);
+            }
+
+            return View(vm);
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

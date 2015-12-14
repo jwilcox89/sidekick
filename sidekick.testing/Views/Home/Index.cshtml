@@ -90,6 +90,18 @@
     @Html.BuildLabel(Colors.Primary, "Good Job!")
 </div>
 
+<h2>Validation Test</h2>
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    @Html.FormGroupFor(x => x.Email)
+    @Html.InputGroupFor(x => x.NoFutureDate).AppendIcon("fa fa-calendar").DatetimepickerCss("datetimepicker").HasLabelWithColon().HasValidation()
+    @Html.InputGroupFor(x => x.NoPastDate).AppendIcon("fa fa-calendar").DatetimepickerCss("datetimepicker").HasLabelWithColon().HasValidation()
+
+    <div class="well">
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+}
+
 @section scripts {
     <script type="text/javascript">
         $().ready(function () {
