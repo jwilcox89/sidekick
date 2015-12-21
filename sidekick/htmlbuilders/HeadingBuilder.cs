@@ -10,11 +10,14 @@ namespace sidekick
 {
     public class HeadingBuilder
     {
-        public static MvcHtmlString Build(HeadingSize size, string text, string subtext = null, Colors color = Colors.Default) {
-            using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter())) {
+        public static MvcHtmlString Build(HeadingSize size, string text, string subtext = null, Colors color = Colors.Default) 
+        {
+            using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter())) 
+            {
                 writer.Write(String.Format("<{0}>", size.GetHtmlAttributes<HeadingSize>().Tag));
                 writer.Write(text);
-                if (!String.IsNullOrEmpty(subtext)) {
+                if (!String.IsNullOrEmpty(subtext)) 
+                {
                     writer.Write(String.Format(" <span class='label label-{0}'>{1}</span>", color.GetHtmlAttributes<Colors>().Class, subtext));
                 }
                 writer.Write(String.Format("</{0}>", size.GetHtmlAttributes<HeadingSize>().Tag));

@@ -12,8 +12,10 @@ namespace sidekick
         /// <summary>
         ///     Helps manage the temp data
         /// </summary>
-        protected TempDataManager TempMgr {
-            get {
+        protected TempDataManager TempMgr 
+        {
+            get 
+            {
                 return _tempMgr = _tempMgr ?? new TempDataManager(TempData);
             }
         }
@@ -22,7 +24,8 @@ namespace sidekick
         ///     Returns a Json Error 
         /// </summary>
         /// <returns></returns>
-        protected virtual JsonResult JsonError() {
+        protected virtual JsonResult JsonError() 
+        {
             return new JsonErrorResult();
         }
 
@@ -31,7 +34,8 @@ namespace sidekick
         /// </summary>
         /// <param name="viewName"></param>
         /// <returns></returns>
-        protected virtual JsonResult JsonError(string viewName) {
+        protected virtual JsonResult JsonError(string viewName) 
+        {
             return new JsonErrorResult(viewName);
         }
 
@@ -40,7 +44,8 @@ namespace sidekick
         /// </summary>
         /// <param name="behavior"></param>
         /// <returns></returns>
-        protected virtual JsonResult JsonError(JsonRequestBehavior behavior) {
+        protected virtual JsonResult JsonError(JsonRequestBehavior behavior) 
+        {
             return new JsonErrorResult(behavior);
         }
 
@@ -50,7 +55,8 @@ namespace sidekick
         /// <param name="viewName"></param>
         /// <param name="behavior"></param>
         /// <returns></returns>
-        protected virtual JsonResult JsonError(string viewName, JsonRequestBehavior behavior) {
+        protected virtual JsonResult JsonError(string viewName, JsonRequestBehavior behavior) 
+        {
             return new JsonErrorResult(viewName, behavior);
         }
     }

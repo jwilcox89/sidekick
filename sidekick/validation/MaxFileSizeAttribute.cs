@@ -14,7 +14,8 @@ namespace sidekick
         /// <summary>
         ///     Validates the file's size is no bigger than 512 MB
         /// </summary>
-        public MaxFileSizeAttribute() {
+        public MaxFileSizeAttribute() 
+        {
             _maxFileSize = 1024 * 1024 * 500;
         }
 
@@ -22,11 +23,13 @@ namespace sidekick
         ///     Validates the file's size is no bigger than the size specified.
         /// </summary>
         /// <param name="maxFileSize"></param>
-        public MaxFileSizeAttribute(int maxFileSize) {
+        public MaxFileSizeAttribute(int maxFileSize) 
+        {
             _maxFileSize = maxFileSize;
         }
 
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext) {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext) 
+        {
             if (value == null)
                 return ValidationResult.Success;
 

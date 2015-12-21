@@ -9,8 +9,8 @@ namespace sidekick
         private Queue<Tab> _tabList;
         private bool _firstTab = true;
 
-        public TabsBuilder(HtmlHelper<TModel> helper)
-            : base(helper) {
+        public TabsBuilder(HtmlHelper<TModel> helper) : base(helper) 
+        {
             _tabList = new Queue<Tab>();
             WriteLine("<div role='tabpanel'>");
             WriteLine("<ul role='tablist' class='nav nav-tabs'>");
@@ -22,7 +22,8 @@ namespace sidekick
         /// <param name="tab"></param>
         /// <param name="displayText"></param>
         /// <returns></returns>
-        public MvcHtmlString Tab(Tab tab, string displayText) {
+        public MvcHtmlString Tab(Tab tab, string displayText) 
+        {
             _tabList.Enqueue(tab);
             string active = (tab.Active) ? "class='active'" : null;
             WriteLine(String.Format("<li role='presentation' {0}>", active));
@@ -41,30 +42,34 @@ namespace sidekick
         ///     Builds the tab content area
         /// </summary>
         /// <returns></returns>
-        public TabsContent<TModel> BeginTab() {
-            if (_firstTab) {
+        public TabsContent<TModel> BeginTab() 
+        {
+            if (_firstTab) 
+            {
                 WriteLine("</ul>");
                 WriteLine("<div class='tab-content'>");
                 _firstTab = false;
             }
 
-            return new TabsContent<TModel>(_helper, _tabList.Dequeue());
+            return new TabsContent<TModel>(Helper, _tabList.Dequeue());
         }
 
-        public void Dispose() {
+        public void Dispose() 
+        {
             WriteLine("</div></div>");
         }
     }
 
     public class TabsContent<TModel> : BuilderBase<TModel>, IDisposable
     {
-        public TabsContent(HtmlHelper<TModel> helper, Tab tab)
-            : base(helper) {
+        public TabsContent(HtmlHelper<TModel> helper, Tab tab) : base(helper) 
+        {
             string active = (tab.Active) ? "active" : null;
             WriteLine(String.Format("<div role='tabpanel' class='tab-pane {0}' id='{1}'>", active, tab.Name));
         }
 
-        public void Dispose() {
+        public void Dispose() 
+        {
             WriteLine("</div>");
         }
     }

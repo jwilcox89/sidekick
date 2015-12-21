@@ -11,7 +11,8 @@ namespace sidekick
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public static string GetDigits(this string input) {
+        public static string GetDigits(this string input) 
+        {
             if (String.IsNullOrEmpty(input))
                 return null;
 
@@ -24,7 +25,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public static string FormatCurrency(this HtmlHelper helper, decimal? amount) {
+        public static string FormatCurrency(this HtmlHelper helper, decimal? amount) 
+        {
             if (amount.HasValue)
                 return amount.Value.ToString("C");
 
@@ -36,7 +38,8 @@ namespace sidekick
         /// </summary>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public static string FormatCurrency(this decimal? amount) {
+        public static string FormatCurrency(this decimal? amount) 
+        {
             if (amount.HasValue)
                 return amount.Value.ToString("C");
 
@@ -49,7 +52,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public static string FormatCurrency(this HtmlHelper hlper, decimal amount) {
+        public static string FormatCurrency(this HtmlHelper hlper, decimal amount) 
+        {
             return amount.ToString("C");
         }
 
@@ -58,7 +62,8 @@ namespace sidekick
         /// </summary>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public static string FormatCurrency(this decimal amount) {
+        public static string FormatCurrency(this decimal amount) 
+        {
             return amount.ToString("C");
         }
 
@@ -68,7 +73,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public static string FormatCurrency(this HtmlHelper helper, int? amount) {
+        public static string FormatCurrency(this HtmlHelper helper, int? amount) 
+        {
             if (amount.HasValue)
                 return amount.Value.ToString("C");
 
@@ -80,7 +86,8 @@ namespace sidekick
         /// </summary>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public static string FormatCurrency(this int? amount) {
+        public static string FormatCurrency(this int? amount) 
+        {
             if (amount.HasValue)
                 return amount.Value.ToString("C");
 
@@ -93,7 +100,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public static string FormatCurrency(this HtmlHelper helper, int amount) {
+        public static string FormatCurrency(this HtmlHelper helper, int amount) 
+        {
             return amount.ToString("C");
         }
 
@@ -102,7 +110,8 @@ namespace sidekick
         /// </summary>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public static string FormatCurrency(this int amount) {
+        public static string FormatCurrency(this int amount) 
+        {
             return amount.ToString("C");
         }
 
@@ -113,16 +122,23 @@ namespace sidekick
         /// <param name="number"></param>
         /// <param name="areaCodeParens"></param>
         /// <returns></returns>
-        public static string FormatPhone(this HtmlHelper helper, string number, bool areaCodeParens = true) {
+        public static string FormatPhone(this HtmlHelper helper, string number, bool areaCodeParens = true) 
+        {
             if (String.IsNullOrEmpty(number))
                 return String.Empty;
 
-            if (number.Trim().Length < 10) {
+            if (number.Trim().Length < 10) 
+            {
                 return Regex.Replace(number, "(\\d{3})(\\d{4})", "$1-$2");
-            } else {
-                if (areaCodeParens) {
+            }
+            else
+            {
+                if (areaCodeParens) 
+                {
                     return Regex.Replace(number, "(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3");
-                } else {
+                }
+                else
+                {
                     return Regex.Replace(number, "(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3");
                 }
             }
@@ -134,16 +150,23 @@ namespace sidekick
         /// <param name="number"></param>
         /// <param name="areaCodeParens"></param>
         /// <returns></returns>
-        public static string FormatPhone(this string number, bool areaCodeParens = true) {
+        public static string FormatPhone(this string number, bool areaCodeParens = true) 
+        {
             if (String.IsNullOrEmpty(number))
                 return String.Empty;
 
-            if (number.Trim().Length < 10) {
+            if (number.Trim().Length < 10) 
+            {
                 return Regex.Replace(number, "(\\d{3})(\\d{4})", "$1-$2");
-            } else {
-                if (areaCodeParens) {
+            } 
+            else 
+            {
+                if (areaCodeParens) 
+                {
                     return Regex.Replace(number, "(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3");
-                } else {
+                } 
+                else 
+                {
                     return Regex.Replace(number, "(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3");
                 }
             }
@@ -155,7 +178,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="ssn"></param>
         /// <returns></returns>
-        public static string FormatSSN(this HtmlHelper helper, string ssn) {
+        public static string FormatSSN(this HtmlHelper helper, string ssn) 
+        {
             if (String.IsNullOrEmpty(ssn))
                 return String.Empty;
 
@@ -168,7 +192,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="ssn"></param>
         /// <returns></returns>
-        public static string FormatSSN(this string ssn) {
+        public static string FormatSSN(this string ssn) 
+        {
             if (String.IsNullOrEmpty(ssn))
                 return String.Empty;
 

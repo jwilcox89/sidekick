@@ -8,19 +8,22 @@ namespace sidekick
     {
         private Alert _alert;
 
-        public AlertBuilder(HtmlHelper<TModel> helper, Alert alert, bool customBody)
-            : base(helper) {
-
+        public AlertBuilder(HtmlHelper<TModel> helper, Alert alert, bool customBody) : base(helper) 
+        {
             _alert = alert;
 
-            if (!customBody) {
+            if (!customBody) 
+            {
                 BuildAlert();
-            } else {
+            } 
+            else 
+            {
                 BuildAlertShell();
             }
         }
 
-        private void BuildAlert() {
+        private void BuildAlert() 
+        {
             WriteLine(String.Format("<div class='alert alert-{0}' role='alert'>", _alert.AlertClass));
 
             if (_alert.Dismissible)
@@ -29,15 +32,19 @@ namespace sidekick
             WriteLine(String.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _alert.Type.GetHtmlAttributes<AlertType>().Icon, _alert.Heading));
             WriteLine("<p>");
 
-            if (_alert.MessageList.Count() > 0) {
+            if (_alert.MessageList.Count() > 0) 
+            {
                  WriteLine("<ul>");
 
-                foreach (string m in _alert.MessageList) {
+                foreach (string m in _alert.MessageList) 
+                {
                      WriteLine(String.Format("<li>{0}</li>", m));
                 }
 
                  WriteLine("</ul>");
-            } else {
+            } 
+            else 
+            {
                  WriteLine(_alert.Body);
             }
 
@@ -46,7 +53,8 @@ namespace sidekick
             Dispose();
         }
 
-        private void BuildAlertShell() {
+        private void BuildAlertShell() 
+        {
             WriteLine(String.Format("<div class='alert alert-{0}'>", _alert.AlertClass));
 
             if (_alert.Dismissible)
@@ -55,7 +63,8 @@ namespace sidekick
             WriteLine(String.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _alert.Type.GetHtmlAttributes<AlertType>().Icon, _alert.Heading));
         }
 
-        public void Dispose() {
+        public void Dispose() 
+        {
             WriteLine("</div>");
         }
     }

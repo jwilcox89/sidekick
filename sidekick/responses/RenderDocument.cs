@@ -10,7 +10,8 @@ namespace sidekick
         /// <param name="fileData"></param>
         /// <param name="fileName"></param>
         /// <param name="displayInBrowser"></param>
-        public static void Render(byte[] fileData, string fileName, bool displayInBrowser) {
+        public static void Render(byte[] fileData, string fileName, bool displayInBrowser) 
+        {
 	        HttpResponse response = HttpContext.Current.Response;
 
 	        response.Clear();
@@ -23,19 +24,24 @@ namespace sidekick
 
 	        if (fileName.EndsWith(".pdf")) {
 		        response.ContentType = "application/pdf";
-	        } else if (fileName.EndsWith(".xls")) {
+	        } 
+            else if (fileName.EndsWith(".xls")) 
+            {
 		        response.ContentType = "application/x-msexcel";
-	        } else if (fileName.EndsWith(".csv")) {
+	        } 
+            else if (fileName.EndsWith(".csv")) 
+            {
 		        response.ContentType = "application/x-csv";
-	        } else {
+	        } 
+            else 
+            {
 		        response.ContentType = "application/octet-stream";
 	        }
 
 	        string contentDisposition = "attachment";
 
-	        if (displayInBrowser) {
+	        if (displayInBrowser)
 		        contentDisposition = "inline";
-	        }
 
 	        //this causes it to download as a file - comment out or change "attachment" to "inline" to open in Adobe Reader
 	        response.AddHeader("Content-Disposition", "" + contentDisposition + "; filename=" + fileName);
@@ -51,7 +57,8 @@ namespace sidekick
         /// <param name="fileData"></param>
         /// <param name="fileName"></param>
         /// <param name="displayInBrowser"></param>
-        public static void Render(byte[] fileData, FileType fileType, string fileName, bool displayInBrowser) {
+        public static void Render(byte[] fileData, FileType fileType, string fileName, bool displayInBrowser) 
+        {
 	        HttpResponse response = HttpContext.Current.Response;
 
 	        response.Clear();
@@ -64,6 +71,7 @@ namespace sidekick
             response.ContentType = fileType.GetHtmlAttributes<FileType>().Tag;
 
 	        string contentDisposition = "attachment";
+
 	        if (displayInBrowser)
 		        contentDisposition = "inline";
 

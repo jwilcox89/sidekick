@@ -7,8 +7,8 @@ namespace sidekick
     {
         private Modal _modal;
 
-        public ModalBuilder(HtmlHelper<TModel> helper, Modal modal) 
-            : base(helper) {
+        public ModalBuilder(HtmlHelper<TModel> helper, Modal modal) : base(helper) 
+        {
             _modal = modal;
             WriteLine(String.Format("<div class='modal fade' id='{0}'>", _modal.ID));
             WriteLine(String.Format("<div class='modal-dialog {0}'>", _modal.ModalSize.GetHtmlAttributes<ModalSize>().Class));
@@ -19,11 +19,13 @@ namespace sidekick
             WriteLine("</div>");
         }
 
-        public ModalBody<TModel> BuildBody() {
-            return new ModalBody<TModel>(_helper, _modal);
+        public ModalBody<TModel> BuildBody() 
+        {
+            return new ModalBody<TModel>(Helper, _modal);
         }
 
-        public MvcHtmlString BuildFooter() {
+        public MvcHtmlString BuildFooter() 
+        {
             WriteLine("<div class='modal-footer'>");
 
             if (_modal.Dismissable)
@@ -40,21 +42,23 @@ namespace sidekick
             return new MvcHtmlString(String.Empty);
         }
 
-        public void Dispose() {
+        public void Dispose() 
+        {
             WriteLine("</div></div></div>");
         }
     }
 
     public class ModalBody<TModel> : BuilderBase<TModel>, IDisposable
     {
-        public ModalBody(HtmlHelper<TModel> helper, Modal modal)
-            : base(helper) {
+        public ModalBody(HtmlHelper<TModel> helper, Modal modal) : base(helper) 
+        {
             WriteLine("<div class='modal-body'>");
             if (!String.IsNullOrEmpty(modal.ErrorAreaID))
                 WriteLine(String.Format("<div id='{0}'></div>", modal.ErrorAreaID));
         }
 
-        public void Dispose() {
+        public void Dispose() 
+        {
             WriteLine("</div>");
         }
     }

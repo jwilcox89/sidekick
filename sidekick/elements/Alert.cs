@@ -38,8 +38,10 @@ namespace sidekick
         /// <summary>
         ///     Sets the alert class here. Ex. "alert alert-success"
         /// </summary>
-        public virtual string AlertClass {
-            get {
+        public virtual string AlertClass 
+        {
+            get 
+            {
                 string className = Type.GetHtmlAttributes<AlertType>().Class;
                 if (Dismissible)
                     className = String.Format("{0} alert-dismissable", className);
@@ -48,12 +50,14 @@ namespace sidekick
             }
         }
 
-        public Alert() {
+        public Alert() 
+        {
             Type = AlertType.Info;
             MessageList = new List<string>();
         }
 
-        public Alert(AlertType type) {
+        public Alert(AlertType type) 
+        {
             Type = type;
             MessageList = new List<string>();
         }

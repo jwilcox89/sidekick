@@ -12,7 +12,8 @@ namespace sidekick
         /// </summary>
         /// <param name="modelState"></param>
         /// <returns></returns>
-        public static List<string> GetModelErrors(this ModelStateDictionary modelState) {
+        public static List<string> GetModelErrors(this ModelStateDictionary modelState) 
+        {
             List<string> errorList = new List<string>();
             errorList.AddRange(modelState.Values.SelectMany(m => m.Errors).Select(x => x.ErrorMessage));
             return errorList;
@@ -23,8 +24,10 @@ namespace sidekick
         /// </summary>
         /// <param name="state"></param>
         /// <param name="result"></param>
-        public static void AddIdentityErrors(this ModelStateDictionary state, IdentityResult result) {
-            foreach (string error in result.Errors) {
+        public static void AddIdentityErrors(this ModelStateDictionary state, IdentityResult result) 
+        {
+            foreach (string error in result.Errors)
+            {
                 state.AddModelError("", error);
             }
         }

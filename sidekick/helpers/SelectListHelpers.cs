@@ -14,15 +14,22 @@ namespace sidekick
         /// <param name="yearsForward">How many years forward from the current year do you want to display?</param>
         /// <param name="yearsBackward">How many years backward from the current year do you want to display?</param>
         /// <returns></returns>
-        public static IEnumerable<SelectListItem> YearDropdown(int yearsForward, int yearsBackward) {
+        public static IEnumerable<SelectListItem> YearDropdown(int yearsForward, int yearsBackward) 
+        {
             List<SelectListItem> list = new List<SelectListItem>();
 
             int start = DateTime.Now.Year - yearsBackward;
             int end = DateTime.Now.Year + yearsForward;
             int placeholder = start;
 
-            while(placeholder >= start && placeholder <= end) {
-                list.Add(new SelectListItem { Text = placeholder.ToString(), Value = placeholder.ToString() });
+            while(placeholder >= start && placeholder <= end) 
+            {
+                list.Add(new SelectListItem 
+                { 
+                    Text = placeholder.ToString(), 
+                    Value = placeholder.ToString() 
+                });
+
                 placeholder++;
             }
 
@@ -33,7 +40,8 @@ namespace sidekick
         ///     Generates a simple True/False dropdown into a usable format.
         /// </summary>
         /// <returns></returns>
-        public static IEnumerable<SelectListItem> YesNoDropdown() {
+        public static IEnumerable<SelectListItem> YesNoDropdown() 
+        {
             return YesNoDropdown("Yes", "No");
         }
 
@@ -44,9 +52,13 @@ namespace sidekick
         /// <param name="falseValue">What you want the false option to say (ex. "No)</param>
         /// <param name="defaultText"></param>
         /// <returns></returns>
-        public static IEnumerable<SelectListItem> YesNoDropdown(string trueValue, string falseValue) {
-            return new List<SelectListItem> { new SelectListItem { Text = trueValue, Value = "True" },
-                                              new SelectListItem { Text = falseValue, Value = "False" } };
+        public static IEnumerable<SelectListItem> YesNoDropdown(string trueValue, string falseValue) 
+        {
+            return new List<SelectListItem>()
+            { 
+                new SelectListItem { Text = trueValue, Value = "True" },
+                new SelectListItem { Text = falseValue, Value = "False" } 
+            };
         }
 
         /// <summary>
@@ -58,7 +70,8 @@ namespace sidekick
         /// <param name="display"></param>
         /// <param name="selectedValue"></param>
         /// <returns></returns>
-        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, Expression<Func<TSource,object>> value, Expression<Func<TSource,object>> display, object selectedValue = null) {
+        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, Expression<Func<TSource,object>> value, Expression<Func<TSource,object>> display, object selectedValue = null) 
+        {
             return BuildSelectList(items, value.GetMemberName(), display.GetMemberName(), selectedValue);
         }
 
@@ -68,7 +81,8 @@ namespace sidekick
         /// <typeparam name="TSource"></typeparam>
         /// <param name="items"></param>
         /// <returns></returns>
-        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items) {
+        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items) 
+        {
             return BuildSelectList(items, "", "", null);
         }
 
@@ -79,7 +93,8 @@ namespace sidekick
         /// <param name="items"></param>
         /// <param name="selectedValue"></param>
         /// <returns></returns>
-        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, object selectedValue) {
+        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, object selectedValue) 
+        {
             return BuildSelectList(items, "", "", selectedValue);
         }
 
@@ -92,7 +107,8 @@ namespace sidekick
         /// <param name="display"></param>
         /// <param name="selectedValue"></param>
         /// <returns></returns>
-        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, string value, string display, object selectedValue) {
+        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, string value, string display, object selectedValue) 
+        {
             items = items as List<TSource> ?? items.ToList();
             return new SelectList(items, value, display, selectedValue);
         }

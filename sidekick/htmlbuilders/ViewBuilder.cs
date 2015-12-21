@@ -11,19 +11,23 @@ namespace sidekick
     {
         public HttpContextBase CurrentHttpContext { get; set; }
 
-        public ViewBuilder() {
+        public ViewBuilder() 
+        {
             if (HttpContext.Current != null)
                 CurrentHttpContext = new HttpContextWrapper(HttpContext.Current);
         }
 
-        protected override void ExecuteCore() {}
+        protected override void ExecuteCore() 
+        {
+        }
 
         /// <summary>
         ///     Returns a string of the HTML for a view
         /// </summary>
         /// <param name="viewName">View name</param>
         /// <returns></returns>
-        public string RenderView(string viewName) {
+        public string RenderView(string viewName) 
+        {
             return BuildView(viewName, null, null);
         }
 
@@ -33,7 +37,8 @@ namespace sidekick
         /// <param name="viewName">View name</param>
         /// <param name="model">Object model that the view uses</param>
         /// <returns></returns>
-        public string RenderView(string viewName, object model) {
+        public string RenderView(string viewName, object model) 
+        {
             return BuildView(viewName, model, null);
         }
 
@@ -44,7 +49,8 @@ namespace sidekick
         /// <param name="model">Object model that the view uses</param>
         /// <param name="tempData">Temp data to be used in the view</param>
         /// <returns></returns>
-        public string RenderView(string viewName, object model, object tempData) {
+        public string RenderView(string viewName, object model, object tempData) 
+        {
             return BuildView(viewName, model, tempData);
         }
 
@@ -55,7 +61,8 @@ namespace sidekick
         /// <param name="model">Object model that the view uses</param>
         /// <param name="additionalTempData">Temp data to be used in the view</param>
         /// <returns></returns>
-        private string BuildView(string viewName, object model, object additionalTempData) {
+        private string BuildView(string viewName, object model, object additionalTempData) 
+        {
             if (ControllerContext == null)
                 CreateControllerContext();
 
@@ -63,7 +70,8 @@ namespace sidekick
                 ViewData.Model = model;
 
             if (additionalTempData != null) {
-                foreach(PropertyInfo p in additionalTempData.GetType().GetProperties()) {
+                foreach(PropertyInfo p in additionalTempData.GetType().GetProperties()) 
+                {
                     if (TempData.ContainsKey(p.Name))
                         TempData.Remove(p.Name);
 
@@ -71,7 +79,8 @@ namespace sidekick
                 }
             }
 
-            using (StringWriter sw = new StringWriter()) {
+            using (StringWriter sw = new StringWriter()) 
+            {
                 ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
                 ViewContext viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
 
@@ -80,7 +89,8 @@ namespace sidekick
             }
         }
 
-        private void CreateControllerContext() {
+        private void CreateControllerContext() 
+        {
             if (CurrentHttpContext == null)
                 throw new ArgumentNullException("CurrentHttpContext", "CurrentHttpContext cannot be null");
 

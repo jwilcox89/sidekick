@@ -22,7 +22,8 @@ namespace sidekick
         /// </summary>
         /// <param name="expression"></param>
         /// <param name="textboxHtmlAttributes"></param>
-        public FormGroup(Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes) {
+        public FormGroup(Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes) 
+        {
             Expression = expression;
             HtmlAttributes = textboxHtmlAttributes;
             HasLabelWithColon = true;
@@ -36,7 +37,8 @@ namespace sidekick
         /// <param name="listItems"></param>
         /// <param name="optionLabel"></param>
         /// <param name="textboxHtmlAttributes"></param>
-        public FormGroup(Expression<Func<TModel,TProperty>> expression, IEnumerable<SelectListItem> listItems, string optionLabel, object textboxHtmlAttributes) {
+        public FormGroup(Expression<Func<TModel,TProperty>> expression, IEnumerable<SelectListItem> listItems, string optionLabel, object textboxHtmlAttributes) 
+        {
             Expression = expression;
             HtmlAttributes = textboxHtmlAttributes;
             SelectListItems = listItems;

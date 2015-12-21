@@ -15,8 +15,10 @@ namespace sidekick.testing.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(LoginViewModel vm) {
-            if (ModelState.IsValid) {
+        public ActionResult Index(LoginViewModel vm) 
+        {
+            if (ModelState.IsValid) 
+            {
                 return View(vm);
             }
 

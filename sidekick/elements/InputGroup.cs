@@ -40,7 +40,8 @@ namespace sidekick
         /// </summary>
         public virtual string DatetimepickerId { get; set; }
 
-        public InputGroup(Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes) {
+        public InputGroup(Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes) 
+        {
             Expression = expression;
             HtmlAttributes = textboxHtmlAttributes;
             Size = InputGroupSize.Regular;

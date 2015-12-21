@@ -34,7 +34,8 @@ namespace sidekick
         /// </summary>
         public virtual string HelpText { get; set; }
 
-        public FormControl() {
+        public FormControl() 
+        {
             if (BaseAttributes == null)
                 BaseAttributes = new { @class = "form-control" };
         }

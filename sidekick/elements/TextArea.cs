@@ -15,7 +15,8 @@ namespace sidekick
         /// </summary>
         public virtual int Columns { get; set; }
 
-        public TextArea(Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes) {
+        public TextArea(Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes) 
+        {
             Expression = expression;
             HtmlAttributes = textboxHtmlAttributes;
             HasLabelWithColon = true;

@@ -62,7 +62,8 @@
         /// </summary>
         public virtual bool ShowSubmitButton { get; set; }
 
-        public Modal() {
+        public Modal() 
+        {
             Dismissable = true;
             ShowSubmitButton = true;
             CloseText = "Close";

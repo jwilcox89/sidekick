@@ -13,7 +13,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="modal"></param>
         /// <returns></returns>
-        public static ModalBuilder<TModel> BeginModal<TModel>(this HtmlHelper<TModel> helper, Modal modal) {
+        public static ModalBuilder<TModel> BeginModal<TModel>(this HtmlHelper<TModel> helper, Modal modal) 
+        {
             return new ModalBuilder<TModel>(helper, modal);
         }
 
@@ -23,7 +24,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="alert"></param>
         /// <returns></returns>
-        public static AlertBuilder<TModel> BeginAlert<TModel>(this HtmlHelper<TModel> helper, Alert alert) {
+        public static AlertBuilder<TModel> BeginAlert<TModel>(this HtmlHelper<TModel> helper, Alert alert) 
+        {
             return new AlertBuilder<TModel>(helper, alert, true);
         }
 
@@ -33,7 +35,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="alert"></param>
         /// <returns></returns>
-        public static MvcHtmlString BuildAlert<TModel>(this HtmlHelper<TModel> helper, Alert alert) {
+        public static MvcHtmlString BuildAlert<TModel>(this HtmlHelper<TModel> helper, Alert alert) 
+        {
             new AlertBuilder<TModel>(helper, alert, false);
             return new MvcHtmlString(String.Empty);
         }
@@ -43,7 +46,8 @@ namespace sidekick
         /// </summary>
         /// <param name="helper"></param>
         /// <returns></returns>
-        public static TabsBuilder<TModel> BeginTabs<TModel>(this HtmlHelper<TModel> helper) {
+        public static TabsBuilder<TModel> BeginTabs<TModel>(this HtmlHelper<TModel> helper) 
+        {
             return new TabsBuilder<TModel>(helper);
         }
 
@@ -53,7 +57,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="panel"></param>
         /// <returns></returns>
-        public static PanelBuilder<TModel> BeginPanel<TModel>(this HtmlHelper<TModel> helper, Panel panel) {
+        public static PanelBuilder<TModel> BeginPanel<TModel>(this HtmlHelper<TModel> helper, Panel panel)
+        {
             return new PanelBuilder<TModel>(helper, panel);
         }
 
@@ -63,7 +68,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="totalSteps"></param>
         /// <returns></returns>
-        public static StepsBuilder<TModel> BeginSteps<TModel>(this HtmlHelper<TModel> helper) {
+        public static StepsBuilder<TModel> BeginSteps<TModel>(this HtmlHelper<TModel> helper) 
+        {
             return new StepsBuilder<TModel>(helper);
         }
 
@@ -72,7 +78,8 @@ namespace sidekick
         /// </summary>
         /// <param name="helper"></param>
         /// <returns></returns>
-        public static BreadcrumbBuilder<TModel> BeginBreadcrumbs<TModel>(this HtmlHelper<TModel> helper) {
+        public static BreadcrumbBuilder<TModel> BeginBreadcrumbs<TModel>(this HtmlHelper<TModel> helper)
+        {
             return new BreadcrumbBuilder<TModel>(helper);
         }
 
@@ -85,7 +92,8 @@ namespace sidekick
         /// <param name="expression"></param>
         /// <param name="htmlAttributes"></param>
         /// <returns></returns>
-        public static InputGroupBuilder<TModel,TProperty> InputGroupFor<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object htmlAttributes = null) {
+        public static InputGroupBuilder<TModel,TProperty> InputGroupFor<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object htmlAttributes = null) 
+        {
             return new InputGroupBuilder<TModel,TProperty>(helper, expression, htmlAttributes);
         }
 
@@ -98,7 +106,8 @@ namespace sidekick
         /// <param name="expression"></param>
         /// <param name="textboxHtmlAttributes"></param>
         /// <returns></returns>
-        public static FormGroupBuilder<TModel,TProperty> FormGroupFor<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes = null) {
+        public static FormGroupBuilder<TModel,TProperty> FormGroupFor<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes = null) 
+        {
             return new FormGroupBuilder<TModel,TProperty>(helper, expression, textboxHtmlAttributes);
         }
 
@@ -113,7 +122,8 @@ namespace sidekick
         /// <param name="optionLabel"></param>
         /// <param name="textboxHtmlAttributes"></param>
         /// <returns></returns>
-        public static FormGroupBuilder<TModel,TProperty> FormGroupFor<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, IEnumerable<SelectListItem> itemList, string optionLabel, object textboxHtmlAttributes = null) {
+        public static FormGroupBuilder<TModel,TProperty> FormGroupFor<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, IEnumerable<SelectListItem> itemList, string optionLabel, object textboxHtmlAttributes = null) 
+        {
             return new FormGroupBuilder<TModel,TProperty>(helper, expression, itemList, optionLabel, textboxHtmlAttributes);
         }
 
@@ -124,7 +134,8 @@ namespace sidekick
         /// <param name="color"></param>
         /// <param name="text"></param>
         /// <returns></returns>
-        public static MvcHtmlString BuildLabel(this HtmlHelper helper, Colors color, string text) {
+        public static MvcHtmlString BuildLabel(this HtmlHelper helper, Colors color, string text) 
+        {
             return LabelBuilder.Build(color, text);
         }
 
@@ -137,7 +148,8 @@ namespace sidekick
         /// <param name="expression"></param>
         /// <param name="textboxHtmlAttributes"></param>
         /// <returns></returns>
-        public static TextAreaBuilder<TModel,TProperty> TextAreaBuilder<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes = null) {
+        public static TextAreaBuilder<TModel,TProperty> TextAreaBuilder<TModel,TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes = null) 
+        {
             return new TextAreaBuilder<TModel,TProperty>(helper, expression, textboxHtmlAttributes);
         }
     }

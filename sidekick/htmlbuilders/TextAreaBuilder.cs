@@ -13,8 +13,8 @@ namespace sidekick
     {
         private TextArea<TModel,TProperty> _model;
 
-        public TextAreaBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object htmlAttributes = null)
-            : base(helper) {
+        public TextAreaBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object htmlAttributes = null) : base(helper) 
+        {
             _model = new TextArea<TModel,TProperty>(expression, htmlAttributes);
         }
 
@@ -23,7 +23,8 @@ namespace sidekick
         /// </summary>
         /// <param name="rows"></param>
         /// <returns></returns>
-        public TextAreaBuilder<TModel,TProperty> Rows(int rows) {
+        public TextAreaBuilder<TModel,TProperty> Rows(int rows) 
+        {
             _model.Rows = rows;
             return this;
         }
@@ -33,7 +34,8 @@ namespace sidekick
         /// </summary>
         /// <param name="columns"></param>
         /// <returns></returns>
-        public TextAreaBuilder<TModel,TProperty> Columns(int columns) {
+        public TextAreaBuilder<TModel,TProperty> Columns(int columns) 
+        {
             _model.Columns = columns;
             return this;
         }
@@ -42,7 +44,8 @@ namespace sidekick
         ///     Will hide label
         /// </summary>
         /// <returns></returns>
-        public TextAreaBuilder<TModel,TProperty> NoLabel() {
+        public TextAreaBuilder<TModel,TProperty> NoLabel() 
+        {
             _model.HasLabel = false;
             _model.HasLabelWithColon = false;
             return this;
@@ -52,7 +55,8 @@ namespace sidekick
         ///     Show label but without colon
         /// </summary>
         /// <returns></returns>
-        public TextAreaBuilder<TModel,TProperty> HasLabelNoColon() {
+        public TextAreaBuilder<TModel,TProperty> HasLabelNoColon() 
+        {
             _model.HasLabelWithColon = false;
             _model.HasLabel = true;
             return this;
@@ -62,7 +66,8 @@ namespace sidekick
         ///     Hide validation
         /// </summary>
         /// <returns></returns>
-        public TextAreaBuilder<TModel,TProperty> NoValidation() {
+        public TextAreaBuilder<TModel,TProperty> NoValidation() 
+        {
             _model.HasValidation = false;
             return this;
         }
@@ -71,7 +76,8 @@ namespace sidekick
         ///     Will add the required '*' next to the label
         /// </summary>
         /// <returns></returns>
-        public TextAreaBuilder<TModel,TProperty> IsRequired() {
+        public TextAreaBuilder<TModel,TProperty> IsRequired() 
+        {
             _model.IsRequired = true;
             return this;
         }
@@ -81,33 +87,36 @@ namespace sidekick
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public TextAreaBuilder<TModel,TProperty> HelpText(string text) {
+        public TextAreaBuilder<TModel,TProperty> HelpText(string text)
+        {
             _model.HelpText = text;
             return this;
         }
 
-        private MvcHtmlString CreateTextArea() {
+        private MvcHtmlString CreateTextArea() 
+        {
             WriteLine("<div class='form-group'>");
 
             if (_model.HasLabelWithColon)
-                WriteLine(_helper.LabelForWithColon(_model.Expression, _model.IsRequired));
+                WriteLine(Helper.LabelForWithColon(_model.Expression, _model.IsRequired));
 
             if (_model.HasLabel)
-                WriteLine(_helper.LabelFor(_model.Expression));
+                WriteLine(Helper.LabelFor(_model.Expression));
 
-            WriteLine(_helper.TextAreaFor(_model.Expression, _model.Rows, _model.Columns, MergeAttributes(_model)));
+            WriteLine(Helper.TextAreaFor(_model.Expression, _model.Rows, _model.Columns, MergeAttributes(_model)));
             
             if (!String.IsNullOrEmpty(_model.HelpText))
                 WriteLine(String.Format("<span class='help-block'>{0}</span>", _model.HelpText));
 
             if (_model.HasValidation)
-                WriteLine(_helper.ValidationMessageFor(_model.Expression));
+                WriteLine(Helper.ValidationMessageFor(_model.Expression));
 
             WriteLine("</div>");
             return new MvcHtmlString(String.Empty);
         }
 
-        public string ToHtmlString() {
+        public string ToHtmlString() 
+        {
             return CreateTextArea().ToString();
         }
     }

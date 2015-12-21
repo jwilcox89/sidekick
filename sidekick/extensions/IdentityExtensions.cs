@@ -6,7 +6,8 @@ namespace sidekick
 {
     public static class IdentityExtensions
     {
-        public static string GetIdentityProperty(this IIdentity identity, string propertyName) {
+        public static string GetIdentityProperty(this IIdentity identity, string propertyName) 
+        {
             return ((ClaimsIdentity)identity).Claims.FirstOrDefault(x => x.Type == propertyName).Value;
         }
     }

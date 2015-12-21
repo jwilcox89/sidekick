@@ -13,7 +13,8 @@ namespace sidekick
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public static bool IsValidNumber(this string input) {
+        public static bool IsValidNumber(this string input) 
+        {
             return !String.IsNullOrEmpty(input) && Regex.IsMatch(input, @"^\d+$");
         }
 
@@ -22,7 +23,8 @@ namespace sidekick
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public static string GetFileExtention(this string text) {
+        public static string GetFileExtention(this string text) 
+        {
             return Path.GetExtension(text).ToLower();
         }
 
@@ -31,7 +33,8 @@ namespace sidekick
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static string SetEmptyIfNull(this string value) {
+        public static string SetEmptyIfNull(this string value) 
+        {
             return (value == null) ? String.Empty : value;
         }
     }

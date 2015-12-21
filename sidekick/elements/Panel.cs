@@ -27,7 +27,8 @@
         /// </summary>
         public virtual string Title { get; set; }
 
-        public Panel() {
+        public Panel() 
+        {
             Color = Colors.Default;
             HeadingSize = HeadingSize.H3;
         }

@@ -14,13 +14,17 @@ namespace sidekick
     {
         private string _networkName;
 
-        public NetworkConnection(string networkName, NetworkCredential credentials) {
+        public NetworkConnection(string networkName, NetworkCredential credentials) 
+        {
             _networkName = networkName;
 
-            dynamic netResource = new NetResource { Scope = ResourceScope.GlobalNetwork,
-                                                    ResourceType = ResourceType.Disk,
-                                                    DisplayType = ResourceDisplaytype.Share,
-                                                    RemoteName = networkName };
+            dynamic netResource = new NetResource()
+            { 
+                Scope = ResourceScope.GlobalNetwork,
+                ResourceType = ResourceType.Disk,
+                DisplayType = ResourceDisplaytype.Share,
+                RemoteName = networkName 
+            };
 
             dynamic userName = String.IsNullOrEmpty(credentials.Domain) ? credentials.UserName : String.Format("{0}\\{1}", credentials.Domain, credentials.UserName);
             dynamic result = WNetAddConnection2(netResource, credentials.Password, userName, 0);
@@ -34,12 +38,14 @@ namespace sidekick
             Dispose(false);
         }
 
-        public void Dispose() {
+        public void Dispose() 
+        {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing) {
+        protected virtual void Dispose(bool disposing) 
+        {
             WNetCancelConnection2(_networkName, 0, true);
         }
 

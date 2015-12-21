@@ -14,7 +14,8 @@ namespace sidekick
         /// <param name="source"></param>
         /// <param name="selector"></param>
         /// <returns></returns>
-        public static IEnumerable<TSource> DistinctBy<TSource,TKey>(this IEnumerable<TSource> source, Func<TSource,TKey> selector) {
+        public static IEnumerable<TSource> DistinctBy<TSource,TKey>(this IEnumerable<TSource> source, Func<TSource,TKey> selector) 
+        {
             return source.GroupBy(selector).Select(x => x.First());
         }
     }

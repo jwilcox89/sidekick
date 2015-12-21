@@ -11,7 +11,8 @@ namespace sidekick
         /// </summary>
         /// <param name="method"></param>
         /// <returns></returns>
-        public static MemberExpression GetMemberInfo(this Expression method) {
+        public static MemberExpression GetMemberInfo(this Expression method) 
+        {
             LambdaExpression lambda = method as LambdaExpression;
 
             if (lambda == null)
@@ -19,9 +20,12 @@ namespace sidekick
 
             MemberExpression memberEx = null;
 
-            if (lambda.Body.NodeType == ExpressionType.Convert) {
+            if (lambda.Body.NodeType == ExpressionType.Convert) 
+            {
                 memberEx = ((UnaryExpression)lambda.Body).Operand as MemberExpression;
-            } else if (lambda.Body.NodeType == ExpressionType.MemberAccess) {
+            } 
+            else if (lambda.Body.NodeType == ExpressionType.MemberAccess) 
+            {
                 memberEx = lambda.Body as MemberExpression;
             }
 
@@ -36,11 +40,13 @@ namespace sidekick
         /// </summary>
         /// <param name="method"></param>
         /// <returns></returns>
-        public static string GetMemberName(this Expression method) {
+        public static string GetMemberName(this Expression method) 
+        {
             return method.GetMemberInfo().Member.Name;
         }
 
-        public static PropertyInfo GetProperty<TEntity>(this TEntity entity, string name) {
+        public static PropertyInfo GetProperty<TEntity>(this TEntity entity, string name) 
+        {
             return entity.GetType().GetProperty(name);
         }
 
@@ -49,7 +55,8 @@ namespace sidekick
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static bool Toggle(this bool value) {
+        public static bool Toggle(this bool value) 
+        {
             return !value;
         }
     }

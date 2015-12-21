@@ -13,7 +13,8 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TObject"></typeparam>
         /// <returns></returns>
-        public static IEnumerable<TEnum> GetEnumValues<TEnum>() {
+        public static IEnumerable<TEnum> GetEnumValues<TEnum>() 
+        {
             if (typeof(TEnum).BaseType != typeof(Enum))
                 throw new ArgumentException("Must be a type of System.Enum");
 
@@ -25,7 +26,8 @@ namespace sidekick
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static DisplayAttribute GetDisplayAttribute<TEnum>(this object value) {
+        public static DisplayAttribute GetDisplayAttribute<TEnum>(this object value) 
+        {
             if (typeof(TEnum).BaseType != typeof(Enum))
                 throw new ArgumentException("Must be a type of System.Enum");
 
@@ -42,7 +44,8 @@ namespace sidekick
         /// <typeparam name="TEnum"></typeparam>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static HtmlBuilderAttribute GetHtmlAttributes<TEnum>(this object value) {
+        public static HtmlBuilderAttribute GetHtmlAttributes<TEnum>(this object value) 
+        {
             if (typeof(TEnum).BaseType != typeof(Enum))
                 throw new ArgumentException("Must be a type of System.Enum");
 

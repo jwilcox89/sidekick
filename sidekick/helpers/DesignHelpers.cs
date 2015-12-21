@@ -16,7 +16,8 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="backgroundColor"></param>
         /// <returns></returns>
-        public static string SetTextColor(this HtmlHelper helper, string backgroundColor) {
+        public static string SetTextColor(this HtmlHelper helper, string backgroundColor) 
+        {
             if (!backgroundColor.StartsWith("#"))
                 backgroundColor = String.Format("#{0}", backgroundColor);
 
@@ -32,7 +33,8 @@ namespace sidekick
         /// <param name="color"></param>
         /// <param name="correctionFactor">Must be between -1 and 1. Negative values produce darker colors. ex. 0.15 = 15%.</param>
         /// <returns></returns>
-        public static string ChangeColor(this HtmlHelper helper, string color, float correctionFactor) {
+        public static string ChangeColor(this HtmlHelper helper, string color, float correctionFactor) 
+        {
             if (!color.StartsWith("#"))
                 color = String.Format("#{0}", color);
 
@@ -42,12 +44,15 @@ namespace sidekick
             float green = (float)c.G;
             float blue = (float)c.B;
 
-            if (correctionFactor < 0) {
+            if (correctionFactor < 0) 
+            {
                 correctionFactor = 1 + correctionFactor;
                 red   *= correctionFactor;
                 green *= correctionFactor;
                 blue  *= correctionFactor;
-            } else {
+            } 
+            else 
+            {
                 red   = (255 - red) * correctionFactor + red;
                 green = (255 - green) * correctionFactor + green;
                 blue  = (255 - blue) * correctionFactor + blue;
@@ -56,7 +61,8 @@ namespace sidekick
             return ColorTranslator.ToHtml(Color.FromArgb(c.A, (int)red, (int)green, (int)blue));
         }
 
-        private static int PerceivedBrightness(Color c) {
+        private static int PerceivedBrightness(Color c)
+        {
             return (int)Math.Sqrt(c.R * c.R * .241 +
                                   c.G * c.G * .691 +
                                   c.B * c.B * .068);

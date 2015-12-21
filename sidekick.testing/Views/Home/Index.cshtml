@@ -8,7 +8,8 @@
 }
 
 <h2>Breadcrumbs</h2>
-@using (var breadcrumbs = Html.BeginBreadcrumbs()) {
+@using (var breadcrumbs = Html.BeginBreadcrumbs()) 
+{
     @breadcrumbs.AddCrumb(Url.Action("Index", "Home"), "Home")
     @breadcrumbs.AddCrumb(Url.Action("About", "Home"), "Page 2", true)
 }
@@ -16,7 +17,8 @@
 <hr />
 
 <h2>Alerts</h2>
-@using (Html.BeginAlert(new Alert(AlertType.Danger) { Heading = "Uh Oh!", Dismissible = true })) {
+@using (Html.BeginAlert(new Alert(AlertType.Danger) { Heading = "Uh Oh!", Dismissible = true })) 
+{
     <p>There was an error on the page!</p>   
 }
 
@@ -26,8 +28,10 @@
 
 <h2>Modal</h2>
 <button id="modal-button" class="btn btn-default">Open Modal</button>
-@using (var modal = Html.BeginModal(new Modal { ID = "test-modal", Title = "My Modal" })) {
-    using (modal.BuildBody()) {
+@using (var modal = Html.BeginModal(new Modal { ID = "test-modal", Title = "My Modal" })) 
+{
+    using (modal.BuildBody()) 
+    {
         <p>
             Modal content
         </p>
@@ -39,7 +43,8 @@
 <hr />
 
 <h2>Panel</h2>
-@using (Html.BeginPanel(new Panel { Title = "My Panel", Icon = "fa fa-truck" })) {
+@using (Html.BeginPanel(new Panel { Title = "My Panel", Icon = "fa fa-truck" })) 
+{
     <p>
         Panel content
     </p>   
@@ -48,15 +53,18 @@
 <hr />
 
 <h2>Tab</h2>
-@using (var tabs = Html.BeginTabs()) {
+@using (var tabs = Html.BeginTabs()) 
+{
     @tabs.Tab(new Tab { Name = "baseball", Icon = "fa fa-user", Active = true }, "Baseball")
     @tabs.Tab(new Tab { Name = "football", Icon = "fa fa-truck" }, "Football")
     
-    using (tabs.BeginTab()) {
+    using (tabs.BeginTab()) 
+    {
         <p>The baseball tab</p>
     }
     
-    using (tabs.BeginTab()) {
+    using (tabs.BeginTab()) 
+    {
         <p>the football tab</p>
     }
 }
@@ -64,7 +72,8 @@
 <hr />
 
 <h2>Steps</h2>
-@using (var steps = Html.BeginSteps()) {
+@using (var steps = Html.BeginSteps()) 
+{
     @steps.AddStep("Step 1", "fa fa-truck", "Description of the step", true)   
     @steps.AddStep("Step 2", "fa fa-briefcase", "Description of the next step", true)
     @steps.AddStep("Step 3", "fa fa-user", "Description of the last step")
