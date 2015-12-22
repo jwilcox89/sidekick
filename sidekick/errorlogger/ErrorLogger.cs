@@ -18,7 +18,7 @@ namespace sidekick
         /// <param name="ex"></param>
         public static void LogError<TEntity>(ExceptionContext ex, string comments = null) where TEntity : class, IErrorLog, new() 
         {
-            TEntity error = new TEntity()
+            TEntity error = new TEntity
             { 
                 Time = DateTime.Now,
                 Exception = ex.GetExceptionMessage(),
@@ -42,7 +42,7 @@ namespace sidekick
         /// <param name="route"></param>
         public static void LogError<TEntity>(_Exception ex, string comments = null) where TEntity : class, IErrorLog, new() 
         {
-            TEntity error = new TEntity() 
+            TEntity error = new TEntity 
             { 
                 Time = DateTime.Now,
                 Exception = ex.GetExceptionMessage(),
