@@ -11,7 +11,7 @@ namespace sidekick
         /// <typeparam name="TModel"></typeparam>
         /// <param name="action">The default view name is _AjaxMessage. If the view name you are using is different please specify.</param>
         /// <returns></returns>
-        public static string BuildElement<TModel>(Action<TModel> action) where TModel : IView, new() 
+        public static string BuildElement<TModel>(Action<TModel> action) where TModel : IView, new()
         {
             TModel element = new TModel();
             action(element);
@@ -28,7 +28,7 @@ namespace sidekick
         /// <typeparam name="TAlert">Custom model that implements the IAlert interface</typeparam>
         /// <param name="action"></param>
         /// <returns></returns>
-        public static string BuildAlert<TAlert>(Action<TAlert> action) where TAlert : Alert, new() 
+        public static string BuildAlert<TAlert>(Action<TAlert> action) where TAlert : Alert, new()
         {
             return BuildElement(action);
         }
@@ -39,14 +39,14 @@ namespace sidekick
         /// <typeparam name="TAlert">Custom model that implements the IAlert interface.</typeparam>
         /// <param name="modelState"></param>
         /// <returns></returns>
-        public static string BuildAlert<TAlert>(ModelStateDictionary modelState, string viewName = "_AjaxMessage") where TAlert : Alert, new() 
+        public static string BuildAlert<TAlert>(ModelStateDictionary modelState, string viewName = "_AjaxMessage") where TAlert : Alert, new()
         {
-            return BuildElement<TAlert>(x => 
-            { 
+            return BuildElement<TAlert>(x =>
+            {
                 x.ViewName = viewName;
                 x.Type = AlertType.Danger;
                 x.Heading = "Errors!";
-                x.MessageList = modelState.GetModelErrors(); 
+                x.MessageList = modelState.GetModelErrors();
             });
         }
 
@@ -56,7 +56,7 @@ namespace sidekick
         /// <typeparam name="TModal">Custom model that implements the IModal interface</typeparam>
         /// <param name="action"></param>
         /// <returns></returns>
-        public static string BuildModal<TModal>(Action<TModal> action) where TModal : Modal, new() 
+        public static string BuildModal<TModal>(Action<TModal> action) where TModal : Modal, new()
         {
             return BuildElement(action);
         }
@@ -66,7 +66,7 @@ namespace sidekick
         /// </summary>
         /// <param name="viewName">View name</param>
         /// <returns></returns>
-        public static string BuildElement(string viewName) 
+        public static string BuildElement(string viewName)
         {
             return new ViewBuilder().RenderView(viewName);
         }
@@ -78,7 +78,7 @@ namespace sidekick
         /// <param name="element"></param>
         /// <param name="viewName"></param>
         /// <returns></returns>
-        public static string BuildElement<TModel>(TModel element, string viewName) 
+        public static string BuildElement<TModel>(TModel element, string viewName)
         {
             return new ViewBuilder().RenderView(viewName, element);
         }
@@ -91,7 +91,7 @@ namespace sidekick
         /// <param name="viewName"></param>
         /// <param name="tempData"></param>
         /// <returns></returns>
-        public static string BuildElement<TModel>(TModel element, string viewName, object tempData) 
+        public static string BuildElement<TModel>(TModel element, string viewName, object tempData)
         {
             return new ViewBuilder().RenderView(viewName, element, tempData);
         }

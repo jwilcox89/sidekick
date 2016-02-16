@@ -33,7 +33,7 @@ namespace sidekick
         string User { get; set; }
 
         /// <summary>
-        ///     Query in the URL
+        ///     Query string from the URL
         /// </summary>
         string Query { get; set; }
 

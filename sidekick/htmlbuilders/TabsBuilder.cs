@@ -9,7 +9,8 @@ namespace sidekick
         private Queue<Tab> _tabList;
         private bool _firstTab = true;
 
-        public TabsBuilder(HtmlHelper<TModel> helper) : base(helper) 
+        public TabsBuilder(HtmlHelper<TModel> helper)
+            : base(helper)
         {
             _tabList = new Queue<Tab>();
             WriteLine("<div role='tabpanel'>");
@@ -22,7 +23,7 @@ namespace sidekick
         /// <param name="tab"></param>
         /// <param name="displayText"></param>
         /// <returns></returns>
-        public MvcHtmlString Tab(Tab tab, string displayText) 
+        public MvcHtmlString Tab(Tab tab)
         {
             _tabList.Enqueue(tab);
             string active = (tab.Active) ? "class='active'" : null;
@@ -32,7 +33,7 @@ namespace sidekick
             if (!String.IsNullOrEmpty(tab.Icon))
                 WriteLine(String.Format("<i class='{0}'></i>&nbsp;", tab.Icon));
 
-            WriteLine(displayText);
+            WriteLine(tab.DisplayText);
             WriteLine("</a></li>");
 
             return new MvcHtmlString(String.Empty);
@@ -42,9 +43,9 @@ namespace sidekick
         ///     Builds the tab content area
         /// </summary>
         /// <returns></returns>
-        public TabsContent<TModel> BeginTab() 
+        public TabsContent<TModel> BeginTab()
         {
-            if (_firstTab) 
+            if (_firstTab)
             {
                 WriteLine("</ul>");
                 WriteLine("<div class='tab-content'>");
@@ -54,7 +55,7 @@ namespace sidekick
             return new TabsContent<TModel>(Helper, _tabList.Dequeue());
         }
 
-        public void Dispose() 
+        public void Dispose()
         {
             WriteLine("</div></div>");
         }
@@ -62,13 +63,14 @@ namespace sidekick
 
     public class TabsContent<TModel> : BuilderBase<TModel>, IDisposable
     {
-        public TabsContent(HtmlHelper<TModel> helper, Tab tab) : base(helper) 
+        public TabsContent(HtmlHelper<TModel> helper, Tab tab)
+            : base(helper)
         {
             string active = (tab.Active) ? "active" : null;
             WriteLine(String.Format("<div role='tabpanel' class='tab-pane {0}' id='{1}'>", active, tab.Name));
         }
 
-        public void Dispose() 
+        public void Dispose()
         {
             WriteLine("</div>");
         }

@@ -17,7 +17,7 @@ namespace sidekick
         /// <param name="password"></param>
         /// <param name="domain"></param>
         /// <param name="fileSharePath"></param>
-        public NetworkConnectionManager(string username, string password, string domain, string fileSharePath) 
+        public NetworkConnectionManager(string username, string password, string domain, string fileSharePath)
         {
             _userImpersonation = new UserImpersonation(username, password, domain);
             _networkCredential = new NetworkCredential(username, password, domain);
@@ -27,12 +27,12 @@ namespace sidekick
         /// <summary>
         ///     Undo the impersonation attempt
         /// </summary>
-        public void UndoImpersonateUser() 
+        public void UndoImpersonateUser()
         {
             _userImpersonation.undoimpersonateUser();
         }
 
-        public void Dispose() 
+        public void Dispose()
         {
             UndoImpersonateUser();
             GC.SuppressFinalize(this);

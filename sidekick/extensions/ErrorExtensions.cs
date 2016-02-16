@@ -12,11 +12,9 @@ namespace sidekick
         /// </summary>
         /// <param name="modelState"></param>
         /// <returns></returns>
-        public static List<string> GetModelErrors(this ModelStateDictionary modelState) 
+        public static IEnumerable<string> GetModelErrors(this ModelStateDictionary modelState) 
         {
-            List<string> errorList = new List<string>();
-            errorList.AddRange(modelState.Values.SelectMany(m => m.Errors).Select(x => x.ErrorMessage));
-            return errorList;
+            return modelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage);
         }
 
         /// <summary>

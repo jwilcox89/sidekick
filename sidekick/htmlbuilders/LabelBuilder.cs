@@ -17,11 +17,11 @@ namespace sidekick
         /// <param name="color"></param>
         /// <param name="text"></param>
         /// <returns></returns>
-        public static MvcHtmlString Build(Colors color, string text) 
+        public static MvcHtmlString Build(Colors color, string text)
         {
-            using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter())) 
+            using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter()))
             {
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, String.Format("label label-{0}", color.GetHtmlAttributes<Colors>().Class));
+                writer.AddAttribute(HtmlTextWriterAttribute.Class, String.Format("label label-{0}", color.GetAttribute<Colors, HtmlBuilderAttribute>().Class));
                 writer.RenderBeginTag(HtmlTextWriterTag.Span);
                 writer.Write(text);
                 writer.RenderEndTag();
@@ -39,7 +39,7 @@ namespace sidekick
         /// <param name="expression"></param>
         /// <param name="required"></param>
         /// <returns></returns>
-        public static MvcHtmlString LabelForWithColon<TModel,TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TValue>> expression, bool required = false) 
+        public static MvcHtmlString LabelForWithColon<TModel, TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, bool required = false)
         {
             return LabelFor(helper, expression, null, required);
         }
@@ -54,12 +54,12 @@ namespace sidekick
         /// <param name="htmlAttributes"></param>
         /// <param name="required"></param>
         /// <returns></returns>
-        public static MvcHtmlString LabelForWithColon<TModel,TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TValue>> expression, object htmlAttributes, bool required = false) 
+        public static MvcHtmlString LabelForWithColon<TModel, TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, object htmlAttributes, bool required = false)
         {
             return LabelFor(helper, expression, new RouteValueDictionary(htmlAttributes), required);
         }
 
-        private static MvcHtmlString LabelFor<TModel,TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel,TValue>> expression, IDictionary<string,object> htmlAttributes, bool required) 
+        private static MvcHtmlString LabelFor<TModel, TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, IDictionary<string, object> htmlAttributes, bool required)
         {
             ModelMetadata metadata = ModelMetadata.FromLambdaExpression(expression, helper.ViewData);
             string htmlFieldName = ExpressionHelper.GetExpressionText(expression);
@@ -70,7 +70,7 @@ namespace sidekick
 
             TagBuilder tag = new TagBuilder("label");
 
-            if (htmlAttributes != null && htmlAttributes.Count > 0)
+            if (htmlAttributes != null && htmlAttributes.Any())
                 tag.MergeAttributes(htmlAttributes);
 
             tag.Attributes.Add("for", helper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldId(htmlFieldName));
@@ -78,7 +78,7 @@ namespace sidekick
 
             string result = tag.ToString(TagRenderMode.Normal);
 
-            if (required) 
+            if (required)
             {
                 TagBuilder requiredTag = new TagBuilder("span");
                 requiredTag.Attributes.Add("class", "required");

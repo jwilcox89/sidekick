@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace sidekick
@@ -33,7 +34,7 @@ namespace sidekick
         /// <summary>
         ///     Used for multiple errors or success messages that are generally generated from a list of ModelState errors or AspIdentity IdentityErrors 
         /// </summary>
-        public virtual List<string> MessageList { get; set; }
+        public virtual IEnumerable<string> MessageList { get; set; }
 
         /// <summary>
         ///     Sets the alert class here. Ex. "alert alert-success"
@@ -42,7 +43,7 @@ namespace sidekick
         {
             get 
             {
-                string className = Type.GetHtmlAttributes<AlertType>().Class;
+                string className = Type.GetAttribute<AlertType,HtmlBuilderAttribute>().Class;
                 if (Dismissible)
                     className = String.Format("{0} alert-dismissable", className);
 
@@ -53,13 +54,13 @@ namespace sidekick
         public Alert() 
         {
             Type = AlertType.Info;
-            MessageList = new List<string>();
+            MessageList = Enumerable.Empty<string>();
         }
 
         public Alert(AlertType type) 
         {
             Type = type;
-            MessageList = new List<string>();
+            MessageList = Enumerable.Empty<string>();
         }
     }
 }

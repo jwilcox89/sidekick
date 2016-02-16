@@ -35,11 +35,11 @@ namespace sidekick
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
         public static extern long CloseHandle(IntPtr handle);
 
-        public UserImpersonation() 
+        public UserImpersonation()
         {
         }
 
-        public UserImpersonation(string username, string password, string domain) 
+        public UserImpersonation(string username, string password, string domain)
         {
             impersonateValidUser(username, domain, password);
         }
@@ -63,11 +63,11 @@ namespace sidekick
             IntPtr tokenDuplicate = IntPtr.Zero;
             functionReturnValue = false;
 
-            if (RevertToSelf() > 0) 
+            if (RevertToSelf() > 0)
             {
-                if (LogonUserA(userName, domain, password, LOGON32_LOGON_NEW_CREDENTIALS, LOGON32_PROVIDER_WINNT50, ref token) != 0) 
+                if (LogonUserA(userName, domain, password, LOGON32_LOGON_NEW_CREDENTIALS, LOGON32_PROVIDER_WINNT50, ref token) != 0)
                 {
-                    if (DuplicateToken(token, 2, ref tokenDuplicate) != 0) 
+                    if (DuplicateToken(token, 2, ref tokenDuplicate) != 0)
                     {
                         tempWindowsIdentity = new WindowsIdentity(tokenDuplicate);
                         impersonationContext = tempWindowsIdentity.Impersonate();
@@ -77,7 +77,7 @@ namespace sidekick
                 }
             }
 
-            if (!tokenDuplicate.Equals(IntPtr.Zero)) 
+            if (!tokenDuplicate.Equals(IntPtr.Zero))
             {
                 CloseHandle(tokenDuplicate);
             }

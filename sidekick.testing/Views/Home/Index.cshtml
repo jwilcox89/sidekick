@@ -55,8 +55,8 @@
 <h2>Tab</h2>
 @using (var tabs = Html.BeginTabs()) 
 {
-    @tabs.Tab(new Tab { Name = "baseball", Icon = "fa fa-user", Active = true }, "Baseball")
-    @tabs.Tab(new Tab { Name = "football", Icon = "fa fa-truck" }, "Football")
+    @tabs.Tab(new Tab { DisplayText = "Baseball", Name = "baseball", Icon = "fa fa-user", Active = true })
+    @tabs.Tab(new Tab { DisplayText = "Football", Name = "football", Icon = "fa fa-truck" })
     
     using (tabs.BeginTab()) 
     {
@@ -83,6 +83,7 @@
 
 <h2>Input Groups</h2>
 @Html.InputGroupFor(x => x.Email, new { @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").HasLabelWithColon().HasValidation()
+@Html.InputGroupFor(x => x.Email, Model.TestSelectList, "--Select One--").HasLabelWithColon()
 
 <h2>Datetimepicker</h2>
 @Html.InputGroupFor(x => x.Email).AppendIcon("fa fa-calendar").DatetimepickerCss("datetimepicker").HasLabelWithColon()
@@ -92,6 +93,12 @@
 
 <h2>Text Area</h2>
 @Html.TextAreaBuilder(x => x.Email, new { @placeholder = "Enter text..." }).Rows(10).Columns(4).HelpText("This is the help text section")
+
+<h2>Dropdowns</h2>
+@Html.DropDownListFor(x => x.Email, SelectListHelpers.YesNoDropdown(), new { @class = "form-control" })
+<br />
+@Html.DropDownListFor(x => x.Email, SelectListHelpers.BuildSelectList(new CustomSelectList("Option 1", "1").Add("Option 2", "2")), new { @class = "form-control" })
+
 
 <h2>Labels</h2>
 <div class="form-group">

@@ -4,24 +4,32 @@ using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.UI;
 using System.Linq.Expressions;
+using System.Collections.Generic;
 using System.IO;
 
 namespace sidekick
 {
-    public class InputGroupBuilder<TModel,TProperty> : BuilderBase<TModel>, IHtmlString
+    public class InputGroupBuilder<TModel, TProperty> : BuilderBase<TModel>, IHtmlString
     {
-        private InputGroup<TModel,TProperty> _model;
+        private InputGroup<TModel, TProperty> _model;
 
-        public InputGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object htmlAttributes) : base(helper) 
+        public InputGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes)
+            : base(helper)
         {
-            _model = new InputGroup<TModel,TProperty>(expression, htmlAttributes);
+            _model = new InputGroup<TModel, TProperty>(expression, htmlAttributes);
+        }
+
+        public InputGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems, string optionLabel, object textboxHtmlAttributes)
+            : base(helper)
+        {
+            _model = new InputGroup<TModel, TProperty>(expression, listItems, optionLabel, textboxHtmlAttributes);
         }
 
         /// <summary>
         ///     Show label without colon
         /// </summary>
         /// <returns></returns>
-        public InputGroupBuilder<TModel,TProperty> HasLabel() 
+        public InputGroupBuilder<TModel, TProperty> HasLabel()
         {
             _model.HasLabel = true;
             return this;
@@ -31,7 +39,7 @@ namespace sidekick
         ///     Show label with colon
         /// </summary>
         /// <returns></returns>
-        public InputGroupBuilder<TModel,TProperty> HasLabelWithColon() 
+        public InputGroupBuilder<TModel, TProperty> HasLabelWithColon()
         {
             _model.HasLabelWithColon = true;
             return this;
@@ -41,7 +49,7 @@ namespace sidekick
         ///     Mark field has required
         /// </summary>
         /// <returns></returns>
-        public InputGroupBuilder<TModel,TProperty> IsRequired() 
+        public InputGroupBuilder<TModel, TProperty> IsRequired()
         {
             _model.IsRequired = true;
             return this;
@@ -51,7 +59,7 @@ namespace sidekick
         ///     Show validation
         /// </summary>
         /// <returns></returns>
-        public InputGroupBuilder<TModel,TProperty> HasValidation() 
+        public InputGroupBuilder<TModel, TProperty> HasValidation()
         {
             _model.HasValidation = true;
             return this;
@@ -62,7 +70,7 @@ namespace sidekick
         /// </summary>
         /// <param name="icon"></param>
         /// <returns></returns>
-        public InputGroupBuilder<TModel,TProperty> PrependIcon(string icon) 
+        public InputGroupBuilder<TModel, TProperty> PrependIcon(string icon)
         {
             _model.PrependIcon = icon;
             return this;
@@ -73,7 +81,7 @@ namespace sidekick
         /// </summary>
         /// <param name="icon"></param>
         /// <returns></returns>
-        public InputGroupBuilder<TModel,TProperty> AppendIcon(string icon) 
+        public InputGroupBuilder<TModel, TProperty> AppendIcon(string icon)
         {
             _model.AppendIcon = icon;
             return this;
@@ -84,7 +92,7 @@ namespace sidekick
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public InputGroupBuilder<TModel,TProperty> PrependText(string text) 
+        public InputGroupBuilder<TModel, TProperty> PrependText(string text)
         {
             _model.PrependText = text;
             return this;
@@ -95,7 +103,7 @@ namespace sidekick
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public InputGroupBuilder<TModel,TProperty> AppendText(string text) 
+        public InputGroupBuilder<TModel, TProperty> AppendText(string text)
         {
             _model.AppendText = text;
             return this;
@@ -106,7 +114,7 @@ namespace sidekick
         /// </summary>
         /// <param name="size"></param>
         /// <returns></returns>
-        public InputGroupBuilder<TModel,TProperty> Size(InputGroupSize size) 
+        public InputGroupBuilder<TModel, TProperty> Size(InputGroupSize size)
         {
             _model.Size = size;
             return this;
@@ -117,7 +125,7 @@ namespace sidekick
         /// </summary>
         /// <param name="class"></param>
         /// <returns></returns>
-        public InputGroupBuilder<TModel,TProperty> DatetimepickerCss(string @class) 
+        public InputGroupBuilder<TModel, TProperty> DatetimepickerCss(string @class)
         {
             _model.DatetimepickerClass = @class;
             return this;
@@ -128,13 +136,18 @@ namespace sidekick
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public InputGroupBuilder<TModel,TProperty> DatetimepickerId(string id) 
+        public InputGroupBuilder<TModel, TProperty> DatetimepickerId(string id)
         {
             _model.DatetimepickerId = id;
             return this;
         }
 
-        private MvcHtmlString CreateInputGroup() 
+        private MvcHtmlString CreateInputGroup()
+        {
+            return (_model.SelectListItems == null) ? BuildTextBoxInputGroup() : BuildDropdownInputGroup();
+        }
+
+        private MvcHtmlString BuildDropdownInputGroup()
         {
             WriteLine("<div class='form-group'>");
 
@@ -144,9 +157,9 @@ namespace sidekick
             if (_model.HasLabel)
                 WriteLine(Helper.LabelFor(_model.Expression, _model.IsRequired));
 
-            WriteLine(String.Format("<div class='input-group {0} {1}' id='{2}'>", _model.Size.GetHtmlAttributes<InputGroupSize>().Class, _model.DatetimepickerClass, _model.DatetimepickerId));
+            WriteLine(String.Format("<div class='input-group {0} {1}' id='{2}'>", _model.Size.GetAttribute<InputGroupSize, HtmlBuilderAttribute>().Class, _model.DatetimepickerClass, _model.DatetimepickerId));
 
-            if (!String.IsNullOrEmpty(_model.PrependIcon) || !String.IsNullOrEmpty(_model.PrependText)) 
+            if (!String.IsNullOrEmpty(_model.PrependIcon) || !String.IsNullOrEmpty(_model.PrependText))
             {
                 WriteLine("<span class='input-group-addon'>");
 
@@ -159,9 +172,9 @@ namespace sidekick
                 WriteLine("</span>");
             }
 
-            WriteLine(Helper.TextBoxFor(_model.Expression, MergeAttributes(_model)).ToString());
+            WriteLine(Helper.DropDownListFor(_model.Expression, _model.SelectListItems, _model.OptionLabel, MergeAttributes(_model)).ToString());
 
-            if (!String.IsNullOrEmpty(_model.AppendIcon) || !String.IsNullOrEmpty(_model.AppendText)) 
+            if (!String.IsNullOrEmpty(_model.AppendIcon) || !String.IsNullOrEmpty(_model.AppendText))
             {
                 WriteLine("<span class='input-group-addon'>");
 
@@ -184,7 +197,57 @@ namespace sidekick
             return new MvcHtmlString(String.Empty);
         }
 
-        public string ToHtmlString() 
+        private MvcHtmlString BuildTextBoxInputGroup()
+        {
+            WriteLine("<div class='form-group'>");
+
+            if (_model.HasLabelWithColon)
+                WriteLine(Helper.LabelForWithColon(_model.Expression, _model.IsRequired));
+
+            if (_model.HasLabel)
+                WriteLine(Helper.LabelFor(_model.Expression, _model.IsRequired));
+
+            WriteLine(String.Format("<div class='input-group {0} {1}' id='{2}'>", _model.Size.GetAttribute<InputGroupSize, HtmlBuilderAttribute>().Class, _model.DatetimepickerClass, _model.DatetimepickerId));
+
+            if (!String.IsNullOrEmpty(_model.PrependIcon) || !String.IsNullOrEmpty(_model.PrependText))
+            {
+                WriteLine("<span class='input-group-addon'>");
+
+                if (!String.IsNullOrEmpty(_model.PrependIcon))
+                    WriteLine(String.Format("<i class='{0}'></i>", _model.PrependIcon));
+
+                if (!String.IsNullOrEmpty(_model.PrependText))
+                    WriteLine(String.Format(" {0}", _model.PrependText));
+
+                WriteLine("</span>");
+            }
+
+            WriteLine(Helper.TextBoxFor(_model.Expression, MergeAttributes(_model)).ToString());
+
+            if (!String.IsNullOrEmpty(_model.AppendIcon) || !String.IsNullOrEmpty(_model.AppendText))
+            {
+                WriteLine("<span class='input-group-addon'>");
+
+                if (!String.IsNullOrEmpty(_model.AppendIcon))
+                    WriteLine(String.Format("<i class='{0}'></i>", _model.AppendIcon));
+
+                if (!String.IsNullOrEmpty(_model.AppendText))
+                    WriteLine(String.Format(" {0}", _model.AppendText));
+
+                WriteLine("</span>");
+            }
+
+            WriteLine("</div>");
+
+            if (_model.HasValidation)
+                WriteLine(Helper.ValidationMessageFor(_model.Expression));
+
+            WriteLine("</div>");
+
+            return new MvcHtmlString(String.Empty);
+        }
+
+        public string ToHtmlString()
         {
             return CreateInputGroup().ToString();
         }

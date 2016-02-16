@@ -10,29 +10,29 @@ namespace sidekick
         protected HtmlHelper<TModel> Helper;
         private TextWriter _textWriter;
 
-        public BuilderBase(HtmlHelper<TModel> helper) 
+        public BuilderBase(HtmlHelper<TModel> helper)
         {
             Helper = helper;
             _textWriter = helper.ViewContext.Writer;
         }
 
-        public void WriteLine(object html) 
+        protected void WriteLine(object html)
         {
             _textWriter.Write(html);
         }
 
-        public IDictionary<string,object> MergeAttributes<TModel,TProperty>(FormControl<TModel,TProperty> element) 
+        protected IDictionary<string, object> MergeAttributes<TModel, TProperty>(FormControl<TModel, TProperty> element)
         {
-            IDictionary<string,object> baseAttributes = ToDictionary(element.BaseAttributes);
-            IDictionary<string,object> additionalAttributes = ToDictionary(element.HtmlAttributes);
+            IDictionary<string, object> baseAttributes = ToDictionary(element.BaseAttributes);
+            IDictionary<string, object> additionalAttributes = ToDictionary(element.HtmlAttributes);
 
-            foreach (KeyValuePair<string,object> r in additionalAttributes) 
+            foreach (KeyValuePair<string, object> r in additionalAttributes)
             {
-                if (!baseAttributes.ContainsKey(r.Key)) 
+                if (!baseAttributes.ContainsKey(r.Key))
                 {
                     baseAttributes.Add(r.Key, r.Value);
-                } 
-                else 
+                }
+                else
                 {
                     baseAttributes[r.Key] = baseAttributes[r.Key] + " " + r.Value;
                 }
@@ -41,7 +41,7 @@ namespace sidekick
             return baseAttributes;
         }
 
-        private RouteValueDictionary ToDictionary(object data) 
+        private RouteValueDictionary ToDictionary(object data)
         {
             return HtmlHelper.AnonymousObjectToHtmlAttributes(data);
         }

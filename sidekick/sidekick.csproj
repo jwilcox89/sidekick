@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>sidekick</RootNamespace>
     <AssemblyName>sidekick</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -93,10 +94,18 @@
     <Compile Include="elements\HtmlElement.cs" />
     <Compile Include="elements\InputGroup.cs" />
     <Compile Include="elements\Panel.cs" />
+    <Compile Include="elements\CustomSelectList.cs" />
     <Compile Include="elements\Step.cs" />
     <Compile Include="elements\Tab.cs" />
     <Compile Include="elements\FormGroup.cs" />
     <Compile Include="elements\TextArea.cs" />
+    <Compile Include="enums\AlertType.cs" />
+    <Compile Include="enums\Colors.cs" />
+    <Compile Include="enums\FileType.cs" />
+    <Compile Include="enums\HeadingSize.cs" />
+    <Compile Include="enums\InputGroupSize.cs" />
+    <Compile Include="enums\ModalSize.cs" />
+    <Compile Include="enums\Months.cs" />
     <Compile Include="errorlogger\ErrorLogger.cs" />
     <Compile Include="errorlogger\IErrorLog.cs" />
     <Compile Include="extensions\ConversionExtensions.cs" />
@@ -130,7 +139,6 @@
     <Compile Include="htmlbuilders\TabsBuilder.cs" />
     <Compile Include="htmlbuilders\TextAreaBuilder.cs" />
     <Compile Include="results\JsonErrorResult.cs" />
-    <Compile Include="SidekickEnums.cs" />
     <Compile Include="responses\RenderDocument.cs" />
     <Compile Include="session\SessionManagerBase.cs" />
     <Compile Include="TempDataManager.cs" />

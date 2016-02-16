@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Web.Mvc;
 
 namespace sidekick
 {
-    public class InputGroup<TModel,TProperty> : FormControl<TModel,TProperty>
+    public class InputGroup<TModel, TProperty> : FormControl<TModel, TProperty>
     {
         /// <summary>
         ///     Text to append to the input group
@@ -40,10 +42,19 @@ namespace sidekick
         /// </summary>
         public virtual string DatetimepickerId { get; set; }
 
-        public InputGroup(Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes) 
+        public InputGroup(Expression<Func<TModel, TProperty>> expression, object textboxHtmlAttributes)
         {
             Expression = expression;
             HtmlAttributes = textboxHtmlAttributes;
+            Size = InputGroupSize.Regular;
+        }
+
+        public InputGroup(Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems, string optionLabel, object textboxHtmlAttributes)
+        {
+            Expression = expression;
+            HtmlAttributes = textboxHtmlAttributes;
+            SelectListItems = listItems;
+            OptionLabel = optionLabel;
             Size = InputGroupSize.Regular;
         }
     }

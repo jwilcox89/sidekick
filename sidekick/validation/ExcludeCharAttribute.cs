@@ -14,18 +14,19 @@ namespace sidekick
         /// 
         /// </summary>
         /// <param name="excludedChars">String of characters to exclude. Format: !@#$%^&</param>
-        public ExcludeCharAttribute(string excludedChars) : base("{0} contains an invalid character") 
+        public ExcludeCharAttribute(string excludedChars)
+            : base("{0} contains an invalid character")
         {
             _excludedChars = excludedChars;
         }
 
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext) 
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             if (value == null)
                 return ValidationResult.Success;
 
             string stringValue = value.ToString();
-            foreach (char excludedChar in _excludedChars.ToCharArray()) 
+            foreach (char excludedChar in _excludedChars.ToCharArray())
             {
                 if (stringValue.ToCharArray().Contains(excludedChar))
                     return new ValidationResult(FormatErrorMessage(validationContext.DisplayName));

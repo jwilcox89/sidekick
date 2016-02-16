@@ -9,25 +9,27 @@ using System.Collections.Generic;
 
 namespace sidekick
 {
-    public class FormGroupBuilder<TModel,TProperty> : BuilderBase<TModel>, IHtmlString
+    public class FormGroupBuilder<TModel, TProperty> : BuilderBase<TModel>, IHtmlString
     {
-        private FormGroup<TModel,TProperty> _model;
+        private FormGroup<TModel, TProperty> _model;
 
-        public FormGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, object textboxHtmlAttributes) : base(helper) 
+        public FormGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, object textboxHtmlAttributes)
+            : base(helper)
         {
-            _model = new FormGroup<TModel,TProperty>(expression, textboxHtmlAttributes);
+            _model = new FormGroup<TModel, TProperty>(expression, textboxHtmlAttributes);
         }
 
-        public FormGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel,TProperty>> expression, IEnumerable<SelectListItem> listItems, string optionLabel, object textboxHtmlAttributes) : base(helper) 
+        public FormGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems, string optionLabel, object textboxHtmlAttributes)
+            : base(helper)
         {
-            _model = new FormGroup<TModel,TProperty>(expression, listItems, optionLabel, textboxHtmlAttributes);
+            _model = new FormGroup<TModel, TProperty>(expression, listItems, optionLabel, textboxHtmlAttributes);
         }
 
         /// <summary>
         ///     Will hide label
         /// </summary>
         /// <returns></returns>
-        public FormGroupBuilder<TModel,TProperty> NoLabel() 
+        public FormGroupBuilder<TModel, TProperty> NoLabel()
         {
             _model.HasLabel = false;
             _model.HasLabelWithColon = false;
@@ -38,7 +40,7 @@ namespace sidekick
         ///     Show label but without colon
         /// </summary>
         /// <returns></returns>
-        public FormGroupBuilder<TModel,TProperty> HasLabelNoColon() 
+        public FormGroupBuilder<TModel, TProperty> HasLabelNoColon()
         {
             _model.HasLabelWithColon = false;
             _model.HasLabel = true;
@@ -49,7 +51,7 @@ namespace sidekick
         ///     Hide validation
         /// </summary>
         /// <returns></returns>
-        public FormGroupBuilder<TModel,TProperty> NoValidation() 
+        public FormGroupBuilder<TModel, TProperty> NoValidation()
         {
             _model.HasValidation = false;
             return this;
@@ -59,7 +61,7 @@ namespace sidekick
         ///     Will add the required '*' next to the label
         /// </summary>
         /// <returns></returns>
-        public FormGroupBuilder<TModel,TProperty> IsRequired() 
+        public FormGroupBuilder<TModel, TProperty> IsRequired()
         {
             _model.IsRequired = true;
             return this;
@@ -70,18 +72,18 @@ namespace sidekick
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public FormGroupBuilder<TModel,TProperty> HelpText(string text) 
+        public FormGroupBuilder<TModel, TProperty> HelpText(string text)
         {
             _model.HelpText = text;
             return this;
         }
 
-        private MvcHtmlString CreateFormGroup() 
+        private MvcHtmlString CreateFormGroup()
         {
             return (_model.SelectListItems == null) ? BuildTextBoxFormGroup() : BuildDropdownFormGroup();
         }
 
-        private MvcHtmlString BuildTextBoxFormGroup() 
+        private MvcHtmlString BuildTextBoxFormGroup()
         {
             WriteLine("<div class='form-group'>");
 
@@ -103,7 +105,7 @@ namespace sidekick
             return new MvcHtmlString(String.Empty);
         }
 
-        private MvcHtmlString BuildDropdownFormGroup() 
+        private MvcHtmlString BuildDropdownFormGroup()
         {
             WriteLine("<div class='form-group'>");
 
@@ -125,7 +127,7 @@ namespace sidekick
             return new MvcHtmlString(String.Empty);
         }
 
-        public string ToHtmlString() 
+        public string ToHtmlString()
         {
             return CreateFormGroup().ToString();
         }

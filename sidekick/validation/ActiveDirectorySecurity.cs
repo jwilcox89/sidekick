@@ -12,12 +12,12 @@ namespace sidekick
         /// <param name="password">Active directory password</param>
         /// <param name="contextName">Active directory domain</param>
         /// <returns>Returns true if credentials are validated</returns>
-        public static bool ValidateCredentials(string username, string password, string domain) 
+        public static bool ValidateCredentials(string username, string password, string domain)
         {
             if (String.IsNullOrEmpty(domain))
                 return false;
 
-            using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, domain)) 
+            using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, domain))
             {
                 if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
                     return false;
@@ -37,12 +37,12 @@ namespace sidekick
         /// <param name="contextType"></param>
         /// <param name="contextName"></param>
         /// <returns></returns>
-        public static bool ValidateCredentials(string username, string password, ContextType contextType, string contextName) 
+        public static bool ValidateCredentials(string username, string password, ContextType contextType, string contextName)
         {
             if (String.IsNullOrEmpty(contextName))
                 return false;
 
-            using (PrincipalContext pc = new PrincipalContext(contextType, contextName)) 
+            using (PrincipalContext pc = new PrincipalContext(contextType, contextName))
             {
                 if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
                     return false;

@@ -27,10 +27,7 @@ namespace sidekick
         /// <returns></returns>
         public static string FormatCurrency(this HtmlHelper helper, decimal? amount) 
         {
-            if (amount.HasValue)
-                return amount.Value.ToString("C");
-
-            return String.Empty;
+            return amount.FormatCurrency();
         }
 
         /// <summary>
@@ -52,9 +49,9 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public static string FormatCurrency(this HtmlHelper hlper, decimal amount) 
+        public static string FormatCurrency(this HtmlHelper helper, decimal amount) 
         {
-            return amount.ToString("C");
+            return amount.FormatCurrency();
         }
 
         /// <summary>
@@ -75,10 +72,7 @@ namespace sidekick
         /// <returns></returns>
         public static string FormatCurrency(this HtmlHelper helper, int? amount) 
         {
-            if (amount.HasValue)
-                return amount.Value.ToString("C");
-
-            return String.Empty;
+            return amount.FormatCurrency();
         }
 
         /// <summary>
@@ -102,7 +96,7 @@ namespace sidekick
         /// <returns></returns>
         public static string FormatCurrency(this HtmlHelper helper, int amount) 
         {
-            return amount.ToString("C");
+            return amount.FormatCurrency();
         }
 
         /// <summary>
@@ -124,24 +118,7 @@ namespace sidekick
         /// <returns></returns>
         public static string FormatPhone(this HtmlHelper helper, string number, bool areaCodeParens = true) 
         {
-            if (String.IsNullOrEmpty(number))
-                return String.Empty;
-
-            if (number.Trim().Length < 10) 
-            {
-                return Regex.Replace(number, "(\\d{3})(\\d{4})", "$1-$2");
-            }
-            else
-            {
-                if (areaCodeParens) 
-                {
-                    return Regex.Replace(number, "(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3");
-                }
-                else
-                {
-                    return Regex.Replace(number, "(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3");
-                }
-            }
+            return number.FormatPhone(areaCodeParens);
         }
 
         /// <summary>
@@ -180,10 +157,7 @@ namespace sidekick
         /// <returns></returns>
         public static string FormatSSN(this HtmlHelper helper, string ssn) 
         {
-            if (String.IsNullOrEmpty(ssn))
-                return String.Empty;
-
-            return ssn.Insert(3,"-").Insert(6,"-");
+            return ssn.FormatSSN();
         }
 
         /// <summary>

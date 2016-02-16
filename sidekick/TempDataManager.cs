@@ -9,7 +9,7 @@ namespace sidekick
     {
         public TempDataDictionary TempData { get; set; }
 
-        public TempDataManager(TempDataDictionary data) 
+        public TempDataManager(TempDataDictionary data)
         {
             TempData = data;
         }
@@ -19,7 +19,7 @@ namespace sidekick
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        public void Add(string key, object value) 
+        public void Add(string key, object value)
         {
             Remove(key);
             TempData.Add(key, value);
@@ -29,7 +29,7 @@ namespace sidekick
         ///     Removes a key/value pair from temp data.
         /// </summary>
         /// <param name="key"></param>
-        public void Remove(string key) 
+        public void Remove(string key)
         {
             if (TempData.ContainsKey(key))
                 TempData.Remove(key);

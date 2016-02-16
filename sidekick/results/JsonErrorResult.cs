@@ -17,7 +17,7 @@ namespace sidekick
         ///     Success = false
         ///     view = "_AjaxMessage"
         /// </summary>
-        public JsonErrorResult() 
+        public JsonErrorResult()
         {
         }
 
@@ -29,7 +29,7 @@ namespace sidekick
         ///     view = "viewName parameter"
         /// </summary>
         /// <param name="viewName">Name of the Razor view that holds the error</param>
-        public JsonErrorResult(string viewName) 
+        public JsonErrorResult(string viewName)
         {
             _viewName = viewName;
         }
@@ -42,7 +42,7 @@ namespace sidekick
         ///     view = "_AjaxMessage"
         /// </summary>
         /// <param name="behavior"></param>
-        public JsonErrorResult(JsonRequestBehavior behavior) 
+        public JsonErrorResult(JsonRequestBehavior behavior)
         {
             JsonRequestBehavior = behavior;
         }
@@ -56,13 +56,13 @@ namespace sidekick
         /// </summary>
         /// <param name="viewName">Name of the Razor view that holds the error</param>
         /// <param name="behavior"></param>
-        public JsonErrorResult(string viewName, JsonRequestBehavior behavior) 
+        public JsonErrorResult(string viewName, JsonRequestBehavior behavior)
         {
             _viewName = viewName;
             JsonRequestBehavior = behavior;
         }
 
-        public override void ExecuteResult(ControllerContext context) 
+        public override void ExecuteResult(ControllerContext context)
         {
             HttpResponseBase response = context.HttpContext.Response;
             response.ContentType = !String.IsNullOrEmpty(ContentType) ? ContentType : "application/json";
@@ -70,10 +70,10 @@ namespace sidekick
             if (ContentEncoding != null)
                 response.ContentEncoding = ContentEncoding;
 
-            response.Write(JsonConvert.SerializeObject(new 
-            { 
-                success = false, 
-                view = (String.IsNullOrEmpty(_viewName) ? ElementBuilder.BuildAlert<Alert>(context.Controller.ViewData.ModelState) : ElementBuilder.BuildAlert<Alert>(context.Controller.ViewData.ModelState, _viewName)) 
+            response.Write(JsonConvert.SerializeObject(new
+            {
+                success = false,
+                view = (String.IsNullOrEmpty(_viewName) ? ElementBuilder.BuildAlert<Alert>(context.Controller.ViewData.ModelState) : ElementBuilder.BuildAlert<Alert>(context.Controller.ViewData.ModelState, _viewName))
             }));
         }
     }

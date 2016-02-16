@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace sidekick.testing.Models
 {
@@ -78,6 +79,13 @@ namespace sidekick.testing.Models
             [Display(Name="The answer is no")]
             No = 2
         }
+
+        public SelectList TestSelectList { get; set; }
+
+        public LoginViewModel()
+        {
+            TestSelectList = SelectListHelpers.BuildSelectList(new List<string> { "Option 1", "Option 2" });
+        }
     }
 
     public class RegisterViewModel
@@ -95,7 +103,6 @@ namespace sidekick.testing.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -114,7 +121,6 @@ namespace sidekick.testing.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

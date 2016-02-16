@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace sidekick
 {
-    public class FormControl<TModel,TProperty> : HtmlElement<TModel,TProperty>
+    public class FormControl<TModel, TProperty> : HtmlElement<TModel, TProperty>
     {
         /// <summary>
         ///     True if label has no colon.
@@ -34,7 +36,17 @@ namespace sidekick
         /// </summary>
         public virtual string HelpText { get; set; }
 
-        public FormControl() 
+        /// <summary>
+        ///     List of items for a dropdown list
+        /// </summary>
+        public virtual IEnumerable<SelectListItem> SelectListItems { get; set; }
+
+        /// <summary>
+        ///     Text for top element of dropdown list
+        /// </summary>
+        public virtual string OptionLabel { get; set; }
+
+        public FormControl()
         {
             if (BaseAttributes == null)
                 BaseAttributes = new { @class = "form-control" };
