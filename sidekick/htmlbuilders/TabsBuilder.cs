@@ -9,12 +9,20 @@ namespace sidekick
         private Queue<Tab> _tabList;
         private bool _firstTab = true;
 
-        public TabsBuilder(HtmlHelper<TModel> helper)
+        public TabsBuilder(HtmlHelper<TModel> helper, TabTypes tabType)
             : base(helper)
         {
             _tabList = new Queue<Tab>();
             WriteLine("<div role='tabpanel'>");
-            WriteLine("<ul role='tablist' class='nav nav-tabs'>");
+            WriteLine(String.Format("<ul role='tablist' class='nav {0}'>", tabType.GetAttribute<TabTypes, HtmlBuilderAttribute>().Class));
+        }
+
+        public TabsBuilder(HtmlHelper<TModel> helper, TabTypes tabType, bool stacked, bool justified)
+            : base(helper)
+        {
+            _tabList = new Queue<Tab>();
+            WriteLine("<div role='tabpanel'>");
+            WriteLine(String.Format("<ul role='tablist' class='nav {0} {1} {2}'>", tabType.GetAttribute<TabTypes, HtmlBuilderAttribute>().Class, (stacked) ? "nav-stacked" : String.Empty, (justified) ? "nav-justified" : String.Empty));
         }
 
         /// <summary>

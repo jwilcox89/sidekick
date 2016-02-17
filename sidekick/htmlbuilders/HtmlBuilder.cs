@@ -26,29 +26,33 @@ namespace sidekick
         /// <returns></returns>
         public static AlertBuilder<TModel> BeginAlert<TModel>(this HtmlHelper<TModel> helper, Alert alert)
         {
-            return new AlertBuilder<TModel>(helper, alert, true);
-        }
-
-        /// <summary>
-        ///     Builds a Bootstrap alert
-        /// </summary>
-        /// <param name="helper"></param>
-        /// <param name="alert"></param>
-        /// <returns></returns>
-        public static MvcHtmlString BuildAlert<TModel>(this HtmlHelper<TModel> helper, Alert alert)
-        {
-            new AlertBuilder<TModel>(helper, alert, false);
-            return new MvcHtmlString(String.Empty);
+            return new AlertBuilder<TModel>(helper, alert);
         }
 
         /// <summary>
         ///     Builds a Bootstrap tab panel
         /// </summary>
+        /// <typeparam name="TModel"></typeparam>
         /// <param name="helper"></param>
+        /// <param name="tabType">Specify which style of tabs you would like</param>
         /// <returns></returns>
-        public static TabsBuilder<TModel> BeginTabs<TModel>(this HtmlHelper<TModel> helper)
+        public static TabsBuilder<TModel> BeginTabs<TModel>(this HtmlHelper<TModel> helper, TabTypes tabType)
         {
-            return new TabsBuilder<TModel>(helper);
+            return new TabsBuilder<TModel>(helper, tabType);
+        }
+
+        /// <summary>
+        ///     Builds a Bootstrap tab panel
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="helper"></param>
+        /// <param name="tabType">Specify which style of tabs you would like</param>
+        /// <param name="stacked">True if you want the tabs stacked on top of one another</param>
+        /// <param name="justified">True if you want the tabs equal widths of their parent</param>
+        /// <returns></returns>
+        public static TabsBuilder<TModel> BeginTabs<TModel>(this HtmlHelper<TModel> helper, TabTypes tabType, bool stacked, bool justified)
+        {
+            return new TabsBuilder<TModel>(helper, tabType, stacked, justified);
         }
 
         /// <summary>
@@ -111,6 +115,21 @@ namespace sidekick
         public static InputGroupBuilder<TModel, TProperty> InputGroupFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> itemList, string optionLabel, object htmlAttributes = null)
         {
             return new InputGroupBuilder<TModel, TProperty>(helper, expression, itemList, optionLabel, htmlAttributes);
+        }
+
+        /// <summary>
+        ///     Builds a Bootstrap input group. Includes a label, dropdown list and validation if nessecary. Default OptionLabel is "--Select--".
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <typeparam name="TProperty"></typeparam>
+        /// <param name="helper"></param>
+        /// <param name="expression"></param>
+        /// <param name="itemList"></param>
+        /// <param name="htmlAttributes"></param>
+        /// <returns></returns>
+        public static InputGroupBuilder<TModel, TProperty> InputGroupFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> itemList, object htmlAttributes = null)
+        {
+            return new InputGroupBuilder<TModel, TProperty>(helper, expression, itemList, "--Select--", htmlAttributes);
         }
 
         /// <summary>
@@ -179,7 +198,7 @@ namespace sidekick
         /// <param name="expression"></param>
         /// <param name="textboxHtmlAttributes"></param>
         /// <returns></returns>
-        public static TextAreaBuilder<TModel, TProperty> TextAreaBuilder<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, object textboxHtmlAttributes = null)
+        public static TextAreaBuilder<TModel, TProperty> FormGroupTextAreaFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, object textboxHtmlAttributes = null)
         {
             return new TextAreaBuilder<TModel, TProperty>(helper, expression, textboxHtmlAttributes);
         }

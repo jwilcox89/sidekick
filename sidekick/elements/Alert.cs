@@ -26,10 +26,10 @@ namespace sidekick
         /// </summary>
         public virtual string Heading { get; set; }
 
-        /// <summary>
-        ///     The body of the message (ex. User was added successfully)
-        /// </summary>
-        public virtual string Body { get; set; }
+        ///// <summary>
+        /////     The body of the message (ex. User was added successfully)
+        ///// </summary>
+        //public virtual string Body { get; set; }
 
         /// <summary>
         ///     Used for multiple errors or success messages that are generally generated from a list of ModelState errors or AspIdentity IdentityErrors 

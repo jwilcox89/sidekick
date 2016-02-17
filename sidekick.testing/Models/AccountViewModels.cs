@@ -79,13 +79,6 @@ namespace sidekick.testing.Models
             [Display(Name="The answer is no")]
             No = 2
         }
-
-        public SelectList TestSelectList { get; set; }
-
-        public LoginViewModel()
-        {
-            TestSelectList = SelectListHelpers.BuildSelectList(new List<string> { "Option 1", "Option 2" });
-        }
     }
 
     public class RegisterViewModel

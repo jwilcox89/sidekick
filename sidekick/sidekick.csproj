@@ -91,7 +91,6 @@
     <Compile Include="database\IEntity.cs" />
     <Compile Include="database\RepositoryExtensions.cs" />
     <Compile Include="elements\FormControl.cs" />
-    <Compile Include="elements\HtmlElement.cs" />
     <Compile Include="elements\InputGroup.cs" />
     <Compile Include="elements\Panel.cs" />
     <Compile Include="elements\CustomSelectList.cs" />
@@ -106,6 +105,7 @@
     <Compile Include="enums\InputGroupSize.cs" />
     <Compile Include="enums\ModalSize.cs" />
     <Compile Include="enums\Months.cs" />
+    <Compile Include="enums\TabTypes.cs" />
     <Compile Include="errorlogger\ErrorLogger.cs" />
     <Compile Include="errorlogger\IErrorLog.cs" />
     <Compile Include="extensions\ConversionExtensions.cs" />

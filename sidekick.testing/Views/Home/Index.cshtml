@@ -22,21 +22,24 @@
     <p>There was an error on the page!</p>   
 }
 
-@Html.BuildAlert(new Alert(AlertType.Success) { Heading = "Good Job!", Body = "Congrats! You won the prize!" })
+@using (var alert = Html.BeginAlert(new Alert(AlertType.Success) { Heading = "Good Job!" }))
+{
+    @alert.BuildErrorList()
+}
 
 <hr />
 
 <h2>Modal</h2>
 <button id="modal-button" class="btn btn-default">Open Modal</button>
-@using (var modal = Html.BeginModal(new Modal { ID = "test-modal", Title = "My Modal" })) 
+@using (var modal = Html.BeginModal(new Modal { ID = "test-modal", Title = "My Modal" }))
 {
-    using (modal.BuildBody()) 
+    using (modal.BuildBody())
     {
         <p>
             Modal content
         </p>
     }
-    
+
     @modal.BuildFooter()
 }
 
@@ -53,19 +56,37 @@
 <hr />
 
 <h2>Tab</h2>
-@using (var tabs = Html.BeginTabs()) 
+@using (var tabs = Html.BeginTabs(TabTypes.Regular, false, true)) 
 {
     @tabs.Tab(new Tab { DisplayText = "Baseball", Name = "baseball", Icon = "fa fa-user", Active = true })
     @tabs.Tab(new Tab { DisplayText = "Football", Name = "football", Icon = "fa fa-truck" })
-    
-    using (tabs.BeginTab()) 
+    @tabs.Tab(new Tab { DisplayText = "Soccer", Name = "soccer", Icon = "fa fa-truck" })
+    @tabs.Tab(new Tab { DisplayText = "Tennis", Name = "tennis", Icon = "fa fa-truck" })
+    @tabs.Tab(new Tab { DisplayText = "Swimming", Name = "swimming", Icon = "fa fa-truck" })
+
+    using (tabs.BeginTab())
     {
         <p>The baseball tab</p>
     }
     
     using (tabs.BeginTab()) 
     {
-        <p>the football tab</p>
+        <p>The football tab</p>
+    }
+
+    using (tabs.BeginTab())
+    {
+        <p>The soccer tab</p>
+    }
+
+    using (tabs.BeginTab())
+    {
+        <p>The tennis tab</p>
+    }
+
+    using (tabs.BeginTab())
+    {
+        <p>The swimming tab</p>
     }
 }
 
@@ -83,7 +104,7 @@
 
 <h2>Input Groups</h2>
 @Html.InputGroupFor(x => x.Email, new { @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").HasLabelWithColon().HasValidation()
-@Html.InputGroupFor(x => x.Email, Model.TestSelectList, "--Select One--").HasLabelWithColon()
+@Html.InputGroupFor(x => x.Email, SelectListHelpers.BuildSelectList(new CustomSelectList("Option 1", "Option 1").Add("Option 2", "Option 2")), "---Select One---").HasLabelWithColon()
 
 <h2>Datetimepicker</h2>
 @Html.InputGroupFor(x => x.Email).AppendIcon("fa fa-calendar").DatetimepickerCss("datetimepicker").HasLabelWithColon()
@@ -92,7 +113,7 @@
 @Html.FormGroupFor(x => x.Email, new { @placeholder = "Email Address..." }).IsRequired().HelpText("This is the help text")
 
 <h2>Text Area</h2>
-@Html.TextAreaBuilder(x => x.Email, new { @placeholder = "Enter text..." }).Rows(10).Columns(4).HelpText("This is the help text section")
+@Html.FormGroupTextAreaFor(x => x.Email, new { @placeholder = "Enter text..." }).Rows(10).Columns(4).HelpText("This is the help text section")
 
 <h2>Dropdowns</h2>
 @Html.DropDownListFor(x => x.Email, SelectListHelpers.YesNoDropdown(), new { @class = "form-control" })

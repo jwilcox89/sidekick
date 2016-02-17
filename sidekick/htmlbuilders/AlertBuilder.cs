@@ -8,29 +8,26 @@ namespace sidekick
     {
         private Alert _alert;
 
-        public AlertBuilder(HtmlHelper<TModel> helper, Alert alert, bool customBody)
+        public AlertBuilder(HtmlHelper<TModel> helper, Alert alert)
             : base(helper)
         {
             _alert = alert;
 
-            if (!customBody)
-            {
-                BuildAlert();
-            }
-            else
-            {
-                BuildAlertShell();
-            }
+            BuildAlertShell();
         }
 
-        private void BuildAlert()
+        private void BuildAlertShell()
         {
-            WriteLine(String.Format("<div class='alert alert-{0}' role='alert'>", _alert.AlertClass));
+            WriteLine(String.Format("<div class='alert alert-{0}'>", _alert.AlertClass));
 
             if (_alert.Dismissible)
                 WriteLine("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
 
             WriteLine(String.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _alert.Type.GetAttribute<AlertType, HtmlBuilderAttribute>().Icon, _alert.Heading));
+        }
+
+        public MvcHtmlString BuildErrorList()
+        {
             WriteLine("<p>");
 
             if (_alert.MessageList.Any())
@@ -46,22 +43,12 @@ namespace sidekick
             }
             else
             {
-                WriteLine(_alert.Body);
+                WriteLine("No errors!");
             }
 
             WriteLine("</p>");
 
-            Dispose();
-        }
-
-        private void BuildAlertShell()
-        {
-            WriteLine(String.Format("<div class='alert alert-{0}'>", _alert.AlertClass));
-
-            if (_alert.Dismissible)
-                WriteLine("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
-
-            WriteLine(String.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _alert.Type.GetAttribute<AlertType, HtmlBuilderAttribute>().Icon, _alert.Heading));
+            return new MvcHtmlString(String.Empty);
         }
 
         public void Dispose()

@@ -61,6 +61,11 @@ namespace sidekick
             };
         }
 
+        /// <summary>
+        ///     Creates a custom select list based off of the items that are specified in the view
+        /// </summary>
+        /// <param name="items"></param>
+        /// <returns></returns>
         public static IEnumerable<SelectListItem> BuildSelectList(CustomSelectList items)
         {
             return items.Items;

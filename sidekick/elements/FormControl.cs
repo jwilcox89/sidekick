@@ -1,11 +1,22 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Linq.Expressions;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace sidekick
 {
-    public class FormControl<TModel, TProperty> : HtmlElement<TModel, TProperty>
+    public class FormControl<TModel, TProperty>
     {
+        /// <summary>
+        ///     An expression that identifies the property to display.
+        /// </summary>
+        public Expression<Func<TModel, TProperty>> Expression { get; set; }
+
+        /// <summary>
+        ///     An object that contains the HTML attributes to set for the element.
+        /// </summary>
+        public object HtmlAttributes { get; set; }
+
         /// <summary>
         ///     True if label has no colon.
         /// </summary>
