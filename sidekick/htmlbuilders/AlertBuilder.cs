@@ -13,11 +13,6 @@ namespace sidekick
         {
             _alert = alert;
 
-            BuildAlertShell();
-        }
-
-        private void BuildAlertShell()
-        {
             WriteLine(String.Format("<div class='alert alert-{0}'>", _alert.AlertClass));
 
             if (_alert.Dismissible)

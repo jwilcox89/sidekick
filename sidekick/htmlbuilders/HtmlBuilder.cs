@@ -178,18 +178,6 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Builds a Bootstrap label.
-        /// </summary>
-        /// <param name="helper"></param>
-        /// <param name="color"></param>
-        /// <param name="text"></param>
-        /// <returns></returns>
-        public static MvcHtmlString BuildLabel(this HtmlHelper helper, Colors color, string text)
-        {
-            return LabelBuilder.Build(color, text);
-        }
-
-        /// <summary>
         ///     Builds a textarea
         /// </summary>
         /// <typeparam name="TModel"></typeparam>

@@ -17,7 +17,7 @@ namespace sidekick
         /// <param name="color"></param>
         /// <param name="text"></param>
         /// <returns></returns>
-        public static MvcHtmlString Build(Colors color, string text)
+        public static MvcHtmlString BuildLabel(this HtmlHelper helper, Colors color, string text)
         {
             using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter()))
             {

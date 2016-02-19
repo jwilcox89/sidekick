@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Mvc.Html;
 using System.Web.UI;
 using System.IO;
-using System.Collections.Generic;
 
 namespace sidekick
 {
-    public class HeadingBuilder
+    public static class HeadingBuilder
     {
-        public static MvcHtmlString Build(HeadingSize size, string text, string subtext = null, Colors color = Colors.Default)
+        public static MvcHtmlString BuildHeading(this HtmlHelper helper, HeadingSize size, string text, string subtext = null, Colors color = Colors.Default)
         {
             using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter()))
             {

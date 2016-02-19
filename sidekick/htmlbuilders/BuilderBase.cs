@@ -23,8 +23,8 @@ namespace sidekick
 
         protected IDictionary<string, object> MergeAttributes<TModel, TProperty>(FormControl<TModel, TProperty> element)
         {
-            IDictionary<string, object> baseAttributes = ToDictionary(element.BaseAttributes);
-            IDictionary<string, object> additionalAttributes = ToDictionary(element.HtmlAttributes);
+            IDictionary<string, object> baseAttributes = HtmlHelper.AnonymousObjectToHtmlAttributes(element.BaseAttributes);
+            IDictionary<string, object> additionalAttributes = HtmlHelper.AnonymousObjectToHtmlAttributes(element.HtmlAttributes);
 
             foreach (KeyValuePair<string, object> r in additionalAttributes)
             {
@@ -39,11 +39,6 @@ namespace sidekick
             }
 
             return baseAttributes;
-        }
-
-        private RouteValueDictionary ToDictionary(object data)
-        {
-            return HtmlHelper.AnonymousObjectToHtmlAttributes(data);
         }
     }
 }
