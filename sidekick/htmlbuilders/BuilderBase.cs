@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Web.Mvc;
-using System.Web.Routing;
 using System.Collections.Generic;
 
 namespace sidekick
@@ -21,7 +20,7 @@ namespace sidekick
             _textWriter.Write(html);
         }
 
-        protected IDictionary<string, object> MergeAttributes<TModel, TProperty>(FormControl<TModel, TProperty> element)
+        protected IDictionary<string, object> MergeAttributes<T, P>(FormControl<T, P> element)
         {
             IDictionary<string, object> baseAttributes = HtmlHelper.AnonymousObjectToHtmlAttributes(element.BaseAttributes);
             IDictionary<string, object> additionalAttributes = HtmlHelper.AnonymousObjectToHtmlAttributes(element.HtmlAttributes);

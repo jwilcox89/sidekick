@@ -90,6 +90,7 @@
     <Compile Include="database\BaseRepository.cs" />
     <Compile Include="database\IEntity.cs" />
     <Compile Include="database\RepositoryExtensions.cs" />
+    <Compile Include="elements\ActionLinkBase.cs" />
     <Compile Include="elements\FormControl.cs" />
     <Compile Include="elements\InputGroup.cs" />
     <Compile Include="elements\Panel.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="extensions\ExceptionExtensions.cs" />
     <Compile Include="extensions\FormattingExtensions.cs" />
     <Compile Include="extensions\ValidationExtensions.cs" />
+    <Compile Include="htmlbuilders\AjaxActionLinkBuilder.cs" />
     <Compile Include="htmlbuilders\BreadcrumbBuilder.cs" />
     <Compile Include="htmlbuilders\BuilderBase.cs" />
     <Compile Include="htmlbuilders\ElementBuilder.cs" />
@@ -129,6 +131,7 @@
     <Compile Include="helpers\SelectListHelpers.cs" />
     <Compile Include="htmlbuilders\AlertBuilder.cs" />
     <Compile Include="htmlbuilders\HeadingBuilder.cs" />
+    <Compile Include="htmlbuilders\HtmlActionLinkBuilder.cs" />
     <Compile Include="htmlbuilders\HtmlBuilder.cs" />
     <Compile Include="htmlbuilders\InputGroupBuilder.cs" />
     <Compile Include="htmlbuilders\LabelBuilder.cs" />
@@ -165,6 +168,10 @@
     <Content Include="sampleviews\_ConfirmDeleteModal.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -56,7 +56,7 @@
 <hr />
 
 <h2>Tab</h2>
-@using (var tabs = Html.BeginTabs(TabTypes.Regular, false, true)) 
+@using (var tabs = Html.BeginTabs(TabTypes.Tabs, false, true)) 
 {
     @tabs.Tab(new Tab { DisplayText = "Baseball", Name = "baseball", Icon = "fa fa-user", Active = true })
     @tabs.Tab(new Tab { DisplayText = "Football", Name = "football", Icon = "fa fa-truck" })
@@ -126,6 +126,13 @@
     @Html.BuildLabel(Colors.Danger, "Help!")
     @Html.BuildLabel(Colors.Primary, "Good Job!")
 </div>
+
+<h2>Links</h2>
+<div class="form-gorup">
+    @Html.BeginActionLink("Home", "Index", "Go Home").Icon("fa fa-home").HtmlAttributes(new { @class = "btn btn-primary" }).RouteValues(new { @id = 50 })
+    @Ajax.BeginActionLink("Home", "Index", "Test Link")
+</div>
+
 
 <h2>Validation Test</h2>
 @using (Html.BeginForm()) {

@@ -1,6 +1,6 @@
 ﻿@using sidekick
 
-@model IModal
+@model Modal
 
 @using (var modal = Html.BeginModal(Model)) {
 	using (Html.BeginForm()) {

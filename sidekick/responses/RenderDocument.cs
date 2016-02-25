@@ -8,7 +8,7 @@ namespace sidekick
         ///     Render a document byte array.
         /// </summary>
         /// <param name="fileData"></param>
-        /// <param name="fileName"></param>
+        /// <param name="fileName">Must end with file extension (ex .pdf)</param>
         /// <param name="displayInBrowser"></param>
         public static void Render(byte[] fileData, string fileName, bool displayInBrowser)
         {

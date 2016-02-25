@@ -29,9 +29,9 @@ namespace sidekick
             {
                 WriteLine("<ul>");
 
-                foreach (string m in _alert.MessageList)
+                foreach (string message in _alert.MessageList)
                 {
-                    WriteLine(String.Format("<li>{0}</li>", m));
+                    WriteLine(String.Format("<li>{0}</li>", message));
                 }
 
                 WriteLine("</ul>");

@@ -3,7 +3,7 @@
     public enum TabTypes
     {
         [HtmlBuilder(Class = "nav-tabs")]
-        Regular,
+        Tabs,
 
         [HtmlBuilder(Class = "nav-pills")]
         Pills

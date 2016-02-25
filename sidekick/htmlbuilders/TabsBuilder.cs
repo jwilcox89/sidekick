@@ -34,7 +34,7 @@ namespace sidekick
         public MvcHtmlString Tab(Tab tab)
         {
             _tabList.Enqueue(tab);
-            string active = (tab.Active) ? "class='active'" : null;
+            string active = (tab.Active) ? "class='active'" : String.Empty;
             WriteLine(String.Format("<li role='presentation' {0}>", active));
             WriteLine(String.Format("<a href='#{0}' aria-controls='{0}' role='tab' data-toggle='tab'>", tab.Name));
 

@@ -86,7 +86,7 @@ namespace sidekick
                 result = String.Format("{0} {1}", result, requiredTag.ToString(TagRenderMode.Normal));
             }
 
-            return MvcHtmlString.Create(result);
+            return new MvcHtmlString(result);
         }
     }
 }

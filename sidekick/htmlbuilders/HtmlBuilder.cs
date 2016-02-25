@@ -190,5 +190,55 @@ namespace sidekick
         {
             return new TextAreaBuilder<TModel, TProperty>(helper, expression, textboxHtmlAttributes);
         }
+
+        /// <summary>
+        ///     Builds an action link
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="controller"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public static HtmlActionLinkBuilder BeginActionLink(this HtmlHelper helper, string controller, string action)
+        {
+            return new HtmlActionLinkBuilder(helper, controller, action);
+        }
+
+        /// <summary>
+        ///     Builds an action link
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="controller"></param>
+        /// <param name="action"></param>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static HtmlActionLinkBuilder BeginActionLink(this HtmlHelper helper, string controller, string action, string text)
+        {
+            return new HtmlActionLinkBuilder(helper, controller, action, text);
+        }
+
+        /// <summary>
+        ///     Builds an action link
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="controller"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public static AjaxActionLinkBuilder BeginActionLink(this AjaxHelper helper, string controller, string action)
+        {
+            return new AjaxActionLinkBuilder(helper, controller, action);
+        }
+
+        /// <summary>
+        ///     Builds an action link
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="controller"></param>
+        /// <param name="action"></param>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static AjaxActionLinkBuilder BeginActionLink(this AjaxHelper helper, string controller, string action, string text)
+        {
+            return new AjaxActionLinkBuilder(helper, controller, action, text);
+        }
     }
 }
