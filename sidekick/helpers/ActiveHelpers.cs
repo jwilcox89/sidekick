@@ -6,7 +6,7 @@ using System.Web.Routing;
 
 namespace sidekick
 {
-    public static class GeneralHelpers
+    public static class ActiveHelpers
     {
         /// <summary>
         ///     Returns the "active" class name or an empty string depending on the criteria 
@@ -47,6 +47,38 @@ namespace sidekick
             return acceptedActions.Contains(currentAction) &&
                    acceptedControllers.Contains(currentController) &&
                    acceptedAreas.Contains(currentArea) ? activeClass : String.Empty;
+        }
+
+        public static string IsNavItemExpanded(this HtmlHelper helper, string actions, string controllers, string areas = null)
+        {
+            RouteData routeData = helper.ViewContext.RouteData;
+            string currentAction = (string)routeData.Values["action"];
+            string currentController = (string)routeData.Values["controller"];
+            string currentArea = (string)routeData.DataTokens["area"];
+
+            if (String.IsNullOrEmpty(currentArea))
+                currentArea = String.Empty;
+
+            actions = (String.IsNullOrEmpty(actions)) ? currentAction : actions;
+            controllers = (String.IsNullOrEmpty(controllers)) ? currentController : controllers;
+            areas = (String.IsNullOrEmpty(areas)) ? currentArea : areas;
+
+            if (String.IsNullOrEmpty(actions))
+                actions = String.Empty;
+
+            if (String.IsNullOrEmpty(controllers))
+                controllers = String.Empty;
+
+            if (String.IsNullOrEmpty(areas))
+                areas = String.Empty;
+
+            IEnumerable<string> acceptedActions = actions.Split(',').Select(x => x.Trim()).Distinct();
+            IEnumerable<string> acceptedControllers = controllers.Split(',').Select(x => x.Trim()).Distinct();
+            IEnumerable<string> acceptedAreas = areas.Split(',').Select(x => x.Trim()).Distinct();
+
+            return acceptedActions.Contains(currentAction) &&
+                   acceptedControllers.Contains(currentController) &&
+                   acceptedAreas.Contains(currentArea) ? "true" : "false";
         }
     }
 }

@@ -44,9 +44,9 @@ namespace sidekick
             return BuildElement<TAlert>(x =>
             {
                 x.ViewName = viewName;
-                x.Type = AlertType.Danger;
-                x.Heading = "Errors!";
-                x.MessageList = modelState.GetModelErrors();
+                x.Type(AlertType.Danger);
+                x.Heading("Errors!");
+                x.MessageList(modelState.GetModelErrors());
             });
         }
 

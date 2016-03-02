@@ -2,13 +2,13 @@
 {
     public class ActionLinkBase<T> where T : ActionLinkBase<T>
     {
-        protected string REPLACEMENT_TEXT = "_replace_";
-        protected string _controller;
-        protected string _action;
-        protected string _text;
-        protected string _icon;
-        protected object _routeValues;
-        protected object _htmlAttributes;
+        internal string REPLACEMENT_TEXT = "_replace_";
+        internal string _controller;
+        internal string _action;
+        internal string _text;
+        internal string _icon;
+        internal object _routeValues;
+        internal object _htmlAttributes;
 
         public T Icon(string icon)
         {

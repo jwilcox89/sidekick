@@ -1,255 +1,176 @@
 ﻿using System;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Mvc.Html;
-using System.Web.UI;
-using System.Linq.Expressions;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq.Expressions;
+using System.Web.Mvc;
+using System.Web;
+using System.Web.Mvc.Html;
 
 namespace sidekick
 {
-    public class InputGroupBuilder<TModel, TProperty> : BuilderBase<TModel>, IHtmlString
+    public class InputGroupBuilder<TModel, TProperty> : FormControl<InputGroupBuilder<TModel, TProperty>>, IHtmlString
     {
-        private InputGroup<TModel, TProperty> _model;
+        private HtmlHelper<TModel> _helper;
+        private Expression<Func<TModel, TProperty>> _expression;
 
-        public InputGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes)
-            : base(helper)
+        public InputGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression)
         {
-            _model = new InputGroup<TModel, TProperty>(expression, htmlAttributes);
+            _helper = helper;
+            _expression = expression;
         }
 
-        public InputGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems, string optionLabel, object textboxHtmlAttributes)
-            : base(helper)
+        public InputGroupBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> items, string optionLabel)
         {
-            _model = new InputGroup<TModel, TProperty>(expression, listItems, optionLabel, textboxHtmlAttributes);
+            _helper = helper;
+            _expression = expression;
+            _selectListItems = items;
+            _optionLabel = optionLabel;
         }
 
-        /// <summary>
-        ///     Show label without colon
-        /// </summary>
-        /// <returns></returns>
-        public InputGroupBuilder<TModel, TProperty> HasLabel()
-        {
-            _model.HasLabel = true;
-            return this;
-        }
-
-        /// <summary>
-        ///     Show label with colon
-        /// </summary>
-        /// <returns></returns>
-        public InputGroupBuilder<TModel, TProperty> HasLabelWithColon()
-        {
-            _model.HasLabelWithColon = true;
-            return this;
-        }
-
-        /// <summary>
-        ///     Mark field has required
-        /// </summary>
-        /// <returns></returns>
-        public InputGroupBuilder<TModel, TProperty> IsRequired()
-        {
-            _model.IsRequired = true;
-            return this;
-        }
-
-        /// <summary>
-        ///     Show validation
-        /// </summary>
-        /// <returns></returns>
-        public InputGroupBuilder<TModel, TProperty> HasValidation()
-        {
-            _model.HasValidation = true;
-            return this;
-        }
-
-        /// <summary>
-        ///     Adds an icon in front of the textbox
-        /// </summary>
-        /// <param name="icon"></param>
-        /// <returns></returns>
-        public InputGroupBuilder<TModel, TProperty> PrependIcon(string icon)
-        {
-            _model.PrependIcon = icon;
-            return this;
-        }
-
-        /// <summary>
-        ///     Adds an icon at the end of the textbox
-        /// </summary>
-        /// <param name="icon"></param>
-        /// <returns></returns>
-        public InputGroupBuilder<TModel, TProperty> AppendIcon(string icon)
-        {
-            _model.AppendIcon = icon;
-            return this;
-        }
-
-        /// <summary>
-        ///     Adds text at the front of the textbox
-        /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
-        public InputGroupBuilder<TModel, TProperty> PrependText(string text)
-        {
-            _model.PrependText = text;
-            return this;
-        }
-
-        /// <summary>
-        ///     Adds text at the end of the textbox
-        /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
         public InputGroupBuilder<TModel, TProperty> AppendText(string text)
         {
-            _model.AppendText = text;
+            _appendText = text;
             return this;
         }
 
-        /// <summary>
-        ///     Sets the size of the input group
-        /// </summary>
-        /// <param name="size"></param>
-        /// <returns></returns>
-        public InputGroupBuilder<TModel, TProperty> Size(InputGroupSize size)
+        public InputGroupBuilder<TModel, TProperty> AppendIcon(string icon)
         {
-            _model.Size = size;
+            _appendIcon = icon;
             return this;
         }
 
-        /// <summary>
-        ///     Sets the class that will be referenced when initializing a datetimepicker
-        /// </summary>
-        /// <param name="class"></param>
-        /// <returns></returns>
-        public InputGroupBuilder<TModel, TProperty> DatetimepickerCss(string @class)
+        public InputGroupBuilder<TModel, TProperty> PrependText(string text)
         {
-            _model.DatetimepickerClass = @class;
+            _prependText = text;
             return this;
         }
 
-        /// <summary>
-        ///     Sets the id that will be referenced when initializing a datetimepicker
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        public InputGroupBuilder<TModel, TProperty> PrependIcon(string icon)
+        {
+            _prependIcon = icon;
+            return this;
+        }
+
+        public InputGroupBuilder<TModel, TProperty> InputSize(InputGroupSize size)
+        {
+            _inputGroupSize = size;
+            return this;
+        }
+
+        public InputGroupBuilder<TModel, TProperty> DatetimepickerClass(string @class)
+        {
+            _datetimepickerClass = @class;
+            return this;
+        }
+
         public InputGroupBuilder<TModel, TProperty> DatetimepickerId(string id)
         {
-            _model.DatetimepickerId = id;
+            _datetimepickerId = id;
             return this;
-        }
-
-        private MvcHtmlString CreateInputGroup()
-        {
-            return (_model.SelectListItems == null) ? BuildTextBoxInputGroup() : BuildDropdownInputGroup();
         }
 
         private MvcHtmlString BuildDropdownInputGroup()
         {
-            WriteLine("<div class='form-group'>");
+            _helper.WriteLine("<div class='form-group'>");
 
-            if (_model.HasLabelWithColon)
-                WriteLine(Helper.LabelForWithColon(_model.Expression, _model.IsRequired));
+            if (_labelWithColon)
+                _helper.WriteLine(_helper.LabelForWithColon(_expression, _required));
 
-            if (_model.HasLabel)
-                WriteLine(Helper.LabelFor(_model.Expression, _model.IsRequired));
+            if (_label)
+                _helper.WriteLine(_helper.LabelFor(_expression, _required));
 
-            WriteLine(String.Format("<div class='input-group {0} {1}' id='{2}'>", _model.Size.GetAttribute<InputGroupSize, HtmlBuilderAttribute>().Class, _model.DatetimepickerClass, _model.DatetimepickerId));
+            _helper.WriteLine(String.Format("<div class='input-group {0} {1}' id='{2}'>", _inputGroupSize.GetAttribute<InputGroupSize, HtmlBuilderAttribute>().Class, _datetimepickerClass, _datetimepickerId));
 
-            if (!String.IsNullOrEmpty(_model.PrependIcon) || !String.IsNullOrEmpty(_model.PrependText))
+            if (!String.IsNullOrEmpty(_prependIcon) || !String.IsNullOrEmpty(_prependText))
             {
-                WriteLine("<span class='input-group-addon'>");
+                _helper.WriteLine("<span class='input-group-addon'>");
 
-                if (!String.IsNullOrEmpty(_model.PrependIcon))
-                    WriteLine(String.Format("<i class='{0}'></i>", _model.PrependIcon));
+                if (!String.IsNullOrEmpty(_prependIcon))
+                    _helper.WriteLine(String.Format("<i class='{0}'></i>", _prependIcon));
 
-                if (!String.IsNullOrEmpty(_model.PrependText))
-                    WriteLine(String.Format(" {0}", _model.PrependText));
+                if (!String.IsNullOrEmpty(_prependText))
+                    _helper.WriteLine(String.Format(" {0}", _prependText));
 
-                WriteLine("</span>");
+                _helper.WriteLine("</span>");
             }
 
-            WriteLine(Helper.DropDownListFor(_model.Expression, _model.SelectListItems, _model.OptionLabel, MergeAttributes(_model)).ToString());
+            _helper.WriteLine(_helper.DropDownListFor(_expression, _selectListItems, _optionLabel, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)).ToString());
 
-            if (!String.IsNullOrEmpty(_model.AppendIcon) || !String.IsNullOrEmpty(_model.AppendText))
+            if (!String.IsNullOrEmpty(_appendIcon) || !String.IsNullOrEmpty(_appendText))
             {
-                WriteLine("<span class='input-group-addon'>");
+                _helper.WriteLine("<span class='input-group-addon'>");
 
-                if (!String.IsNullOrEmpty(_model.AppendIcon))
-                    WriteLine(String.Format("<i class='{0}'></i>", _model.AppendIcon));
+                if (!String.IsNullOrEmpty(_appendIcon))
+                    _helper.WriteLine(String.Format("<i class='{0}'></i>", _appendIcon));
 
-                if (!String.IsNullOrEmpty(_model.AppendText))
-                    WriteLine(String.Format(" {0}", _model.AppendText));
+                if (!String.IsNullOrEmpty(_appendText))
+                    _helper.WriteLine(String.Format(" {0}", _appendText));
 
-                WriteLine("</span>");
+                _helper.WriteLine("</span>");
             }
 
-            WriteLine("</div>");
+            _helper.WriteLine("</div>");
 
-            if (_model.HasValidation)
-                WriteLine(Helper.ValidationMessageFor(_model.Expression));
+            if (_validation)
+                _helper.WriteLine(_helper.ValidationMessageFor(_expression));
 
-            WriteLine("</div>");
+            _helper.WriteLine("</div>");
 
             return new MvcHtmlString(String.Empty);
         }
 
         private MvcHtmlString BuildTextBoxInputGroup()
         {
-            WriteLine("<div class='form-group'>");
+            _helper.WriteLine("<div class='form-group'>");
 
-            if (_model.HasLabelWithColon)
-                WriteLine(Helper.LabelForWithColon(_model.Expression, _model.IsRequired));
+            if (_labelWithColon)
+                _helper.WriteLine(_helper.LabelForWithColon(_expression, _required));
 
-            if (_model.HasLabel)
-                WriteLine(Helper.LabelFor(_model.Expression, _model.IsRequired));
+            if (_label)
+                _helper.WriteLine(_helper.LabelFor(_expression, _required));
 
-            WriteLine(String.Format("<div class='input-group {0} {1}' id='{2}'>", _model.Size.GetAttribute<InputGroupSize, HtmlBuilderAttribute>().Class, _model.DatetimepickerClass, _model.DatetimepickerId));
+            _helper.WriteLine(String.Format("<div class='input-group {0} {1}' id='{2}'>", _inputGroupSize.GetAttribute<InputGroupSize, HtmlBuilderAttribute>().Class, _datetimepickerClass, _datetimepickerId));
 
-            if (!String.IsNullOrEmpty(_model.PrependIcon) || !String.IsNullOrEmpty(_model.PrependText))
+            if (!String.IsNullOrEmpty(_prependIcon) || !String.IsNullOrEmpty(_prependText))
             {
-                WriteLine("<span class='input-group-addon'>");
+                _helper.WriteLine("<span class='input-group-addon'>");
 
-                if (!String.IsNullOrEmpty(_model.PrependIcon))
-                    WriteLine(String.Format("<i class='{0}'></i>", _model.PrependIcon));
+                if (!String.IsNullOrEmpty(_prependIcon))
+                    _helper.WriteLine(String.Format("<i class='{0}'></i>", _prependIcon));
 
-                if (!String.IsNullOrEmpty(_model.PrependText))
-                    WriteLine(String.Format(" {0}", _model.PrependText));
+                if (!String.IsNullOrEmpty(_prependText))
+                    _helper.WriteLine(String.Format(" {0}", _prependText));
 
-                WriteLine("</span>");
+                _helper.WriteLine("</span>");
             }
 
-            WriteLine(Helper.TextBoxFor(_model.Expression, MergeAttributes(_model)).ToString());
+            _helper.WriteLine(_helper.TextBoxFor(_expression, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)).ToString());
 
-            if (!String.IsNullOrEmpty(_model.AppendIcon) || !String.IsNullOrEmpty(_model.AppendText))
+            if (!String.IsNullOrEmpty(_appendIcon) || !String.IsNullOrEmpty(_appendText))
             {
-                WriteLine("<span class='input-group-addon'>");
+                _helper.WriteLine("<span class='input-group-addon'>");
 
-                if (!String.IsNullOrEmpty(_model.AppendIcon))
-                    WriteLine(String.Format("<i class='{0}'></i>", _model.AppendIcon));
+                if (!String.IsNullOrEmpty(_appendIcon))
+                    _helper.WriteLine(String.Format("<i class='{0}'></i>", _appendIcon));
 
-                if (!String.IsNullOrEmpty(_model.AppendText))
-                    WriteLine(String.Format(" {0}", _model.AppendText));
+                if (!String.IsNullOrEmpty(_appendText))
+                    _helper.WriteLine(String.Format(" {0}", _appendText));
 
-                WriteLine("</span>");
+                _helper.WriteLine("</span>");
             }
 
-            WriteLine("</div>");
+            _helper.WriteLine("</div>");
 
-            if (_model.HasValidation)
-                WriteLine(Helper.ValidationMessageFor(_model.Expression));
+            if (_validation)
+                _helper.WriteLine(_helper.ValidationMessageFor(_expression));
 
-            WriteLine("</div>");
+            _helper.WriteLine("</div>");
 
             return new MvcHtmlString(String.Empty);
         }
 
         public string ToHtmlString()
         {
-            return CreateInputGroup().ToString();
+            return (_selectListItems == null) ? BuildTextBoxInputGroup().ToString() : BuildDropdownInputGroup().ToString();
         }
     }
 }

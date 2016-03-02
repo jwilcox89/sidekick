@@ -14,53 +14,83 @@ namespace sidekick
         /// <summary>
         ///     Success, Failure, Warning etc. Default value "Info"
         /// </summary>
-        public virtual AlertType Type { get; set; }
+        internal AlertType _type;
 
         /// <summary>
         ///     If true the alert box will be dismissible. Default value false.
         /// </summary>
-        public virtual bool Dismissible { get; set; }
+        internal bool _dismissible;
 
         /// <summary>
         ///     The heading (ex. Error or Add User)
         /// </summary>
-        public virtual string Heading { get; set; }
-
-        ///// <summary>
-        /////     The body of the message (ex. User was added successfully)
-        ///// </summary>
-        //public virtual string Body { get; set; }
+        internal string _heading;
 
         /// <summary>
         ///     Used for multiple errors or success messages that are generally generated from a list of ModelState errors or AspIdentity IdentityErrors 
         /// </summary>
-        public virtual IEnumerable<string> MessageList { get; set; }
+        internal IEnumerable<string> _messageList;
+
+        /// <summary>
+        ///     Body of the alert
+        /// </summary>
+        internal string _body;
 
         /// <summary>
         ///     Sets the alert class here. Ex. "alert alert-success"
         /// </summary>
-        public virtual string AlertClass 
+        internal string _alertClass
         {
-            get 
+            get
             {
-                string className = Type.GetAttribute<AlertType,HtmlBuilderAttribute>().Class;
-                if (Dismissible)
+                string className = _type.GetAttribute<AlertType, HtmlBuilderAttribute>().Class;
+                if (_dismissible)
                     className = String.Format("{0} alert-dismissable", className);
 
                 return className;
             }
         }
 
-        public Alert() 
+        public Alert Body(string text)
         {
-            Type = AlertType.Info;
-            MessageList = Enumerable.Empty<string>();
+            _body = text;
+            return this;
         }
 
-        public Alert(AlertType type) 
+        public Alert Type(AlertType type)
         {
-            Type = type;
-            MessageList = Enumerable.Empty<string>();
+            _type = type;
+            return this;
+        }
+
+        public Alert Dismissible()
+        {
+            _dismissible = true;
+            return this;
+        }
+
+        public Alert Heading(string heading)
+        {
+            _heading = heading;
+            return this;
+        }
+
+        public Alert MessageList(IEnumerable<string> messages)
+        {
+            _messageList = messages;
+            return this;
+        }
+
+        public Alert()
+        {
+            _type = AlertType.Info;
+            _messageList = Enumerable.Empty<string>();
+        }
+
+        public Alert(AlertType type)
+        {
+            _type = type;
+            _messageList = Enumerable.Empty<string>();
         }
     }
 }

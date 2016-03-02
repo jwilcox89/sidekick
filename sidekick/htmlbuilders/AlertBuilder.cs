@@ -4,51 +4,58 @@ using System.Web.Mvc;
 
 namespace sidekick
 {
-    public class AlertBuilder<TModel> : BuilderBase<TModel>, IDisposable
+    public class AlertBuilder<TModel> : IDisposable
     {
-        private Alert _alert;
+        private HtmlHelper<TModel> _helper;
+        private Alert _model;
 
         public AlertBuilder(HtmlHelper<TModel> helper, Alert alert)
-            : base(helper)
         {
-            _alert = alert;
+            _helper = helper;
+            _model = alert;
+            _helper.WriteLine(String.Format("<div class='alert {0}'>", _model._alertClass));
 
-            WriteLine(String.Format("<div class='alert alert-{0}'>", _alert.AlertClass));
+            if (_model._dismissible)
+                _helper.WriteLine("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
 
-            if (_alert.Dismissible)
-                WriteLine("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
-
-            WriteLine(String.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _alert.Type.GetAttribute<AlertType, HtmlBuilderAttribute>().Icon, _alert.Heading));
+            _helper.WriteLine(String.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _model._type.GetAttribute<AlertType, HtmlBuilderAttribute>().Icon, _model._heading));
         }
 
-        public MvcHtmlString BuildErrorList()
+        public MvcHtmlString WriteBody()
         {
-            WriteLine("<p>");
+            _helper.WriteLine("<p>");
 
-            if (_alert.MessageList.Any())
+            if (_model._messageList.Any())
             {
-                WriteLine("<ul>");
+                _helper.WriteLine("<ul>");
 
-                foreach (string message in _alert.MessageList)
+                foreach (string message in _model._messageList)
                 {
-                    WriteLine(String.Format("<li>{0}</li>", message));
+                    _helper.WriteLine(String.Format("<li>{0}</li>", message));
                 }
 
-                WriteLine("</ul>");
+                _helper.WriteLine("</ul>");
             }
             else
             {
-                WriteLine("No errors!");
+                if (String.IsNullOrEmpty(_model._body))
+                {
+                    _helper.WriteLine("No errors!");
+                }
+                else
+                {
+                    _helper.WriteLine(_model._body);
+                }
             }
 
-            WriteLine("</p>");
+            _helper.WriteLine("</p>");
 
             return new MvcHtmlString(String.Empty);
         }
 
         public void Dispose()
         {
-            WriteLine("</div>");
+            _helper.WriteLine("</div>");
         }
     }
 }

@@ -4,25 +4,26 @@ using System.Web.Mvc;
 
 namespace sidekick
 {
-    public class TabsBuilder<TModel> : BuilderBase<TModel>, IDisposable
+    public class TabsBuilder<TModel> : IDisposable
     {
+        private HtmlHelper<TModel> _helper;
         private Queue<Tab> _tabList;
         private bool _firstTab = true;
 
         public TabsBuilder(HtmlHelper<TModel> helper, TabTypes tabType)
-            : base(helper)
         {
+            _helper = helper;
             _tabList = new Queue<Tab>();
-            WriteLine("<div role='tabpanel'>");
-            WriteLine(String.Format("<ul role='tablist' class='nav {0}'>", tabType.GetAttribute<TabTypes, HtmlBuilderAttribute>().Class));
+            _helper.WriteLine("<div role='tabpanel'>");
+            _helper.WriteLine(String.Format("<ul role='tablist' class='nav {0}'>", tabType.GetAttribute<TabTypes, HtmlBuilderAttribute>().Class));
         }
 
         public TabsBuilder(HtmlHelper<TModel> helper, TabTypes tabType, bool stacked, bool justified)
-            : base(helper)
         {
+            _helper = helper;
             _tabList = new Queue<Tab>();
-            WriteLine("<div role='tabpanel'>");
-            WriteLine(String.Format("<ul role='tablist' class='nav {0} {1} {2}'>", tabType.GetAttribute<TabTypes, HtmlBuilderAttribute>().Class, (stacked) ? "nav-stacked" : String.Empty, (justified) ? "nav-justified" : String.Empty));
+            _helper.WriteLine("<div role='tabpanel'>");
+            _helper.WriteLine(String.Format("<ul role='tablist' class='nav {0} {1} {2}'>", tabType.GetAttribute<TabTypes, HtmlBuilderAttribute>().Class, (stacked) ? "nav-stacked" : String.Empty, (justified) ? "nav-justified" : String.Empty));
         }
 
         /// <summary>
@@ -35,14 +36,14 @@ namespace sidekick
         {
             _tabList.Enqueue(tab);
             string active = (tab.Active) ? "class='active'" : String.Empty;
-            WriteLine(String.Format("<li role='presentation' {0}>", active));
-            WriteLine(String.Format("<a href='#{0}' aria-controls='{0}' role='tab' data-toggle='tab'>", tab.Name));
+            _helper.WriteLine(String.Format("<li role='presentation' {0}>", active));
+            _helper.WriteLine(String.Format("<a href='#{0}' aria-controls='{0}' role='tab' data-toggle='tab'>", tab.Name));
 
             if (!String.IsNullOrEmpty(tab.Icon))
-                WriteLine(String.Format("<i class='{0}'></i>&nbsp;", tab.Icon));
+                _helper.WriteLine(String.Format("<i class='{0}'></i>&nbsp;", tab.Icon));
 
-            WriteLine(tab.DisplayText);
-            WriteLine("</a></li>");
+            _helper.WriteLine(tab.DisplayText);
+            _helper.WriteLine("</a></li>");
 
             return new MvcHtmlString(String.Empty);
         }
@@ -55,32 +56,34 @@ namespace sidekick
         {
             if (_firstTab)
             {
-                WriteLine("</ul>");
-                WriteLine("<div class='tab-content'>");
+                _helper.WriteLine("</ul>");
+                _helper.WriteLine("<div class='tab-content'>");
                 _firstTab = false;
             }
 
-            return new TabsContent<TModel>(Helper, _tabList.Dequeue());
+            return new TabsContent<TModel>(_helper, _tabList.Dequeue());
         }
 
         public void Dispose()
         {
-            WriteLine("</div></div>");
+            _helper.WriteLine("</div></div>");
         }
     }
 
-    public class TabsContent<TModel> : BuilderBase<TModel>, IDisposable
+    public class TabsContent<TModel> : IDisposable
     {
+        private HtmlHelper<TModel> _helper;
+
         public TabsContent(HtmlHelper<TModel> helper, Tab tab)
-            : base(helper)
         {
+            _helper = helper;
             string active = (tab.Active) ? "active" : null;
-            WriteLine(String.Format("<div role='tabpanel' class='tab-pane {0}' id='{1}'>", active, tab.Name));
+            _helper.WriteLine(String.Format("<div role='tabpanel' class='tab-pane {0}' id='{1}'>", active, tab.Name));
         }
 
         public void Dispose()
         {
-            WriteLine("</div>");
+            _helper.WriteLine("</div>");
         }
     }
 }

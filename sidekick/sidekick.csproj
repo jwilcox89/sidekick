@@ -91,16 +91,13 @@
     <Compile Include="database\IEntity.cs" />
     <Compile Include="database\RepositoryExtensions.cs" />
     <Compile Include="elements\ActionLinkBase.cs" />
-    <Compile Include="elements\FormControl.cs" />
-    <Compile Include="elements\InputGroup.cs" />
     <Compile Include="elements\Panel.cs" />
     <Compile Include="elements\CustomSelectList.cs" />
     <Compile Include="elements\Step.cs" />
     <Compile Include="elements\Tab.cs" />
-    <Compile Include="elements\FormGroup.cs" />
-    <Compile Include="elements\TextArea.cs" />
     <Compile Include="enums\AlertType.cs" />
     <Compile Include="enums\Colors.cs" />
+    <Compile Include="enums\ControlType.cs" />
     <Compile Include="enums\FileType.cs" />
     <Compile Include="enums\HeadingSize.cs" />
     <Compile Include="enums\InputGroupSize.cs" />
@@ -117,7 +114,6 @@
     <Compile Include="extensions\ValidationExtensions.cs" />
     <Compile Include="htmlbuilders\AjaxActionLinkBuilder.cs" />
     <Compile Include="htmlbuilders\BreadcrumbBuilder.cs" />
-    <Compile Include="htmlbuilders\BuilderBase.cs" />
     <Compile Include="htmlbuilders\ElementBuilder.cs" />
     <Compile Include="connection\NetworkConnection.cs" />
     <Compile Include="connection\NetworkConnectionManager.cs" />
@@ -125,9 +121,7 @@
     <Compile Include="elements\IView.cs" />
     <Compile Include="extensions\GeneralExtensions.cs" />
     <Compile Include="extensions\IdentityExtensions.cs" />
-    <Compile Include="helpers\ActionHelpers.cs" />
-    <Compile Include="helpers\DesignHelpers.cs" />
-    <Compile Include="helpers\GeneralHelpers.cs" />
+    <Compile Include="helpers\ActiveHelpers.cs" />
     <Compile Include="helpers\SelectListHelpers.cs" />
     <Compile Include="htmlbuilders\AlertBuilder.cs" />
     <Compile Include="htmlbuilders\HeadingBuilder.cs" />
@@ -138,9 +132,10 @@
     <Compile Include="htmlbuilders\ModalBuilder.cs" />
     <Compile Include="htmlbuilders\PanelBuilder.cs" />
     <Compile Include="htmlbuilders\StepsBuilder.cs" />
-    <Compile Include="htmlbuilders\FormGroupBuilder.cs" />
     <Compile Include="htmlbuilders\TabsBuilder.cs" />
-    <Compile Include="htmlbuilders\TextAreaBuilder.cs" />
+    <Compile Include="htmlbuilders\BuilderHelper.cs" />
+    <Compile Include="htmlbuilders\FormControlBuilder.cs" />
+    <Compile Include="elements\FormControl.cs" />
     <Compile Include="results\JsonErrorResult.cs" />
     <Compile Include="responses\RenderDocument.cs" />
     <Compile Include="session\SessionManagerBase.cs" />
@@ -167,6 +162,7 @@
     <Content Include="sampleviews\_Alert.txt" />
     <Content Include="sampleviews\_ConfirmDeleteModal.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

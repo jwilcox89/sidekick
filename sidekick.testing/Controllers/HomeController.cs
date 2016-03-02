@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using sidekick.testing.Models;
+using sidekick;
 
 namespace sidekick.testing.Controllers
 {

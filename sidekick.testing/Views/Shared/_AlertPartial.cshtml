@@ -1,0 +1,33 @@
+﻿@using sidekick
+
+@if (TempData.ContainsKey("success"))
+{
+    using (Html.BeginAlert(new Alert().Type(AlertType.Success).Dismissible()))
+    {
+        @TempData["success"]
+    }
+}
+
+@if (TempData.ContainsKey("danger"))
+{
+    using (Html.BeginAlert(new Alert().Type(AlertType.Danger).Dismissible()))
+    {
+        @TempData["danger"]
+    }
+}
+
+@if (TempData.ContainsKey("warning"))
+{
+    using (Html.BeginAlert(new Alert().Type(AlertType.Warning).Dismissible()))
+    {
+        @TempData["warning"]
+    }
+}
+
+@if (TempData.ContainsKey("info"))
+{
+    using (Html.BeginAlert(new Alert().Type(AlertType.Info).Dismissible()))
+    {
+        @TempData["info"]
+    }
+}

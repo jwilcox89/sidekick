@@ -5,16 +5,16 @@
     /// </summary>
     public enum AlertType
     {
-        [HtmlBuilder(Class = "success", Icon = "fa fa-check")]
+        [HtmlBuilder(Class = "alert-success", Icon = "fa fa-check")]
         Success,
 
-        [HtmlBuilder(Class = "danger", Icon = "fa fa-fire")]
+        [HtmlBuilder(Class = "alert-danger", Icon = "fa fa-fire")]
         Danger,
 
-        [HtmlBuilder(Class = "warning", Icon = "fa fa-exclamation-triangle")]
+        [HtmlBuilder(Class = "alert-warning", Icon = "fa fa-exclamation-triangle")]
         Warning,
 
-        [HtmlBuilder(Class = "info", Icon = "fa fa-info-circle")]
+        [HtmlBuilder(Class = "alert-info", Icon = "fa fa-info-circle")]
         Info
     }
 }

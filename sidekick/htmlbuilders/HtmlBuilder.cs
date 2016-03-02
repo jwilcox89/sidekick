@@ -88,107 +88,63 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Builds a Bootstrap textbox with an input group. No label.
+        ///     Builds a form control
         /// </summary>
         /// <typeparam name="TModel"></typeparam>
         /// <typeparam name="TProperty"></typeparam>
         /// <param name="helper"></param>
         /// <param name="expression"></param>
-        /// <param name="htmlAttributes"></param>
+        /// <param name="type"></param>
         /// <returns></returns>
-        public static InputGroupBuilder<TModel, TProperty> InputGroupFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes = null)
+        public static FormGroupBuilder<TModel, TProperty> FormGroupFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, ControlType type)
         {
-            return new InputGroupBuilder<TModel, TProperty>(helper, expression, htmlAttributes);
+            return new FormGroupBuilder<TModel, TProperty>(helper, expression, type);
         }
 
         /// <summary>
-        ///     Builds a Bootstrap input group. Includes a label, dropdown list and validation if nessecary
+        ///     Builds a form control
         /// </summary>
         /// <typeparam name="TModel"></typeparam>
         /// <typeparam name="TProperty"></typeparam>
         /// <param name="helper"></param>
         /// <param name="expression"></param>
+        /// <param name="type"></param>
         /// <param name="itemList"></param>
         /// <param name="optionLabel"></param>
-        /// <param name="htmlAttributes"></param>
         /// <returns></returns>
-        public static InputGroupBuilder<TModel, TProperty> InputGroupFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> itemList, string optionLabel, object htmlAttributes = null)
+        public static FormGroupBuilder<TModel, TProperty> FormGroupFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, ControlType type, IEnumerable<SelectListItem> itemList, string optionLabel)
         {
-            return new InputGroupBuilder<TModel, TProperty>(helper, expression, itemList, optionLabel, htmlAttributes);
+            return new FormGroupBuilder<TModel, TProperty>(helper, expression, type, itemList, optionLabel);
         }
 
         /// <summary>
-        ///     Builds a Bootstrap input group. Includes a label, dropdown list and validation if nessecary. Default OptionLabel is "--Select--".
+        ///     Builds a form control
         /// </summary>
         /// <typeparam name="TModel"></typeparam>
         /// <typeparam name="TProperty"></typeparam>
         /// <param name="helper"></param>
         /// <param name="expression"></param>
-        /// <param name="itemList"></param>
-        /// <param name="htmlAttributes"></param>
+        /// <param name="type"></param>
         /// <returns></returns>
-        public static InputGroupBuilder<TModel, TProperty> InputGroupFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> itemList, object htmlAttributes = null)
+        public static InputGroupBuilder<TModel, TProperty> InputGroupFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression)
         {
-            return new InputGroupBuilder<TModel, TProperty>(helper, expression, itemList, "--Select--", htmlAttributes);
+            return new InputGroupBuilder<TModel, TProperty>(helper, expression);
         }
 
         /// <summary>
-        ///     Builds a Bootstrap form group. Includes a label, textbox and validation if nessecary
+        ///     Builds a form control
         /// </summary>
         /// <typeparam name="TModel"></typeparam>
         /// <typeparam name="TProperty"></typeparam>
         /// <param name="helper"></param>
         /// <param name="expression"></param>
-        /// <param name="textboxHtmlAttributes"></param>
-        /// <returns></returns>
-        public static FormGroupBuilder<TModel, TProperty> FormGroupFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, object textboxHtmlAttributes = null)
-        {
-            return new FormGroupBuilder<TModel, TProperty>(helper, expression, textboxHtmlAttributes);
-        }
-
-        /// <summary>
-        ///     Builds a Bootstrap form group. Includes a label, dropdown list and validation if nessecary
-        /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <typeparam name="TProperty"></typeparam>
-        /// <param name="helper"></param>
-        /// <param name="expression"></param>
+        /// <param name="type"></param>
         /// <param name="itemList"></param>
         /// <param name="optionLabel"></param>
-        /// <param name="textboxHtmlAttributes"></param>
         /// <returns></returns>
-        public static FormGroupBuilder<TModel, TProperty> FormGroupFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> itemList, string optionLabel, object textboxHtmlAttributes = null)
+        public static InputGroupBuilder<TModel, TProperty> InputGroupFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> itemList, string optionLabel)
         {
-            return new FormGroupBuilder<TModel, TProperty>(helper, expression, itemList, optionLabel, textboxHtmlAttributes);
-        }
-
-        /// <summary>
-        ///     Builds a Bootstrap form group. Includes a label, dropdown list and validation if nessecary. Default OptionLabel is "--Select--".
-        /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <typeparam name="TProperty"></typeparam>
-        /// <param name="helper"></param>
-        /// <param name="expression"></param>
-        /// <param name="itemList"></param>
-        /// <param name="textboxHtmlAttributes"></param>
-        /// <returns></returns>
-        public static FormGroupBuilder<TModel, TProperty> FormGroupFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> itemList, object textboxHtmlAttributes = null)
-        {
-            return new FormGroupBuilder<TModel, TProperty>(helper, expression, itemList, "--Select--", textboxHtmlAttributes);
-        }
-
-        /// <summary>
-        ///     Builds a textarea
-        /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <typeparam name="TProperty"></typeparam>
-        /// <param name="helper"></param>
-        /// <param name="expression"></param>
-        /// <param name="textboxHtmlAttributes"></param>
-        /// <returns></returns>
-        public static TextAreaBuilder<TModel, TProperty> FormGroupTextAreaFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, object textboxHtmlAttributes = null)
-        {
-            return new TextAreaBuilder<TModel, TProperty>(helper, expression, textboxHtmlAttributes);
+            return new InputGroupBuilder<TModel, TProperty>(helper, expression, itemList, optionLabel);
         }
 
         /// <summary>

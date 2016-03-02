@@ -5,72 +5,137 @@
         /// <summary>
         ///     View name that will be generated with Alert details
         /// </summary>
-        public virtual string ViewName { get; set; }
+        public string ViewName { get; set; }
 
         /// <summary>
         ///     Specify the size of the modal
         /// </summary>
-        public virtual ModalSize ModalSize { get; set; }
+        internal ModalSize _modalSize;
 
         /// <summary>
         ///     Document ID of the modal
         /// </summary>
-        public virtual string ID { get; set; }
+        internal string _id;
 
         /// <summary>
         ///     Heading for the modal
         /// </summary>
-        public virtual string Title { get; set; }
+        internal string _title;
 
         /// <summary>
         ///     Html ID of the error div. Used for display errors via Ajax/Json
         /// </summary>
-        public virtual string ErrorAreaID { get; set; }
+        internal string _errorAreaID;
 
         /// <summary>
         ///     Body of the modal
         /// </summary>
-        public virtual string Body { get; set; }
+        internal string _body;
 
         /// <summary>
         ///     Text for the close modal button. Default value "Close"
         /// </summary>
-        public virtual string CloseText { get; set; }
+        internal string _closeText;
 
         /// <summary>
         ///     Text for the submit button. Default value "Submit"
         /// </summary>
-        public virtual string SubmitText { get; set; }
+        internal string _submitText;
 
         /// <summary>
         ///     True if the modal is dismissible. Defaults to true.
         /// </summary>
-        public virtual bool Dismissable { get; set; }
+        internal bool _dismissable;
 
         /// <summary>
         ///     Sets the color of the submit button
         /// </summary>
-        public virtual Colors SubmitColor { get; set; }
+        internal Colors _submitColor;
 
         /// <summary>
         ///     Sets the color of the close button
         /// </summary>
-        public virtual Colors CloseColor { get; set; }
+        internal Colors _closeColor;
 
         /// <summary>
         ///     Submit button will show if true. Default value "True"
         /// </summary>
-        public virtual bool ShowSubmitButton { get; set; }
+        internal bool _showSubmitButton;
 
-        public Modal() 
+        public Modal Title(string title)
         {
-            Dismissable = true;
-            ShowSubmitButton = true;
-            CloseText = "Close";
-            SubmitText = "Submit";
-            ModalSize = ModalSize.Regular;
-            SubmitColor = Colors.Primary;
-            CloseColor = Colors.Default;
+            _title = title;
+            return this;
+        }
+
+        public Modal ErrorAreaID(string id)
+        {
+            _errorAreaID = id;
+            return this;
+        }
+
+        public Modal Body(string body)
+        {
+            _body = body;
+            return this;
+        }
+
+        public Modal CloseText(string text)
+        {
+            _closeText = text;
+            return this;
+        }
+
+        public Modal SubmitText(string text)
+        {
+            _submitText = text;
+            return this;
+        }
+
+        public Modal NotDismissable()
+        {
+            _dismissable = false;
+            return this;
+        }
+
+        public Modal SubmitColor(Colors color)
+        {
+            _submitColor = color;
+            return this;
+        }
+
+        public Modal CloseColor(Colors color)
+        {
+            _closeColor = color;
+            return this;
+        }
+
+        public Modal HideSubmitButton()
+        {
+            _showSubmitButton = false;
+            return this;
+        }
+
+        /// <summary>
+        ///     DEFAULTS:
+        ///     Dismissable: true
+        ///     Show Submit Button: true
+        ///     Close Text: 'Close'
+        ///     Submit Text: 'Submit'
+        ///     Size: Regular
+        ///     Submit Color: Primary
+        ///     Close Color: Default
+        /// </summary>
+        public Modal(string modalID)
+        {
+            _id = modalID;
+            _dismissable = true;
+            _showSubmitButton = true;
+            _closeText = "Close";
+            _submitText = "Submit";
+            _modalSize = ModalSize.Regular;
+            _submitColor = Colors.Primary;
+            _closeColor = Colors.Default;
         }
     }
 }

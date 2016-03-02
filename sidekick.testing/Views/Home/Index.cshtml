@@ -17,21 +17,21 @@
 <hr />
 
 <h2>Alerts</h2>
-@using (Html.BeginAlert(new Alert(AlertType.Danger) { Heading = "Uh Oh!", Dismissible = true })) 
+@using (Html.BeginAlert(new Alert(AlertType.Danger).Heading("Uh Oh!").Dismissible()))
 {
-    <p>There was an error on the page!</p>   
+    <p>There was an error on the page</p>
 }
 
-@using (var alert = Html.BeginAlert(new Alert(AlertType.Success) { Heading = "Good Job!" }))
+@using (var alert = Html.BeginAlert(new Alert(AlertType.Success).Heading("Good Job!")))
 {
-    @alert.BuildErrorList()
+    @alert.WriteBody()
 }
 
 <hr />
 
 <h2>Modal</h2>
 <button id="modal-button" class="btn btn-default">Open Modal</button>
-@using (var modal = Html.BeginModal(new Modal { ID = "test-modal", Title = "My Modal" }))
+@using (var modal = Html.BeginModal(new Modal("test-modal").Title("My Modal")))
 {
     using (modal.BuildBody())
     {
@@ -46,7 +46,7 @@
 <hr />
 
 <h2>Panel</h2>
-@using (Html.BeginPanel(new Panel { Title = "My Panel", Icon = "fa fa-truck" })) 
+@using (Html.BeginPanel(new Panel().Title("My Panel").Icon("fa fa-truck"))) 
 {
     <p>
         Panel content
@@ -56,20 +56,20 @@
 <hr />
 
 <h2>Tab</h2>
-@using (var tabs = Html.BeginTabs(TabTypes.Tabs, false, true)) 
+@using (var tabs = Html.BeginTabs(TabTypes.Tabs, false, true))
 {
-    @tabs.Tab(new Tab { DisplayText = "Baseball", Name = "baseball", Icon = "fa fa-user", Active = true })
-    @tabs.Tab(new Tab { DisplayText = "Football", Name = "football", Icon = "fa fa-truck" })
-    @tabs.Tab(new Tab { DisplayText = "Soccer", Name = "soccer", Icon = "fa fa-truck" })
-    @tabs.Tab(new Tab { DisplayText = "Tennis", Name = "tennis", Icon = "fa fa-truck" })
-    @tabs.Tab(new Tab { DisplayText = "Swimming", Name = "swimming", Icon = "fa fa-truck" })
+    @tabs.Tab(new Tab("Baseball", "fa fa-user", "baseball", true))
+    @tabs.Tab(new Tab("Football", "fa fa-truck", "football"))
+    @tabs.Tab(new Tab("Soccer", "fa fa-truck", "soccer"))
+    @tabs.Tab(new Tab("Tennis", "fa fa-truck", "tennis"))
+    @tabs.Tab(new Tab("Swimming", "fa fa-truck", "swimming"))
 
     using (tabs.BeginTab())
     {
         <p>The baseball tab</p>
     }
-    
-    using (tabs.BeginTab()) 
+
+    using (tabs.BeginTab())
     {
         <p>The football tab</p>
     }
@@ -103,17 +103,17 @@
 <hr />
 
 <h2>Input Groups</h2>
-@Html.InputGroupFor(x => x.Email, new { @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").HasLabelWithColon().HasValidation()
+@Html.InputGroupFor(x => x.Email).HtmlAttributes(new { @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").HasLabelWithColon().HasValidation()
 @Html.InputGroupFor(x => x.Email, SelectListHelpers.BuildSelectList(new CustomSelectList("Option 1", "Option 1").Add("Option 2", "Option 2")), "---Select One---").HasLabelWithColon()
 
 <h2>Datetimepicker</h2>
-@Html.InputGroupFor(x => x.Email).AppendIcon("fa fa-calendar").DatetimepickerCss("datetimepicker").HasLabelWithColon()
+@Html.InputGroupFor(x => x.Email).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabelWithColon()
 
 <h2>Form Groups</h2>
-@Html.FormGroupFor(x => x.Email, new { @placeholder = "Email Address..." }).IsRequired().HelpText("This is the help text")
+@Html.FormGroupFor(x => x.Email, ControlType.Textbox).HtmlAttributes(new { @placeholder = "Email Address..." }).IsRequired().HelpText("This is the help text")
 
 <h2>Text Area</h2>
-@Html.FormGroupTextAreaFor(x => x.Email, new { @placeholder = "Enter text..." }).Rows(10).Columns(4).HelpText("This is the help text section")
+@Html.FormGroupFor(x => x.Email, ControlType.TextArea).HtmlAttributes(new { @placeholder = "Enter text..." }).Rows(10).Columns(4).HelpText("This is the help text section")
 
 <h2>Dropdowns</h2>
 @Html.DropDownListFor(x => x.Email, SelectListHelpers.YesNoDropdown(), new { @class = "form-control" })
@@ -137,9 +137,9 @@
 <h2>Validation Test</h2>
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
-    @Html.FormGroupFor(x => x.Email)
-    @Html.InputGroupFor(x => x.NoFutureDate).AppendIcon("fa fa-calendar").DatetimepickerCss("datetimepicker").HasLabelWithColon().HasValidation()
-    @Html.InputGroupFor(x => x.NoPastDate).AppendIcon("fa fa-calendar").DatetimepickerCss("datetimepicker").HasLabelWithColon().HasValidation()
+    @Html.FormGroupFor(x => x.Email, ControlType.Textbox).HasLabelWithColon()
+    @Html.InputGroupFor(x => x.NoFutureDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()
+    @Html.InputGroupFor(x => x.NoPastDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()
 
     <div class="well">
         <button type="submit" class="btn btn-success">Submit</button>

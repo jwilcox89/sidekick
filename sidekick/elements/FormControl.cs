@@ -1,66 +1,160 @@
-﻿using System;
-using System.Linq.Expressions;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace sidekick
 {
-    public class FormControl<TModel, TProperty>
+    public class FormControl<T> where T : FormControl<T>
     {
-        /// <summary>
-        ///     An expression that identifies the property to display.
-        /// </summary>
-        public Expression<Func<TModel, TProperty>> Expression { get; set; }
-
         /// <summary>
         ///     An object that contains the HTML attributes to set for the element.
         /// </summary>
-        public object HtmlAttributes { get; set; }
-
-        /// <summary>
-        ///     True if label has no colon.
-        /// </summary>
-        public virtual bool HasLabel { get; set; }
-
-        /// <summary>
-        ///     True if label requires a colon.
-        /// </summary>
-        public virtual bool HasLabelWithColon { get; set; }
-
-        /// <summary>
-        ///     True if from group requires validation.
-        /// </summary>
-        public virtual bool HasValidation { get; set; }
-
-        /// <summary>
-        ///     True if the field is required and you want to include a required '*' next to the label.
-        /// </summary>
-        public virtual bool IsRequired { get; set; }
+        internal object _htmlAttributes;
 
         /// <summary>
         ///     Base html attributes
         /// </summary>
-        public virtual object BaseAttributes { get; set; }
+        internal object _baseAttributes;
+
+        /// <summary>
+        ///     Control type for the form control
+        /// </summary>
+        internal ControlType _type;
+
+        /// <summary>
+        ///     True if label has no colon.
+        /// </summary>
+        internal bool _label;
+
+        /// <summary>
+        ///     True if label requires a colon.
+        /// </summary>
+        internal bool _labelWithColon;
+
+        /// <summary>
+        ///     True if from group requires validation.
+        /// </summary>
+        internal bool _validation;
+
+        /// <summary>
+        ///     True if the field is required and you want to include a required '*' next to the label.
+        /// </summary>
+        internal bool _required;
 
         /// <summary>
         ///     Help text that will show below the form control
         /// </summary>
-        public virtual string HelpText { get; set; }
+        internal string _helpText;
 
         /// <summary>
         ///     List of items for a dropdown list
         /// </summary>
-        public virtual IEnumerable<SelectListItem> SelectListItems { get; set; }
+        internal IEnumerable<SelectListItem> _selectListItems;
 
         /// <summary>
         ///     Text for top element of dropdown list
         /// </summary>
-        public virtual string OptionLabel { get; set; }
+        internal string _optionLabel;
+
+        /// <summary>
+        ///     Text to append to the input group
+        /// </summary>
+        internal string _appendText;
+
+        /// <summary>
+        ///     Text to prepend to the input group
+        /// </summary>
+        internal string _prependText;
+
+        /// <summary>
+        ///     Icon to append to the input group
+        /// </summary>
+        internal string _appendIcon;
+
+        /// <summary>
+        ///     Icon to prepend to the input group
+        /// </summary>
+        internal string _prependIcon;
+
+        /// <summary>
+        ///     Size of the input group
+        /// </summary>
+        internal InputGroupSize _inputGroupSize;
+
+        /// <summary>
+        ///     Css class for datetimepicker
+        /// </summary>
+        internal string _datetimepickerClass;
+
+        /// <summary>
+        ///     Id for datetimepicker
+        /// </summary>
+        internal string _datetimepickerId;
+
+        /// <summary>
+        ///     Number of rows for text area
+        /// </summary>
+        internal int _rows;
+
+        /// <summary>
+        ///     Number of columns for the text area
+        /// </summary>
+        internal int _columns;
+
+        public T IsRequired()
+        {
+            _required = true;
+            return (T)this;
+        }
+
+        public T HasLabel()
+        {
+            _label = true;
+            _labelWithColon = false;
+            return (T)this;
+        }
+
+        public T HasLabelWithColon()
+        {
+            _label = false;
+            _labelWithColon = true;
+            return (T)this;
+        }
+
+        public T HasValidation()
+        {
+            _validation = true;
+            return (T)this;
+        }
+
+        public T HelpText(string text)
+        {
+            _helpText = text;
+            return (T)this;
+        }
+
+        public T HtmlAttributes(object htmlAttributes)
+        {
+            _htmlAttributes = htmlAttributes;
+            return (T)this;
+        }
+
+        public T Rows(int rows)
+        {
+            _rows = rows;
+            return (T)this;
+        }
+
+        public T Columns(int columns)
+        {
+            _columns = columns;
+            return (T)this;
+        }
 
         public FormControl()
         {
-            if (BaseAttributes == null)
-                BaseAttributes = new { @class = "form-control" };
+            _inputGroupSize = InputGroupSize.Regular;
+            if (_baseAttributes == null)
+                _baseAttributes = new { @class = "form-control" };
         }
     }
 }
