@@ -134,7 +134,7 @@
     <Compile Include="htmlbuilders\StepsBuilder.cs" />
     <Compile Include="htmlbuilders\TabsBuilder.cs" />
     <Compile Include="htmlbuilders\BuilderHelper.cs" />
-    <Compile Include="htmlbuilders\FormControlBuilder.cs" />
+    <Compile Include="htmlbuilders\FormGroupBuilder.cs" />
     <Compile Include="elements\FormControl.cs" />
     <Compile Include="results\JsonErrorResult.cs" />
     <Compile Include="responses\RenderDocument.cs" />
