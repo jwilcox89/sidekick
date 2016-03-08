@@ -5,10 +5,10 @@ namespace sidekick
 {
     public static class BuilderHelper
     {
-        public static IDictionary<string, object> MergeAttributes(object attributes, object htmlAttributes)
+        public static IDictionary<string, object> MergeAttributes(object attributes1, object attributes2)
         {
-            IDictionary<string, object> baseAttributes = HtmlHelper.AnonymousObjectToHtmlAttributes(attributes);
-            IDictionary<string, object> additionalAttributes = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
+            IDictionary<string, object> baseAttributes = HtmlHelper.AnonymousObjectToHtmlAttributes(attributes1);
+            IDictionary<string, object> additionalAttributes = HtmlHelper.AnonymousObjectToHtmlAttributes(attributes2);
 
             foreach (KeyValuePair<string, object> r in additionalAttributes)
             {

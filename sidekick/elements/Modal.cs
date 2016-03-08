@@ -118,12 +118,12 @@
 
         /// <summary>
         ///     DEFAULTS:
-        ///     Dismissable: true
-        ///     Show Submit Button: true
-        ///     Close Text: 'Close'
-        ///     Submit Text: 'Submit'
-        ///     Size: Regular
-        ///     Submit Color: Primary
+        ///     Dismissable: true,
+        ///     Show Submit Button: true,
+        ///     Close Text: 'Close',
+        ///     Submit Text: 'Submit',
+        ///     Size: Regular,
+        ///     Submit Color: Primary,
         ///     Close Color: Default
         /// </summary>
         public Modal(string modalID)
