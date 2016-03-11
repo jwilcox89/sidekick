@@ -36,7 +36,7 @@ namespace sidekick
                 _helper.WriteLine(_helper.LabelForWithColon(_expression, _required));
 
             if (_label)
-                _helper.WriteLine(_helper.LabelFor(_expression));
+                _helper.WriteLine(_helper.LabelForNoColon(_expression, _required));
 
             _helper.WriteLine(_helper.TextBoxFor(_expression, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)));
 
@@ -58,7 +58,7 @@ namespace sidekick
                 _helper.WriteLine(_helper.LabelForWithColon(_expression, _required));
 
             if (_label)
-                _helper.WriteLine(_helper.LabelFor(_expression));
+                _helper.WriteLine(_helper.LabelForNoColon(_expression, _required));
 
             _helper.WriteLine(_helper.DropDownListFor(_expression, _selectListItems, _optionLabel, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)));
 
@@ -80,7 +80,7 @@ namespace sidekick
                 _helper.WriteLine(_helper.LabelForWithColon(_expression, _required));
 
             if (_label)
-                _helper.WriteLine(_helper.LabelFor(_expression));
+                _helper.WriteLine(_helper.LabelForNoColon(_expression, _required));
 
             _helper.WriteLine(_helper.TextAreaFor(_expression, _rows, _columns, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)));
 

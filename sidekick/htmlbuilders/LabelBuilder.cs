@@ -41,7 +41,21 @@ namespace sidekick
         /// <returns></returns>
         public static MvcHtmlString LabelForWithColon<TModel, TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, bool required = false)
         {
-            return LabelFor(helper, expression, null, required);
+            return LabelFor(helper, expression, null, true, required);
+        }
+
+        /// <summary>
+        ///     Builds label with no colon
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <param name="helper"></param>
+        /// <param name="expression"></param>
+        /// <param name="required"></param>
+        /// <returns></returns>
+        public static MvcHtmlString LabelForNoColon<TModel, TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, bool required = false)
+        {
+            return LabelFor(helper, expression, null, false, required);
         }
 
         /// <summary>
@@ -56,10 +70,25 @@ namespace sidekick
         /// <returns></returns>
         public static MvcHtmlString LabelForWithColon<TModel, TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, object htmlAttributes, bool required = false)
         {
-            return LabelFor(helper, expression, new RouteValueDictionary(htmlAttributes), required);
+            return LabelFor(helper, expression, new RouteValueDictionary(htmlAttributes), true, required);
         }
 
-        private static MvcHtmlString LabelFor<TModel, TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, IDictionary<string, object> htmlAttributes, bool required)
+        /// <summary>
+        ///     Builds a label with no colon
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <param name="helper"></param>
+        /// <param name="expression"></param>
+        /// <param name="htmlAttributes"></param>
+        /// <param name="required"></param>
+        /// <returns></returns>
+        public static MvcHtmlString LabelForNoColon<TModel, TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, object htmlAttributes, bool required = false)
+        {
+            return LabelFor(helper, expression, new RouteValueDictionary(htmlAttributes), false, required);
+        }
+
+        private static MvcHtmlString LabelFor<TModel, TValue>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TValue>> expression, IDictionary<string, object> htmlAttributes, bool hasColon, bool required)
         {
             ModelMetadata metadata = ModelMetadata.FromLambdaExpression(expression, helper.ViewData);
             string htmlFieldName = ExpressionHelper.GetExpressionText(expression);
@@ -74,7 +103,14 @@ namespace sidekick
                 tag.MergeAttributes(htmlAttributes);
 
             tag.Attributes.Add("for", helper.ViewContext.ViewData.TemplateInfo.GetFullHtmlFieldId(htmlFieldName));
-            tag.SetInnerText(labelText + ":");
+            if (hasColon)
+            {
+                tag.SetInnerText(labelText + ":");
+            }
+            else
+            {
+                tag.SetInnerText(labelText);
+            }
 
             string result = tag.ToString(TagRenderMode.Normal);
 

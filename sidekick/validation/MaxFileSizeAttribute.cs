@@ -20,7 +20,7 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Validates the file's size is no bigger than the size specified.
+        ///     Validates the file's size is no bigger than the size specified in MBs.
         /// </summary>
         /// <param name="maxFileSize"></param>
         public MaxFileSizeAttribute(int maxFileSize)

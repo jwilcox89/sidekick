@@ -1,6 +1,6 @@
 ﻿namespace sidekick
 {
-    public enum TabTypes
+    public enum TabType
     {
         [HtmlBuilder(Class = "nav-tabs")]
         Tabs,

@@ -100,12 +100,20 @@ namespace sidekick
         /// </summary>
         internal int _columns;
 
+        /// <summary>
+        ///     Show '*' next to label to indicate required field
+        /// </summary>
+        /// <returns></returns>
         public T IsRequired()
         {
             _required = true;
             return (T)this;
         }
 
+        /// <summary>
+        ///     Show label without a semi colon
+        /// </summary>
+        /// <returns></returns>
         public T HasLabel()
         {
             _label = true;
@@ -113,6 +121,10 @@ namespace sidekick
             return (T)this;
         }
 
+        /// <summary>
+        ///     Show label with a semi colon
+        /// </summary>
+        /// <returns></returns>
         public T HasLabelWithColon()
         {
             _label = false;
@@ -120,30 +132,54 @@ namespace sidekick
             return (T)this;
         }
 
+        /// <summary>
+        ///     Validation will show if there is a validation error
+        /// </summary>
+        /// <returns></returns>
         public T HasValidation()
         {
             _validation = true;
             return (T)this;
         }
 
+        /// <summary>
+        ///     Set the help text below the element
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public T HelpText(string text)
         {
             _helpText = text;
             return (T)this;
         }
 
+        /// <summary>
+        ///     Additional html attributes for the element
+        /// </summary>
+        /// <param name="htmlAttributes"></param>
+        /// <returns></returns>
         public T HtmlAttributes(object htmlAttributes)
         {
             _htmlAttributes = htmlAttributes;
             return (T)this;
         }
 
+        /// <summary>
+        ///     For use with the textarea, number of rows to display
+        /// </summary>
+        /// <param name="rows"></param>
+        /// <returns></returns>
         public T Rows(int rows)
         {
             _rows = rows;
             return (T)this;
         }
 
+        /// <summary>
+        ///     For use with the textarea, number of columns to display
+        /// </summary>
+        /// <param name="columns"></param>
+        /// <returns></returns>
         public T Columns(int columns)
         {
             _columns = columns;

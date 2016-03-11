@@ -21,9 +21,14 @@ namespace sidekick
             _helper.WriteLine("</div>");
         }
 
-        public ModalBody<TModel> BuildBody()
+        /// <summary>
+        ///     Make 'writeBody' parameter true if you want to use the body content inside the Modal object. False if you wish to write the HTML for the modal.
+        /// </summary>
+        /// <param name="writeBody"></param>
+        /// <returns></returns>
+        public ModalBody<TModel> BuildBody(bool writeBody = false)
         {
-            return new ModalBody<TModel>(_helper, _model);
+            return new ModalBody<TModel>(_helper, _model, writeBody);
         }
 
         public MvcHtmlString BuildFooter()
@@ -54,12 +59,15 @@ namespace sidekick
     {
         private HtmlHelper<TModel> _helper;
 
-        public ModalBody(HtmlHelper<TModel> helper, Modal model)
+        public ModalBody(HtmlHelper<TModel> helper, Modal model, bool writeBody)
         {
             _helper = helper;
             _helper.WriteLine("<div class='modal-body'>");
             if (!String.IsNullOrEmpty(model._errorAreaID))
                 _helper.WriteLine(String.Format("<div id='{0}'></div>", model._errorAreaID));
+
+            if (writeBody)
+                _helper.WriteLine(String.Format("<p>{0}</p>", model._body));
         }
 
         public void Dispose()

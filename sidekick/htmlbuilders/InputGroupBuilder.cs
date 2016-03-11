@@ -26,42 +26,77 @@ namespace sidekick
             _optionLabel = optionLabel;
         }
 
+        /// <summary>
+        ///     Text to append to the end of the element
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public InputGroupBuilder<TModel, TProperty> AppendText(string text)
         {
             _appendText = text;
             return this;
         }
 
+        /// <summary>
+        ///     Icon to append to the end of the element
+        /// </summary>
+        /// <param name="icon"></param>
+        /// <returns></returns>
         public InputGroupBuilder<TModel, TProperty> AppendIcon(string icon)
         {
             _appendIcon = icon;
             return this;
         }
 
+        /// <summary>
+        ///     Text to prepend to the beginning of the element
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public InputGroupBuilder<TModel, TProperty> PrependText(string text)
         {
             _prependText = text;
             return this;
         }
 
+        /// <summary>
+        ///     Icon to prepend to the beginning of the element
+        /// </summary>
+        /// <param name="icon"></param>
+        /// <returns></returns>
         public InputGroupBuilder<TModel, TProperty> PrependIcon(string icon)
         {
             _prependIcon = icon;
             return this;
         }
 
+        /// <summary>
+        ///     Set the size of the input group
+        /// </summary>
+        /// <param name="size"></param>
+        /// <returns></returns>
         public InputGroupBuilder<TModel, TProperty> InputSize(InputGroupSize size)
         {
             _inputGroupSize = size;
             return this;
         }
 
+        /// <summary>
+        ///     Class that will be used to initialize a datetimepicker element
+        /// </summary>
+        /// <param name="class"></param>
+        /// <returns></returns>
         public InputGroupBuilder<TModel, TProperty> DatetimepickerClass(string @class)
         {
             _datetimepickerClass = @class;
             return this;
         }
 
+        /// <summary>
+        ///     Id that will be used to initialize a datetimepicker element
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public InputGroupBuilder<TModel, TProperty> DatetimepickerId(string id)
         {
             _datetimepickerId = id;
@@ -76,7 +111,7 @@ namespace sidekick
                 _helper.WriteLine(_helper.LabelForWithColon(_expression, _required));
 
             if (_label)
-                _helper.WriteLine(_helper.LabelFor(_expression, _required));
+                _helper.WriteLine(_helper.LabelForNoColon(_expression, _required));
 
             _helper.WriteLine(String.Format("<div class='input-group {0} {1}' id='{2}'>", _inputGroupSize.GetAttribute<InputGroupSize, HtmlBuilderAttribute>().Class, _datetimepickerClass, _datetimepickerId));
 
@@ -126,7 +161,7 @@ namespace sidekick
                 _helper.WriteLine(_helper.LabelForWithColon(_expression, _required));
 
             if (_label)
-                _helper.WriteLine(_helper.LabelFor(_expression, _required));
+                _helper.WriteLine(_helper.LabelForNoColon(_expression, _required));
 
             _helper.WriteLine(String.Format("<div class='input-group {0} {1}' id='{2}'>", _inputGroupSize.GetAttribute<InputGroupSize, HtmlBuilderAttribute>().Class, _datetimepickerClass, _datetimepickerId));
 

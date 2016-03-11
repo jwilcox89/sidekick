@@ -18,6 +18,11 @@ namespace sidekick
             _action = action;
         }
 
+        /// <summary>
+        ///     Sets the ajax options for the link
+        /// </summary>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public AjaxActionLinkBuilder AjaxOptions(AjaxOptions options)
         {
             _options = options;

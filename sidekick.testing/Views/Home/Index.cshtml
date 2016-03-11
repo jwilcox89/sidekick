@@ -31,7 +31,7 @@
 
 <h2>Modal</h2>
 <button id="modal-button" class="btn btn-default">Open Modal</button>
-@using (var modal = Html.BeginModal(new Modal("test-modal").Title("My Modal")))
+@using (var modal = Html.BeginModal(new Modal("test-modal").Title("My Modal").Body("Modal Content pt 2")))
 {
     using (modal.BuildBody())
     {
@@ -56,7 +56,7 @@
 <hr />
 
 <h2>Tab</h2>
-@using (var tabs = Html.BeginTabs(TabTypes.Tabs, false, true))
+@using (var tabs = Html.BeginTabs(TabType.Tabs, false, true))
 {
     @tabs.Tab(new Tab("Baseball", "fa fa-user", "baseball", true))
     @tabs.Tab(new Tab("Football", "fa fa-truck", "football"))
@@ -107,7 +107,7 @@
 @Html.InputGroupFor(x => x.Email, SelectListHelpers.BuildSelectList(new CustomSelectList("Option 1", "Option 1").Add("Option 2", "Option 2")), "---Select One---").HasLabelWithColon()
 
 <h2>Datetimepicker</h2>
-@Html.InputGroupFor(x => x.Email).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabelWithColon()
+@Html.InputGroupFor(x => x.Email).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel().IsRequired()
 
 <h2>Form Groups</h2>
 @Html.FormGroupFor(x => x.Email, ControlType.Textbox).HtmlAttributes(new { @placeholder = "Email Address..." }).IsRequired().HelpText("This is the help text")
@@ -116,10 +116,12 @@
 @Html.FormGroupFor(x => x.Email, ControlType.TextArea).HtmlAttributes(new { @placeholder = "Enter text..." }).Rows(10).Columns(4).HelpText("This is the help text section")
 
 <h2>Dropdowns</h2>
-@Html.DropDownListFor(x => x.Email, SelectListHelpers.YesNoDropdown(), new { @class = "form-control" })
+@Html.FormGroupFor(x => x.Email, SelectListHelpers.YesNoDropdown(), "--Select One--")
 <br />
-@Html.DropDownListFor(x => x.Email, SelectListHelpers.BuildSelectList(new CustomSelectList("Option 1", "1").Add("Option 2", "2")), new { @class = "form-control" })
+@Html.FormGroupFor(x => x.Email, SelectListHelpers.BuildSelectList(new CustomSelectList("Option 1", "1").Add("Option 2", "2")), "--Select One--")
 
+<h2>Checkboxes</h2>
+@Html.BuildCheckBoxFor(x => x.RememberMe, CheckboxType.Checkbox).HasLabel().IsRequired()
 
 <h2>Labels</h2>
 <div class="form-group">
@@ -140,6 +142,7 @@
     @Html.FormGroupFor(x => x.Email, ControlType.Textbox).HasLabelWithColon()
     @Html.InputGroupFor(x => x.NoFutureDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()
     @Html.InputGroupFor(x => x.NoPastDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()
+    @Html.BuildCheckBoxFor(x => x.RememberMe, CheckboxType.Checkbox).HasLabel().IsRequired()
 
     <div class="well">
         <button type="submit" class="btn btn-success">Submit</button>

@@ -91,11 +91,13 @@
     <Compile Include="database\IEntity.cs" />
     <Compile Include="database\RepositoryExtensions.cs" />
     <Compile Include="elements\ActionLinkBase.cs" />
+    <Compile Include="elements\Checkbox.cs" />
     <Compile Include="elements\Panel.cs" />
     <Compile Include="elements\CustomSelectList.cs" />
     <Compile Include="elements\Step.cs" />
     <Compile Include="elements\Tab.cs" />
     <Compile Include="enums\AlertType.cs" />
+    <Compile Include="enums\CheckboxType.cs" />
     <Compile Include="enums\Colors.cs" />
     <Compile Include="enums\ControlType.cs" />
     <Compile Include="enums\FileType.cs" />
@@ -103,7 +105,7 @@
     <Compile Include="enums\InputGroupSize.cs" />
     <Compile Include="enums\ModalSize.cs" />
     <Compile Include="enums\Months.cs" />
-    <Compile Include="enums\TabTypes.cs" />
+    <Compile Include="enums\TabType.cs" />
     <Compile Include="errorlogger\ErrorLogger.cs" />
     <Compile Include="errorlogger\IErrorLog.cs" />
     <Compile Include="extensions\ConversionExtensions.cs" />
@@ -114,6 +116,7 @@
     <Compile Include="extensions\ValidationExtensions.cs" />
     <Compile Include="htmlbuilders\AjaxActionLinkBuilder.cs" />
     <Compile Include="htmlbuilders\BreadcrumbBuilder.cs" />
+    <Compile Include="htmlbuilders\CheckboxBuilder.cs" />
     <Compile Include="htmlbuilders\ElementBuilder.cs" />
     <Compile Include="connection\NetworkConnection.cs" />
     <Compile Include="connection\NetworkConnectionManager.cs" />
