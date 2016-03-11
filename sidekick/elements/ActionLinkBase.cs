@@ -1,6 +1,6 @@
 ﻿namespace sidekick
 {
-    public class ActionLinkBase<T>  where T : ActionLinkBase<T>
+    public class ActionLinkBase<T> where T : ActionLinkBase<T>
     {
         internal string REPLACEMENT_TEXT = "_replace_";
         internal string _controller;

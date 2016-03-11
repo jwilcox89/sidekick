@@ -6,7 +6,7 @@ using System.Web.Mvc.Html;
 
 namespace sidekick
 {
-    public class CheckboxBuilder<TModel> : Checkbox, IHtmlString
+    public class CheckboxBuilder<TModel> : Checkbox<CheckboxBuilder<TModel>>, IHtmlString
     {
         private HtmlHelper<TModel> _helper;
         private Expression<Func<TModel, bool>> _expression;

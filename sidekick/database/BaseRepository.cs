@@ -113,9 +113,10 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="entity"></param>
-        public void Add<TEntity>(TEntity entity) where TEntity : class
+        public BaseRepository<TContext> Add<TEntity>(TEntity entity) where TEntity : class
         {
             DB.Set<TEntity>().Add(entity);
+            return this;
         }
 
         /// <summary>
@@ -123,9 +124,10 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="entities"></param>
-        public void Add<TEntity>(IEnumerable<TEntity> collection) where TEntity : class
+        public BaseRepository<TContext> Add<TEntity>(IEnumerable<TEntity> collection) where TEntity : class
         {
             DB.Set<TEntity>().AddRange(collection);
+            return this;
         }
 
         /// <summary>
@@ -133,9 +135,10 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="entity"></param>
-        public void Remove<TEntity>(TEntity entity) where TEntity : class
+        public BaseRepository<TContext> Remove<TEntity>(TEntity entity) where TEntity : class
         {
             DB.Set<TEntity>().Remove(entity);
+            return this;
         }
 
         /// <summary>
@@ -143,9 +146,10 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="collection"></param>
-        public void Remove<TEntity>(IEnumerable<TEntity> collection) where TEntity : class
+        public BaseRepository<TContext> Remove<TEntity>(IEnumerable<TEntity> collection) where TEntity : class
         {
             DB.Set<TEntity>().RemoveRange(collection);
+            return this;
         }
 
         /// <summary>
@@ -154,12 +158,14 @@ namespace sidekick
         /// <typeparam name="TEntity"></typeparam>
         /// <typeparam name="TKey"></typeparam>
         /// <param name="id"></param>
-        public void Remove<TEntity>(params object[] id) where TEntity : class
+        public BaseRepository<TContext> Remove<TEntity>(params object[] id) where TEntity : class
         {
             TEntity entity = Get<TEntity>(id);
 
             if (entity != null)
                 Remove<TEntity>(entity);
+
+            return this;
         }
 
         /// <summary>

@@ -86,9 +86,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="controllers\BaseController.cs" />
     <Compile Include="database\BaseRepository.cs" />
-    <Compile Include="database\IEntity.cs" />
     <Compile Include="database\RepositoryExtensions.cs" />
     <Compile Include="elements\ActionLinkBase.cs" />
     <Compile Include="elements\Checkbox.cs" />
@@ -154,7 +152,6 @@
     <Compile Include="validation\MaxFileSizeAttribute.cs" />
     <Compile Include="validation\NoFutureDateAttribute.cs" />
     <Compile Include="validation\NoPastDateAttribute.cs" />
-    <Compile Include="viewmodel\BaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
