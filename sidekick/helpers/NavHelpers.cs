@@ -6,7 +6,7 @@ using System.Web.Routing;
 
 namespace sidekick
 {
-    public static class ActiveHelpers
+    public static class NavHelpers
     {
         /// <summary>
         ///     Returns the "active" class name or an empty string depending on the criteria 

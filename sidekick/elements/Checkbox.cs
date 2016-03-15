@@ -1,36 +1,37 @@
 ﻿namespace sidekick
 {
-    public class Checkbox<T> where T : Checkbox<T>
+    public class Checkbox
     {
+        internal CheckboxType _type;
         internal bool _label;
         internal bool _labelWithColon;
         internal bool _isRequired;
         internal object _htmlAttributes;
 
-        public T HasLabel()
+        public Checkbox HasLabel()
         {
             _label = true;
             _labelWithColon = false;
-            return (T)this;
+            return this;
         }
 
-        public T HasLabelWithColon()
+        public Checkbox HasLabelWithColon()
         {
             _label = false;
             _labelWithColon = true;
-            return (T)this;
+            return this;
         }
 
-        public T IsRequired()
+        public Checkbox IsRequired()
         {
             _isRequired = true;
-            return (T)this;
+            return this;
         }
 
-        public T HtmlAttributes(object attributes)
+        public Checkbox HtmlAttributes(object attributes)
         {
             _htmlAttributes = attributes;
-            return (T)this;
+            return this;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace sidekick
 {
     public static class ErrorLogger<TContext> where TContext : DbContext, new()
     {
-        private static TContext DB = new TContext();
+        private static BaseRepository<TContext> DB = new BaseRepository<TContext>();
 
         /// <summary>
         ///     Logs the error using the ExceptionContext data provided.
@@ -18,7 +18,7 @@ namespace sidekick
         /// <param name="ex"></param>
         public static void LogError<TEntity>(ExceptionContext ex, string comments = null) where TEntity : class, IErrorLog, new()
         {
-            DB.Set<TEntity>().Add(new TEntity
+            DB.Add(new TEntity
             {
                 Time = DateTime.Now,
                 Exception = ex.GetExceptionMessage(),
@@ -28,9 +28,7 @@ namespace sidekick
                 Route = ex.GetRoute(),
                 Query = ex.GetQuery(),
                 Comments = comments
-            });
-
-            DB.SaveChanges();
+            }).Save();
         }
 
         /// <summary>
@@ -41,16 +39,14 @@ namespace sidekick
         /// <param name="route"></param>
         public static void LogError<TEntity>(_Exception ex, string comments = null) where TEntity : class, IErrorLog, new()
         {
-            DB.Set<TEntity>().Add(new TEntity
+            DB.Add(new TEntity
             {
                 Time = DateTime.Now,
                 Exception = ex.GetExceptionMessage(),
                 InnerException = ex.GetInnerExceptionMessage(),
                 StackTrace = ex.GetStackTraceMessage(),
                 Comments = comments
-            });
-
-            DB.SaveChanges();
+            }).Save();
         }
 
         /// <summary>
@@ -86,8 +82,7 @@ namespace sidekick
             TEntity error = new TEntity();
             action(error);
 
-            DB.Set<TEntity>().Add(error);
-            DB.SaveChanges();
+            DB.Add(error).Save();
         }
 
         /// <summary>
@@ -107,8 +102,7 @@ namespace sidekick
         /// <typeparam name="TEntity"></typeparam>
         public static void ClearLogs<TEntity>() where TEntity : class, IErrorLog
         {
-            DB.Set<TEntity>().RemoveRange(DB.Set<TEntity>());
-            DB.SaveChanges();
+            DB.Remove<TEntity>(DB.GetAll<TEntity>()).Save();
         }
 
         /// <summary>

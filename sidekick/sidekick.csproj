@@ -89,6 +89,7 @@
     <Compile Include="database\BaseRepository.cs" />
     <Compile Include="database\RepositoryExtensions.cs" />
     <Compile Include="elements\ActionLinkBase.cs" />
+    <Compile Include="elements\Card.cs" />
     <Compile Include="elements\Checkbox.cs" />
     <Compile Include="elements\Panel.cs" />
     <Compile Include="elements\CustomSelectList.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="extensions\ValidationExtensions.cs" />
     <Compile Include="htmlbuilders\AjaxActionLinkBuilder.cs" />
     <Compile Include="htmlbuilders\BreadcrumbBuilder.cs" />
+    <Compile Include="htmlbuilders\CardBuilder.cs" />
     <Compile Include="htmlbuilders\CheckboxBuilder.cs" />
     <Compile Include="htmlbuilders\ElementBuilder.cs" />
     <Compile Include="connection\NetworkConnection.cs" />
@@ -122,7 +124,7 @@
     <Compile Include="elements\IView.cs" />
     <Compile Include="extensions\GeneralExtensions.cs" />
     <Compile Include="extensions\IdentityExtensions.cs" />
-    <Compile Include="helpers\ActiveHelpers.cs" />
+    <Compile Include="helpers\NavHelpers.cs" />
     <Compile Include="helpers\SelectListHelpers.cs" />
     <Compile Include="htmlbuilders\AlertBuilder.cs" />
     <Compile Include="htmlbuilders\HeadingBuilder.cs" />

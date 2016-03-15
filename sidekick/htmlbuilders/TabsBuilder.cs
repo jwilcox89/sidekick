@@ -8,7 +8,7 @@ namespace sidekick
     {
         private HtmlHelper<TModel> _helper;
         private Queue<Tab> _tabList;
-        private bool _firstTab = true;
+        private bool _contentStarted;
 
         public TabsBuilder(HtmlHelper<TModel> helper, TabType tabType)
         {
@@ -54,11 +54,11 @@ namespace sidekick
         /// <returns></returns>
         public TabsContent<TModel> BeginTab()
         {
-            if (_firstTab)
+            if (!_contentStarted)
             {
                 _helper.WriteLine("</ul>");
                 _helper.WriteLine("<div class='tab-content'>");
-                _firstTab = false;
+                _contentStarted = true;
             }
 
             return new TabsContent<TModel>(_helper, _tabList.Dequeue());

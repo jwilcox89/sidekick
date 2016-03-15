@@ -13,7 +13,7 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="modal"></param>
         /// <returns></returns>
-        public static ModalBuilder<TModel> BeginModal<TModel>(this HtmlHelper<TModel> helper, Modal modal)
+        public static ModalBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, Modal modal)
         {
             return new ModalBuilder<TModel>(helper, modal);
         }
@@ -24,7 +24,7 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="alert"></param>
         /// <returns></returns>
-        public static AlertBuilder<TModel> BeginAlert<TModel>(this HtmlHelper<TModel> helper, Alert alert)
+        public static AlertBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, Alert alert)
         {
             return new AlertBuilder<TModel>(helper, alert);
         }
@@ -36,7 +36,7 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="tabType">Specify which style of tabs you would like</param>
         /// <returns></returns>
-        public static TabsBuilder<TModel> BeginTabs<TModel>(this HtmlHelper<TModel> helper, TabType tabType)
+        public static TabsBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, TabType tabType)
         {
             return new TabsBuilder<TModel>(helper, tabType);
         }
@@ -50,7 +50,7 @@ namespace sidekick
         /// <param name="stacked">True if you want the tabs stacked on top of one another</param>
         /// <param name="justified">True if you want the tabs equal widths of their parent</param>
         /// <returns></returns>
-        public static TabsBuilder<TModel> BeginTabs<TModel>(this HtmlHelper<TModel> helper, TabType tabType, bool stacked, bool justified)
+        public static TabsBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, TabType tabType, bool stacked, bool justified)
         {
             return new TabsBuilder<TModel>(helper, tabType, stacked, justified);
         }
@@ -61,7 +61,7 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="panel"></param>
         /// <returns></returns>
-        public static PanelBuilder<TModel> BeginPanel<TModel>(this HtmlHelper<TModel> helper, Panel panel)
+        public static PanelBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, Panel panel)
         {
             return new PanelBuilder<TModel>(helper, panel);
         }
@@ -208,6 +208,11 @@ namespace sidekick
         public static CheckboxBuilder<TModel> BuildCheckBoxFor<TModel>(this HtmlHelper<TModel> helper, Expression<Func<TModel, bool>> expression, CheckboxType type)
         {
             return new CheckboxBuilder<TModel>(helper, expression, type);
+        }
+
+        public static CardBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, Card card)
+        {
+            return new CardBuilder<TModel>(helper, card);
         }
     }
 }

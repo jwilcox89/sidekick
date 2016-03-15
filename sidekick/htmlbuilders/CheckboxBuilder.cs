@@ -6,11 +6,10 @@ using System.Web.Mvc.Html;
 
 namespace sidekick
 {
-    public class CheckboxBuilder<TModel> : Checkbox<CheckboxBuilder<TModel>>, IHtmlString
+    public class CheckboxBuilder<TModel> : Checkbox, IHtmlString
     {
         private HtmlHelper<TModel> _helper;
         private Expression<Func<TModel, bool>> _expression;
-        private CheckboxType _type;
 
         public CheckboxBuilder(HtmlHelper<TModel> helper, Expression<Func<TModel, bool>> expression, CheckboxType type)
         {
@@ -35,6 +34,7 @@ namespace sidekick
 
             if (_label || _labelWithColon)
             {
+                _helper.WriteLine("&nbsp;");
                 if (_label)
                     _helper.WriteLine(_helper.LabelForNoColon(_expression, _isRequired));
 

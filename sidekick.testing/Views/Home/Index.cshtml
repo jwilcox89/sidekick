@@ -17,12 +17,12 @@
 <hr />
 
 <h2>Alerts</h2>
-@using (Html.BeginAlert(new Alert(AlertType.Danger).Heading("Uh Oh!").Dismissible()))
+@using (Html.Begin(new Alert(AlertType.Danger).Heading("Uh Oh!").Dismissible()))
 {
     <p>There was an error on the page</p>
 }
 
-@using (var alert = Html.BeginAlert(new Alert(AlertType.Success).Heading("Good Job!")))
+@using (var alert = Html.Begin(new Alert(AlertType.Success).Heading("Good Job!")))
 {
     @alert.WriteBody()
 }
@@ -31,7 +31,7 @@
 
 <h2>Modal</h2>
 <button id="modal-button" class="btn btn-default">Open Modal</button>
-@using (var modal = Html.BeginModal(new Modal("test-modal").Title("My Modal").Body("Modal Content pt 2")))
+@using (var modal = Html.Begin(new Modal("test-modal").Title("My Modal").Body("Modal Content pt 2")))
 {
     using (modal.BuildBody())
     {
@@ -46,7 +46,7 @@
 <hr />
 
 <h2>Panel</h2>
-@using (Html.BeginPanel(new Panel().Title("My Panel").Icon("fa fa-truck"))) 
+@using (Html.Begin(new Panel().Title("My Panel").Icon("fa fa-truck"))) 
 {
     <p>
         Panel content
@@ -55,8 +55,16 @@
 
 <hr />
 
+@*<h2>Card</h2>
+@using (Html.Begin(new Card().Header("Heading", HeadingSize.H4).Title("Title", HeadingSize.H4).Subtitle("subtitle").Footer("footer")))
+{
+    <p class="card-text">This is the text for the card</p>
+}
+
+<hr />*@
+
 <h2>Tab</h2>
-@using (var tabs = Html.BeginTabs(TabType.Tabs, false, true))
+@using (var tabs = Html.Begin(TabType.Tabs, false, true))
 {
     @tabs.Tab(new Tab("Baseball", "fa fa-user", "baseball", true))
     @tabs.Tab(new Tab("Football", "fa fa-truck", "football"))
@@ -137,7 +145,8 @@
 
 
 <h2>Validation Test</h2>
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
     @Html.FormGroupFor(x => x.Email, ControlType.Textbox).HasLabelWithColon()
     @Html.InputGroupFor(x => x.NoFutureDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()

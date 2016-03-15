@@ -82,6 +82,11 @@
             return this;
         }
 
+        /// <summary>
+        ///     DEFAULTS:
+        ///     Color = Default,
+        ///     HeadingSize = H3
+        /// </summary>
         public Panel() 
         {
             _color = Colors.Default;
