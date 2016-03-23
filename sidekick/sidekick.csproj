@@ -86,8 +86,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="database\BaseRepository.cs" />
-    <Compile Include="database\RepositoryExtensions.cs" />
+    <Compile Include="database\BaseRepo.cs" />
+    <Compile Include="database\RepoExtensions.cs" />
     <Compile Include="elements\ActionLinkBase.cs" />
     <Compile Include="elements\Card.cs" />
     <Compile Include="elements\Checkbox.cs" />

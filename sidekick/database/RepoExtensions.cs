@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace sidekick
 {
-    public static class RepositoryExtensions
+    public static class RepoExtensions
     {
         /// <summary>
         ///     Returns all distinct elements as determined by the selector that the uniqueness will be determined by.

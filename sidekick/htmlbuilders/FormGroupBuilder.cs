@@ -38,7 +38,15 @@ namespace sidekick
             if (_label)
                 _helper.WriteLine(_helper.LabelForNoColon(_expression, _required));
 
-            _helper.WriteLine(_helper.TextBoxFor(_expression, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)));
+            switch (_type)
+            {
+                case ControlType.Textbox:
+                    _helper.WriteLine(_helper.TextBoxFor(_expression, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)));
+                    break;
+                case ControlType.Password:
+                    _helper.WriteLine(_helper.PasswordFor(_expression, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)));
+                    break;
+            }
 
             if (!String.IsNullOrEmpty(_helpText))
                 _helper.WriteLine(String.Format("<span class='help-block'>{0}</span>", _helpText));
@@ -100,6 +108,8 @@ namespace sidekick
             {
                 case ControlType.Textbox:
                     return (_selectListItems == null) ? BuildTextBoxFormGroup().ToString() : BuildDropdownFormGroup().ToString();
+                case ControlType.Password:
+                    return BuildTextBoxFormGroup().ToString();
                 case ControlType.TextArea:
                     return CreateTextArea().ToString();
             }

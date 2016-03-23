@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.ComponentModel.DataAnnotations;
 
 namespace sidekick
@@ -6,6 +7,7 @@ namespace sidekick
     /// <summary>
     ///     Validate a string for make sure that it is free of specific characters
     /// </summary>
+    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
     public class ExcludeCharAttribute : ValidationAttribute
     {
         private readonly string _excludedChars;

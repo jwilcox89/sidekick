@@ -3,6 +3,7 @@
     public enum ControlType
     {
         Textbox,
+        Password,
         TextArea
     }
 }

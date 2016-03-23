@@ -26,7 +26,7 @@ namespace sidekick
         /// </summary>
         /// <param name="writeBody"></param>
         /// <returns></returns>
-        public ModalBody<TModel> BuildBody(bool writeBody = false)
+        public ModalBody<TModel> BeginBody(bool writeBody = false)
         {
             return new ModalBody<TModel>(_helper, _model, writeBody);
         }

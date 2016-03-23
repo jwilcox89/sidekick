@@ -9,7 +9,7 @@ namespace sidekick
 {
     public static class ErrorLogger<TContext> where TContext : DbContext, new()
     {
-        private static BaseRepository<TContext> DB = new BaseRepository<TContext>();
+        private static BaseRepo<TContext> DB = new BaseRepo<TContext>();
 
         /// <summary>
         ///     Logs the error using the ExceptionContext data provided.

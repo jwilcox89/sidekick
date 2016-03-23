@@ -12,7 +12,7 @@ namespace sidekick
     ///     Generic repository designed to account for all generic query functionality
     /// </summary>
     /// <typeparam name="TContext">The database context you would like to query</typeparam>
-    public class BaseRepository<TContext> : IDisposable where TContext : DbContext, new()
+    public class BaseRepo<TContext> : IDisposable where TContext : DbContext, new()
     {
         private TContext _context;
 
@@ -30,7 +30,7 @@ namespace sidekick
         /// <summary>
         ///     Generates a new instance of the specified database context.
         /// </summary>
-        public BaseRepository()
+        public BaseRepo()
         {
             _context = new TContext();
         }
@@ -39,7 +39,7 @@ namespace sidekick
         ///     Uses the instance of the database context provided.
         /// </summary>
         /// <param name="context"></param>
-        public BaseRepository(TContext context)
+        public BaseRepo(TContext context)
         {
             _context = context;
         }
@@ -113,7 +113,7 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="entity"></param>
-        public BaseRepository<TContext> Add<TEntity>(TEntity entity) where TEntity : class
+        public BaseRepo<TContext> Add<TEntity>(TEntity entity) where TEntity : class
         {
             DB.Set<TEntity>().Add(entity);
             return this;
@@ -124,7 +124,7 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="entities"></param>
-        public BaseRepository<TContext> Add<TEntity>(IEnumerable<TEntity> collection) where TEntity : class
+        public BaseRepo<TContext> Add<TEntity>(IEnumerable<TEntity> collection) where TEntity : class
         {
             DB.Set<TEntity>().AddRange(collection);
             return this;
@@ -135,7 +135,7 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="entity"></param>
-        public BaseRepository<TContext> Remove<TEntity>(TEntity entity) where TEntity : class
+        public BaseRepo<TContext> Remove<TEntity>(TEntity entity) where TEntity : class
         {
             DB.Set<TEntity>().Remove(entity);
             return this;
@@ -146,7 +146,7 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="collection"></param>
-        public BaseRepository<TContext> Remove<TEntity>(IEnumerable<TEntity> collection) where TEntity : class
+        public BaseRepo<TContext> Remove<TEntity>(IEnumerable<TEntity> collection) where TEntity : class
         {
             DB.Set<TEntity>().RemoveRange(collection);
             return this;
@@ -158,7 +158,7 @@ namespace sidekick
         /// <typeparam name="TEntity"></typeparam>
         /// <typeparam name="TKey"></typeparam>
         /// <param name="id"></param>
-        public BaseRepository<TContext> Remove<TEntity>(params object[] id) where TEntity : class
+        public BaseRepo<TContext> Remove<TEntity>(params object[] id) where TEntity : class
         {
             TEntity entity = Get<TEntity>(id);
 

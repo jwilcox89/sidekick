@@ -10,7 +10,14 @@ namespace sidekick
         private AjaxHelper _helper;
         private AjaxOptions _options;
 
-        public AjaxActionLinkBuilder(AjaxHelper helper, string controller, string action, string text = null)
+        public AjaxActionLinkBuilder(AjaxHelper helper, string controller, string action)
+        {
+            _helper = helper;
+            _controller = controller;
+            _action = action;
+        }
+
+        public AjaxActionLinkBuilder(AjaxHelper helper, string controller, string action, string text)
         {
             _helper = helper;
             _text = text;

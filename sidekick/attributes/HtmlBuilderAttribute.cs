@@ -2,6 +2,7 @@
 
 namespace sidekick
 {
+    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
     public class HtmlBuilderAttribute : Attribute
     {
         /// <summary>

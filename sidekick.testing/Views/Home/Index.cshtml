@@ -33,7 +33,7 @@
 <button id="modal-button" class="btn btn-default">Open Modal</button>
 @using (var modal = Html.Begin(new Modal("test-modal").Title("My Modal").Body("Modal Content pt 2")))
 {
-    using (modal.BuildBody())
+    using (modal.BeginBody())
     {
         <p>
             Modal content
@@ -148,7 +148,8 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
-    @Html.FormGroupFor(x => x.Email, ControlType.Textbox).HasLabelWithColon()
+    @Html.FormGroupFor(x => x.Email, ControlType.Textbox).HtmlAttributes(new { @placeholder = "Enter email..." }).HasLabelWithColon()
+    @Html.FormGroupFor(x => x.Password, ControlType.Password).HtmlAttributes(new { @placeholder = "Enter password..." }).HasLabelWithColon()
     @Html.InputGroupFor(x => x.NoFutureDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()
     @Html.InputGroupFor(x => x.NoPastDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()
     @Html.BuildCheckBoxFor(x => x.RememberMe, CheckboxType.Checkbox).HasLabel().IsRequired()

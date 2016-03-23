@@ -6,6 +6,7 @@ namespace sidekick
     /// <summary>
     ///     Validates a DateTime property to ensure that the date selected is not after the current date and time.
     /// </summary>
+    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
     public class NoFutureDateAttribute : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)

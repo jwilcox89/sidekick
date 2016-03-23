@@ -9,7 +9,14 @@ namespace sidekick
     {
         private HtmlHelper _helper;
 
-        public HtmlActionLinkBuilder(HtmlHelper helper, string controller, string action, string text = null)
+        public HtmlActionLinkBuilder(HtmlHelper helper, string controller, string action)
+        {
+            _helper = helper;
+            _controller = controller;
+            _action = action;
+        }
+
+        public HtmlActionLinkBuilder(HtmlHelper helper, string controller, string action, string text)
         {
             _helper = helper;
             _text = text;

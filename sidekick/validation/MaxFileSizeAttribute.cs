@@ -7,6 +7,7 @@ namespace sidekick
     /// <summary>
     ///     Validate the size of an uploaded document, photo, video etc.
     /// </summary>
+    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
     public class MaxFileSizeAttribute : ValidationAttribute
     {
         private readonly int _maxFileSize;
