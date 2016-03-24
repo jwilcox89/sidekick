@@ -1,11 +1,23 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace sidekick
 {
     public static class FormattingExtensions
     {
+        /// <summary>
+        ///     Removes white space, '-' and ',' from string
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string ScrubForUrl(this string input)
+        {
+            return new string(input.ToCharArray().Where(x => Char.IsLetterOrDigit(x) || !Char.IsWhiteSpace(x)).Except(new List<char> { '-', ',' }).ToArray());
+        }
+
         /// <summary>
         ///     Takes the 555-555-5555 format and turns it into a simple string
         /// </summary>

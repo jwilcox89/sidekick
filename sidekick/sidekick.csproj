@@ -113,6 +113,7 @@
     <Compile Include="extensions\ExceptionExtensions.cs" />
     <Compile Include="extensions\FormattingExtensions.cs" />
     <Compile Include="extensions\ValidationExtensions.cs" />
+    <Compile Include="htmlbuilders\AccordionBuilder.cs" />
     <Compile Include="htmlbuilders\AjaxActionLinkBuilder.cs" />
     <Compile Include="htmlbuilders\BreadcrumbBuilder.cs" />
     <Compile Include="htmlbuilders\CardBuilder.cs" />
