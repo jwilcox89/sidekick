@@ -128,7 +128,14 @@ namespace sidekick
                 _helper.WriteLine("</span>");
             }
 
-            _helper.WriteLine(_helper.DropDownListFor(_expression, _selectListItems, _optionLabel, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)).ToString());
+            if (_multiselect)
+            {
+                _helper.WriteLine(_helper.ListBoxFor(_expression, _selectListItems, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)));
+            }
+            else
+            {
+                _helper.WriteLine(_helper.DropDownListFor(_expression, _selectListItems, _optionLabel, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)));
+            }
 
             if (!String.IsNullOrEmpty(_appendIcon) || !String.IsNullOrEmpty(_appendText))
             {

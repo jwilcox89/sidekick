@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
-using System.Collections.Generic;
-using System.Linq;
+using System.Web;
 
 namespace sidekick
 {
@@ -13,9 +12,11 @@ namespace sidekick
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public static string ScrubForUrl(this string input)
+        public static string ScrubForUrl(this string pTitle)
         {
-            return new string(input.ToCharArray().Where(x => Char.IsLetterOrDigit(x) || !Char.IsWhiteSpace(x)).Except(new List<char> { '-', ',' }).ToArray());
+            pTitle = pTitle.Replace(" ", "-");
+            pTitle = HttpUtility.UrlEncode(pTitle);
+            return Regex.Replace(pTitle, @"\%[0-9A-Fa-f]{2}", "");
         }
 
         /// <summary>

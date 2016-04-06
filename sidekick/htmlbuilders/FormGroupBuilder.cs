@@ -68,7 +68,14 @@ namespace sidekick
             if (_label)
                 _helper.WriteLine(_helper.LabelForNoColon(_expression, _required));
 
-            _helper.WriteLine(_helper.DropDownListFor(_expression, _selectListItems, _optionLabel, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)));
+            if (_multiselect)
+            {
+                _helper.WriteLine(_helper.ListBoxFor(_expression, _selectListItems, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)));
+            }
+            else
+            {
+                _helper.WriteLine(_helper.DropDownListFor(_expression, _selectListItems, _optionLabel, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)));
+            }
 
             if (!String.IsNullOrEmpty(_helpText))
                 _helper.WriteLine(String.Format("<span class='help-block'>{0}</span>", _helpText));

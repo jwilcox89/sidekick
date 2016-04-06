@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="database\BaseRepo.cs" />
+    <Compile Include="database\RepoException.cs" />
     <Compile Include="database\RepoExtensions.cs" />
     <Compile Include="elements\ActionLinkBase.cs" />
     <Compile Include="elements\Card.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="elements\Panel.cs" />
     <Compile Include="elements\CustomSelectList.cs" />
     <Compile Include="elements\Step.cs" />
+    <Compile Include="elements\Switch.cs" />
     <Compile Include="elements\Tab.cs" />
     <Compile Include="enums\AlertType.cs" />
     <Compile Include="enums\CheckboxType.cs" />
@@ -104,6 +106,7 @@
     <Compile Include="enums\InputGroupSize.cs" />
     <Compile Include="enums\ModalSize.cs" />
     <Compile Include="enums\Months.cs" />
+    <Compile Include="enums\SwitchSize.cs" />
     <Compile Include="enums\TabType.cs" />
     <Compile Include="errorlogger\ErrorLogger.cs" />
     <Compile Include="errorlogger\IErrorLog.cs" />
@@ -136,6 +139,7 @@
     <Compile Include="htmlbuilders\ModalBuilder.cs" />
     <Compile Include="htmlbuilders\PanelBuilder.cs" />
     <Compile Include="htmlbuilders\StepsBuilder.cs" />
+    <Compile Include="htmlbuilders\SwitchBuilder.cs" />
     <Compile Include="htmlbuilders\TabsBuilder.cs" />
     <Compile Include="htmlbuilders\BuilderHelper.cs" />
     <Compile Include="htmlbuilders\FormGroupBuilder.cs" />
@@ -143,7 +147,7 @@
     <Compile Include="results\JsonErrorResult.cs" />
     <Compile Include="responses\RenderDocument.cs" />
     <Compile Include="session\SessionManagerBase.cs" />
-    <Compile Include="TempDataManager.cs" />
+    <Compile Include="helpers\TempDataManager.cs" />
     <Compile Include="validation\ActiveDirectorySecurity.cs" />
     <Compile Include="validation\CommonRegexes.cs" />
     <Compile Include="htmlbuilders\ViewBuilder.cs" />

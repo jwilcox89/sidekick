@@ -231,7 +231,7 @@ namespace sidekick
             }
             catch (Exception ex)
             {
-                throw new Exception("An error has occured when trying to save.", ex);
+                throw new RepoException(ex, DB.GetValidationErrors());
             }
         }
 

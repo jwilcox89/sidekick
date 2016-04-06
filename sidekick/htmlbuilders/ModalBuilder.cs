@@ -35,15 +35,39 @@ namespace sidekick
         {
             _helper.WriteLine("<div class='modal-footer'>");
 
-            if (_model._dismissable)
-                _helper.WriteLine(String.Format("<button type='button' class='btn btn-{0}' data-dismiss='modal'>{1}</button>",
-                                        _model._closeColor.GetAttribute<Colors, HtmlBuilderAttribute>().Class,
-                                        _model._closeText));
-
             if (_model._showSubmitButton)
-                _helper.WriteLine(String.Format("<button type='submit' class='btn btn-{0}'>{1}</button>",
-                                        _model._submitColor.GetAttribute<Colors, HtmlBuilderAttribute>().Class,
-                                        _model._submitText));
+            {
+                if (String.IsNullOrEmpty(_model._submitIcon))
+                {
+                    _helper.WriteLine(String.Format("<button type='submit' class='btn btn-{0}'>{1}</button>",
+                                            _model._submitColor.GetAttribute<Colors, HtmlBuilderAttribute>().Class,
+                                            _model._submitText));
+                }
+                else
+                {
+                    _helper.WriteLine(String.Format("<button type='submit' class='btn btn-{0}'><i class='{2}'></i> {1}</button>",
+                        _model._submitColor.GetAttribute<Colors, HtmlBuilderAttribute>().Class,
+                        _model._submitText,
+                        _model._submitIcon));
+                }
+            }
+
+            if (_model._dismissable)
+            {
+                if (String.IsNullOrEmpty(_model._closeIcon))
+                {
+                    _helper.WriteLine(String.Format("<button type='button' class='btn btn-{0}' data-dismiss='modal'>{1}</button>",
+                                            _model._closeColor.GetAttribute<Colors, HtmlBuilderAttribute>().Class,
+                                            _model._closeText));
+                }
+                else
+                {
+                    _helper.WriteLine(String.Format("<button type='button' class='btn btn-{0}' data-dismiss='modal'><i class='{2}'></i> {1}</button>",
+                        _model._closeColor.GetAttribute<Colors, HtmlBuilderAttribute>().Class,
+                        _model._closeText,
+                        _model._closeIcon));
+                }
+            }
 
             _helper.WriteLine("</div>");
             return new MvcHtmlString(String.Empty);

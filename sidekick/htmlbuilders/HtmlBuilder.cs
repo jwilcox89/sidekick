@@ -154,7 +154,7 @@ namespace sidekick
         /// <param name="controller"></param>
         /// <param name="action"></param>
         /// <returns></returns>
-        public static HtmlActionLinkBuilder BeginActionLink(this HtmlHelper helper, string controller, string action)
+        public static HtmlActionLinkBuilder BuildActionLink(this HtmlHelper helper, string controller, string action)
         {
             return new HtmlActionLinkBuilder(helper, controller, action);
         }
@@ -167,7 +167,7 @@ namespace sidekick
         /// <param name="action"></param>
         /// <param name="text"></param>
         /// <returns></returns>
-        public static HtmlActionLinkBuilder BeginActionLink(this HtmlHelper helper, string controller, string action, string text)
+        public static HtmlActionLinkBuilder BuildActionLink(this HtmlHelper helper, string controller, string action, string text)
         {
             return new HtmlActionLinkBuilder(helper, controller, action, text);
         }
@@ -179,7 +179,7 @@ namespace sidekick
         /// <param name="controller"></param>
         /// <param name="action"></param>
         /// <returns></returns>
-        public static AjaxActionLinkBuilder BeginActionLink(this AjaxHelper helper, string controller, string action)
+        public static AjaxActionLinkBuilder BuildActionLink(this AjaxHelper helper, string controller, string action)
         {
             return new AjaxActionLinkBuilder(helper, controller, action);
         }
@@ -192,9 +192,22 @@ namespace sidekick
         /// <param name="action"></param>
         /// <param name="text"></param>
         /// <returns></returns>
-        public static AjaxActionLinkBuilder BeginActionLink(this AjaxHelper helper, string controller, string action, string text)
+        public static AjaxActionLinkBuilder BuildActionLink(this AjaxHelper helper, string controller, string action, string text)
         {
             return new AjaxActionLinkBuilder(helper, controller, action, text);
+        }
+
+        /// <summary>
+        ///     Builds a bootstrap switch element (http://www.bootstrap-switch.org/options.html)
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="helper"></param>
+        /// <param name="elementName"></param>
+        /// <param name="switchState"></param>
+        /// <returns></returns>
+        public static SwitchBuilder<TModel> BuildSwitch<TModel>(this HtmlHelper<TModel> helper, string elementName, bool switchState)
+        {
+            return new SwitchBuilder<TModel>(helper, elementName, switchState);
         }
 
         /// <summary>
@@ -211,6 +224,17 @@ namespace sidekick
         }
 
         /// <summary>
+        ///     Use this overload if you want to be able to open more than one panel in the accordion at a time
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="helper"></param>
+        /// <returns></returns>
+        public static AccordionBuilder<TModel> BeginAccordion<TModel>(this HtmlHelper<TModel> helper)
+        {
+            return new AccordionBuilder<TModel>(helper);
+        }
+
+        /// <summary>
         ///     Use this overload if you want to only be able to open one panel in the accordion at a time
         /// </summary>
         /// <typeparam name="TModel"></typeparam>
@@ -220,17 +244,6 @@ namespace sidekick
         public static AccordionBuilder<TModel> BeginAccordion<TModel>(this HtmlHelper<TModel> helper, string id)
         {
             return new AccordionBuilder<TModel>(helper, id);
-        }
-
-        /// <summary>
-        ///     Use this overload if you want to be able to open more than one panel in the accordion at a time
-        /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="helper"></param>
-        /// <returns></returns>
-        public static AccordionBuilder<TModel> BeginAccordion<TModel>(this HtmlHelper<TModel> helper)
-        {
-            return new AccordionBuilder<TModel>(helper);
         }
     }
 }

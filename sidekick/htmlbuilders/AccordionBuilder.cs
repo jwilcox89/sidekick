@@ -9,6 +9,17 @@ namespace sidekick
         private string _parentID;
 
         /// <summary>
+        ///     Use this overload if you want to be able to open more than one panel in the accordion at a time
+        /// </summary>
+        /// <param name="helper"></param>
+        public AccordionBuilder(HtmlHelper<TModel> helper)
+        {
+            _helper = helper;
+            _parentID = String.Empty;
+            _helper.WriteLine(String.Format("<div class='panel-group' id='{0}' role='tablist' aria-multiselectable='true'>", _parentID));
+        }
+
+        /// <summary>
         ///     Use this overload if you want to only be able to open one panel in the accordion at a time
         /// </summary>
         /// <param name="helper"></param>
@@ -17,17 +28,6 @@ namespace sidekick
         {
             _helper = helper;
             _parentID = parentID;
-            _helper.WriteLine(String.Format("<div class='panel-group' id='{0}' role='tablist' aria-multiselectable='true'>", _parentID));
-        }
-
-        /// <summary>
-        ///     Use this overload if you want to be able to open more than one panel in the accordion at a time
-        /// </summary>
-        /// <param name="helper"></param>
-        public AccordionBuilder(HtmlHelper<TModel> helper)
-        {
-            _helper = helper;
-            _parentID = String.Empty;
             _helper.WriteLine(String.Format("<div class='panel-group' id='{0}' role='tablist' aria-multiselectable='true'>", _parentID));
         }
 

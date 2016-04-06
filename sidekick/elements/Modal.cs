@@ -38,9 +38,19 @@
         internal string _closeText;
 
         /// <summary>
+        ///     Icon for the cancel button.
+        /// </summary>
+        internal string _closeIcon;
+
+        /// <summary>
         ///     Text for the submit button. Default value "Submit"
         /// </summary>
         internal string _submitText;
+
+        /// <summary>
+        ///     Icon for the submit button.
+        /// </summary>
+        internal string _submitIcon;
 
         /// <summary>
         ///     True if the modal is dismissible. Defaults to true.
@@ -107,6 +117,19 @@
         }
 
         /// <summary>
+        ///     Set the text and the icon for the cancel button
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="icon"></param>
+        /// <returns></returns>
+        public Modal CloseText(string text, string icon)
+        {
+            _closeText = text;
+            _closeIcon = icon;
+            return this;
+        }
+
+        /// <summary>
         ///     Set the text in the submit button
         /// </summary>
         /// <param name="text"></param>
@@ -114,6 +137,19 @@
         public Modal SubmitText(string text)
         {
             _submitText = text;
+            return this;
+        }
+
+        /// <summary>
+        ///     Set the text and the icon for the submit button
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="icon"></param>
+        /// <returns></returns>
+        public Modal SubmitText(string text, string icon)
+        {
+            _submitText = text;
+            _submitIcon = icon;
             return this;
         }
 

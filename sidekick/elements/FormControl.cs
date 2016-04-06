@@ -51,6 +51,11 @@ namespace sidekick
         internal IEnumerable<SelectListItem> _selectListItems;
 
         /// <summary>
+        ///     True if you need the dropdown to be multiselect
+        /// </summary>
+        internal bool _multiselect;
+
+        /// <summary>
         ///     Text for top element of dropdown list
         /// </summary>
         internal string _optionLabel;
@@ -183,6 +188,16 @@ namespace sidekick
         public T Columns(int columns)
         {
             _columns = columns;
+            return (T)this;
+        }
+
+        /// <summary>
+        ///     For making a dropdown list multiselect
+        /// </summary>
+        /// <returns></returns>
+        public T Multiselect()
+        {
+            _multiselect = true;
             return (T)this;
         }
 
