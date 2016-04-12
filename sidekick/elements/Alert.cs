@@ -6,39 +6,13 @@ namespace sidekick
 {
     public class Alert : IView
     {
-        /// <summary>
-        ///     View name that will be generated with Alert details
-        /// </summary>
         public virtual string ViewName { get; set; }
-
-        /// <summary>
-        ///     Success, Failure, Warning etc. Default value "Info"
-        /// </summary>
         internal AlertType _type;
-
-        /// <summary>
-        ///     If true the alert box will be dismissible. Default value false.
-        /// </summary>
         internal bool _dismissible;
-
-        /// <summary>
-        ///     The heading (ex. Error or Add User)
-        /// </summary>
         internal string _heading;
-
-        /// <summary>
-        ///     Used for multiple errors or success messages that are generally generated from a list of ModelState errors or AspIdentity IdentityErrors 
-        /// </summary>
         internal IEnumerable<string> _messageList;
-
-        /// <summary>
-        ///     Body of the alert
-        /// </summary>
         internal string _body;
 
-        /// <summary>
-        ///     Sets the alert class here. Ex. "alert alert-success"
-        /// </summary>
         internal string _alertClass
         {
             get
@@ -49,6 +23,21 @@ namespace sidekick
 
                 return className;
             }
+        }
+
+        /// <summary>
+        ///     DEFAULTS: AlertType = Info
+        /// </summary>
+        public Alert()
+        {
+            _type = AlertType.Info;
+            _messageList = Enumerable.Empty<string>();
+        }
+
+        public Alert(AlertType type)
+        {
+            _type = type;
+            _messageList = Enumerable.Empty<string>();
         }
 
         /// <summary>
@@ -103,21 +92,6 @@ namespace sidekick
         {
             _messageList = messages;
             return this;
-        }
-
-        /// <summary>
-        ///     DEFAULTS: AlertType = Info
-        /// </summary>
-        public Alert()
-        {
-            _type = AlertType.Info;
-            _messageList = Enumerable.Empty<string>();
-        }
-
-        public Alert(AlertType type)
-        {
-            _type = type;
-            _messageList = Enumerable.Empty<string>();
         }
     }
 }

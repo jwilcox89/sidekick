@@ -3,35 +3,11 @@
     public class ActionLinkBase<T> where T : ActionLinkBase<T>
     {
         internal string REPLACEMENT_TEXT = "_replace_";
-
-        /// <summary>
-        ///     Controller used in the action link
-        /// </summary>
         internal string _controller;
-
-        /// <summary>
-        ///     Action used in the action link
-        /// </summary>
         internal string _action;
-
-        /// <summary>
-        ///     Text used to display the action link
-        /// </summary>
         internal string _text;
-
-        /// <summary>
-        ///     Icon used to the left of the text in the action link
-        /// </summary>
         internal string _icon;
-
-        /// <summary>
-        ///     Route value(s) for the action link
-        /// </summary>
         internal object _routeValues;
-
-        /// <summary>
-        ///     HTML attirbutes for the action link element
-        /// </summary>
         internal object _htmlAttributes;
 
         /// <summary>

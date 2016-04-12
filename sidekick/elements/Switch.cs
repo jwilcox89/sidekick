@@ -5,7 +5,7 @@
         internal string _elementName;
         internal bool _state;
         internal SwitchSize? _size;
-        internal bool _animate = true;
+        internal bool _animate;
         internal bool _disabled;
         internal bool _readOnly;
         internal bool _indeterminate;
@@ -20,6 +20,11 @@
         internal string _labelWidth;
         internal string _baseClass;
         internal string _wrapperClass;
+
+        public Switch()
+        {
+            _animate = true;
+        }
 
         /// <summary>
         ///     The checkbox size

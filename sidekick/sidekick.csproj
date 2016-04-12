@@ -144,7 +144,6 @@
     <Compile Include="htmlbuilders\BuilderHelper.cs" />
     <Compile Include="htmlbuilders\FormGroupBuilder.cs" />
     <Compile Include="elements\FormControl.cs" />
-    <Compile Include="results\JsonErrorResult.cs" />
     <Compile Include="responses\RenderDocument.cs" />
     <Compile Include="session\SessionManagerBase.cs" />
     <Compile Include="helpers\TempDataManager.cs" />

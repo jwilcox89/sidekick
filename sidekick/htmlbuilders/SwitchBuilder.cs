@@ -22,6 +22,7 @@ namespace sidekick
             using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter()))
             {
                 writer.AddAttribute(HtmlTextWriterAttribute.Name, _elementName);
+                writer.AddAttribute(HtmlTextWriterAttribute.Type, "checkbox");
                 writer.AddAttribute("data-state", _state.ToString().ToLower());
 
                 if (_size.HasValue)
@@ -72,7 +73,6 @@ namespace sidekick
                 if (!String.IsNullOrEmpty(_wrapperClass))
                     writer.AddAttribute("data-wrapper-class", _wrapperClass);
 
-                writer.AddAttribute(HtmlTextWriterAttribute.Type, "checkbox");
                 writer.RenderBeginTag(HtmlTextWriterTag.Input);
                 writer.RenderEndTag();
 

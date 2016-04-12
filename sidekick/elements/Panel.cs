@@ -2,30 +2,22 @@
 {
     public class Panel
     {
-        /// <summary>
-        ///     Extra HTML class for the panel
-        /// </summary>
         internal string _class;
-
-        /// <summary>
-        ///     Color of the panel. Defaults to "default"
-        /// </summary>
         internal Colors _color;
-
-        /// <summary>
-        ///     Title heading size
-        /// </summary>
         internal HeadingSize _headingSize;
-
-        /// <summary>
-        ///     Icon Css to be placed to the left of the header
-        /// </summary>
         internal string _icon;
+        internal string _title;
 
         /// <summary>
-        ///     Title of the panel
+        ///     DEFAULTS:
+        ///     Color = Default,
+        ///     HeadingSize = H3
         /// </summary>
-        internal string _title;
+        public Panel()
+        {
+            _color = Colors.Default;
+            _headingSize = HeadingSize.H3;
+        }
 
         /// <summary>
         ///     Set the class for the panel
@@ -80,17 +72,6 @@
         {
             _title = title;
             return this;
-        }
-
-        /// <summary>
-        ///     DEFAULTS:
-        ///     Color = Default,
-        ///     HeadingSize = H3
-        /// </summary>
-        public Panel() 
-        {
-            _color = Colors.Default;
-            _headingSize = HeadingSize.H3;
         }
     }
 }

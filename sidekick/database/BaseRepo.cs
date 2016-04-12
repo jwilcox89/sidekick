@@ -274,17 +274,8 @@ namespace sidekick
 
         public void Dispose()
         {
-            Dispose(true);
+            if (DB != null) DB.Dispose();
             GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool dispose)
-        {
-            if (dispose)
-            {
-                if (DB != null)
-                    DB.Dispose();
-            }
         }
     }
 }
