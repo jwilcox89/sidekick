@@ -108,6 +108,7 @@
     <Compile Include="enums\Months.cs" />
     <Compile Include="enums\SwitchSize.cs" />
     <Compile Include="enums\TabType.cs" />
+    <Compile Include="enums\UsStates.cs" />
     <Compile Include="errorlogger\ErrorLogger.cs" />
     <Compile Include="errorlogger\IErrorLog.cs" />
     <Compile Include="extensions\ConversionExtensions.cs" />

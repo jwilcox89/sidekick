@@ -26,7 +26,8 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     DEFAULTS: AlertType = Info
+        ///     DEFAULTS: 
+        ///     <para>AlertType = Info</para>
         /// </summary>
         public Alert()
         {

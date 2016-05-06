@@ -1,4 +1,6 @@
-﻿namespace sidekick
+﻿using System;
+
+namespace sidekick
 {
     public class Modal : IView
     {
@@ -18,14 +20,37 @@
         internal bool _showSubmitButton;
 
         /// <summary>
+        ///     <para>No HTML ID</para>
         ///     DEFAULTS:
-        ///     Dismissable: true,
-        ///     Show Submit Button: true,
-        ///     Close Text: 'Close',
-        ///     Submit Text: 'Submit',
-        ///     Size: Regular,
-        ///     Submit Color: Primary,
-        ///     Close Color: Default
+        ///     <para>Dismissable: true</para>
+        ///     <para>Show Submit Button: true</para>
+        ///     <para>Close Text: 'Close'</para>
+        ///     <para>Submit Text: 'Submit'</para>
+        ///     <para>Size: Regular</para>
+        ///     <para>Submit Color: Primary</para>
+        ///     <para>Close Color: Default</para>
+        /// </summary>
+        public Modal()
+        {
+            _id = String.Empty;
+            _dismissable = true;
+            _showSubmitButton = true;
+            _closeText = "Close";
+            _submitText = "Submit";
+            _modalSize = ModalSize.Regular;
+            _submitColor = Colors.Primary;
+            _closeColor = Colors.Default;
+        }
+
+        /// <summary>
+        ///     DEFAULTS:
+        ///     <para>Dismissable: true</para>
+        ///     <para>Show Submit Button: true</para>
+        ///     <para>Close Text: 'Close'</para>
+        ///     <para>Submit Text: 'Submit'</para>
+        ///     <para>Size: Regular</para>
+        ///     <para>Submit Color: Primary</para>
+        ///     <para>Close Color: Default</para>
         /// </summary>
         /// <param name="modalID">HTML id of the modal element. Used for opening and closing the modal.</param>
         public Modal(string modalID)
@@ -74,23 +99,62 @@
         }
 
         /// <summary>
-        ///     Set the text in the cancel button
+        ///     Set attributes of submit button
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public Modal CloseText(string text)
+        public Modal SubmitButton(string text)
+        {
+            _submitText = text;
+            return this;
+        }
+
+        /// <summary>
+        ///     Set attributes of submit button
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="icon"></param>
+        /// <returns></returns>
+        public Modal SubmitButton(string text, string icon)
+        {
+            _submitText = text;
+            _submitIcon = icon;
+            return this;
+        }
+
+        /// <summary>
+        ///     Set attributes of submit button
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="icon"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public Modal SubmitButton(string text, string icon, Colors color)
+        {
+            _submitText = text;
+            _submitIcon = icon;
+            _submitColor = color;
+            return this;
+        }
+
+        /// <summary>
+        ///     Set attributes of close button
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public Modal CloseButton(string text)
         {
             _closeText = text;
             return this;
         }
 
         /// <summary>
-        ///     Set the text and the icon for the cancel button
+        ///     Set attributes of close button
         /// </summary>
         /// <param name="text"></param>
         /// <param name="icon"></param>
         /// <returns></returns>
-        public Modal CloseText(string text, string icon)
+        public Modal CloseButton(string text, string icon)
         {
             _closeText = text;
             _closeIcon = icon;
@@ -98,26 +162,17 @@
         }
 
         /// <summary>
-        ///     Set the text in the submit button
-        /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
-        public Modal SubmitText(string text)
-        {
-            _submitText = text;
-            return this;
-        }
-
-        /// <summary>
-        ///     Set the text and the icon for the submit button
+        ///     Set attributes of close button
         /// </summary>
         /// <param name="text"></param>
         /// <param name="icon"></param>
+        /// <param name="color"></param>
         /// <returns></returns>
-        public Modal SubmitText(string text, string icon)
+        public Modal CloseButton(string text, string icon, Colors color)
         {
-            _submitText = text;
-            _submitIcon = icon;
+            _closeText = text;
+            _closeIcon = icon;
+            _closeColor = color;
             return this;
         }
 
@@ -128,28 +183,6 @@
         public Modal NotDismissable()
         {
             _dismissable = false;
-            return this;
-        }
-
-        /// <summary>
-        ///     Set the color of the submit button
-        /// </summary>
-        /// <param name="color"></param>
-        /// <returns></returns>
-        public Modal SubmitColor(Colors color)
-        {
-            _submitColor = color;
-            return this;
-        }
-
-        /// <summary>
-        ///     Set the color of the cancel button
-        /// </summary>
-        /// <param name="color"></param>
-        /// <returns></returns>
-        public Modal CloseColor(Colors color)
-        {
-            _closeColor = color;
             return this;
         }
 

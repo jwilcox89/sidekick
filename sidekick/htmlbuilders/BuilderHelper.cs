@@ -25,6 +25,11 @@ namespace sidekick
             return baseAttributes;
         }
 
+        public static void WriteLine(this HtmlHelper helper, object html)
+        {
+            helper.ViewContext.Writer.Write(html);
+        }
+
         public static void WriteLine<TModel>(this HtmlHelper<TModel> helper, object html)
         {
             helper.ViewContext.Writer.Write(html);

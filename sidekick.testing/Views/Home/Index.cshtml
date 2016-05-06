@@ -139,8 +139,8 @@
 
 <h2>Links</h2>
 <div class="form-gorup">
-    @Html.BeginActionLink("Home", "Index", "Go Home").Icon("fa fa-home").HtmlAttributes(new { @class = "btn btn-primary" }).RouteValues(new { @id = 50 })
-    @Ajax.BeginActionLink("Home", "Index", "Test Link")
+    @Html.BuildActionLink("Home", "Index", "Go Home").Icon("fa fa-home").HtmlAttributes(new { @class = "btn btn-primary" }).RouteValues(new { @id = 50 })
+    @Ajax.BuildActionLink("Home", "Index", "Test Link")
 </div>
 
 

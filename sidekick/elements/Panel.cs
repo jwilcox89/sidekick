@@ -10,8 +10,8 @@
 
         /// <summary>
         ///     DEFAULTS:
-        ///     Color = Default,
-        ///     HeadingSize = H3
+        ///     <para>Color = Default</para>
+        ///     <para>HeadingSize = H3</para>
         /// </summary>
         public Panel()
         {
