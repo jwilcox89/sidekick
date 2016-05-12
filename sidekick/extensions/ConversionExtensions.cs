@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace sidekick
@@ -41,13 +42,7 @@ namespace sidekick
         /// <returns></returns>
         public static IEnumerable<int> ToInt<TObject>(this List<TObject> list)
         {
-            List<int> final = new List<int>();
-            foreach (TObject i in list)
-            {
-                final.Add(i.ToInt());
-            }
-
-            return final;
+            return list.AsEnumerable().ToInt();
         }
 
         /// <summary>
@@ -58,13 +53,7 @@ namespace sidekick
         /// <returns></returns>
         public static IEnumerable<int> ToInt<TObject>(this TObject[] list)
         {
-            List<int> final = new List<int>();
-            foreach (TObject i in list)
-            {
-                final.Add(i.ToInt());
-            }
-
-            return final;
+            return list.AsEnumerable().ToInt();
         }
 
         /// <summary>
@@ -103,13 +92,7 @@ namespace sidekick
         /// <returns></returns>
         public static IEnumerable<short> ToShort<TObject>(this List<TObject> list)
         {
-            List<short> final = new List<short>();
-            foreach (TObject i in list)
-            {
-                final.Add(i.ToShort());
-            }
-
-            return final;
+            return list.AsEnumerable().ToShort();
         }
 
         /// <summary>
@@ -120,13 +103,7 @@ namespace sidekick
         /// <returns></returns>
         public static IEnumerable<short> ToShort<TObject>(this TObject[] list)
         {
-            List<short> final = new List<short>();
-            foreach (TObject i in list)
-            {
-                final.Add(i.ToShort());
-            }
-
-            return final;
+            return list.AsEnumerable().ToShort();
         }
 
         /// <summary>

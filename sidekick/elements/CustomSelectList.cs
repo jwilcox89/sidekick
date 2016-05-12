@@ -22,12 +22,21 @@ namespace sidekick
         public CustomSelectList(string text, string value)
         {
             _items = new List<SelectListItem>();
-            _items.Add(new SelectListItem { Text = text, Value = value });
+            _items.Add(new SelectListItem
+            {
+                Text = text,
+                Value = value
+            });
         }
 
         public CustomSelectList Add(string text, string value)
         {
-            _items.Add(new SelectListItem { Text = text, Value = value });
+            _items.Add(new SelectListItem
+            {
+                Text = text,
+                Value = value
+            });
+
             return this;
         }
     }
