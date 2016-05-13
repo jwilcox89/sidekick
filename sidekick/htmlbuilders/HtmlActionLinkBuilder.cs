@@ -5,6 +5,9 @@ using System.Web.Mvc.Html;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     HTML builder for an Html action link element.
+    /// </summary>
     public class HtmlActionLinkBuilder : ActionLinkBase<HtmlActionLinkBuilder>, IHtmlString
     {
         private HtmlHelper _helper;

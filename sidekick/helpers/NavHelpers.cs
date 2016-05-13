@@ -6,6 +6,9 @@ using System.Web.Routing;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     Extensions used to return a true/false as to if the navigation element should be considered active.
+    /// </summary>
     public static class NavHelpers
     {
         public static string IsActiveNavItem(this HtmlHelper helper, string controllers)

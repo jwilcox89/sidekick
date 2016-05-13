@@ -1,5 +1,8 @@
 ﻿namespace sidekick
 {
+    /// <summary>
+    ///     Bootstrap 'switch' element (http://www.bootstrap-switch.org/).
+    /// </summary>
     public class Switch
     {
         internal string _elementName;

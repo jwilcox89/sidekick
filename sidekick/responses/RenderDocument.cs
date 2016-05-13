@@ -2,6 +2,9 @@
 
 namespace sidekick
 {
+    /// <summary>
+    ///     Render a document (Word, PDF, Excel etc) in or out of the web browser
+    /// </summary>
     public class RenderDocument
     {
         /// <summary>

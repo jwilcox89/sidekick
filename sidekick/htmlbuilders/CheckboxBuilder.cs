@@ -6,6 +6,10 @@ using System.Web.Mvc.Html;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     HTML builder for a checkbox element.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
     public class CheckboxBuilder<TModel> : Checkbox, IHtmlString
     {
         private HtmlHelper<TModel> _helper;

@@ -1,5 +1,8 @@
 ﻿namespace sidekick
 {
+    /// <summary>
+    ///     Bootstrap Switch sizes (http://www.bootstrap-switch.org/).
+    /// </summary>
     public enum SwitchSize
     {
         [HtmlBuilder(Class = "mini")]

@@ -4,6 +4,9 @@ using System.IO;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     General validation extensions
+    /// </summary>
     public static class ValidationExtensions
     {
         /// <summary>

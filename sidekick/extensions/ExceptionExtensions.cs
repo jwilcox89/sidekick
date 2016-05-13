@@ -4,6 +4,9 @@ using System.Runtime.InteropServices;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     Extensions that grab data from exceptions
+    /// </summary>
     public static class ExceptionExtensions
     {
         /// <summary>

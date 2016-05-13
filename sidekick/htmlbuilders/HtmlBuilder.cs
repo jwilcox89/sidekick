@@ -5,6 +5,9 @@ using System.Linq.Expressions;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     HTML builders
+    /// </summary>
     public static class HtmlBuilder
     {
         /// <summary>

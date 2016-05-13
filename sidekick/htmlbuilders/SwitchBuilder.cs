@@ -6,6 +6,10 @@ using System.IO;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     HTML builder for a Bootstrap 'switch' element (http://www.bootstrap-switch.org/).
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
     public class SwitchBuilder<TModel> : Switch, IHtmlString
     {
         private HtmlHelper<TModel> _helper;

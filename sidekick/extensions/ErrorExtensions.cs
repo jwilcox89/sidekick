@@ -5,6 +5,9 @@ using Microsoft.AspNet.Identity;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     ModelState extensions
+    /// </summary>
     public static class ErrorExtensions
     {
         /// <summary>

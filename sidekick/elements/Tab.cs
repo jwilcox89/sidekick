@@ -1,5 +1,8 @@
 ﻿namespace sidekick
 {
+    /// <summary>
+    ///     Bootstrap 'Tab' element
+    /// </summary>
     public class Tab
     {
         internal string DisplayText { get; set; }

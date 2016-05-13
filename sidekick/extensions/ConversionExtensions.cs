@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     Extension methods for different types of common conversions.
+    /// </summary>
     public static class ConversionExtensions
     {
         /// <summary>

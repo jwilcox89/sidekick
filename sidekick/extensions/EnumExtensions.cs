@@ -4,6 +4,9 @@ using System.Reflection;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     Extensions for common functionality used on Enum types
+    /// </summary>
     public static class EnumExtensions
     {
         /// <summary>
@@ -26,7 +29,8 @@ namespace sidekick
         /// <typeparam name="TAttribute"></typeparam>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static TAttribute GetAttribute<TEnum, TAttribute>(this object value) where TAttribute : Attribute
+        public static TAttribute GetAttribute<TEnum, TAttribute>(this object value) 
+            where TAttribute : Attribute
         {
             if (typeof(TEnum).BaseType != typeof(Enum))
                 throw new ArgumentException("Must be a type of System.Enum");

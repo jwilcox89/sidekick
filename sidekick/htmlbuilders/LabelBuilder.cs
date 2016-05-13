@@ -9,6 +9,9 @@ using System.IO;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     HTML builders for label elements
+    /// </summary>
     public static class LabelBuilder
     {
         /// <summary>

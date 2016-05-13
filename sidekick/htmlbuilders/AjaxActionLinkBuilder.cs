@@ -5,6 +5,9 @@ using System.Web.Mvc.Ajax;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     HTML builder for an Ajax action link element.
+    /// </summary>
     public class AjaxActionLinkBuilder : ActionLinkBase<AjaxActionLinkBuilder>, IHtmlString
     {
         private AjaxHelper _helper;

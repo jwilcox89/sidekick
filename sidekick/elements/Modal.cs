@@ -2,6 +2,9 @@
 
 namespace sidekick
 {
+    /// <summary>
+    ///     Bootstrap 'Modal' element
+    /// </summary>
     public class Modal : IView
     {
         public string ViewName { get; set; }

@@ -3,7 +3,12 @@ using System.Web.Mvc;
 
 namespace sidekick
 {
-    public class FormControl<T> where T : FormControl<T>
+    /// <summary>
+    ///     Base attributes of all form controls
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class FormControl<T> 
+        where T : FormControl<T>
     {
         internal object _htmlAttributes;
         internal object _baseAttributes;

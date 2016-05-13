@@ -3,6 +3,10 @@ using System.Web.Mvc;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     HTML builder for a Bootstrap 'Modal' element.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
     public class ModalBuilder<TModel> : IDisposable
     {
         private HtmlHelper<TModel> _helper;

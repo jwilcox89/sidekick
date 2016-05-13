@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     SelectList builders
+    /// </summary>
     public static class SelectListHelpers
     {
         /// <summary>

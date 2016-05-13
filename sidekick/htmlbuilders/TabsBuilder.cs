@@ -4,6 +4,10 @@ using System.Web.Mvc;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     HTML builder for a Bootstrap 'Tab' element
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
     public class TabsBuilder<TModel> : IDisposable
     {
         private HtmlHelper<TModel> _helper;

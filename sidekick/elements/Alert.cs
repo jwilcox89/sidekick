@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     Bootstrap 'Alert' element
+    /// </summary>
     public class Alert : IView
     {
         public virtual string ViewName { get; set; }
@@ -13,17 +16,12 @@ namespace sidekick
         internal IEnumerable<string> _messageList;
         internal string _body;
 
-        internal string _alertClass
-        {
-            get
-            {
-                string className = _type.GetAttribute<AlertType, HtmlBuilderAttribute>().Class;
-                if (_dismissible)
-                    className = String.Format("{0} alert-dismissable", className);
-
-                return className;
-            }
-        }
+        /// <summary>
+        ///     Class used with alert
+        /// </summary>
+        internal string _alertClass => (_dismissible) 
+            ? _type.GetAttribute<AlertType, HtmlBuilderAttribute>().Class.Insert("alert-dismissable") 
+            : _type.GetAttribute<AlertType, HtmlBuilderAttribute>().Class;
 
         /// <summary>
         ///     DEFAULTS: 

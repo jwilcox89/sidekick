@@ -1,5 +1,8 @@
 ﻿namespace sidekick
 {
+    /// <summary>
+    ///     Bootstrap 'Panel' element
+    /// </summary>
     public class Panel
     {
         internal string _class;

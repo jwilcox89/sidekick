@@ -4,6 +4,9 @@ using System.Reflection;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     General expression extensions
+    /// </summary>
     public static class GeneralExtentions
     {
         /// <summary>

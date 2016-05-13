@@ -50,7 +50,8 @@ namespace sidekick
         /// <typeparam name="TEntity">Entity object type to be returned</typeparam>
         /// <param name="id">Primary key value</param>
         /// <returns></returns>
-        public TEntity Get<TEntity>(params object[] id) where TEntity : class
+        public TEntity Get<TEntity>(params object[] id) 
+            where TEntity : class
         {
             return DB.Set<TEntity>().Find(id);
         }
@@ -61,7 +62,8 @@ namespace sidekick
         /// <typeparam name="TEntity">Entity object type to be returned</typeparam>
         /// <param name="id">Primary key value</param>
         /// <returns></returns>
-        public async Task<TEntity> GetAsync<TEntity>(params object[] id) where TEntity : class
+        public async Task<TEntity> GetAsync<TEntity>(params object[] id) 
+            where TEntity : class
         {
             return await Task.Run(() => Get<TEntity>(id)).ConfigureAwait(false);
         }
@@ -71,7 +73,8 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity">Entity object type to be returned</typeparam>
         /// <returns></returns>
-        public IQueryable<TEntity> GetAll<TEntity>() where TEntity : class
+        public IQueryable<TEntity> GetAll<TEntity>() 
+            where TEntity : class
         {
             return DB.Set<TEntity>();
         }
@@ -81,7 +84,8 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity">Entity object type to be returned</typeparam>
         /// <returns></returns>
-        public async Task<IQueryable<TEntity>> GetAllAsync<TEntity>() where TEntity : class
+        public async Task<IQueryable<TEntity>> GetAllAsync<TEntity>() 
+            where TEntity : class
         {
             return await Task.Run(() => GetAll<TEntity>()).ConfigureAwait(false);
         }
@@ -92,7 +96,8 @@ namespace sidekick
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="query"></param>
         /// <returns></returns>
-        public IQueryable<TEntity> FindBy<TEntity>(Expression<Func<TEntity, bool>> query) where TEntity : class
+        public IQueryable<TEntity> FindBy<TEntity>(Expression<Func<TEntity, bool>> query) 
+            where TEntity : class
         {
             return DB.Set<TEntity>().Where(query);
         }
@@ -103,7 +108,8 @@ namespace sidekick
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="query"></param>
         /// <returns></returns>
-        public async Task<IQueryable<TEntity>> FindByAsync<TEntity>(Expression<Func<TEntity, bool>> query) where TEntity : class
+        public async Task<IQueryable<TEntity>> FindByAsync<TEntity>(Expression<Func<TEntity, bool>> query) 
+            where TEntity : class
         {
             return await Task.Run(() => FindBy<TEntity>(query)).ConfigureAwait(false);
         }
@@ -113,7 +119,8 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="entity"></param>
-        public BaseRepo<TContext> Add<TEntity>(TEntity entity) where TEntity : class
+        public BaseRepo<TContext> Add<TEntity>(TEntity entity) 
+            where TEntity : class
         {
             DB.Set<TEntity>().Add(entity);
             return this;
@@ -124,7 +131,8 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="entities"></param>
-        public BaseRepo<TContext> Add<TEntity>(IEnumerable<TEntity> collection) where TEntity : class
+        public BaseRepo<TContext> Add<TEntity>(IEnumerable<TEntity> collection) 
+            where TEntity : class
         {
             DB.Set<TEntity>().AddRange(collection);
             return this;
@@ -135,7 +143,8 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="entity"></param>
-        public BaseRepo<TContext> Remove<TEntity>(TEntity entity) where TEntity : class
+        public BaseRepo<TContext> Remove<TEntity>(TEntity entity) 
+            where TEntity : class
         {
             DB.Set<TEntity>().Remove(entity);
             return this;
@@ -146,7 +155,8 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="collection"></param>
-        public BaseRepo<TContext> Remove<TEntity>(IEnumerable<TEntity> collection) where TEntity : class
+        public BaseRepo<TContext> Remove<TEntity>(IEnumerable<TEntity> collection) 
+            where TEntity : class
         {
             DB.Set<TEntity>().RemoveRange(collection);
             return this;
@@ -158,7 +168,8 @@ namespace sidekick
         /// <typeparam name="TEntity"></typeparam>
         /// <typeparam name="TKey"></typeparam>
         /// <param name="id"></param>
-        public BaseRepo<TContext> Remove<TEntity>(params object[] id) where TEntity : class
+        public BaseRepo<TContext> Remove<TEntity>(params object[] id) 
+            where TEntity : class
         {
             TEntity entity = Get<TEntity>(id);
 
@@ -178,7 +189,8 @@ namespace sidekick
         /// <param name="property">Property you wish to toggle</param>
         /// <param name="id">Value of the primary key of the row you wish to toggle</param>
         /// <returns></returns>
-        public bool ToggleProperty<TEntity>(Expression<Func<TEntity, object>> property, params object[] id) where TEntity : class
+        public bool ToggleProperty<TEntity>(Expression<Func<TEntity, object>> property, params object[] id) 
+            where TEntity : class
         {
             return ToggleProperty<TEntity>(property.GetMemberName(), id);
         }
@@ -194,12 +206,14 @@ namespace sidekick
         /// <param name="id">Value of the primary key of the row you wish to toggle</param>
         /// <returns>Returns the value that the property was toggled to.</returns>
         /// <returns></returns>
-        public async Task<bool> TogglePropertyAsync<TEntity>(Expression<Func<TEntity, object>> property, params object[] id) where TEntity : class
+        public async Task<bool> TogglePropertyAsync<TEntity>(Expression<Func<TEntity, object>> property, params object[] id) 
+            where TEntity : class
         {
             return await Task.Run(() => ToggleProperty<TEntity>(property.GetMemberName(), id)).ConfigureAwait(false);
         }
 
-        private bool ToggleProperty<TEntity>(string propertyName, params object[] id) where TEntity : class
+        private bool ToggleProperty<TEntity>(string propertyName, params object[] id) 
+            where TEntity : class
         {
             TEntity entity = Get<TEntity>(id);
 

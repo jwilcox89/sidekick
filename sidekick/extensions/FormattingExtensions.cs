@@ -5,8 +5,34 @@ using System.Web;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     Various extensions for formatting strings into currency, phone numbers, SSNs etc.
+    /// </summary>
     public static class FormattingExtensions
     {
+        /// <summary>
+        ///     Insert text at the end of string. Always include a space between the original text and the text to append.
+        /// </summary>
+        /// <param name="original"></param>
+        /// <param name="toAppend"></param>
+        /// <returns></returns>
+        public static string Insert(this string original, string toAppend)
+        {
+            return Insert(original, toAppend, true);
+        }
+
+        /// <summary>
+        ///     Insert text at the end of string.
+        /// </summary>
+        /// <param name="original"></param>
+        /// <param name="toAppend"></param>
+        /// <param name="spaceBetween">True if you want a space between the original text and the text to append.</param>
+        /// <returns></returns>
+        public static string Insert(this string original, string toAppend, bool spaceBetween)
+        {
+            return original.Insert(original.Length, (spaceBetween) ? " " + toAppend : toAppend);
+        }
+
         /// <summary>
         ///     Removes white space, '-' and ',' from string
         /// </summary>

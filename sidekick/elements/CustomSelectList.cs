@@ -10,14 +10,7 @@ namespace sidekick
     public class CustomSelectList
     {
         private List<SelectListItem> _items;
-
-        public List<SelectListItem> Items
-        {
-            get
-            {
-                return _items;
-            }
-        }
+        public List<SelectListItem> Items => _items;
 
         public CustomSelectList(string text, string value)
         {

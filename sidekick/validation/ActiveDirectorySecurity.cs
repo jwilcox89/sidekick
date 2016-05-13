@@ -3,6 +3,9 @@ using System.DirectoryServices.AccountManagement;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     Validates users credentials against active directory
+    /// </summary>
     public static class ActiveDirectorySecurity
     {
         /// <summary>

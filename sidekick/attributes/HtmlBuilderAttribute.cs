@@ -2,6 +2,9 @@
 
 namespace sidekick
 {
+    /// <summary>
+    ///     Assign HTML attributes to properties or fields for use with HTML builders.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
     public class HtmlBuilderAttribute : Attribute
     {

@@ -7,6 +7,11 @@ using System.Web.Mvc.Html;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     HTML builder for an input element.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    /// <typeparam name="TProperty"></typeparam>
     public class FormGroupBuilder<TModel, TProperty> : FormControl<FormGroupBuilder<TModel, TProperty>>, IHtmlString
     {
         private HtmlHelper<TModel> _helper;

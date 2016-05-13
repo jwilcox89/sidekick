@@ -3,6 +3,10 @@ using System.Web.Mvc;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     HTML builder for a Bootstrap 'Breadcrumb' element.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
     public class BreadcrumbBuilder<TModel> : IDisposable
     {
         private HtmlHelper<TModel> _helper;

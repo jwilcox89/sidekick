@@ -3,6 +3,10 @@ using System.Web.Mvc;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     HTML builder for a Bootstrap 'Accordion' element.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
     public class AccordionBuilder<TModel> : IDisposable
     {
         private HtmlHelper<TModel> _helper;

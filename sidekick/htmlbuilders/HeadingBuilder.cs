@@ -5,9 +5,22 @@ using System.IO;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     HTML builder for a heading element element.
+    /// </summary>
     public static class HeadingBuilder
     {
-        public static MvcHtmlString BuildHeading(this HtmlHelper helper, HeadingSize size, string text, string subtext = null, Colors color = Colors.Default)
+        public static MvcHtmlString BuildHeading(this HtmlHelper helper, HeadingSize size, string text)
+        {
+            return BuildHeading(helper, size, text, null, Colors.Default);
+        }
+
+        public static MvcHtmlString BuildHeading(this HtmlHelper helper, HeadingSize size, string text, string subtext)
+        {
+            return BuildHeading(helper, size, text, subtext, Colors.Default);
+        }
+
+        public static MvcHtmlString BuildHeading(this HtmlHelper helper, HeadingSize size, string text, string subtext, Colors color)
         {
             using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter()))
             {

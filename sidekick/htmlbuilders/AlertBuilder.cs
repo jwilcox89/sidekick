@@ -4,6 +4,10 @@ using System.Web.Mvc;
 
 namespace sidekick
 {
+    /// <summary>
+    ///     HTML builder for a Bootstrap 'Alert' element.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
     public class AlertBuilder<TModel> : IDisposable
     {
         private HtmlHelper<TModel> _helper;
