@@ -5,6 +5,7 @@
     /// </summary>
     public class Panel
     {
+        internal string _id;
         internal string _class;
         internal Colors _color;
         internal HeadingSize _headingSize;
@@ -18,6 +19,19 @@
         /// </summary>
         public Panel()
         {
+            _color = Colors.Default;
+            _headingSize = HeadingSize.H3;
+        }
+
+        /// <summary>
+        ///     DEFAULTS:
+        ///     <para>Color = Default</para>
+        ///     <para>HeadingSize = H3</para>
+        /// </summary>
+        /// <param name="panelID">HTML ID for the panel</param>
+        public Panel(string panelID)
+        {
+            _id = panelID;
             _color = Colors.Default;
             _headingSize = HeadingSize.H3;
         }

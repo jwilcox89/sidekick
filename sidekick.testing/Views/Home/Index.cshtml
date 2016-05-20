@@ -100,8 +100,27 @@
 
 <hr />
 
+<h2>Accordion</h2>
+@using (var accordion = Html.BeginAccordion("test-accordion"))
+{
+    using (accordion.BeginPanel(new Panel("1").Title("Section 1").Color(Colors.Danger)))
+    {
+        <p>The content for the first section </p>
+    }
+
+    using (accordion.BeginPanel(new Panel("2").Title("Section 2")))
+    {
+        <p>The content for second section</p>
+    }
+
+    using (accordion.BeginPanel(new Panel("3").Title("Section 3").Color(Colors.Success)))
+    {
+        <p>The content for third section</p>
+    }
+}
+
 <h2>Steps</h2>
-@using (var steps = Html.BeginSteps()) 
+@using (var steps = Html.BeginSteps())
 {
     @steps.AddStep("Step 1", "fa fa-truck", "Description of the step", true)   
     @steps.AddStep("Step 2", "fa fa-briefcase", "Description of the next step", true)
@@ -112,7 +131,7 @@
 
 <h2>Input Groups</h2>
 @Html.InputGroupFor(x => x.Email).HtmlAttributes(new { @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").HasLabelWithColon().HasValidation()
-@Html.InputGroupFor(x => x.Email, SelectListHelpers.BuildSelectList(new CustomSelectList("Option 1", "Option 1").Add("Option 2", "Option 2")), "---Select One---").HasLabelWithColon()
+@Html.InputGroupFor(x => x.Email, SelectListUtils.BuildSelectList(new CustomSelectList("Option 1", "Option 1").Add("Option 2", "Option 2")), "---Select One---").HasLabelWithColon()
 
 <h2>Datetimepicker</h2>
 @Html.InputGroupFor(x => x.Email).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel().IsRequired()
@@ -124,9 +143,9 @@
 @Html.FormGroupFor(x => x.Email, ControlType.TextArea).HtmlAttributes(new { @placeholder = "Enter text..." }).Rows(10).Columns(4).HelpText("This is the help text section")
 
 <h2>Dropdowns</h2>
-@Html.FormGroupFor(x => x.Email, SelectListHelpers.YesNoDropdown(), "--Select One--")
+@Html.FormGroupFor(x => x.Email, SelectListUtils.YesNoDropdown(), "--Select One--")
 <br />
-@Html.FormGroupFor(x => x.Email, SelectListHelpers.BuildSelectList(new CustomSelectList("Option 1", "1").Add("Option 2", "2")), "--Select One--")
+@Html.FormGroupFor(x => x.Email, SelectListUtils.BuildSelectList(new CustomSelectList("Option 1", "1").Add("Option 2", "2")), "--Select One--")
 
 <h2>Checkboxes</h2>
 @Html.BuildCheckBoxFor(x => x.RememberMe, CheckboxType.Checkbox).HasLabel().IsRequired()
