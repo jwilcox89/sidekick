@@ -6,7 +6,7 @@ namespace sidekick
     /// <summary>
     ///     Helpers used in HTML builders
     /// </summary>
-    public static class BuilderHelper
+    public static class BuilderUtils
     {
         public static IDictionary<string, object> MergeAttributes(object attributes1, object attributes2)
         {

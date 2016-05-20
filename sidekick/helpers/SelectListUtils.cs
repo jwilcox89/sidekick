@@ -9,7 +9,7 @@ namespace sidekick
     /// <summary>
     ///     SelectList builders
     /// </summary>
-    public static class SelectListHelpers
+    public static class SelectListUtils
     {
         /// <summary>
         ///     Generates a dropdown of years

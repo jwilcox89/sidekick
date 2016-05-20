@@ -7,7 +7,7 @@ namespace sidekick
     /// <summary>
     ///     General expression extensions
     /// </summary>
-    public static class GeneralExtentions
+    public static class GeneralUtils
     {
         /// <summary>
         ///     Returns the member information for the expression

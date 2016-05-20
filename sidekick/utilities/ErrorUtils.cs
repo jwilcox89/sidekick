@@ -8,7 +8,7 @@ namespace sidekick
     /// <summary>
     ///     ModelState extensions
     /// </summary>
-    public static class ErrorExtensions
+    public static class ErrorUtils
     {
         /// <summary>
         ///     Get a list of the errors in the ModelState

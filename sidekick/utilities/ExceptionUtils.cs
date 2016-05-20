@@ -7,7 +7,7 @@ namespace sidekick
     /// <summary>
     ///     Extensions that grab data from exceptions
     /// </summary>
-    public static class ExceptionExtensions
+    public static class ExceptionUtils
     {
         /// <summary>
         ///     Returns the exception or a null string
@@ -44,7 +44,6 @@ namespace sidekick
         {
             if (ex != null && ex.Exception != null && ex.Exception.InnerException != null) 
             {
-
                 if (!String.IsNullOrEmpty(ex.Exception.InnerException.Message))
                     return ex.Exception.InnerException.Message;
 
@@ -66,7 +65,6 @@ namespace sidekick
         {
             if (ex != null && ex.InnerException != null) 
             {
-
                 if (!String.IsNullOrEmpty(ex.InnerException.Message))
                     return ex.InnerException.Message;
 

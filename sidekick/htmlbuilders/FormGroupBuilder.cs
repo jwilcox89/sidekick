@@ -46,10 +46,10 @@ namespace sidekick
             switch (_type)
             {
                 case ControlType.Textbox:
-                    _helper.WriteLine(_helper.TextBoxFor(_expression, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)));
+                    _helper.WriteLine(_helper.TextBoxFor(_expression, BuilderUtils.MergeAttributes(_baseAttributes, _htmlAttributes)));
                     break;
                 case ControlType.Password:
-                    _helper.WriteLine(_helper.PasswordFor(_expression, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)));
+                    _helper.WriteLine(_helper.PasswordFor(_expression, BuilderUtils.MergeAttributes(_baseAttributes, _htmlAttributes)));
                     break;
             }
 
@@ -75,11 +75,11 @@ namespace sidekick
 
             if (_multiselect)
             {
-                _helper.WriteLine(_helper.ListBoxFor(_expression, _selectListItems, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)));
+                _helper.WriteLine(_helper.ListBoxFor(_expression, _selectListItems, BuilderUtils.MergeAttributes(_baseAttributes, _htmlAttributes)));
             }
             else
             {
-                _helper.WriteLine(_helper.DropDownListFor(_expression, _selectListItems, _optionLabel, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)));
+                _helper.WriteLine(_helper.DropDownListFor(_expression, _selectListItems, _optionLabel, BuilderUtils.MergeAttributes(_baseAttributes, _htmlAttributes)));
             }
 
             if (!String.IsNullOrEmpty(_helpText))
@@ -102,7 +102,7 @@ namespace sidekick
             if (_label)
                 _helper.WriteLine(_helper.LabelForNoColon(_expression, _required));
 
-            _helper.WriteLine(_helper.TextAreaFor(_expression, _rows, _columns, BuilderHelper.MergeAttributes(_baseAttributes, _htmlAttributes)));
+            _helper.WriteLine(_helper.TextAreaFor(_expression, _rows, _columns, BuilderUtils.MergeAttributes(_baseAttributes, _htmlAttributes)));
 
             if (!String.IsNullOrEmpty(_helpText))
                 _helper.WriteLine(String.Format("<span class='help-block'>{0}</span>", _helpText));

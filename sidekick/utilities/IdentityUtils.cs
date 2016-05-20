@@ -7,7 +7,7 @@ namespace sidekick
     /// <summary>
     ///     Extensions for the IIdentity interface
     /// </summary>
-    public static class IdentityExtensions
+    public static class IdentityUtils
     {
         public static string GetIdentityProperty(this IIdentity identity, string propertyName) 
         {

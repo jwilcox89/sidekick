@@ -7,7 +7,7 @@ namespace sidekick
     /// <summary>
     ///     General validation extensions
     /// </summary>
-    public static class ValidationExtensions
+    public static class ValidationUtils
     {
         /// <summary>
         ///     Checks if the sting input has a value and is a valid number

@@ -1,24 +1,17 @@
-﻿/*body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
+﻿/*@import url(https://fonts.googleapis.com/css?family=Poppins:400,500);*/
+/*@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);*/
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300);
 
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-
-.dl-horizontal dt {
-    white-space: normal;
-}*/
 
 
 body {
     padding-top: 65px;
     padding-bottom: 20px;
     color: #676a6c;
-    font-family: "open sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    /*font-family: "open sans","Helvetica Neue",Helvetica,Arial,sans-serif;*/
+    /*font-family: 'Poppins', sans-serif;*/
+    /*font-family: 'Montserrat', sans-serif;*/
+    font-family: Roboto,Arial,sans-serif;
     font-size: 13px;
 }
 

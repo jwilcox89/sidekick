@@ -8,7 +8,7 @@ namespace sidekick
     /// <summary>
     ///     Various extensions for formatting strings into currency, phone numbers, SSNs etc.
     /// </summary>
-    public static class FormattingExtensions
+    public static class FormattingUtils
     {
         /// <summary>
         ///     Insert text at the end of string. Always include a space between the original text and the text to append.

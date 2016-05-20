@@ -88,7 +88,7 @@
   <ItemGroup>
     <Compile Include="database\BaseRepo.cs" />
     <Compile Include="database\RepoException.cs" />
-    <Compile Include="database\RepoExtensions.cs" />
+    <Compile Include="database\RepoUtils.cs" />
     <Compile Include="elements\ActionLinkBase.cs" />
     <Compile Include="elements\Card.cs" />
     <Compile Include="elements\Checkbox.cs" />
@@ -111,12 +111,12 @@
     <Compile Include="enums\UsStates.cs" />
     <Compile Include="errorlogger\ErrorLogger.cs" />
     <Compile Include="errorlogger\IErrorLog.cs" />
-    <Compile Include="extensions\ConversionExtensions.cs" />
-    <Compile Include="extensions\EnumExtensions.cs" />
-    <Compile Include="extensions\ErrorExtensions.cs" />
-    <Compile Include="extensions\ExceptionExtensions.cs" />
-    <Compile Include="extensions\FormattingExtensions.cs" />
-    <Compile Include="extensions\ValidationExtensions.cs" />
+    <Compile Include="utilities\ConversionUtils.cs" />
+    <Compile Include="utilities\EnumUtils.cs" />
+    <Compile Include="utilities\ErrorUtils.cs" />
+    <Compile Include="utilities\ExceptionUtils.cs" />
+    <Compile Include="utilities\FormattingUtils.cs" />
+    <Compile Include="utilities\ValidationUtils.cs" />
     <Compile Include="htmlbuilders\AccordionBuilder.cs" />
     <Compile Include="htmlbuilders\AjaxActionLinkBuilder.cs" />
     <Compile Include="htmlbuilders\BreadcrumbBuilder.cs" />
@@ -127,10 +127,10 @@
     <Compile Include="connection\NetworkConnectionManager.cs" />
     <Compile Include="connection\UserImpersonation.cs" />
     <Compile Include="elements\IView.cs" />
-    <Compile Include="extensions\GeneralExtensions.cs" />
-    <Compile Include="extensions\IdentityExtensions.cs" />
-    <Compile Include="helpers\NavHelpers.cs" />
-    <Compile Include="helpers\SelectListHelpers.cs" />
+    <Compile Include="utilities\GeneralUtils.cs" />
+    <Compile Include="utilities\IdentityUtils.cs" />
+    <Compile Include="helpers\NavUtils.cs" />
+    <Compile Include="helpers\SelectListUtils.cs" />
     <Compile Include="htmlbuilders\AlertBuilder.cs" />
     <Compile Include="htmlbuilders\HeadingBuilder.cs" />
     <Compile Include="htmlbuilders\HtmlActionLinkBuilder.cs" />
@@ -142,7 +142,7 @@
     <Compile Include="htmlbuilders\StepsBuilder.cs" />
     <Compile Include="htmlbuilders\SwitchBuilder.cs" />
     <Compile Include="htmlbuilders\TabsBuilder.cs" />
-    <Compile Include="htmlbuilders\BuilderHelper.cs" />
+    <Compile Include="htmlbuilders\BuilderUtils.cs" />
     <Compile Include="htmlbuilders\FormGroupBuilder.cs" />
     <Compile Include="elements\FormControl.cs" />
     <Compile Include="responses\RenderDocument.cs" />

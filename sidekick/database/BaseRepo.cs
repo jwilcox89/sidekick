@@ -12,10 +12,10 @@ namespace sidekick
     ///     Generic repository designed to account for all generic query functionality
     /// </summary>
     /// <typeparam name="TContext">The database context you would like to query</typeparam>
-    public class BaseRepo<TContext> : IDisposable where TContext : DbContext, new()
+    public class BaseRepo<TContext> : IDisposable
+        where TContext : DbContext, new()
     {
         private TContext _context;
-
         /// <summary>
         ///     Reference to the specified database context.
         /// </summary>
@@ -65,7 +65,7 @@ namespace sidekick
         public async Task<TEntity> GetAsync<TEntity>(params object[] id) 
             where TEntity : class
         {
-            return await Task.Run(() => Get<TEntity>(id)).ConfigureAwait(false);
+            return await DB.Set<TEntity>().FindAsync(id);
         }
 
         /// <summary>
@@ -172,9 +172,8 @@ namespace sidekick
             where TEntity : class
         {
             TEntity entity = Get<TEntity>(id);
-
             if (entity != null)
-                Remove<TEntity>(entity);
+                Remove(entity);
 
             return this;
         }
@@ -216,12 +215,10 @@ namespace sidekick
             where TEntity : class
         {
             TEntity entity = Get<TEntity>(id);
-
             if (entity == null)
                 throw new NullReferenceException("No record found");
 
             PropertyInfo currentProperty = entity.GetProperty(propertyName);
-
             if (currentProperty.PropertyType != (typeof(Boolean)) && currentProperty.PropertyType != (typeof(Nullable<Boolean>)))
                 throw new ArgumentException("Not a boolean or nullable boolean type");
 
