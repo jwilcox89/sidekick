@@ -30,7 +30,7 @@ namespace sidekick
                 writer.AddAttribute("data-state", _state.ToString().ToLower());
 
                 if (_size.HasValue)
-                    writer.AddAttribute("data-size", _size.Value.GetAttribute<SwitchSize, HtmlBuilderAttribute>().Class);
+                    writer.AddAttribute("data-size", _size.Value.GetAttribute<HtmlBuilderAttribute>().Class);
 
                 if (!_animate)
                     writer.AddAttribute("data-animate", _animate.ToString().ToLower());
@@ -51,10 +51,10 @@ namespace sidekick
                     writer.AddAttribute("data-radio-all-off", _radioAllOff.ToString().ToLower());
 
                 if (_onColor.HasValue)
-                    writer.AddAttribute("data-on-color", _onColor.Value.GetAttribute<Colors, HtmlBuilderAttribute>().Class);
+                    writer.AddAttribute("data-on-color", _onColor.Value.GetAttribute<HtmlBuilderAttribute>().Class);
 
                 if (_offColor.HasValue)
-                    writer.AddAttribute("data-off-color", _offColor.Value.GetAttribute<Colors, HtmlBuilderAttribute>().Class);
+                    writer.AddAttribute("data-off-color", _offColor.Value.GetAttribute<HtmlBuilderAttribute>().Class);
 
                 if (!String.IsNullOrEmpty(_onText))
                     writer.AddAttribute("data-on-text", _onText);

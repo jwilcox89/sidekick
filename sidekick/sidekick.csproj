@@ -89,6 +89,7 @@
     <Compile Include="database\BaseRepo.cs" />
     <Compile Include="database\RepoException.cs" />
     <Compile Include="database\RepoUtils.cs" />
+    <Compile Include="elements\Accordion.cs" />
     <Compile Include="elements\ActionLinkBase.cs" />
     <Compile Include="elements\Card.cs" />
     <Compile Include="elements\Checkbox.cs" />

@@ -20,8 +20,8 @@ namespace sidekick
         ///     Class used with alert
         /// </summary>
         internal string _alertClass => (_dismissible) 
-            ? _type.GetAttribute<AlertType, HtmlBuilderAttribute>().Class.Insert("alert-dismissable") 
-            : _type.GetAttribute<AlertType, HtmlBuilderAttribute>().Class;
+            ? _type.GetAttribute<HtmlBuilderAttribute>().Class.Insert("alert-dismissable") 
+            : _type.GetAttribute<HtmlBuilderAttribute>().Class;
 
         /// <summary>
         ///     DEFAULTS: 

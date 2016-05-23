@@ -24,7 +24,7 @@ namespace sidekick
         {
             using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter()))
             {
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, String.Format("label label-{0}", color.GetAttribute<Colors, HtmlBuilderAttribute>().Class));
+                writer.AddAttribute(HtmlTextWriterAttribute.Class, String.Format("label label-{0}", color.GetAttribute<HtmlBuilderAttribute>().Class));
                 writer.RenderBeginTag(HtmlTextWriterTag.Span);
                 writer.Write(text);
                 writer.RenderEndTag();

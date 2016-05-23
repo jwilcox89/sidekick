@@ -10,29 +10,13 @@ namespace sidekick
     public class AccordionBuilder<TModel> : IDisposable
     {
         private HtmlHelper<TModel> _helper;
-        private string _parentID;
+        private Accordion _accordion;
 
-        /// <summary>
-        ///     Use this overload if you want to be able to open more than one panel in the accordion at a time
-        /// </summary>
-        /// <param name="helper"></param>
-        public AccordionBuilder(HtmlHelper<TModel> helper)
+        public AccordionBuilder(HtmlHelper<TModel> helper, Accordion accordion)
         {
             _helper = helper;
-            _parentID = String.Empty;
-            _helper.WriteLine(String.Format("<div class='panel-group' id='{0}' role='tablist' aria-multiselectable='true'>", _parentID));
-        }
-
-        /// <summary>
-        ///     Use this overload if you want to only be able to open one panel in the accordion at a time
-        /// </summary>
-        /// <param name="helper"></param>
-        /// <param name="parentID"></param>
-        public AccordionBuilder(HtmlHelper<TModel> helper, string parentID)
-        {
-            _helper = helper;
-            _parentID = parentID;
-            _helper.WriteLine(String.Format("<div class='panel-group' id='{0}' role='tablist' aria-multiselectable='true'>", _parentID));
+            _accordion = accordion;
+            _helper.WriteLine(String.Format("<div class='panel-group' id='{0}' role='tablist' aria-multiselectable='true'>", _accordion._parentID));
         }
 
         /// <summary>
@@ -42,7 +26,7 @@ namespace sidekick
         /// <returns></returns>
         public AccordionPanel<TModel> BeginPanel(Panel panel)
         {
-            return new AccordionPanel<TModel>(_helper, _parentID, panel);
+            return new AccordionPanel<TModel>(_helper, _accordion, panel);
         }
 
         public void Dispose()
@@ -55,13 +39,13 @@ namespace sidekick
     {
         private HtmlHelper<TModel> _helper;
 
-        public AccordionPanel(HtmlHelper<TModel> helper, string parentID, Panel panel)
+        public AccordionPanel(HtmlHelper<TModel> helper, Accordion accordion, Panel panel)
         {
             _helper = helper;
-            _helper.WriteLine(String.Format("<div class='panel panel-{0}'>", panel._color.GetAttribute<Colors, HtmlBuilderAttribute>().Class));
+            _helper.WriteLine(String.Format("<div class='panel panel-{0}'>", panel._color.GetAttribute<HtmlBuilderAttribute>().Class));
             _helper.WriteLine(String.Format("<div class='panel-heading' role='tab' id='heading{0}'>", panel._id));
             _helper.WriteLine("<h4 class='panel-title'>");
-            _helper.WriteLine(String.Format("<a role='button' data-toggle='collapse' data-parent='#{0}' href='#collapsed{1}' aria-expanded='false' aria-controls='{1}'>", parentID, panel._id));
+            _helper.WriteLine(String.Format("<a role='button' data-toggle='collapse' data-parent='#{0}' href='#collapsed{1}' aria-expanded='false' aria-controls='{1}'>", accordion._parentID, panel._id));
             _helper.WriteLine(panel._title);
             _helper.WriteLine("</a></h4></div>");
             _helper.WriteLine(String.Format("<div id='collapsed{0}' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading{0}'>", panel._id));

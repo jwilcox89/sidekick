@@ -40,6 +40,26 @@ namespace sidekick
         }
 
         /// <summary>
+        ///     Generates a dropdown of all the United States. Abbreviations used for both display and value.
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<SelectListItem> StateDropdown()
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+
+            foreach (UsStates state in Enum.GetValues(typeof(UsStates)))
+            {
+                list.Add(new SelectListItem
+                {
+                    Text = state.ToString(),
+                    Value = state.ToString()
+                });
+            }
+
+            return list;
+        }
+
+        /// <summary>
         ///     Generates a simple True/False dropdown into a usable format.
         /// </summary>
         /// <returns></returns>
@@ -62,26 +82,6 @@ namespace sidekick
                 new SelectListItem { Text = trueValue, Value = "True" },
                 new SelectListItem { Text = falseValue, Value = "False" }
             };
-        }
-
-        /// <summary>
-        ///     Generates a dropdown of all the United States. Abbreviations used for both display and value.
-        /// </summary>
-        /// <returns></returns>
-        public static IEnumerable<SelectListItem> StateDropdown()
-        {
-            List<SelectListItem> list = new List<SelectListItem>();
-
-            foreach (UsStates state in Enum.GetValues(typeof(UsStates)))
-            {
-                list.Add(new SelectListItem
-                {
-                    Text = state.ToString(),
-                    Value = state.ToString()
-                });
-            }
-
-            return list;
         }
 
         /// <summary>

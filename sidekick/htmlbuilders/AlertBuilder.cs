@@ -22,7 +22,7 @@ namespace sidekick
             if (_model._dismissible)
                 _helper.WriteLine("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
 
-            _helper.WriteLine(String.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _model._type.GetAttribute<AlertType, HtmlBuilderAttribute>().Icon, _model._heading));
+            _helper.WriteLine(String.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _model._type.GetAttribute<HtmlBuilderAttribute>().Icon, _model._heading));
         }
 
         public MvcHtmlString WriteBody()

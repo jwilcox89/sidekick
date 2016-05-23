@@ -17,15 +17,9 @@ namespace sidekick
     {
         private TContext _context;
         /// <summary>
-        ///     Reference to the specified database context.
+        ///     Reference to the database context.
         /// </summary>
-        protected TContext DB
-        {
-            get
-            {
-                return _context = _context ?? new TContext();
-            }
-        }
+        protected TContext DB => _context = _context ?? new TContext();
 
         /// <summary>
         ///     Generates a new instance of the specified database context.
@@ -87,7 +81,7 @@ namespace sidekick
         public async Task<IQueryable<TEntity>> GetAllAsync<TEntity>() 
             where TEntity : class
         {
-            return await Task.Run(() => GetAll<TEntity>()).ConfigureAwait(false);
+            return await Task.Run(() => GetAll<TEntity>());
         }
 
         /// <summary>
@@ -111,7 +105,7 @@ namespace sidekick
         public async Task<IQueryable<TEntity>> FindByAsync<TEntity>(Expression<Func<TEntity, bool>> query) 
             where TEntity : class
         {
-            return await Task.Run(() => FindBy<TEntity>(query)).ConfigureAwait(false);
+            return await Task.Run(() => FindBy<TEntity>(query));
         }
 
         /// <summary>
@@ -208,7 +202,7 @@ namespace sidekick
         public async Task<bool> TogglePropertyAsync<TEntity>(Expression<Func<TEntity, object>> property, params object[] id) 
             where TEntity : class
         {
-            return await Task.Run(() => ToggleProperty<TEntity>(property.GetMemberName(), id)).ConfigureAwait(false);
+            return await Task.Run(() => ToggleProperty<TEntity>(property.GetMemberName(), id));
         }
 
         private bool ToggleProperty<TEntity>(string propertyName, params object[] id) 
@@ -252,7 +246,7 @@ namespace sidekick
         /// <returns></returns>
         public async Task<int> SaveAsync()
         {
-            return await Task.Run(() => Save()).ConfigureAwait(false);
+            return await Task.Run(() => Save());
         }
 
         /// <summary>
@@ -280,7 +274,7 @@ namespace sidekick
         /// <returns></returns>
         public async Task ExecuteSqlScriptAsync(string sql, bool ensureTransaction = true)
         {
-            await Task.Run(() => ExecuteSqlScript(sql, ensureTransaction)).ConfigureAwait(false);
+            await Task.Run(() => ExecuteSqlScript(sql, ensureTransaction));
         }
 
         public void Dispose()

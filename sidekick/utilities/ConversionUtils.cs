@@ -29,9 +29,9 @@ namespace sidekick
         public static IEnumerable<int> ToInt<TObject>(this IEnumerable<TObject> list)
         {
             List<int> final = new List<int>();
-            foreach (TObject i in list)
+            foreach (TObject item in list)
             {
-                final.Add(i.ToInt());
+                final.Add(item.ToInt());
             }
 
             return final;
@@ -79,9 +79,9 @@ namespace sidekick
         public static IEnumerable<short> ToShort<TObject>(this IEnumerable<TObject> list)
         {
             List<short> final = new List<short>();
-            foreach (TObject i in list)
+            foreach (TObject item in list)
             {
-                final.Add(i.ToShort());
+                final.Add(item.ToShort());
             }
 
             return final;

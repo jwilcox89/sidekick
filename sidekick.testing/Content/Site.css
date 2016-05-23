@@ -1,10 +1,10 @@
-﻿@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300);
+﻿@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600);
 
 body {
     padding-top: 65px;
     padding-bottom: 20px;
     color: #676a6c;
-    font-family: Roboto,Arial,sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 13px;
 }
 

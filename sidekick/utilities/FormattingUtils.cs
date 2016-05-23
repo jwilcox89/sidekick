@@ -52,10 +52,7 @@ namespace sidekick
         /// <returns></returns>
         public static string GetDigits(this string input) 
         {
-            if (String.IsNullOrEmpty(input))
-                return null;
-
-            return Regex.Replace(input, @"[^\d]+", String.Empty);
+            return String.IsNullOrEmpty(input) ? null : Regex.Replace(input, @"[^\d]+", String.Empty);
         }
 
         /// <summary>
@@ -76,10 +73,7 @@ namespace sidekick
         /// <returns></returns>
         public static string FormatCurrency(this decimal? amount) 
         {
-            if (amount.HasValue)
-                return amount.Value.ToString("C");
-
-            return String.Empty;
+            return amount.HasValue ? amount.Value.ToString("C") : String.Empty;
         }
 
         /// <summary>
@@ -121,10 +115,7 @@ namespace sidekick
         /// <returns></returns>
         public static string FormatCurrency(this int? amount) 
         {
-            if (amount.HasValue)
-                return amount.Value.ToString("C");
-
-            return String.Empty;
+            return amount.HasValue ? amount.Value.ToString("C") : String.Empty;
         }
 
         /// <summary>
@@ -177,14 +168,7 @@ namespace sidekick
             } 
             else 
             {
-                if (areaCodeParens) 
-                {
-                    return Regex.Replace(number, "(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3");
-                } 
-                else 
-                {
-                    return Regex.Replace(number, "(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3");
-                }
+                return areaCodeParens ? Regex.Replace(number, "(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3") : Regex.Replace(number, "(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3");
             }
         }
 
@@ -207,10 +191,7 @@ namespace sidekick
         /// <returns></returns>
         public static string FormatSSN(this string ssn) 
         {
-            if (String.IsNullOrEmpty(ssn))
-                return String.Empty;
-
-            return ssn.Insert(3,"-").Insert(6,"-");
+            return String.IsNullOrEmpty(ssn) ? String.Empty : ssn.Insert(3, "-").Insert(6, "-");
         }
     }
 }

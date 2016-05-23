@@ -70,6 +70,18 @@ namespace sidekick
         }
 
         /// <summary>
+        ///     Builds a Bootstrap accordion
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="helper"></param>
+        /// <param name="accordion"></param>
+        /// <returns></returns>
+        public static AccordionBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, Accordion accordion)
+        {
+            return new AccordionBuilder<TModel>(helper, accordion);
+        }
+
+        /// <summary>
         ///     Begins a custom workflow process. Must include the 'bootstrap-progress.css' file in your project.
         /// </summary>
         /// <param name="helper"></param>
@@ -224,29 +236,6 @@ namespace sidekick
         public static CheckboxBuilder<TModel> BuildCheckBoxFor<TModel>(this HtmlHelper<TModel> helper, Expression<Func<TModel, bool>> expression, CheckboxType type)
         {
             return new CheckboxBuilder<TModel>(helper, expression, type);
-        }
-
-        /// <summary>
-        ///     Use this overload if you want to be able to open more than one panel in the accordion at a time
-        /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="helper"></param>
-        /// <returns></returns>
-        public static AccordionBuilder<TModel> BeginAccordion<TModel>(this HtmlHelper<TModel> helper)
-        {
-            return new AccordionBuilder<TModel>(helper);
-        }
-
-        /// <summary>
-        ///     Use this overload if you want to only be able to open one panel in the accordion at a time
-        /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="helper"></param>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public static AccordionBuilder<TModel> BeginAccordion<TModel>(this HtmlHelper<TModel> helper, string id)
-        {
-            return new AccordionBuilder<TModel>(helper, id);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace sidekick
             _helper = helper;
             _tabList = new Queue<Tab>();
             _helper.WriteLine("<div role='tabpanel'>");
-            _helper.WriteLine(String.Format("<ul role='tablist' class='nav {0}'>", tabType.GetAttribute<TabType, HtmlBuilderAttribute>().Class));
+            _helper.WriteLine(String.Format("<ul role='tablist' class='nav {0}'>", tabType.GetAttribute<HtmlBuilderAttribute>().Class));
         }
 
         public TabsBuilder(HtmlHelper<TModel> helper, TabType tabType, bool stacked, bool justified)
@@ -27,7 +27,7 @@ namespace sidekick
             _helper = helper;
             _tabList = new Queue<Tab>();
             _helper.WriteLine("<div role='tabpanel'>");
-            _helper.WriteLine(String.Format("<ul role='tablist' class='nav {0} {1} {2}'>", tabType.GetAttribute<TabType, HtmlBuilderAttribute>().Class, (stacked) ? "nav-stacked" : String.Empty, (justified) ? "nav-justified" : String.Empty));
+            _helper.WriteLine(String.Format("<ul role='tablist' class='nav {0} {1} {2}'>", tabType.GetAttribute<HtmlBuilderAttribute>().Class, (stacked) ? "nav-stacked" : String.Empty, (justified) ? "nav-justified" : String.Empty));
         }
 
         /// <summary>

@@ -72,7 +72,7 @@ namespace sidekick
             response.AddHeader("Expires", "0");
             response.AddHeader("Pragma", "cache");
             response.AddHeader("Cache-Control", "private");
-            response.ContentType = fileType.GetAttribute<FileType, HtmlBuilderAttribute>().Tag;
+            response.ContentType = fileType.GetAttribute<HtmlBuilderAttribute>().Tag;
 
             string contentDisposition = "attachment";
 

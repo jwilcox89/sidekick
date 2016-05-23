@@ -15,7 +15,13 @@ namespace sidekick
             _steps = new List<Step>();
         }
 
-        public MvcHtmlString AddStep(string title, string icon, string description, bool complete = false)
+        public MvcHtmlString AddStep(string title, string icon, string description)
+        {
+            _steps.Add(new Step(title, icon, description));
+            return new MvcHtmlString(String.Empty);
+        }
+
+        public MvcHtmlString AddStep(string title, string icon, string description, bool complete)
         {
             _steps.Add(new Step(title, icon, description, complete));
             return new MvcHtmlString(String.Empty);

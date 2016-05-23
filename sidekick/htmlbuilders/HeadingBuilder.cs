@@ -24,12 +24,14 @@ namespace sidekick
         {
             using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter()))
             {
-                writer.Write(String.Format("<{0}>", size.GetAttribute<HeadingSize, HtmlBuilderAttribute>().Tag));
+                HtmlBuilderAttribute attributes = size.GetAttribute<HtmlBuilderAttribute>();
+
+                writer.Write(String.Format("<{0}>", attributes.Tag));
                 writer.Write(text);
                 if (!String.IsNullOrEmpty(subtext))
-                    writer.Write(String.Format(" <span class='label label-{0}'>{1}</span>", color.GetAttribute<Colors, HtmlBuilderAttribute>().Class, subtext));
+                    writer.Write(String.Format(" <span class='label label-{0}'>{1}</span>", attributes.Class, subtext));
 
-                writer.Write(String.Format("</{0}>", size.GetAttribute<HeadingSize, HtmlBuilderAttribute>().Tag));
+                writer.Write(String.Format("</{0}>", attributes.Tag));
 
                 return new MvcHtmlString(writer.InnerWriter.ToString());
             }

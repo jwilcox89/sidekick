@@ -17,7 +17,7 @@ namespace sidekick
             _model = modal;
             _helper = helper;
             _helper.WriteLine(String.Format("<div class='modal fade' id='{0}'>", _model._id));
-            _helper.WriteLine(String.Format("<div class='modal-dialog {0}'>", _model._modalSize.GetAttribute<ModalSize, HtmlBuilderAttribute>().Class));
+            _helper.WriteLine(String.Format("<div class='modal-dialog {0}'>", _model._modalSize.GetAttribute<HtmlBuilderAttribute>().Class));
             _helper.WriteLine("<div class='modal-content'>");
             _helper.WriteLine("<div class='modal-header'>");
             _helper.WriteLine("<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>");
@@ -44,13 +44,13 @@ namespace sidekick
                 if (String.IsNullOrEmpty(_model._submitIcon))
                 {
                     _helper.WriteLine(String.Format("<button type='submit' class='btn btn-{0}'>{1}</button>",
-                                            _model._submitColor.GetAttribute<Colors, HtmlBuilderAttribute>().Class,
+                                            _model._submitColor.GetAttribute<HtmlBuilderAttribute>().Class,
                                             _model._submitText));
                 }
                 else
                 {
                     _helper.WriteLine(String.Format("<button type='submit' class='btn btn-{0}'><i class='{2}'></i> {1}</button>",
-                        _model._submitColor.GetAttribute<Colors, HtmlBuilderAttribute>().Class,
+                        _model._submitColor.GetAttribute<HtmlBuilderAttribute>().Class,
                         _model._submitText,
                         _model._submitIcon));
                 }
@@ -61,13 +61,13 @@ namespace sidekick
                 if (String.IsNullOrEmpty(_model._closeIcon))
                 {
                     _helper.WriteLine(String.Format("<button type='button' class='btn btn-{0}' data-dismiss='modal'>{1}</button>",
-                                            _model._closeColor.GetAttribute<Colors, HtmlBuilderAttribute>().Class,
+                                            _model._closeColor.GetAttribute<HtmlBuilderAttribute>().Class,
                                             _model._closeText));
                 }
                 else
                 {
                     _helper.WriteLine(String.Format("<button type='button' class='btn btn-{0}' data-dismiss='modal'><i class='{2}'></i> {1}</button>",
-                        _model._closeColor.GetAttribute<Colors, HtmlBuilderAttribute>().Class,
+                        _model._closeColor.GetAttribute<HtmlBuilderAttribute>().Class,
                         _model._closeText,
                         _model._closeIcon));
                 }

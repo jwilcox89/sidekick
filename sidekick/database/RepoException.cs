@@ -4,7 +4,7 @@ using System.Data.Entity.Validation;
 
 namespace sidekick
 {
-    public class RepoException : Exception
+    public class RepoException : Exception 
     {
         public IEnumerable<DbEntityValidationResult> ValidationErrors { get; set; }
 

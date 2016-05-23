@@ -19,7 +19,7 @@ namespace sidekick
             {
                 if (_card._headerSize.HasValue)
                 {
-                    _helper.WriteLine(String.Format("<{0} class='card-header'>{1}</{0}>", _card._headerSize.GetAttribute<HeadingSize, HtmlBuilderAttribute>().Tag, _card._header));
+                    _helper.WriteLine(String.Format("<{0} class='card-header'>{1}</{0}>", _card._headerSize.GetAttribute<HtmlBuilderAttribute>().Tag, _card._header));
                 }
                 else
                 {
@@ -28,7 +28,7 @@ namespace sidekick
             }
 
             _helper.WriteLine("<div class='card-block'>");
-            _helper.WriteLine(String.Format("<{0} class='card-title'>{1}</{0}>", _card._titleSize.GetAttribute<HeadingSize, HtmlBuilderAttribute>().Tag, _card._title));
+            _helper.WriteLine(String.Format("<{0} class='card-title'>{1}</{0}>", _card._titleSize.GetAttribute<HtmlBuilderAttribute>().Tag, _card._title));
             if (!String.IsNullOrEmpty(_card._subtitle))
             {
                 _helper.WriteLine(String.Format("<h6 class='card-subtitle text-muted'>{0}</h6>", _card._subtitle));

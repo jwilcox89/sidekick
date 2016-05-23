@@ -13,8 +13,21 @@
         /// <param name="title">Title of the step</param>
         /// <param name="icon">Icon associated with the step</param>
         /// <param name="description">Content forthe popover</param>
+        public Step(string title, string icon, string description)
+        {
+            Title = title;
+            Icon = icon;
+            Description = description;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="title">Title of the step</param>
+        /// <param name="icon">Icon associated with the step</param>
+        /// <param name="description">Content forthe popover</param>
         /// <param name="complete">True if the step is complete</param>
-        public Step(string title, string icon, string description, bool complete = false)
+        public Step(string title, string icon, string description, bool complete)
         {
             Title = title;
             Icon = icon;
