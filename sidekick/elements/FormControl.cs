@@ -23,8 +23,8 @@ namespace sidekick
         internal string _optionLabel;
         internal string _appendText;
         internal string _prependText;
-        internal string _appendIcon;
-        internal string _prependIcon;
+        internal Icon _appendIcon;
+        internal Icon _prependIcon;
         internal InputGroupSize _inputGroupSize;
         internal string _datetimepickerClass;
         internal string _datetimepickerId;
@@ -67,6 +67,17 @@ namespace sidekick
         {
             _label = false;
             _labelWithColon = true;
+            return (T)this;
+        }
+
+        /// <summary>
+        ///     Turns off all labels
+        /// </summary>
+        /// <returns></returns>
+        public T NoLabel()
+        {
+            _label = false;
+            _labelWithColon = false;
             return (T)this;
         }
 

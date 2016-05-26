@@ -43,8 +43,8 @@ namespace sidekick
             _helper.WriteLine(String.Format("<li role='presentation' {0}>", active));
             _helper.WriteLine(String.Format("<a href='#{0}' aria-controls='{0}' role='tab' data-toggle='tab'>", tab.Name));
 
-            if (!String.IsNullOrEmpty(tab.Icon))
-                _helper.WriteLine(String.Format("<i class='{0}'></i>&nbsp;", tab.Icon));
+            if (tab.Icon != null)
+                _helper.WriteLine(String.Format("{0} ", new IconBuilder(tab.Icon).ToHtmlString()));
 
             _helper.WriteLine(tab.DisplayText);
             _helper.WriteLine("</a></li>");

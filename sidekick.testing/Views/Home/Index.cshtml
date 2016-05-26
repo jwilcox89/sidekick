@@ -7,6 +7,13 @@
     ViewBag.Title = "Home Page";
 }
 
+@Html.BuildHeading(HeadingSize.H2, "Icons")
+@Html.Begin(new Icon("fa fa-square-o").Stacked("fa fa-twitter"))
+@Html.Begin(new Icon("fa fa-circle-o fa-stack-2x").StackedText("1"))
+@Html.Begin(new Icon("fa fa-edit fa-2x"))
+
+<hr />
+
 @Html.BuildHeading(HeadingSize.H2, "Breadcrumbs")
 @using (var breadcrumbs = Html.BeginBreadcrumbs()) 
 {
@@ -46,11 +53,11 @@
 <hr />
 
 @Html.BuildHeading(HeadingSize.H2, "Panels")
-@using (Html.Begin(new Panel().Title("My Panel").Icon("fa fa-truck"))) 
+@using (Html.Begin(new Panel().Title("My Panel").Icon(new Icon("fa fa-truck"))))
 {
     <p>
         Panel content
-    </p>   
+    </p>
 }
 
 <hr />
@@ -66,11 +73,11 @@
 @Html.BuildHeading(HeadingSize.H2, "Tabs")
 @using (var tabs = Html.Begin(TabType.Tabs, false, true))
 {
-    @tabs.Tab(new Tab("Baseball", "fa fa-user", "baseball", true))
-    @tabs.Tab(new Tab("Football", "fa fa-truck", "football"))
-    @tabs.Tab(new Tab("Soccer", "fa fa-truck", "soccer"))
-    @tabs.Tab(new Tab("Tennis", "fa fa-truck", "tennis"))
-    @tabs.Tab(new Tab("Swimming", "fa fa-truck", "swimming"))
+    @tabs.Tab(new Tab("Baseball", new Icon("fa fa-user"), "baseball", true))
+    @tabs.Tab(new Tab("Football", new Icon("fa fa-truck"), "football"))
+    @tabs.Tab(new Tab("Soccer", new Icon("fa fa-truck"), "soccer"))
+    @tabs.Tab(new Tab("Tennis", new Icon("fa fa-truck"), "tennis"))
+    @tabs.Tab(new Tab("Swimming", new Icon("fa fa-truck"), "swimming"))
 
     using (tabs.BeginTab())
     {
@@ -122,19 +129,19 @@
 @Html.BuildHeading(HeadingSize.H2, "Steps")
 @using (var steps = Html.BeginSteps())
 {
-    @steps.AddStep("Step 1", "fa fa-truck", "Description of the step", true)   
-    @steps.AddStep("Step 2", "fa fa-briefcase", "Description of the next step", true)
-    @steps.AddStep("Step 3", "fa fa-user", "Description of the last step")
+    @steps.AddStep("Step 1", new Icon("fa fa-truck"), "Description of the step", true)
+    @steps.AddStep("Step 2", new Icon("fa fa-briefcase"), "Description of the next step", true)
+    @steps.AddStep("Step 3", new Icon("fa fa-user"), "Description of the last step")
 }
 
 <hr />
 
 @Html.BuildHeading(HeadingSize.H2, "Input Groups")
-@Html.InputGroupFor(x => x.Email).HtmlAttributes(new { @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").HasLabelWithColon().HasValidation()
+@Html.InputGroupFor(x => x.Email).HtmlAttributes(new { @placeholder = "Email Address..." }).PrependIcon(new Icon("fa fa-envelope")).HasLabelWithColon().HasValidation()
 @Html.InputGroupFor(x => x.Email, SelectListUtils.BuildSelectList(new CustomSelectList("Option 1", "Option 1").Add("Option 2", "Option 2")), "---Select One---").HasLabelWithColon()
 
 @Html.BuildHeading(HeadingSize.H2, "Datetimepicker")
-@Html.InputGroupFor(x => x.Email).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel().IsRequired()
+@Html.InputGroupFor(x => x.Email).AppendIcon(new Icon("fa fa-calendar")).DatetimepickerClass("datetimepicker").HasLabel().IsRequired()
 
 @Html.BuildHeading(HeadingSize.H2, "Form Groups")
 @Html.FormGroupFor(x => x.Email, ControlType.Textbox).HtmlAttributes(new { @placeholder = "Email Address..." }).IsRequired().HelpText("This is the help text")
@@ -158,8 +165,8 @@
 
 @Html.BuildHeading(HeadingSize.H2, "Links")
 <div class="form-gorup">
-    @Html.BuildActionLink("Home", "Index", "Go Home").Icon("fa fa-home").HtmlAttributes(new { @class = "btn btn-primary" }).RouteValues(new { @id = 50 })
-    @Ajax.BuildActionLink("Home", "Index", "Test Link")
+    @Html.BuildActionLink("Home", "Index", "Go Home").Icon(new Icon("fa fa-home")).HtmlAttributes(new { @class = "btn btn-primary" }).RouteValues(new { @id = 50 })
+    @Ajax.BuildActionLink("Home", "Index", "Test Link").HtmlAttributes(new { @class = "btn btn-success" }).Icon(new Icon("fa fa-check"))
 </div>
 
 @Html.BuildHeading(HeadingSize.H2, "Validation Tests")
@@ -168,8 +175,8 @@
     @Html.ValidationSummary(true)
     @Html.FormGroupFor(x => x.Email, ControlType.Textbox).HtmlAttributes(new { @placeholder = "Enter email..." }).HasLabelWithColon()
     @Html.FormGroupFor(x => x.Password, ControlType.Password).HtmlAttributes(new { @placeholder = "Enter password..." }).HasLabelWithColon()
-    @Html.InputGroupFor(x => x.NoFutureDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()
-    @Html.InputGroupFor(x => x.NoPastDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()
+    @Html.InputGroupFor(x => x.NoFutureDate).AppendIcon(new Icon("fa fa-calendar")).DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()
+    @Html.InputGroupFor(x => x.NoPastDate).AppendIcon(new Icon("fa fa-calendar")).DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()
     @Html.BuildCheckBoxFor(x => x.RememberMe, CheckboxType.Checkbox).HasLabel().IsRequired()
 
     <div class="well">

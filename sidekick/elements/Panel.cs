@@ -9,7 +9,7 @@
         internal string _class;
         internal Colors _color;
         internal HeadingSize _headingSize;
-        internal string _icon;
+        internal Icon _icon;
         internal string _title;
 
         /// <summary>
@@ -69,12 +69,7 @@
             return this;
         }
 
-        /// <summary>
-        ///     Set the icon for the panel
-        /// </summary>
-        /// <param name="icon"></param>
-        /// <returns></returns>
-        public Panel Icon(string icon)
+        public Panel Icon(Icon icon)
         {
             _icon = icon;
             return this;

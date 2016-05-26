@@ -15,13 +15,13 @@ namespace sidekick
             _steps = new List<Step>();
         }
 
-        public MvcHtmlString AddStep(string title, string icon, string description)
+        public MvcHtmlString AddStep(string title, Icon icon, string description)
         {
             _steps.Add(new Step(title, icon, description));
             return new MvcHtmlString(String.Empty);
         }
 
-        public MvcHtmlString AddStep(string title, string icon, string description, bool complete)
+        public MvcHtmlString AddStep(string title, Icon icon, string description, bool complete)
         {
             _steps.Add(new Step(title, icon, description, complete));
             return new MvcHtmlString(String.Empty);
@@ -30,11 +30,10 @@ namespace sidekick
         private void WriteStep(Step step)
         {
             string complete = (step.Complete) ? "done" : "todo";
-            string icon = !String.IsNullOrEmpty(step.Icon) ? String.Format("<i class='{0}'></i> ", step.Icon) : null;
-            _helper.WriteLine(String.Format("<li class='progtrckr-{0}' data-toggle='tooltip' data-placement='bottom' title='{1}'>{2}{3}</li>",
+            _helper.WriteLine(String.Format("<li class='progtrckr-{0}' data-toggle='tooltip' data-placement='bottom' title='{1}'>{2} {3}</li>",
                                      complete,
                                      step.Description,
-                                     icon,
+                                     new IconBuilder(step.Icon).ToHtmlString(),
                                      step.Title));
         }
 

@@ -35,7 +35,6 @@ namespace sidekick
                 Query = ex.GetQuery(),
                 Comments = comments
             }).Save();
-            DB.Dispose();
         }
 
         /// <summary>
@@ -55,7 +54,6 @@ namespace sidekick
                 StackTrace = ex.GetStackTraceMessage(),
                 Comments = comments
             }).Save();
-            DB.Dispose();
         }
 
         /// <summary>
@@ -95,7 +93,6 @@ namespace sidekick
             action(error);
 
             DB.Add(error).Save();
-            DB.Dispose();
         }
 
         /// <summary>
@@ -118,7 +115,6 @@ namespace sidekick
             where TEntity : class, IErrorLog
         {
             DB.Remove<TEntity>(DB.GetAll<TEntity>()).Save();
-            DB.Dispose();
         }
 
         /// <summary>

@@ -11,7 +11,7 @@
         internal string _controller;
         internal string _action;
         internal string _text;
-        internal string _icon;
+        internal Icon _icon;
         internal object _routeValues;
         internal object _htmlAttributes;
 
@@ -20,7 +20,7 @@
         /// </summary>
         /// <param name="icon"></param>
         /// <returns></returns>
-        public T Icon(string icon)
+        public T Icon(Icon icon)
         {
             _icon = icon;
             return (T)this;

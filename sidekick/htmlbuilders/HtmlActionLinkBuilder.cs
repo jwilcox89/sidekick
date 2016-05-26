@@ -29,11 +29,8 @@ namespace sidekick
 
         public string ToHtmlString()
         {
-            TagBuilder icon = new TagBuilder("i");
-            icon.AddCssClass(_icon);
-
             string link = _helper.ActionLink(REPLACEMENT_TEXT, _action, _controller, _routeValues, _htmlAttributes).ToString();
-            return link.Replace(REPLACEMENT_TEXT, String.Format("{0} {1}", icon.ToString(TagRenderMode.Normal), _text));
+            return link.Replace(REPLACEMENT_TEXT, String.Format("{0} {1}", new IconBuilder(_icon).ToHtmlString(), _text));
         }
     }
 }

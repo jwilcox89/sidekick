@@ -10,6 +10,11 @@ namespace sidekick
     /// </summary>
     public static class HtmlBuilder
     {
+        public static IconBuilder Begin(this HtmlHelper helper, Icon icon)
+        {
+            return new IconBuilder(icon);
+        }
+
         /// <summary>
         ///     Builds a Bootstrap modal
         /// </summary>

@@ -47,7 +47,7 @@ namespace sidekick
         /// </summary>
         /// <param name="icon"></param>
         /// <returns></returns>
-        public InputGroupBuilder<TModel, TProperty> AppendIcon(string icon)
+        public InputGroupBuilder<TModel, TProperty> AppendIcon(Icon icon)
         {
             _appendIcon = icon;
             return this;
@@ -69,7 +69,7 @@ namespace sidekick
         /// </summary>
         /// <param name="icon"></param>
         /// <returns></returns>
-        public InputGroupBuilder<TModel, TProperty> PrependIcon(string icon)
+        public InputGroupBuilder<TModel, TProperty> PrependIcon(Icon icon)
         {
             _prependIcon = icon;
             return this;
@@ -120,12 +120,12 @@ namespace sidekick
 
             _helper.WriteLine(String.Format("<div class='input-group {0} {1}' id='{2}'>", _inputGroupSize.GetAttribute<HtmlBuilderAttribute>().Class, _datetimepickerClass, _datetimepickerId));
 
-            if (!String.IsNullOrEmpty(_prependIcon) || !String.IsNullOrEmpty(_prependText))
+            if (_prependIcon != null || !String.IsNullOrEmpty(_prependText))
             {
                 _helper.WriteLine("<span class='input-group-addon'>");
 
-                if (!String.IsNullOrEmpty(_prependIcon))
-                    _helper.WriteLine(String.Format("<i class='{0}'></i>", _prependIcon));
+                if (_prependIcon != null)
+                    _helper.WriteLine(new IconBuilder(_prependIcon).ToHtmlString());
 
                 if (!String.IsNullOrEmpty(_prependText))
                     _helper.WriteLine(String.Format(" {0}", _prependText));
@@ -142,12 +142,12 @@ namespace sidekick
                 _helper.WriteLine(_helper.DropDownListFor(_expression, _selectListItems, _optionLabel, BuilderUtils.MergeAttributes(_baseAttributes, _htmlAttributes)));
             }
 
-            if (!String.IsNullOrEmpty(_appendIcon) || !String.IsNullOrEmpty(_appendText))
+            if (_appendIcon != null || !String.IsNullOrEmpty(_appendText))
             {
                 _helper.WriteLine("<span class='input-group-addon'>");
 
-                if (!String.IsNullOrEmpty(_appendIcon))
-                    _helper.WriteLine(String.Format("<i class='{0}'></i>", _appendIcon));
+                if (_appendIcon != null)
+                    _helper.WriteLine(new IconBuilder(_appendIcon).ToHtmlString());
 
                 if (!String.IsNullOrEmpty(_appendText))
                     _helper.WriteLine(String.Format(" {0}", _appendText));
@@ -177,12 +177,12 @@ namespace sidekick
 
             _helper.WriteLine(String.Format("<div class='input-group {0} {1}' id='{2}'>", _inputGroupSize.GetAttribute<HtmlBuilderAttribute>().Class, _datetimepickerClass, _datetimepickerId));
 
-            if (!String.IsNullOrEmpty(_prependIcon) || !String.IsNullOrEmpty(_prependText))
+            if (_prependIcon != null || !String.IsNullOrEmpty(_prependText))
             {
                 _helper.WriteLine("<span class='input-group-addon'>");
 
-                if (!String.IsNullOrEmpty(_prependIcon))
-                    _helper.WriteLine(String.Format("<i class='{0}'></i>", _prependIcon));
+                if (_prependIcon != null)
+                    _helper.WriteLine(new IconBuilder(_prependIcon).ToHtmlString());
 
                 if (!String.IsNullOrEmpty(_prependText))
                     _helper.WriteLine(String.Format(" {0}", _prependText));
@@ -192,12 +192,12 @@ namespace sidekick
 
             _helper.WriteLine(_helper.TextBoxFor(_expression, BuilderUtils.MergeAttributes(_baseAttributes, _htmlAttributes)).ToString());
 
-            if (!String.IsNullOrEmpty(_appendIcon) || !String.IsNullOrEmpty(_appendText))
+            if (_appendIcon != null || !String.IsNullOrEmpty(_appendText))
             {
                 _helper.WriteLine("<span class='input-group-addon'>");
 
-                if (!String.IsNullOrEmpty(_appendIcon))
-                    _helper.WriteLine(String.Format("<i class='{0}'></i>", _appendIcon));
+                if (_appendIcon != null)
+                    _helper.WriteLine(new IconBuilder(_appendIcon).ToHtmlString());
 
                 if (!String.IsNullOrEmpty(_appendText))
                     _helper.WriteLine(String.Format(" {0}", _appendText));
