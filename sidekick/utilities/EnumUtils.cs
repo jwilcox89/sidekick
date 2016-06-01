@@ -23,5 +23,22 @@ namespace sidekick
             Type type = value.GetType();
             return type.GetField(Enum.GetName(type, value)).GetCustomAttribute<TAttribute>(false);
         }
+
+        /// <summary>
+        ///     Returns attribute and its properties for a specific enum
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <typeparam name="TAttribute"></typeparam>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static TAttribute GetAttribute<TEnum, TAttribute>(this object value)
+            where TAttribute : Attribute
+        {
+            if (typeof(TEnum).BaseType != typeof(Enum))
+                throw new ArgumentException("Must be a type of System.Enum");
+
+            Type type = typeof(TEnum);
+            return type.GetField(Enum.GetName(type, value)).GetCustomAttribute<TAttribute>(false);
+        }
     }
 }

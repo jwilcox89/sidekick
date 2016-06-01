@@ -10,6 +10,12 @@ namespace sidekick
     /// </summary>
     public static class HtmlBuilder
     {
+        /// <summary>
+        ///     Builds an Icon object
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="icon"></param>
+        /// <returns></returns>
         public static IconBuilder Begin(this HtmlHelper helper, Icon icon)
         {
             return new IconBuilder(icon);

@@ -27,6 +27,17 @@
         }
 
         /// <summary>
+        ///     Set the icon to be used with the link
+        /// </summary>
+        /// <param name="icon"></param>
+        /// <returns></returns>
+        public T Icon(string icon)
+        {
+            _icon = new Icon(icon);
+            return (T)this;
+        }
+
+        /// <summary>
         ///     Set the route values to be used with the link
         /// </summary>
         /// <param name="values"></param>

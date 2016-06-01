@@ -28,8 +28,8 @@ namespace sidekick
                 return ValidationResult.Success;
             }
 
-            if (!AcceptedFileExtensions.Any(x => x.GetAttribute<HtmlBuilderAttribute>().Class == upload.FileName.GetFileExtention()))
-                return new ValidationResult(String.Format("Template file must be in one of these formats: {0}", String.Join(", ", AcceptedFileExtensions.Select(x => x.GetAttribute<HtmlBuilderAttribute>().Class))));
+            if (!AcceptedFileExtensions.Any(x => x.GetAttribute<ExtensionAttribute>().Extension == upload.FileName.GetFileExtention()))
+                return new ValidationResult(String.Format("Template file must be in one of these formats: {0}", String.Join(", ", AcceptedFileExtensions.Select(x => x))));
 
             return ValidationResult.Success;
         }

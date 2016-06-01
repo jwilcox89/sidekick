@@ -21,7 +21,7 @@ namespace sidekick
             _helper.WriteLine("<div class='modal-content'>");
             _helper.WriteLine("<div class='modal-header'>");
             _helper.WriteLine("<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>");
-            _helper.WriteLine(String.Format("<h4 class='modal-title'>{0}</h4>", _model._title));
+            _helper.WriteLine(String.Format("<h4 class='modal-title'>{0} {1}</h4>", new IconBuilder(_model._icon).ToHtmlString(), _model._title));
             _helper.WriteLine("</div>");
         }
 

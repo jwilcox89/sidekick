@@ -9,8 +9,8 @@ namespace sidekick
     /// </summary>
     public class CustomSelectList
     {
-        private List<SelectListItem> _items;
-        public List<SelectListItem> Items => _items;
+        private IList<SelectListItem> _items;
+        public IList<SelectListItem> Items => _items;
 
         public CustomSelectList(string text, string value)
         {

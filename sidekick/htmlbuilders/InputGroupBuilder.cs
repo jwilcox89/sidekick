@@ -54,6 +54,17 @@ namespace sidekick
         }
 
         /// <summary>
+        ///     Icon to append to the end of the element
+        /// </summary>
+        /// <param name="icon"></param>
+        /// <returns></returns>
+        public InputGroupBuilder<TModel, TProperty> AppendIcon(string icon)
+        {
+            _appendIcon = new Icon(icon);
+            return this;
+        }
+
+        /// <summary>
         ///     Text to prepend to the beginning of the element
         /// </summary>
         /// <param name="text"></param>
@@ -72,6 +83,17 @@ namespace sidekick
         public InputGroupBuilder<TModel, TProperty> PrependIcon(Icon icon)
         {
             _prependIcon = icon;
+            return this;
+        }
+
+        /// <summary>
+        ///     Icon to prepend to the beginning of the element
+        /// </summary>
+        /// <param name="icon"></param>
+        /// <returns></returns>
+        public InputGroupBuilder<TModel, TProperty> PrependIcon(string icon)
+        {
+            _prependIcon = new Icon(icon);
             return this;
         }
 
@@ -217,7 +239,9 @@ namespace sidekick
 
         public string ToHtmlString()
         {
-            return (_selectListItems == null) ? BuildTextBoxInputGroup().ToString() : BuildDropdownInputGroup().ToString();
+            return (_selectListItems == null) ? 
+                   BuildTextBoxInputGroup().ToString() : 
+                   BuildDropdownInputGroup().ToString();
         }
     }
 }

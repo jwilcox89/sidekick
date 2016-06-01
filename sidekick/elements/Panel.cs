@@ -59,23 +59,6 @@
         }
 
         /// <summary>
-        ///     Set the heading size for the panel
-        /// </summary>
-        /// <param name="size"></param>
-        /// <returns></returns>
-        public Panel Heading(HeadingSize size)
-        {
-            _headingSize = size;
-            return this;
-        }
-
-        public Panel Icon(Icon icon)
-        {
-            _icon = icon;
-            return this;
-        }
-
-        /// <summary>
         ///     Set the title for the panel
         /// </summary>
         /// <param name="title"></param>
@@ -83,6 +66,62 @@
         public Panel Title(string title)
         {
             _title = title;
+            return this;
+        }
+
+        /// <summary>
+        ///     Set the title for the panel with an icon
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="icon"></param>
+        /// <returns></returns>
+        public Panel Title(string title, Icon icon)
+        {
+            _title = title;
+            _icon = icon;
+            return this;
+        }
+
+        /// <summary>
+        ///     Set the title for the panel with an icon
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="icon"></param>
+        /// <returns></returns>
+        public Panel Title(string title, string icon)
+        {
+            _title = title;
+            _icon = new Icon(icon);
+            return this;
+        }
+
+        /// <summary>
+        ///     Set the title for the panel with an icon and custom heading size
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="icon"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        public Panel Title(string title, Icon icon, HeadingSize size)
+        {
+            _title = title;
+            _icon = icon;
+            _headingSize = size;
+            return this;
+        }
+
+        /// <summary>
+        ///     Set the title for the panel with an icon and custom heading size
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="icon"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        public Panel Title(string title, string icon, HeadingSize size)
+        {
+            _title = title;
+            _icon = new Icon(icon);
+            _headingSize = size;
             return this;
         }
     }

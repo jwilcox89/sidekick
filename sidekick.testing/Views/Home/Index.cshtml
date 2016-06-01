@@ -53,7 +53,7 @@
 <hr />
 
 @Html.BuildHeading(HeadingSize.H2, "Panels")
-@using (Html.Begin(new Panel().Title("My Panel").Icon(new Icon("fa fa-truck"))))
+@using (Html.Begin(new Panel().Title("My Panel", new Icon("fa fa-truck"))))
 {
     <p>
         Panel content

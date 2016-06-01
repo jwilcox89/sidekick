@@ -27,7 +27,9 @@ namespace sidekick
             {
                 writer.AddAttribute(HtmlTextWriterAttribute.Name, _elementName);
                 writer.AddAttribute(HtmlTextWriterAttribute.Type, "checkbox");
-                writer.AddAttribute("data-state", _state.ToString().ToLower());
+
+                if (_state)
+                    writer.AddAttribute(HtmlTextWriterAttribute.Checked, "");
 
                 if (_size.HasValue)
                     writer.AddAttribute("data-size", _size.Value.GetAttribute<HtmlBuilderAttribute>().Class);

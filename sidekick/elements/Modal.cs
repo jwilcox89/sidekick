@@ -11,6 +11,7 @@ namespace sidekick
         internal ModalSize _modalSize;
         internal string _id;
         internal string _title;
+        internal Icon _icon;
         internal string _errorAreaID;
         internal string _body;
         internal string _closeText;
@@ -76,6 +77,32 @@ namespace sidekick
         public Modal Title(string title)
         {
             _title = title;
+            return this;
+        }
+
+        /// <summary>
+        ///     Set the title of the modal and include an icon
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="icon"></param>
+        /// <returns></returns>
+        public Modal Title(string title, Icon icon)
+        {
+            _title = title;
+            _icon = icon;
+            return this;
+        }
+
+        /// <summary>
+        ///     Set the title of the modal and include an icon
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="icon"></param>
+        /// <returns></returns>
+        public Modal Title(string title, string icon)
+        {
+            _title = title;
+            _icon = new Icon(icon);
             return this;
         }
 
