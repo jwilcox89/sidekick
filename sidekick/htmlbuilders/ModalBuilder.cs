@@ -41,7 +41,7 @@ namespace sidekick
 
             if (_model._showSubmitButton)
             {
-                if (String.IsNullOrEmpty(_model._submitIcon))
+                if (_model._submitIcon == null)
                 {
                     _helper.WriteLine(String.Format("<button type='submit' class='btn btn-{0}'>{1}</button>",
                                             _model._submitColor.GetAttribute<HtmlBuilderAttribute>().Class,
@@ -49,16 +49,16 @@ namespace sidekick
                 }
                 else
                 {
-                    _helper.WriteLine(String.Format("<button type='submit' class='btn btn-{0}'><i class='{2}'></i> {1}</button>",
+                    _helper.WriteLine(String.Format("<button type='submit' class='btn btn-{0}'>{2} {1}</button>",
                         _model._submitColor.GetAttribute<HtmlBuilderAttribute>().Class,
                         _model._submitText,
-                        _model._submitIcon));
+                        new IconBuilder(_model._submitIcon).ToHtmlString()));
                 }
             }
 
             if (_model._dismissable)
             {
-                if (String.IsNullOrEmpty(_model._closeIcon))
+                if (_model._closeIcon == null)
                 {
                     _helper.WriteLine(String.Format("<button type='button' class='btn btn-{0}' data-dismiss='modal'>{1}</button>",
                                             _model._closeColor.GetAttribute<HtmlBuilderAttribute>().Class,
@@ -66,10 +66,10 @@ namespace sidekick
                 }
                 else
                 {
-                    _helper.WriteLine(String.Format("<button type='button' class='btn btn-{0}' data-dismiss='modal'><i class='{2}'></i> {1}</button>",
+                    _helper.WriteLine(String.Format("<button type='button' class='btn btn-{0}' data-dismiss='modal'>{2} {1}</button>",
                         _model._closeColor.GetAttribute<HtmlBuilderAttribute>().Class,
                         _model._closeText,
-                        _model._closeIcon));
+                        new IconBuilder(_model._closeIcon).ToHtmlString()));
                 }
             }
 

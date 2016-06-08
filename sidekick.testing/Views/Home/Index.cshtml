@@ -38,7 +38,7 @@
 
 @Html.BuildHeading(HeadingSize.H2, "Modals")
 <button id="modal-button" class="btn btn-default">Open Modal</button>
-@using (var modal = Html.Begin(new Modal("test-modal").Title("My Modal").Body("Modal Content pt 2")))
+@using (var modal = Html.Begin(new Modal("test-modal").Title("My Modal", "fa fa-edit").Body("Modal Content pt 2").SubmitButton("Submit", "fa fa-check")))
 {
     using (modal.BeginBody())
     {

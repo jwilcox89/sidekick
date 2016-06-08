@@ -19,7 +19,7 @@ namespace sidekick
         /// <returns></returns>
         public static IEnumerable<SelectListItem> YearDropdown(int yearsForward, int yearsBackward)
         {
-            List<SelectListItem> list = new List<SelectListItem>();
+            IList<SelectListItem> list = new List<SelectListItem>();
 
             int start = DateTime.Now.Year - yearsBackward;
             int end = DateTime.Now.Year + yearsForward;
@@ -45,7 +45,7 @@ namespace sidekick
         /// <returns></returns>
         public static IEnumerable<SelectListItem> StateDropdown()
         {
-            List<SelectListItem> list = new List<SelectListItem>();
+            IList<SelectListItem> list = new List<SelectListItem>();
 
             foreach (UsStates state in Enum.GetValues(typeof(UsStates)))
             {
@@ -142,7 +142,7 @@ namespace sidekick
         /// <returns></returns>
         public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, string value, string display, object selectedValue)
         {
-            items = items as List<TSource> ?? items.ToList();
+            items = items as IList<TSource> ?? items.ToList();
             return new SelectList(items, value, display, selectedValue);
         }
     }

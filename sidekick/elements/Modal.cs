@@ -15,9 +15,9 @@ namespace sidekick
         internal string _errorAreaID;
         internal string _body;
         internal string _closeText;
-        internal string _closeIcon;
+        internal Icon _closeIcon;
         internal string _submitText;
-        internal string _submitIcon;
+        internal Icon _submitIcon;
         internal bool _dismissable;
         internal Colors _submitColor;
         internal Colors _closeColor;
@@ -145,10 +145,38 @@ namespace sidekick
         /// <param name="text"></param>
         /// <param name="icon"></param>
         /// <returns></returns>
-        public Modal SubmitButton(string text, string icon)
+        public Modal SubmitButton(string text, Icon icon)
         {
             _submitText = text;
             _submitIcon = icon;
+            return this;
+        }
+
+        /// <summary>
+        ///     Set attributes of submit button
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="icon"></param>
+        /// <returns></returns>
+        public Modal SubmitButton(string text, string icon)
+        {
+            _submitText = text;
+            _submitIcon = new Icon(icon);
+            return this;
+        }
+
+        /// <summary>
+        ///     Set attributes of submit button
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="icon"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public Modal SubmitButton(string text, Icon icon, Colors color)
+        {
+            _submitText = text;
+            _submitIcon = icon;
+            _submitColor = color;
             return this;
         }
 
@@ -162,7 +190,7 @@ namespace sidekick
         public Modal SubmitButton(string text, string icon, Colors color)
         {
             _submitText = text;
-            _submitIcon = icon;
+            _submitIcon = new Icon(icon);
             _submitColor = color;
             return this;
         }
@@ -187,7 +215,35 @@ namespace sidekick
         public Modal CloseButton(string text, string icon)
         {
             _closeText = text;
+            _closeIcon = new Icon(icon);
+            return this;
+        }
+
+        /// <summary>
+        ///     Set attributes of close button
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="icon"></param>
+        /// <returns></returns>
+        public Modal CloseButton(string text, Icon icon)
+        {
+            _closeText = text;
             _closeIcon = icon;
+            return this;
+        }
+
+        /// <summary>
+        ///     Set attributes of close button
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="icon"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public Modal CloseButton(string text, Icon icon, Colors color)
+        {
+            _closeText = text;
+            _closeIcon = icon;
+            _closeColor = color;
             return this;
         }
 
@@ -201,7 +257,7 @@ namespace sidekick
         public Modal CloseButton(string text, string icon, Colors color)
         {
             _closeText = text;
-            _closeIcon = icon;
+            _closeIcon = new Icon(icon);
             _closeColor = color;
             return this;
         }

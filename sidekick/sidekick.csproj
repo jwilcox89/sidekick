@@ -149,7 +149,7 @@
     <Compile Include="htmlbuilders\BuilderUtils.cs" />
     <Compile Include="htmlbuilders\FormGroupBuilder.cs" />
     <Compile Include="elements\FormControl.cs" />
-    <Compile Include="responses\RenderDocument.cs" />
+    <Compile Include="utilities\RenderUtils.cs" />
     <Compile Include="helpers\TempDataManager.cs" />
     <Compile Include="validation\ActiveDirectorySecurity.cs" />
     <Compile Include="validation\CommonRegexes.cs" />

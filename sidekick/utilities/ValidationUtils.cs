@@ -20,7 +20,7 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Returns the last 4 characters of a string (.pdf, .doc etc)
+        ///     Returns the file extension for the provided path
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>

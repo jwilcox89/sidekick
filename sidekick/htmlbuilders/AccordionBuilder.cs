@@ -46,8 +46,8 @@ namespace sidekick
             _helper.WriteLine(String.Format("<div class='panel-heading' role='tab' id='heading{0}'>", panel._id));
             _helper.WriteLine("<h4 class='panel-title'>");
             _helper.WriteLine(String.Format("<a role='button' data-toggle='collapse' data-parent='#{0}' href='#collapsed{1}' aria-expanded='false' aria-controls='{1}'>", accordion._parentID, panel._id));
-            if (accordion._icon != null)
-                _helper.WriteLine(new IconBuilder(accordion._icon).ToHtmlString());
+            if (panel._icon != null)
+                _helper.WriteLine(new IconBuilder(panel._icon).ToHtmlString());
 
             _helper.WriteLine(panel._title);
             _helper.WriteLine("</a></h4></div>");
