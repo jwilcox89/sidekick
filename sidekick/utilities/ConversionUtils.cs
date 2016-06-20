@@ -43,7 +43,7 @@ namespace sidekick
         /// <typeparam name="TObject"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static IEnumerable<int> ToInt<TObject>(this List<TObject> list)
+        public static IEnumerable<int> ToInt<TObject>(this IList<TObject> list)
         {
             return list.AsEnumerable().ToInt();
         }
@@ -93,7 +93,7 @@ namespace sidekick
         /// <typeparam name="TObject"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static IEnumerable<short> ToShort<TObject>(this List<TObject> list)
+        public static IEnumerable<short> ToShort<TObject>(this IList<TObject> list)
         {
             return list.AsEnumerable().ToShort();
         }
@@ -138,7 +138,7 @@ namespace sidekick
         /// <returns></returns>
         public static IEnumerable<DateTime> ForEachDay(this DateTime start, DateTime end)
         {
-            DateTime currentDay = new DateTime(start.Year, start.Month, 1);
+            DateTime currentDay = new DateTime(start.Year, start.Month, start.Day);
             while (currentDay <= end)
             {
                 yield return currentDay;

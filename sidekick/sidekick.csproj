@@ -133,8 +133,8 @@
     <Compile Include="elements\IView.cs" />
     <Compile Include="utilities\GeneralUtils.cs" />
     <Compile Include="utilities\IdentityUtils.cs" />
-    <Compile Include="helpers\NavUtils.cs" />
-    <Compile Include="helpers\SelectListUtils.cs" />
+    <Compile Include="utilities\NavUtils.cs" />
+    <Compile Include="utilities\SelectListUtils.cs" />
     <Compile Include="htmlbuilders\AlertBuilder.cs" />
     <Compile Include="htmlbuilders\HeadingBuilder.cs" />
     <Compile Include="htmlbuilders\HtmlActionLinkBuilder.cs" />
