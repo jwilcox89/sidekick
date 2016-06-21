@@ -10,13 +10,13 @@ namespace sidekick
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
     public class ExcludeCharAttribute : ValidationAttribute
     {
-        private readonly string _excludedChars;
+        private readonly string[] _excludedChars;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="excludedChars">String of characters to exclude. Format: !@#$%^&</param>
-        public ExcludeCharAttribute(string excludedChars)
+        /// <param name="excludedChars">String of characters to exclude.</param>
+        public ExcludeCharAttribute(params string[] excludedChars)
             : base("{0} contains an invalid character")
         {
             _excludedChars = excludedChars;
@@ -28,9 +28,9 @@ namespace sidekick
                 return ValidationResult.Success;
 
             string stringValue = value.ToString();
-            foreach (char excludedChar in _excludedChars.ToCharArray())
+            foreach (string excludedChar in _excludedChars)
             {
-                if (stringValue.ToCharArray().Contains(excludedChar))
+                if (stringValue.Contains(excludedChar))
                     return new ValidationResult(FormatErrorMessage(validationContext.DisplayName), new[] { validationContext.MemberName });
             }
 
