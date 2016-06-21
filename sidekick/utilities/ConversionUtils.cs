@@ -12,10 +12,10 @@ namespace sidekick
         /// <summary>
         ///     Converts an object to an int
         /// </summary>
-        /// <typeparam name="TObject"></typeparam>
+        /// <typeparam name="T"></typeparam>
         /// <param name="item"></param>
         /// <returns></returns>
-        public static int ToInt<TObject>(this TObject item)
+        public static int ToInt<T>(this T item)
         {
             return Convert.ToInt32(item);
         }
@@ -23,13 +23,13 @@ namespace sidekick
         /// <summary>
         ///     Converts a list of an object to a list of ints
         /// </summary>
-        /// <typeparam name="TObject"></typeparam>
+        /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static IEnumerable<int> ToInt<TObject>(this IEnumerable<TObject> list)
+        public static IEnumerable<int> ToInt<T>(this IEnumerable<T> list)
         {
             IList<int> final = new List<int>();
-            foreach (TObject item in list)
+            foreach (T item in list)
             {
                 final.Add(item.ToInt());
             }
@@ -40,10 +40,10 @@ namespace sidekick
         /// <summary>
         ///     Converts a list of an object to a list of ints
         /// </summary>
-        /// <typeparam name="TObject"></typeparam>
+        /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static IEnumerable<int> ToInt<TObject>(this IList<TObject> list)
+        public static IEnumerable<int> ToInt<T>(this IList<T> list)
         {
             return list.AsEnumerable().ToInt();
         }
@@ -51,10 +51,10 @@ namespace sidekick
         /// <summary>
         ///     Converts an array of an object to a list of ints
         /// </summary>
-        /// <typeparam name="TObject"></typeparam>
+        /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static IEnumerable<int> ToInt<TObject>(this TObject[] list)
+        public static IEnumerable<int> ToInt<T>(this T[] list)
         {
             return list.AsEnumerable().ToInt();
         }
@@ -62,10 +62,10 @@ namespace sidekick
         /// <summary>
         ///     Converts an object to a short
         /// </summary>
-        /// <typeparam name="TObject"></typeparam>
+        /// <typeparam name="T"></typeparam>
         /// <param name="item"></param>
         /// <returns></returns>
-        public static short ToShort<TObject>(this TObject item)
+        public static short ToShort<T>(this T item)
         {
             return Convert.ToInt16(item);
         }
@@ -73,13 +73,13 @@ namespace sidekick
         /// <summary>
         ///     Converts a list of an object to a list of shorts
         /// </summary>
-        /// <typeparam name="TObject"></typeparam>
+        /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static IEnumerable<short> ToShort<TObject>(this IEnumerable<TObject> list)
+        public static IEnumerable<short> ToShort<T>(this IEnumerable<T> list)
         {
             IList<short> final = new List<short>();
-            foreach (TObject item in list)
+            foreach (T item in list)
             {
                 final.Add(item.ToShort());
             }
@@ -90,10 +90,10 @@ namespace sidekick
         /// <summary>
         ///     Converts a list of an object to a list of shorts
         /// </summary>
-        /// <typeparam name="TObject"></typeparam>
+        /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static IEnumerable<short> ToShort<TObject>(this IList<TObject> list)
+        public static IEnumerable<short> ToShort<T>(this IList<T> list)
         {
             return list.AsEnumerable().ToShort();
         }
@@ -101,10 +101,10 @@ namespace sidekick
         /// <summary>
         ///     Converts an arrary of an object to a list of shorts
         /// </summary>
-        /// <typeparam name="TObject"></typeparam>
+        /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static IEnumerable<short> ToShort<TObject>(this TObject[] list)
+        public static IEnumerable<short> ToShort<T>(this T[] list)
         {
             return list.AsEnumerable().ToShort();
         }

@@ -16,7 +16,7 @@ namespace sidekick
 
             DateTime date = Convert.ToDateTime(value);
             return date > DateTime.Now ?
-                   new ValidationResult("Date cannot be a future date") :
+                   new ValidationResult("Date cannot be a future date", new[] { validationContext.MemberName }) :
                    ValidationResult.Success;
         }
     }

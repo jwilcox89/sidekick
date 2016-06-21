@@ -16,7 +16,7 @@ namespace sidekick
 
             DateTime date = Convert.ToDateTime(value);
             return date < DateTime.Now ?
-                   new ValidationResult("Date cannot be a past date") :
+                   new ValidationResult("Date cannot be a past date", new[] { validationContext.MemberName }) :
                    ValidationResult.Success;
         }
     }

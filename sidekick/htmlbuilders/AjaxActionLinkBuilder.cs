@@ -23,9 +23,9 @@ namespace sidekick
         public AjaxActionLinkBuilder(AjaxHelper helper, string controller, string action, string text)
         {
             _helper = helper;
-            _text = text;
             _controller = controller;
             _action = action;
+            _text = text;
         }
 
         /// <summary>

@@ -99,6 +99,29 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TSource"></typeparam>
         /// <param name="items"></param>
+        /// <returns></returns>
+        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items)
+        {
+            return BuildSelectList(items, "", "", null);
+        }
+
+        /// <summary>
+        ///     Generates a dropdown list
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <param name="items"></param>
+        /// <param name="selectedValue"></param>
+        /// <returns></returns>
+        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, object selectedValue)
+        {
+            return BuildSelectList(items, "", "", selectedValue);
+        }
+
+        /// <summary>
+        ///     Generates a dropdown list
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <param name="items"></param>
         /// <param name="value"></param>
         /// <param name="display"></param>
         /// <returns></returns>
@@ -119,29 +142,6 @@ namespace sidekick
         public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, Expression<Func<TSource, object>> value, Expression<Func<TSource, object>> display, object selectedValue)
         {
             return BuildSelectList(items, value.GetMemberName(), display.GetMemberName(), selectedValue);
-        }
-
-        /// <summary>
-        ///     Generates a dropdown list
-        /// </summary>
-        /// <typeparam name="TSource"></typeparam>
-        /// <param name="items"></param>
-        /// <returns></returns>
-        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items)
-        {
-            return BuildSelectList(items, "", "", null);
-        }
-
-        /// <summary>
-        ///     Generates a dropdown list
-        /// </summary>
-        /// <typeparam name="TSource"></typeparam>
-        /// <param name="items"></param>
-        /// <param name="selectedValue"></param>
-        /// <returns></returns>
-        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, object selectedValue)
-        {
-            return BuildSelectList(items, "", "", selectedValue);
         }
 
         /// <summary>

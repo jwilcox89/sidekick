@@ -11,29 +11,90 @@ namespace sidekick
     /// </summary>
     public static class NavUtils
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="controllers">Separate multiple values with a ','</param>
+        /// <returns></returns>
         public static string IsActiveNavItem(this HtmlHelper helper, string controllers)
         {
             return IsActiveNavItem(helper, controllers, null, null, new KeyValuePair<string, string>(), null);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="controllers">Separate multiple values with a ','</param>
+        /// <param name="actions">Separate multiple values with a ','</param>
+        /// <returns></returns>
         public static string IsActiveNavItem(this HtmlHelper helper, string controllers, string actions)
         {
             return IsActiveNavItem(helper, controllers, actions, null, new KeyValuePair<string, string>(), null);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="controllers">Separate multiple values with a ','</param>
+        /// <param name="actions">Separate multiple values with a ','</param>
+        /// <param name="areas">Separate multiple values with a ','</param>
+        /// <returns></returns>
         public static string IsActiveNavItem(this HtmlHelper helper, string controllers, string actions, string areas)
         {
             return IsActiveNavItem(helper, controllers, actions, areas, new KeyValuePair<string, string>(), null);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="controllers">Separate multiple values with a ','</param>
+        /// <param name="actions">Separate multiple values with a ','</param>
+        /// <param name="areas">Separate multiple values with a ','</param>
+        /// <param name="routeParam"><para>Key: Part of route that you wish to match the value with</para>
+        /// <para>Value: value that you want to check the key for</para>
+        /// </param>
+        /// <returns></returns>
         public static string IsActiveNavItem(this HtmlHelper helper, string controllers, string actions, string areas, KeyValuePair<string, string> routeParam)
         {
-            return IsActiveNavItem(helper, controllers, actions, areas, routeParam, null);
+            return IsActiveNavItem(helper, controllers, actions, areas, routeParam, null, null);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="controllers">Separate multiple values with a ','</param>
+        /// <param name="actions">Separate multiple values with a ','</param>
+        /// <param name="areas">Separate multiple values with a ','</param>
+        /// <param name="routeParam"><para>Key: Part of route that you wish to match the value with</para>
+        /// <para>Value: value that you want to check the key for</para></param>
+        /// <param name="activeClass"></param>
+        /// <returns></returns>
         public static string IsActiveNavItem(this HtmlHelper helper, string controllers, string actions, string areas, KeyValuePair<string, string> routeParam, string activeClass)
         {
+            return IsActiveNavItem(helper, controllers, actions, areas, routeParam, activeClass, null);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="controllers">Separate multiple values with a ','</param>
+        /// <param name="actions">Separate multiple values with a ','</param>
+        /// <param name="areas">Separate multiple values with a ','</param>
+        /// <param name="routeParam"><para>Key: Part of route that you wish to match the value with</para>
+        /// <para>Value: value that you want to check the key for</para></param>
+        /// <param name="activeClass"></param>
+        /// <param name="inactiveClass"></param>
+        /// <returns></returns>
+        public static string IsActiveNavItem(this HtmlHelper helper, string controllers, string actions, string areas, KeyValuePair<string, string> routeParam, string activeClass, string inactiveClass)
+        {
             activeClass = (String.IsNullOrEmpty(activeClass)) ? "active" : activeClass;
+            inactiveClass = (String.IsNullOrEmpty(inactiveClass)) ? String.Empty : inactiveClass;
             RouteData routeData = helper.ViewContext.RouteData;
             string currentAction = (string)routeData.Values["action"];
             string currentController = (string)routeData.Values["controller"];
@@ -65,7 +126,7 @@ namespace sidekick
             return acceptedActions.Contains(currentAction) &&
                    acceptedControllers.Contains(currentController) &&
                    acceptedAreas.Contains(currentArea) &&
-                   routeMatch ? activeClass : String.Empty;
+                   routeMatch ? activeClass : inactiveClass;
         }
     }
 }

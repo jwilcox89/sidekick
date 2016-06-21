@@ -23,13 +23,13 @@ namespace sidekick
             if (upload == null)
             {
                 if (Required)
-                    return new ValidationResult("Please select a file to upload!");
+                    return new ValidationResult("Please select a file to upload!", new[] { validationContext.MemberName });
 
                 return ValidationResult.Success;
             }
 
             if (!AcceptedFileExtensions.Any(x => x.GetAttribute<ExtensionAttribute>().Extension == upload.FileName.GetFileExtention()))
-                return new ValidationResult(String.Format("Template file must be in one of these formats: {0}", String.Join(", ", AcceptedFileExtensions.Select(x => x))));
+                return new ValidationResult(String.Format("Template file must be in one of these formats: {0}", String.Join(", ", AcceptedFileExtensions.Select(x => x))), new[] { validationContext.MemberName });
 
             return ValidationResult.Success;
         }

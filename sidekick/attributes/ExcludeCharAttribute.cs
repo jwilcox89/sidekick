@@ -31,7 +31,7 @@ namespace sidekick
             foreach (char excludedChar in _excludedChars.ToCharArray())
             {
                 if (stringValue.ToCharArray().Contains(excludedChar))
-                    return new ValidationResult(FormatErrorMessage(validationContext.DisplayName));
+                    return new ValidationResult(FormatErrorMessage(validationContext.DisplayName), new[] { validationContext.MemberName });
             }
 
             return ValidationResult.Success;

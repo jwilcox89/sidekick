@@ -36,7 +36,7 @@ namespace sidekick
 
             HttpPostedFileBase file = value as HttpPostedFileBase;
             return file.ContentLength > _maxFileSize ?
-                   new ValidationResult(String.Format("The file you selected is too large. Maximum allowed size is {0} MB", (_maxFileSize / 1024).ToString())) :
+                   new ValidationResult(String.Format("The file you selected is too large. Maximum allowed size is {0} MB", (_maxFileSize / 1024).ToString()), new[] { validationContext.MemberName }) :
                    ValidationResult.Success;
         }
     }

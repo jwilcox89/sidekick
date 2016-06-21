@@ -53,7 +53,7 @@
 <hr />
 
 @Html.BuildHeading(HeadingSize.H2, "Panels")
-@using (Html.Begin(new Panel().Title("My Panel", new Icon("fa fa-truck"))))
+@using (Html.Begin(new Panel().Title("My Panel", "fa fa-truck")))
 {
     <p>
         Panel content
@@ -62,22 +62,14 @@
 
 <hr />
 
-@*<h2>Card</h2>
-@using (Html.Begin(new Card().Header("Heading", HeadingSize.H4).Title("Title", HeadingSize.H4).Subtitle("subtitle").Footer("footer")))
-{
-    <p class="card-text">This is the text for the card</p>
-}
-
-<hr />*@
-
 @Html.BuildHeading(HeadingSize.H2, "Tabs")
 @using (var tabs = Html.Begin(TabType.Tabs, false, true))
 {
-    @tabs.Tab(new Tab("Baseball", new Icon("fa fa-user"), "baseball", true))
-    @tabs.Tab(new Tab("Football", new Icon("fa fa-truck"), "football"))
-    @tabs.Tab(new Tab("Soccer", new Icon("fa fa-truck"), "soccer"))
-    @tabs.Tab(new Tab("Tennis", new Icon("fa fa-truck"), "tennis"))
-    @tabs.Tab(new Tab("Swimming", new Icon("fa fa-truck"), "swimming"))
+    @tabs.Tab(new Tab("Baseball", "fa fa-user", "baseball", true))
+    @tabs.Tab(new Tab("Football", "fa fa-truck", "football"))
+    @tabs.Tab(new Tab("Soccer", "fa fa-truck", "soccer"))
+    @tabs.Tab(new Tab("Tennis", "fa fa-truck", "tennis"))
+    @tabs.Tab(new Tab("Swimming", "fa fa-truck", "swimming"))
 
     using (tabs.BeginTab())
     {
@@ -137,11 +129,11 @@
 <hr />
 
 @Html.BuildHeading(HeadingSize.H2, "Input Groups")
-@Html.InputGroupFor(x => x.Email).HtmlAttributes(new { @placeholder = "Email Address..." }).PrependIcon(new Icon("fa fa-envelope")).HasLabelWithColon().HasValidation()
+@Html.InputGroupFor(x => x.Email).HtmlAttributes(new { @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").HasLabelWithColon().HasValidation()
 @Html.InputGroupFor(x => x.Email, SelectListUtils.BuildSelectList(new CustomSelectList("Option 1", "Option 1").Add("Option 2", "Option 2")), "---Select One---").HasLabelWithColon()
 
 @Html.BuildHeading(HeadingSize.H2, "Datetimepicker")
-@Html.InputGroupFor(x => x.Email).AppendIcon(new Icon("fa fa-calendar")).DatetimepickerClass("datetimepicker").HasLabel().IsRequired()
+@Html.InputGroupFor(x => x.Email).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel().IsRequired()
 
 @Html.BuildHeading(HeadingSize.H2, "Form Groups")
 @Html.FormGroupFor(x => x.Email, ControlType.Textbox).HtmlAttributes(new { @placeholder = "Email Address..." }).IsRequired().HelpText("This is the help text")
@@ -165,8 +157,8 @@
 
 @Html.BuildHeading(HeadingSize.H2, "Links")
 <div class="form-gorup">
-    @Html.BuildActionLink("Home", "Index", "Go Home").Icon(new Icon("fa fa-home")).HtmlAttributes(new { @class = "btn btn-primary" }).RouteValues(new { @id = 50 })
-    @Ajax.BuildActionLink("Home", "Index", "Test Link").HtmlAttributes(new { @class = "btn btn-success" }).Icon(new Icon("fa fa-check"))
+    @Html.BuildActionLink("Home", "Index", "Go Home").Icon("fa fa-home").HtmlAttributes(new { @class = "btn btn-primary" }).RouteValues(new { @id = 50 })
+    @Ajax.BuildActionLink("Home", "Index", "Test Link").HtmlAttributes(new { @class = "btn btn-success" }).Icon("fa fa-check")
 </div>
 
 @Html.BuildHeading(HeadingSize.H2, "Validation Tests")
@@ -175,8 +167,8 @@
     @Html.ValidationSummary(true)
     @Html.FormGroupFor(x => x.Email, ControlType.Textbox).HtmlAttributes(new { @placeholder = "Enter email..." }).HasLabelWithColon()
     @Html.FormGroupFor(x => x.Password, ControlType.Password).HtmlAttributes(new { @placeholder = "Enter password..." }).HasLabelWithColon()
-    @Html.InputGroupFor(x => x.NoFutureDate).AppendIcon(new Icon("fa fa-calendar")).DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()
-    @Html.InputGroupFor(x => x.NoPastDate).AppendIcon(new Icon("fa fa-calendar")).DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()
+    @Html.InputGroupFor(x => x.NoFutureDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()
+    @Html.InputGroupFor(x => x.NoPastDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()
     @Html.BuildCheckBoxFor(x => x.RememberMe, CheckboxType.Checkbox).HasLabel().IsRequired()
 
     <div class="well">
