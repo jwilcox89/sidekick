@@ -11,6 +11,17 @@ namespace sidekick
     public static class HtmlBuilder
     {
         /// <summary>
+        ///     Builds a button dropdown
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="button"></param>
+        /// <returns></returns>
+        public static ButtonBuilder Begin(this HtmlHelper helper, Button button)
+        {
+            return new ButtonBuilder(helper, button);
+        }
+
+        /// <summary>
         ///     Builds an Icon object
         /// </summary>
         /// <param name="helper"></param>
@@ -61,12 +72,25 @@ namespace sidekick
         /// <typeparam name="TModel"></typeparam>
         /// <param name="helper"></param>
         /// <param name="tabType">Specify which style of tabs you would like</param>
+        /// <param name="fade">True will enable the javascript fade in/out when toggling tabs</param>
+        /// <returns></returns>
+        public static TabsBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, TabType tabType, bool fade)
+        {
+            return new TabsBuilder<TModel>(helper, tabType, fade);
+        }
+
+        /// <summary>
+        ///     Builds a Bootstrap tab panel
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="helper"></param>
+        /// <param name="tabType">Specify which style of tabs you would like</param>
         /// <param name="stacked">True if you want the tabs stacked on top of one another</param>
         /// <param name="justified">True if you want the tabs equal widths of their parent</param>
         /// <returns></returns>
-        public static TabsBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, TabType tabType, bool stacked, bool justified)
+        public static TabsBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, TabType tabType, bool stacked, bool justified, bool fade)
         {
-            return new TabsBuilder<TModel>(helper, tabType, stacked, justified);
+            return new TabsBuilder<TModel>(helper, tabType, stacked, justified, fade);
         }
 
         /// <summary>

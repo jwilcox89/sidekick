@@ -92,6 +92,7 @@
     <Compile Include="database\RepoUtils.cs" />
     <Compile Include="elements\Accordion.cs" />
     <Compile Include="elements\ActionLinkBase.cs" />
+    <Compile Include="elements\Button.cs" />
     <Compile Include="elements\Card.cs" />
     <Compile Include="elements\Checkbox.cs" />
     <Compile Include="elements\Icon.cs" />
@@ -114,7 +115,10 @@
     <Compile Include="enums\UsStates.cs" />
     <Compile Include="errorlogger\ErrorLogger.cs" />
     <Compile Include="errorlogger\IErrorLog.cs" />
+    <Compile Include="htmlbuilders\ButtonBuilder.cs" />
     <Compile Include="htmlbuilders\IconBuilder.cs" />
+    <Compile Include="mockup\MockupInputBuilder.cs" />
+    <Compile Include="mockup\MockupHtmlBuilder.cs" />
     <Compile Include="utilities\ConversionUtils.cs" />
     <Compile Include="utilities\EnumUtils.cs" />
     <Compile Include="utilities\ErrorUtils.cs" />

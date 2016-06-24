@@ -16,7 +16,7 @@ namespace sidekick
         public static string GetContentType(string filename)
         {
             string extension = filename.GetFileExtention();
-            foreach (FileType type in Enum.GetValues(typeof(FileType)).Cast<FileType>())
+            foreach (FileType type in Enum.GetValues(typeof(FileType)))
             {
                 if (extension == type.GetAttribute<ExtensionAttribute>().Extension)
                     return type.GetAttribute<HtmlBuilderAttribute>().Tag;

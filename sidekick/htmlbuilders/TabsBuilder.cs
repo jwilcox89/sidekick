@@ -13,6 +13,7 @@ namespace sidekick
         private HtmlHelper<TModel> _helper;
         private Queue<Tab> _tabList;
         private bool _contentStarted;
+        private bool _fade;
 
         public TabsBuilder(HtmlHelper<TModel> helper, TabType tabType)
         {
@@ -22,9 +23,19 @@ namespace sidekick
             _helper.WriteLine(String.Format("<ul role='tablist' class='nav {0}'>", tabType.GetAttribute<HtmlBuilderAttribute>().Class));
         }
 
-        public TabsBuilder(HtmlHelper<TModel> helper, TabType tabType, bool stacked, bool justified)
+        public TabsBuilder(HtmlHelper<TModel> helper, TabType tabType, bool fade)
         {
             _helper = helper;
+            _fade = fade;
+            _tabList = new Queue<Tab>();
+            _helper.WriteLine("<div role='tabpanel'>");
+            _helper.WriteLine(String.Format("<ul role='tablist' class='nav {0}'>", tabType.GetAttribute<HtmlBuilderAttribute>().Class));
+        }
+
+        public TabsBuilder(HtmlHelper<TModel> helper, TabType tabType, bool stacked, bool justified, bool fade)
+        {
+            _helper = helper;
+            _fade = fade;
             _tabList = new Queue<Tab>();
             _helper.WriteLine("<div role='tabpanel'>");
             _helper.WriteLine(String.Format("<ul role='tablist' class='nav {0} {1} {2}'>", tabType.GetAttribute<HtmlBuilderAttribute>().Class, (stacked) ? "nav-stacked" : String.Empty, (justified) ? "nav-justified" : String.Empty));
@@ -65,7 +76,7 @@ namespace sidekick
                 _contentStarted = true;
             }
 
-            return new TabsContent<TModel>(_helper, _tabList.Dequeue());
+            return new TabsContent<TModel>(_helper, _tabList.Dequeue(), _fade);
         }
 
         public void Dispose()
@@ -78,11 +89,14 @@ namespace sidekick
     {
         private HtmlHelper<TModel> _helper;
 
-        public TabsContent(HtmlHelper<TModel> helper, Tab tab)
+        public TabsContent(HtmlHelper<TModel> helper, Tab tab, bool fade)
         {
             _helper = helper;
             string active = (tab.Active) ? "active" : null;
-            _helper.WriteLine(String.Format("<div role='tabpanel' class='tab-pane {0}' id='{1}'>", active, tab.Name));
+            string inValue = (tab.Active && fade) ? "in" : null;
+            string fadeValue = (fade) ? "fade" : null;
+
+            _helper.WriteLine(String.Format("<div role='tabpanel' class='tab-pane {0} {1} {2}' id='{3}'>", active, fadeValue, inValue, tab.Name));
         }
 
         public void Dispose()

@@ -7,6 +7,20 @@
     ViewBag.Title = "Home Page";
 }
 
+@Html.BuildHeading(HeadingSize.H2, "Button Dropdown")
+@using (Html.Begin(new Button().Title("My Menu", "fa fa-edit")))
+{
+    <li>
+        <a href="#">Standard Incident</a>
+    </li>
+    <li>
+        <a href="#">Mechanical Restraint Incident</a>
+    </li>
+    <li>
+        <a href="#">Physical Restraint Incident</a>
+    </li>
+}
+
 @Html.BuildHeading(HeadingSize.H2, "Icons")
 @Html.Begin(new Icon("fa fa-square-o").Stacked("fa fa-twitter"))
 @Html.Begin(new Icon("fa fa-circle-o fa-stack-2x").StackedText("1"))
@@ -63,7 +77,7 @@
 <hr />
 
 @Html.BuildHeading(HeadingSize.H2, "Tabs")
-@using (var tabs = Html.Begin(TabType.Tabs, false, true))
+@using (var tabs = Html.Begin(TabType.Tabs, false, true, true))
 {
     @tabs.Tab(new Tab("Baseball", "fa fa-user", "baseball", true))
     @tabs.Tab(new Tab("Football", "fa fa-truck", "football"))
