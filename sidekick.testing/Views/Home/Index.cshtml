@@ -7,17 +7,20 @@
     ViewBag.Title = "Home Page";
 }
 
+@Html.BuildHeading(HeadingSize.H2, "Progress Bar")
+@Html.BuildProgressBar(new ProgressBar(60).Label("60%"))
+
 @Html.BuildHeading(HeadingSize.H2, "Button Dropdown")
-@using (Html.Begin(new Button().Title("My Menu", "fa fa-edit")))
+@using (Html.Begin(new ButtonDropdown().Title("My Menu", "fa fa-edit")))
 {
     <li>
-        <a href="#">Standard Incident</a>
+        <a href="#">Report 1</a>
     </li>
     <li>
-        <a href="#">Mechanical Restraint Incident</a>
+        <a href="#">Report 2</a>
     </li>
     <li>
-        <a href="#">Physical Restraint Incident</a>
+        <a href="#">Report 3</a>
     </li>
 }
 
@@ -67,17 +70,45 @@
 <hr />
 
 @Html.BuildHeading(HeadingSize.H2, "Panels")
-@using (Html.Begin(new Panel().Title("My Panel", "fa fa-truck")))
+@using (var panel = Html.Begin(new Panel().Title("My Panel", "fa fa-truck")))
 {
-    <p>
-        Panel content
-    </p>
+    using (panel.BeginBody())
+    {
+        <p>
+            Panel content
+        </p>
+    }
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First</th>
+                <th>Last</th>
+                <th>DOB</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Justin</td>
+                <td>Wilcox</td>
+                <td>12/24/1989</td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+@using (var panel = Html.Begin(new Panel()))
+{
+    using (panel.BeginBody())
+    {
+        <p>Basic panel body</p>
+    }
 }
 
 <hr />
 
 @Html.BuildHeading(HeadingSize.H2, "Tabs")
-@using (var tabs = Html.Begin(TabType.Tabs, false, true, true))
+@using (var tabs = Html.Begin(TabType.Tabs, stacked: false, justified: true, fade: true))
 {
     @tabs.Tab(new Tab("Baseball", "fa fa-user", "baseball", true))
     @tabs.Tab(new Tab("Football", "fa fa-truck", "football"))
@@ -116,12 +147,12 @@
 @Html.BuildHeading(HeadingSize.H2, "Accordion")
 @using (var accordion = Html.Begin(new Accordion("test-accordion")))
 {
-    using (accordion.BeginPanel(new Panel("1").Title("Section 1").Color(Colors.Danger)))
+    using (accordion.BeginPanel(new Panel("1").Title("Section 1")))
     {
         <p>The content for the first section </p>
     }
 
-    using (accordion.BeginPanel(new Panel("2").Title("Section 2")))
+    using (accordion.BeginPanel(new Panel("2").Title("Section 2").Color(Colors.Danger)))
     {
         <p>The content for second section</p>
     }

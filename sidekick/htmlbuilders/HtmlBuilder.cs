@@ -16,9 +16,9 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="button"></param>
         /// <returns></returns>
-        public static ButtonBuilder Begin(this HtmlHelper helper, Button button)
+        public static ButtonDropdownBuilder Begin(this HtmlHelper helper, ButtonDropdown button)
         {
-            return new ButtonBuilder(helper, button);
+            return new ButtonDropdownBuilder(helper, button);
         }
 
         /// <summary>
@@ -195,6 +195,17 @@ namespace sidekick
         public static InputGroupBuilder<TModel, TProperty> InputGroupFor<TModel, TProperty>(this HtmlHelper<TModel> helper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> itemList, string optionLabel)
         {
             return new InputGroupBuilder<TModel, TProperty>(helper, expression, itemList, optionLabel);
+        }
+
+        /// <summary>
+        ///     Builds a bootstrap progress bar
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="bar"></param>
+        /// <returns></returns>
+        public static ProgressBarBuilder BuildProgressBar(this HtmlHelper helper, ProgressBar bar)
+        {
+            return new ProgressBarBuilder(helper, bar);
         }
 
         /// <summary>
