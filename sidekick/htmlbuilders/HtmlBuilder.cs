@@ -117,17 +117,6 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Begins a custom workflow process. Must include the 'bootstrap-progress.css' file in your project.
-        /// </summary>
-        /// <param name="helper"></param>
-        /// <param name="totalSteps"></param>
-        /// <returns></returns>
-        public static StepsBuilder<TModel> BeginSteps<TModel>(this HtmlHelper<TModel> helper)
-        {
-            return new StepsBuilder<TModel>(helper);
-        }
-
-        /// <summary>
         ///     Builds a Bootstrap breadcrumb
         /// </summary>
         /// <param name="helper"></param>

@@ -99,7 +99,6 @@
     <Compile Include="elements\Panel.cs" />
     <Compile Include="elements\CustomSelectList.cs" />
     <Compile Include="elements\ProgressBar.cs" />
-    <Compile Include="elements\Step.cs" />
     <Compile Include="elements\Switch.cs" />
     <Compile Include="elements\Tab.cs" />
     <Compile Include="enums\AlertType.cs" />
@@ -149,7 +148,6 @@
     <Compile Include="htmlbuilders\LabelBuilder.cs" />
     <Compile Include="htmlbuilders\ModalBuilder.cs" />
     <Compile Include="htmlbuilders\PanelBuilder.cs" />
-    <Compile Include="htmlbuilders\StepsBuilder.cs" />
     <Compile Include="htmlbuilders\SwitchBuilder.cs" />
     <Compile Include="htmlbuilders\TabsBuilder.cs" />
     <Compile Include="htmlbuilders\BuilderUtils.cs" />

@@ -107,6 +107,17 @@ namespace sidekick
         }
 
         /// <summary>
+        ///     Set the size of the modal element
+        /// </summary>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        public Modal Size(ModalSize size)
+        {
+            _modalSize = size;
+            return this;
+        }
+
+        /// <summary>
         ///     Set the html id for the error area element
         /// </summary>
         /// <param name="id"></param>

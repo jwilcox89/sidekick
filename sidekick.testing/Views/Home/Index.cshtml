@@ -163,14 +163,6 @@
     }
 }
 
-@Html.BuildHeading(HeadingSize.H2, "Steps")
-@using (var steps = Html.BeginSteps())
-{
-    @steps.AddStep("Step 1", new Icon("fa fa-truck"), "Description of the step", true)
-    @steps.AddStep("Step 2", new Icon("fa fa-briefcase"), "Description of the next step", true)
-    @steps.AddStep("Step 3", new Icon("fa fa-user"), "Description of the last step")
-}
-
 <hr />
 
 @Html.BuildHeading(HeadingSize.H2, "Input Groups")
