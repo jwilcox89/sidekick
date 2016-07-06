@@ -30,6 +30,16 @@
         }
 
         /// <summary>
+        ///     Set the global class prefix
+        /// </summary>
+        /// <param name="baseClass"></param>
+        public Switch(string baseClass)
+        {
+            _baseClass = baseClass;
+            _animate = true;
+        }
+
+        /// <summary>
         ///     The checkbox size
         /// </summary>
         /// <param name="size"></param>
@@ -167,17 +177,6 @@
         }
 
         /// <summary>
-        ///     Width of the left and right sides in pixels
-        /// </summary>
-        /// <param name="width"></param>
-        /// <returns></returns>
-        public Switch HandleWidth(string width)
-        {
-            _handleWidth = width;
-            return this;
-        }
-
-        /// <summary>
         ///     Width of the center handle in pixels
         /// </summary>
         /// <param name="width"></param>
@@ -185,28 +184,6 @@
         public Switch LabelWidth(int width)
         {
             _labelWidth = width.ToString();
-            return this;
-        }
-
-        /// <summary>
-        ///     Width of the center handle in pixels
-        /// </summary>
-        /// <param name="width"></param>
-        /// <returns></returns>
-        public Switch LabelWidth(string width)
-        {
-            _labelWidth = width;
-            return this;
-        }
-
-        /// <summary>
-        ///     Global class prefix
-        /// </summary>
-        /// <param name="class"></param>
-        /// <returns></returns>
-        public Switch BaseClass(string @class)
-        {
-            _baseClass = @class;
             return this;
         }
 

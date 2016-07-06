@@ -116,9 +116,15 @@
     @tabs.Tab(new Tab("Tennis", "fa fa-truck", "tennis"))
     @tabs.Tab(new Tab("Swimming", "fa fa-truck", "swimming"))
 
+    using (var dd = tabs.BeginTabDropdown(new Tab("Dropdown", "fa fa-star", "dropdown")))
+    {
+        @dd.Option(new Tab("Option 1", "fa fa-phone", "option1"))
+        @dd.Option(new Tab("Option 2", "", "option2"))
+    }
+
     using (tabs.BeginTab())
     {
-        <p>The baseball tab</p>
+            <p>The baseball tab</p>
     }
 
     using (tabs.BeginTab())
@@ -139,6 +145,16 @@
     using (tabs.BeginTab())
     {
         <p>The swimming tab</p>
+    }
+
+    using (tabs.BeginTab("option1"))
+    {
+        <p>Option 1</p>
+    }
+
+    using (tabs.BeginTab("option2", false))
+    {
+        <p>Option 2</p>
     }
 }
 

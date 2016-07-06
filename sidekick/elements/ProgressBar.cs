@@ -2,6 +2,9 @@
 
 namespace sidekick
 {
+    /// <summary>
+    ///     Bootstrap 'Progress Bar' element
+    /// </summary>
     public class ProgressBar
     {
         internal int _currentValue;
@@ -14,6 +17,11 @@ namespace sidekick
         internal string _stripedClass => _striped ? "progress-bar-striped" : String.Empty;
         internal string _animatedClass => _animated ? "active" : String.Empty;
 
+        /// <summary>
+        ///     DEFAULTS:
+        ///     <para>Color: Default</para>
+        /// </summary>
+        /// <param name="currentValue"></param>
         public ProgressBar(int currentValue)
         {
             _color = Colors.Default;
@@ -26,18 +34,31 @@ namespace sidekick
             _currentValue = currentValue;
         }
 
+        /// <summary>
+        ///     Set the label
+        /// </summary>
+        /// <param name="label"></param>
+        /// <returns></returns>
         public ProgressBar Label(string label)
         {
             _label = label;
             return this;
         }
 
+        /// <summary>
+        ///     Toggles the striped feature on
+        /// </summary>
+        /// <returns></returns>
         public ProgressBar Striped()
         {
             _striped = true;
             return this;
         }
 
+        /// <summary>
+        ///     Animates the progress bar
+        /// </summary>
+        /// <returns></returns>
         public ProgressBar Animated()
         {
             _animated = true;
