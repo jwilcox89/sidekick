@@ -114,7 +114,8 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     For use with the textarea, number of rows to display
+        ///     Number of rows to display
+        ///     <para>*Note: Textarea only</para>
         /// </summary>
         /// <param name="rows"></param>
         /// <returns></returns>
@@ -125,7 +126,8 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     For use with the textarea, number of columns to display
+        ///     Number of columns to display
+        ///     <para>*Note: Textarea only</para>
         /// </summary>
         /// <param name="columns"></param>
         /// <returns></returns>

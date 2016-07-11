@@ -277,7 +277,7 @@ namespace sidekick
             await Task.Run(() => ExecuteSqlScript(sql, ensureTransaction));
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             if (DB != null) DB.Dispose();
             GC.SuppressFinalize(this);
