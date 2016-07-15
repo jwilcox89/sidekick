@@ -26,9 +26,22 @@ namespace sidekick
             }
         }
 
+        /// <summary>
+        ///     Body of the panel
+        /// </summary>
+        /// <returns></returns>
         public PanelBody<TModel> BeginBody()
         {
             return new PanelBody<TModel>(_helper);
+        }
+
+        /// <summary>
+        ///     Footer of the panel
+        /// </summary>
+        /// <returns></returns>
+        public PanelFooter<TModel> BeginFooter()
+        {
+            return new PanelFooter<TModel>(_helper);
         }
 
         public void Dispose()
@@ -45,6 +58,22 @@ namespace sidekick
         {
             _helper = helper;
             _helper.WriteLine("<div class='panel-body'>");
+        }
+
+        public void Dispose()
+        {
+            _helper.WriteLine("</div>");
+        }
+    }
+
+    public class PanelFooter<TModel> : IDisposable
+    {
+        private HtmlHelper<TModel> _helper;
+
+        public PanelFooter(HtmlHelper<TModel> helper)
+        {
+            _helper = helper;
+            _helper.WriteLine("<div class='panel-footer'>");
         }
 
         public void Dispose()

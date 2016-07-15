@@ -46,7 +46,9 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Toggles the striped feature on
+        ///     Toggles the striped feature on.
+        ///     <para>Default:</para>
+        ///     <para>Animated = false</para>
         /// </summary>
         /// <returns></returns>
         public ProgressBar Striped()
@@ -56,12 +58,13 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Animates the progress bar
+        ///     Toggles the striped feature on
         /// </summary>
         /// <returns></returns>
-        public ProgressBar Animated()
+        public ProgressBar Striped(bool animated)
         {
-            _animated = true;
+            _striped = true;
+            _animated = animated;
             return this;
         }
     }
