@@ -7,6 +7,26 @@
     ViewBag.Title = "Home Page";
 }
 
+@Html.BuildHeading(HeadingSize.H2, "Cards (Only available with Bootstrap v4)")
+@using (var card = Html.BeginCard(false, false))
+{
+    using (card.BeginHeader())
+    {
+        @:Header
+    }
+
+    using (card.BeginBlock())
+    {
+        <p>block body</p>
+    }
+
+    using (card.BeginFooter())
+    {
+        @:Footer goes here
+    }
+}
+
+
 @Html.BuildHeading(HeadingSize.H2, "Progress Bar")
 @Html.BuildProgressBar(new ProgressBar(60).Label("60%")).AddStack(new ProgressBar(20, Colors.Success).Label("20%").Striped(true))
 
@@ -55,16 +75,17 @@
 
 @Html.BuildHeading(HeadingSize.H2, "Modals")
 <button id="modal-button" class="btn btn-default">Open Modal</button>
-@using (var modal = Html.Begin(new Modal("test-modal").Title("My Modal", "fa fa-edit").Body("Modal Content pt 2").SubmitButton("Submit", "fa fa-check")))
+@using (var modal = Html.Begin(new Modal("test-modal").Title("My Modal", "fa fa-edit").SubmitButton("Submit", "fa fa-check")))
 {
-    using (modal.BeginBody())
+    using (Html.BeginForm())
     {
-        <p>
-            Modal content
-        </p>
+        using (modal.BeginBody().HasFooter())
+        {
+            <p>
+                Modal content
+            </p>
+        }
     }
-
-    @modal.BuildFooter()
 }
 
 <hr />

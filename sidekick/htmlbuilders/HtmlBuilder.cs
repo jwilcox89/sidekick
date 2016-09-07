@@ -11,6 +11,32 @@ namespace sidekick
     public static class HtmlBuilder
     {
         /// <summary>
+        ///     Builds a card element (only available with Bootstrap v4)
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="helper"></param>
+        /// <param name="block"></param>
+        /// <param name="inverse"></param>
+        /// <returns></returns>
+        public static CardBuilder<TModel> BeginCard<TModel>(this HtmlHelper<TModel> helper, bool block, bool inverse)
+        {
+            return new CardBuilder<TModel>(helper, block, inverse);
+        }
+
+        /// <summary>
+        ///     Builds a card element (only available with Bootstrap v4)
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="helper"></param>
+        /// <param name="block"></param>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static CardBuilder<TModel> BeginCard<TModel>(this HtmlHelper<TModel> helper, bool block, Colors color)
+        {
+            return new CardBuilder<TModel>(helper, block, color);
+        }
+
+        /// <summary>
         ///     Builds a button dropdown
         /// </summary>
         /// <param name="helper"></param>

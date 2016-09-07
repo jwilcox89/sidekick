@@ -11,6 +11,29 @@ namespace sidekick
     public static class FormattingUtils
     {
         /// <summary>
+        ///     ToShortDateString() and ToShortTimeString() extensions combined. If DateTime is null an empty string is returned.
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static string ToShortDateTimeString(this DateTime? date)
+        {
+            if (!date.HasValue)
+                return String.Empty;
+
+            return date.Value.ToShortDateTimeString();
+        }
+
+        /// <summary>
+        ///     ToShortDateString() and ToShortTimeString() extensions combined.
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static string ToShortDateTimeString(this DateTime date)
+        {
+            return String.Format("{0} {1}", date.ToShortDateString(), date.ToShortTimeString());
+        }
+
+        /// <summary>
         ///     Insert text at the end of string. Always include a space between the original text and the text to append.
         /// </summary>
         /// <param name="original"></param>

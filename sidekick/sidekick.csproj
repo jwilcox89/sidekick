@@ -93,7 +93,6 @@
     <Compile Include="elements\Accordion.cs" />
     <Compile Include="elements\ActionLinkBase.cs" />
     <Compile Include="elements\ButtonDropdown.cs" />
-    <Compile Include="elements\Card.cs" />
     <Compile Include="elements\Checkbox.cs" />
     <Compile Include="elements\Icon.cs" />
     <Compile Include="elements\Panel.cs" />
@@ -102,6 +101,7 @@
     <Compile Include="elements\Switch.cs" />
     <Compile Include="elements\Tab.cs" />
     <Compile Include="enums\AlertType.cs" />
+    <Compile Include="enums\CardImageLocation.cs" />
     <Compile Include="enums\CheckboxType.cs" />
     <Compile Include="enums\Colors.cs" />
     <Compile Include="enums\ControlType.cs" />

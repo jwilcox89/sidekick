@@ -30,18 +30,38 @@ namespace sidekick
         ///     Body of the panel
         /// </summary>
         /// <returns></returns>
-        public PanelBody<TModel> BeginBody()
+        public PanelSection<TModel> BeginBody()
         {
-            return new PanelBody<TModel>(_helper);
+            return new PanelSection<TModel>(_helper, "panel-body");
+        }
+
+        /// <summary>
+        ///     Body of the panel
+        /// </summary>
+        /// <param name="class">Additional class(es) beyond the class required for the body</param>
+        /// <returns></returns>
+        public PanelSection<TModel> BeginBody(string @class)
+        {
+            return new PanelSection<TModel>(_helper, "panel-body", @class);
         }
 
         /// <summary>
         ///     Footer of the panel
         /// </summary>
         /// <returns></returns>
-        public PanelFooter<TModel> BeginFooter()
+        public PanelSection<TModel> BeginFooter()
         {
-            return new PanelFooter<TModel>(_helper);
+            return new PanelSection<TModel>(_helper, "panel-footer");
+        }
+
+        /// <summary>
+        ///     Footer of the panel
+        /// </summary>
+        /// <param name="class">Additional class(es) beyond the class required for the footer</param>
+        /// <returns></returns>
+        public PanelSection<TModel> BeginFooter(string @class)
+        {
+            return new PanelSection<TModel>(_helper, "panel-footer", @class);
         }
 
         public void Dispose()
@@ -50,30 +70,24 @@ namespace sidekick
         }
     }
 
-    public class PanelBody<TModel> : IDisposable
+    /// <summary>
+    ///     Build a section of the panel by providing the class for that section
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    public class PanelSection<TModel> : IDisposable
     {
         private HtmlHelper<TModel> _helper;
 
-        public PanelBody(HtmlHelper<TModel> helper)
+        public PanelSection(HtmlHelper<TModel> helper, string @class)
         {
             _helper = helper;
-            _helper.WriteLine("<div class='panel-body'>");
+            _helper.WriteLine(String.Format("<div class='{0}'>", @class));
         }
 
-        public void Dispose()
-        {
-            _helper.WriteLine("</div>");
-        }
-    }
-
-    public class PanelFooter<TModel> : IDisposable
-    {
-        private HtmlHelper<TModel> _helper;
-
-        public PanelFooter(HtmlHelper<TModel> helper)
+        public PanelSection(HtmlHelper<TModel> helper, string @class, string additionalClass)
         {
             _helper = helper;
-            _helper.WriteLine("<div class='panel-footer'>");
+            _helper.WriteLine(String.Format("<div class='{0} {1}'>", @class, additionalClass));
         }
 
         public void Dispose()

@@ -22,6 +22,7 @@ namespace sidekick
         internal Colors _submitColor;
         internal Colors _closeColor;
         internal bool _showSubmitButton;
+        internal bool _hasFooter;
 
         /// <summary>
         ///     <para>No HTML ID</para>

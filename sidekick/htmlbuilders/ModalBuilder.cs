@@ -35,7 +35,40 @@ namespace sidekick
             return new ModalBody<TModel>(_helper, _model, writeBody);
         }
 
-        public MvcHtmlString BuildFooter()
+        public void Dispose()
+        {
+            _helper.WriteLine("</div></div></div>");
+        }
+    }
+
+    public class ModalBody<TModel> : IDisposable
+    {
+        private HtmlHelper<TModel> _helper;
+        private Modal _model;
+
+        public ModalBody(HtmlHelper<TModel> helper, Modal model, bool writeBody)
+        {
+            _helper = helper;
+            _model = model;
+            _helper.WriteLine("<div class='modal-body'>");
+            if (!String.IsNullOrEmpty(model._errorAreaID))
+                _helper.WriteLine(String.Format("<div id='{0}'></div>", model._errorAreaID));
+
+            if (writeBody)
+                _helper.WriteLine(String.Format("<p>{0}</p>", model._body));
+        }
+
+        /// <summary>
+        ///     Build the footer for the modal
+        /// </summary>
+        /// <returns></returns>
+        public ModalBody<TModel> HasFooter()
+        {
+            _model._hasFooter = true;
+            return this;
+        }
+
+        private void BuildFooter()
         {
             _helper.WriteLine("<div class='modal-footer'>");
 
@@ -74,33 +107,13 @@ namespace sidekick
             }
 
             _helper.WriteLine("</div>");
-            return new MvcHtmlString(String.Empty);
-        }
-
-        public void Dispose()
-        {
-            _helper.WriteLine("</div></div></div>");
-        }
-    }
-
-    public class ModalBody<TModel> : IDisposable
-    {
-        private HtmlHelper<TModel> _helper;
-
-        public ModalBody(HtmlHelper<TModel> helper, Modal model, bool writeBody)
-        {
-            _helper = helper;
-            _helper.WriteLine("<div class='modal-body'>");
-            if (!String.IsNullOrEmpty(model._errorAreaID))
-                _helper.WriteLine(String.Format("<div id='{0}'></div>", model._errorAreaID));
-
-            if (writeBody)
-                _helper.WriteLine(String.Format("<p>{0}</p>", model._body));
         }
 
         public void Dispose()
         {
             _helper.WriteLine("</div>");
+            if (_model._hasFooter)
+                BuildFooter();
         }
     }
 }
