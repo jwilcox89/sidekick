@@ -120,6 +120,7 @@
     <Compile Include="htmlbuilders\ProgressBarBuilder.cs" />
     <Compile Include="mockup\MockupInputBuilder.cs" />
     <Compile Include="mockup\MockupHtmlBuilder.cs" />
+    <Compile Include="renderer\HtmlRenderer.cs" />
     <Compile Include="utilities\ConversionUtils.cs" />
     <Compile Include="utilities\EnumUtils.cs" />
     <Compile Include="utilities\ErrorUtils.cs" />
@@ -131,11 +132,9 @@
     <Compile Include="htmlbuilders\BreadcrumbBuilder.cs" />
     <Compile Include="htmlbuilders\CardBuilder.cs" />
     <Compile Include="htmlbuilders\CheckboxBuilder.cs" />
-    <Compile Include="htmlbuilders\ElementBuilder.cs" />
     <Compile Include="connection\NetworkConnection.cs" />
     <Compile Include="connection\NetworkConnectionManager.cs" />
     <Compile Include="connection\UserImpersonation.cs" />
-    <Compile Include="elements\IView.cs" />
     <Compile Include="utilities\GeneralUtils.cs" />
     <Compile Include="utilities\IdentityUtils.cs" />
     <Compile Include="utilities\NavUtils.cs" />
@@ -157,7 +156,7 @@
     <Compile Include="helpers\TempDataManager.cs" />
     <Compile Include="validation\ActiveDirectorySecurity.cs" />
     <Compile Include="validation\CommonRegexes.cs" />
-    <Compile Include="htmlbuilders\ViewBuilder.cs" />
+    <Compile Include="renderer\ViewBuilder.cs" />
     <Compile Include="elements\Alert.cs" />
     <Compile Include="elements\Modal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

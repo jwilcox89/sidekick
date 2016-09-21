@@ -5,9 +5,8 @@ namespace sidekick
     /// <summary>
     ///     Bootstrap 'Modal' element
     /// </summary>
-    public class Modal : IView
+    public class Modal
     {
-        public string ViewName { get; set; }
         internal ModalSize _modalSize;
         internal string _id;
         internal string _title;

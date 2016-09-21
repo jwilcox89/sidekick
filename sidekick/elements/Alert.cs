@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Web.Mvc;
 using System.Collections.Generic;
 
 namespace sidekick
@@ -7,9 +8,8 @@ namespace sidekick
     /// <summary>
     ///     Bootstrap 'Alert' element
     /// </summary>
-    public class Alert : IView
+    public class Alert
     {
-        public virtual string ViewName { get; set; }
         internal AlertType _type;
         internal bool _dismissible;
         internal string _heading;
@@ -37,6 +37,17 @@ namespace sidekick
         {
             _type = type;
             _messageList = Enumerable.Empty<string>();
+        }
+
+        /// <summary>
+        ///     Create an alert populated with a list of errors from the <see cref="ModelStateDictionary"/>
+        /// </summary>
+        /// <param name="modelState"></param>
+        public Alert(ModelStateDictionary modelState)
+        {
+            _type = AlertType.Danger;
+            _heading = "Errors!";
+            _messageList = modelState.GetModelErrors();
         }
 
         /// <summary>
