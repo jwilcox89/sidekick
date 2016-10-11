@@ -7,18 +7,11 @@ namespace sidekick
     /// </summary>
     public static class HtmlRenderer
     {
-        public static string BuildHtml<TModel>(Action<TModel> action, string viewName)
-            where TModel : new()
-        {
-            TModel element = new TModel();
-            action(element);
-
-            using (ViewBuilder builder = new ViewBuilder())
-            {
-                return builder.RenderView(viewName, element);
-            }
-        }
-
+        /// <summary>
+        ///     Render html
+        /// </summary>
+        /// <param name="viewName">Partial view to be rendered</param>
+        /// <returns></returns>
         public static string BuildHtml(string viewName)
         {
             using (ViewBuilder builder = new ViewBuilder())
@@ -27,6 +20,13 @@ namespace sidekick
             }
         }
 
+        /// <summary>
+        ///     Render html
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="element">Object to be passed into view<</param>
+        /// <param name="viewName">Partial view to be rendered</param>
+        /// <returns></returns>
         public static string BuildHtml<TModel>(TModel element, string viewName)
         {
             using (ViewBuilder builder = new ViewBuilder())
@@ -35,6 +35,14 @@ namespace sidekick
             }
         }
 
+        /// <summary>
+        ///     Render html
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="element">Object to be passed into view</param>
+        /// <param name="viewName">Partial view to be rendered</param>
+        /// <param name="tempData">Additional temp data</param>
+        /// <returns></returns>
         public static string BuildHtml<TModel>(TModel element, string viewName, object tempData)
         {
             using (ViewBuilder builder = new ViewBuilder())

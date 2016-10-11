@@ -10,8 +10,9 @@ namespace sidekick
         public ButtonDropdownBuilder(HtmlHelper helper, ButtonDropdown button)
         {
             _helper = helper;
-            _helper.WriteLine("<div class='form-group'><div class='btn-group'>");
-            _helper.WriteLine(String.Format("<button type='button' class='btn btn-{0} dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>", button._color.GetAttribute<HtmlBuilderAttribute>().Class));
+            _helper.WriteLine("<div class='form-group'>");
+            _helper.WriteLine("<div class='btn-group'>");
+            _helper.WriteLine($"<button type='button' class='btn btn-{button._color.GetAttribute<HtmlBuilderAttribute>().Class} dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>");
 
             if (button._icon == null)
             {
@@ -19,10 +20,12 @@ namespace sidekick
             }
             else
             {
-                _helper.WriteLine(String.Format("{0} {1}", new IconBuilder(button._icon).ToHtmlString(), button._title));
+                _helper.WriteLine($"{new IconBuilder(button._icon).ToHtmlString()} {button._title}");
             }
-            
-            _helper.WriteLine(" <span class='caret'></span></button>");
+
+            _helper.WriteLine(" <span class='caret'></span>");
+            _helper.WriteLine("</button>");
+
             _helper.WriteLine("<ul class='dropdown-menu'>");
         }
 

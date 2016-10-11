@@ -24,7 +24,7 @@ namespace sidekick
         {
             using (HtmlTextWriter writer = new HtmlTextWriter(new StringWriter()))
             {
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, String.Format("label label-{0}", color.GetAttribute<HtmlBuilderAttribute>().Class));
+                writer.AddAttribute(HtmlTextWriterAttribute.Class, $"label label-{color.GetAttribute<HtmlBuilderAttribute>().Class}");
                 writer.RenderBeginTag(HtmlTextWriterTag.Span);
                 writer.Write(text);
                 writer.RenderEndTag();
@@ -122,7 +122,7 @@ namespace sidekick
                 TagBuilder requiredTag = new TagBuilder("span");
                 requiredTag.Attributes.Add("class", "required");
                 requiredTag.SetInnerText("*");
-                result = String.Format("{0} {1}", result, requiredTag.ToString(TagRenderMode.Normal));
+                result = $"{result} {requiredTag.ToString(TagRenderMode.Normal)}";
             }
 
             return new MvcHtmlString(result);

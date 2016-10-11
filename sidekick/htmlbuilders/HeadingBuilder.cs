@@ -26,12 +26,12 @@ namespace sidekick
             {
                 HtmlBuilderAttribute attributes = size.GetAttribute<HtmlBuilderAttribute>();
 
-                writer.Write(String.Format("<{0}>", attributes.Tag));
+                writer.Write($"<{attributes.Tag}>");
                 writer.Write(text);
                 if (!String.IsNullOrEmpty(subtext))
-                    writer.Write(String.Format(" <span class='label label-{0}'>{1}</span>", attributes.Class, subtext));
+                    writer.Write($" <span class='label label-{attributes.Class}'>{subtext}</span>");
 
-                writer.Write(String.Format("</{0}>", attributes.Tag));
+                writer.Write($"</{attributes.Tag}>");
 
                 return new MvcHtmlString(writer.InnerWriter.ToString());
             }

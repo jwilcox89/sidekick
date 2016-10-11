@@ -20,7 +20,7 @@ namespace sidekick
             _helper = helper;
             _tabList = new Queue<Tab>();
             _helper.WriteLine("<div role='tabpanel'>");
-            _helper.WriteLine(String.Format("<ul role='tablist' class='nav {0}'>", tabType.GetAttribute<HtmlBuilderAttribute>().Class));
+            _helper.WriteLine($"<ul role='tablist' class='nav {tabType.GetAttribute<HtmlBuilderAttribute>().Class}'>");
         }
 
         public TabsBuilder(HtmlHelper<TModel> helper, TabType tabType, bool fade)
@@ -29,7 +29,7 @@ namespace sidekick
             _fade = fade;
             _tabList = new Queue<Tab>();
             _helper.WriteLine("<div role='tabpanel'>");
-            _helper.WriteLine(String.Format("<ul role='tablist' class='nav {0}'>", tabType.GetAttribute<HtmlBuilderAttribute>().Class));
+            _helper.WriteLine($"<ul role='tablist' class='nav {tabType.GetAttribute<HtmlBuilderAttribute>().Class}'>");
         }
 
         public TabsBuilder(HtmlHelper<TModel> helper, TabType tabType, bool stacked, bool justified, bool fade)
@@ -38,7 +38,9 @@ namespace sidekick
             _fade = fade;
             _tabList = new Queue<Tab>();
             _helper.WriteLine("<div role='tabpanel'>");
-            _helper.WriteLine(String.Format("<ul role='tablist' class='nav {0} {1} {2}'>", tabType.GetAttribute<HtmlBuilderAttribute>().Class, (stacked) ? "nav-stacked" : String.Empty, (justified) ? "nav-justified" : String.Empty));
+            string isStacked = (stacked) ? "nav-stacked" : String.Empty;
+            string isJustified = (justified) ? "nav-justified" : String.Empty;
+            _helper.WriteLine($"<ul role='tablist' class='nav {tabType.GetAttribute<HtmlBuilderAttribute>().Class} {isStacked} {justified}'>");
         }
 
         /// <summary>
@@ -51,11 +53,11 @@ namespace sidekick
         {
             _tabList.Enqueue(tab);
             string active = (tab.Active) ? "class='active'" : String.Empty;
-            _helper.WriteLine(String.Format("<li role='presentation' {0}>", active));
-            _helper.WriteLine(String.Format("<a href='#{0}' aria-controls='{0}' role='tab' data-toggle='tab'>", tab.Name));
+            _helper.WriteLine($"<li role='presentation' {active}>");
+            _helper.WriteLine($"<a href='#{tab.Name}' aria-controls='{tab.Name}' role='tab' data-toggle='tab'>");
 
             if (tab.Icon != null)
-                _helper.WriteLine(String.Format("{0} ", new IconBuilder(tab.Icon).ToHtmlString()));
+                _helper.WriteLine($"{new IconBuilder(tab.Icon).ToHtmlString()} ");
 
             _helper.WriteLine(tab.DisplayText);
             _helper.WriteLine("</a></li>");
@@ -147,7 +149,7 @@ namespace sidekick
             string inValue = (tab.Active && fade) ? "in" : null;
             string fadeValue = (fade) ? "fade" : null;
 
-            _helper.WriteLine(String.Format("<div role='tabpanel' class='tab-pane {0} {1} {2}' id='{3}'>", active, fadeValue, inValue, tab.Name));
+            _helper.WriteLine($"<div role='tabpanel' class='tab-pane {active} {fadeValue} {inValue}' id='{tab.Name}'>");
         }
 
         public void Dispose()
@@ -168,19 +170,19 @@ namespace sidekick
         {
             _helper = helper;
             _helper.WriteLine("<li class='dropdown' role='presentation'>");
-            _helper.WriteLine(String.Format("<a href='#' role='button' data-toggle='dropdown'>", tab.Name));
+            _helper.WriteLine("<a href='#' role='button' data-toggle='dropdown'>");
 
             if (tab.Icon != null)
-                _helper.WriteLine(String.Format("{0} ", new IconBuilder(tab.Icon).ToHtmlString()));
+                _helper.WriteLine($"{new IconBuilder(tab.Icon).ToHtmlString()} ");
 
-            _helper.WriteLine(String.Format("{0} <span class='caret'></span>", tab.DisplayText));
+            _helper.WriteLine($"{tab.DisplayText} <span class='caret'></span>");
             _helper.WriteLine("</a>");
-            _helper.WriteLine(String.Format("<ul class='dropdown-menu'>", tab.Name));
+            _helper.WriteLine("<ul class='dropdown-menu'>");
         }
 
         public MvcHtmlString Option(Tab tab)
         {
-            _helper.WriteLine(String.Format("<li><a href='#{0}' data-toggle='tab'>{1} {2}</a></li>", tab.Name, new IconBuilder(tab.Icon).ToHtmlString(), tab.DisplayText));
+            _helper.WriteLine($"<li><a href='#{tab.Name}' data-toggle='tab'>{new IconBuilder(tab.Icon).ToHtmlString()} {tab.DisplayText}</a></li>");
             return new MvcHtmlString(String.Empty);
         }
 

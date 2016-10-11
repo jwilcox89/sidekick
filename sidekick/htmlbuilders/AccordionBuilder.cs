@@ -16,7 +16,7 @@ namespace sidekick
         {
             _helper = helper;
             _accordion = accordion;
-            _helper.WriteLine(String.Format("<div class='panel-group' id='{0}' role='tablist' aria-multiselectable='true'>", _accordion._parentID));
+            _helper.WriteLine($"<div class='panel-group' id='{_accordion._parentID}' role='tablist' aria-multiselectable='true'>");
         }
 
         /// <summary>
@@ -42,16 +42,16 @@ namespace sidekick
         public AccordionPanel(HtmlHelper<TModel> helper, Accordion accordion, Panel panel)
         {
             _helper = helper;
-            _helper.WriteLine(String.Format("<div class='panel panel-{0}'>", panel._color.GetAttribute<HtmlBuilderAttribute>().Class));
-            _helper.WriteLine(String.Format("<div class='panel-heading' role='tab' id='heading{0}'>", panel._id));
+            _helper.WriteLine($"<div class='panel panel-{panel._color.GetAttribute<HtmlBuilderAttribute>().Class}'>");
+            _helper.WriteLine($"<div class='panel-heading' role='tab' id='heading{panel._id}'>");
             _helper.WriteLine("<h4 class='panel-title'>");
-            _helper.WriteLine(String.Format("<a role='button' data-toggle='collapse' data-parent='#{0}' href='#collapsed{1}' aria-expanded='false' aria-controls='{1}'>", accordion._parentID, panel._id));
+            _helper.WriteLine($"<a role='button' data-toggle='collapse' data-parent='#{accordion._parentID}' href='#collapsed{panel._id}' aria-expanded='false' aria-controls='{panel._id}'>");
             if (panel._icon != null)
                 _helper.WriteLine(new IconBuilder(panel._icon).ToHtmlString());
 
             _helper.WriteLine(panel._title);
             _helper.WriteLine("</a></h4></div>");
-            _helper.WriteLine(String.Format("<div id='collapsed{0}' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading{0}'>", panel._id));
+            _helper.WriteLine($"<div id='collapsed{panel._id}' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading{panel._id}'>");
             _helper.WriteLine("<div class='panel-body'>");
         }
 

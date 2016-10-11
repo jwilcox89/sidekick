@@ -11,20 +11,18 @@ namespace sidekick
     ///     Error logger to be used with MVC exceptions and standard exceptions. Logs error in to a database table.
     /// </summary>
     /// <typeparam name="TContext"></typeparam>
-    public static class ErrorLogger<TContext>
+    public class ErrorLogger<TContext> : BaseRepo<TContext>
         where TContext : DbContext, new()
     {
-        private static BaseRepo<TContext> DB = new BaseRepo<TContext>();
-
         /// <summary>
         ///     Logs the error using the ExceptionContext data provided.
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="ex"></param>
-        public static void LogError<TEntity>(ExceptionContext ex, string comments = null)
+        public void LogError<TEntity>(ExceptionContext ex, string comments = null)
             where TEntity : class, IErrorLog, new()
         {
-            DB.Add(new TEntity
+            Add(new TEntity
             {
                 Time = DateTime.Now,
                 Exception = ex.GetExceptionMessage(),
@@ -43,10 +41,10 @@ namespace sidekick
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="ex"></param>
         /// <param name="route"></param>
-        public static void LogError<TEntity>(_Exception ex, string comments = null)
+        public void LogError<TEntity>(_Exception ex, string comments = null)
             where TEntity : class, IErrorLog, new()
         {
-            DB.Add(new TEntity
+            Add(new TEntity
             {
                 Time = DateTime.Now,
                 Exception = ex.GetExceptionMessage(),
@@ -62,7 +60,7 @@ namespace sidekick
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="ex"></param>
         /// <returns></returns>
-        public static async Task LogErrorAsync<TEntity>(ExceptionContext ex, string comments = null)
+        public async Task LogErrorAsync<TEntity>(ExceptionContext ex, string comments = null)
             where TEntity : class, IErrorLog, new()
         {
             await Task.Run(() => LogError<TEntity>(ex, comments)).ConfigureAwait(false);
@@ -75,7 +73,7 @@ namespace sidekick
         /// <param name="ex"></param>
         /// <param name="route"></param>
         /// <returns></returns>
-        public static async Task LogErrorAsync<TEntity>(_Exception ex, string comments = null)
+        public async Task LogErrorAsync<TEntity>(_Exception ex, string comments = null)
             where TEntity : class, IErrorLog, new()
         {
             await Task.Run(() => LogError<TEntity>(ex, comments)).ConfigureAwait(false);
@@ -86,13 +84,13 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="action"></param>
-        public static void LogError<TEntity>(Action<TEntity> action)
+        public void LogError<TEntity>(Action<TEntity> action)
             where TEntity : class, IErrorLog, new()
         {
             TEntity error = new TEntity();
             action(error);
 
-            DB.Add(error).Save();
+            Add(error).Save();
         }
 
         /// <summary>
@@ -101,7 +99,7 @@ namespace sidekick
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="action"></param>
         /// <returns></returns>
-        public static async Task LogErrorAsync<TEntity>(Action<TEntity> action)
+        public async Task LogErrorAsync<TEntity>(Action<TEntity> action)
             where TEntity : class, IErrorLog, new()
         {
             await Task.Run(() => LogError<TEntity>(action)).ConfigureAwait(false);
@@ -111,10 +109,10 @@ namespace sidekick
         ///     Clears out all the log entries.
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
-        public static void ClearLogs<TEntity>()
+        public void ClearLogs<TEntity>()
             where TEntity : class, IErrorLog
         {
-            DB.Remove<TEntity>(DB.GetAll<TEntity>()).Save();
+            Remove<TEntity>(GetAll<TEntity>()).Save();
         }
 
         /// <summary>
@@ -122,7 +120,7 @@ namespace sidekick
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <returns></returns>
-        public static async Task ClearLogsAsync<TEntity>()
+        public async Task ClearLogsAsync<TEntity>()
             where TEntity : class, IErrorLog
         {
             await Task.Run(() => ClearLogs<TEntity>()).ConfigureAwait(false);

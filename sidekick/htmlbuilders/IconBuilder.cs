@@ -35,11 +35,11 @@ namespace sidekick
                 writer.RenderBeginTag(HtmlTextWriterTag.Span); // span
 
                 // being icons
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, String.Format("{0} fa-stack-2x", _icon._primaryIcon));
+                writer.AddAttribute(HtmlTextWriterAttribute.Class, $"{_icon._primaryIcon} fa-stack-2x");
                 writer.RenderBeginTag(HtmlTextWriterTag.I);
                 writer.RenderEndTag();
 
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, String.Format("{0} fa-stack-1x", _icon._secondaryIcon));
+                writer.AddAttribute(HtmlTextWriterAttribute.Class, $"{_icon._secondaryIcon} fa-stack-1x");
                 writer.RenderBeginTag(HtmlTextWriterTag.I);
                 writer.RenderEndTag();
                 // end icons
@@ -58,7 +58,7 @@ namespace sidekick
                 writer.RenderBeginTag(HtmlTextWriterTag.Span); // span
 
                 // being icons
-                writer.AddAttribute(HtmlTextWriterAttribute.Class, String.Format("{0} fa-stack-2x", _icon._primaryIcon));
+                writer.AddAttribute(HtmlTextWriterAttribute.Class, $"{_icon._primaryIcon} fa-stack-2x");
                 writer.RenderBeginTag(HtmlTextWriterTag.I);
                 writer.RenderEndTag();
 

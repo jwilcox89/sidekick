@@ -54,7 +54,7 @@ namespace sidekick
             }
 
             if (!String.IsNullOrEmpty(_helpText))
-                _helper.WriteLine(String.Format("<span class='help-block'>{0}</span>", _helpText));
+                _helper.WriteLine($"<span class='help-block'>{_helpText}</span>");
 
             if (_validation)
                 _helper.WriteLine(_helper.ValidationMessageFor(_expression));
@@ -83,7 +83,7 @@ namespace sidekick
             }
 
             if (!String.IsNullOrEmpty(_helpText))
-                _helper.WriteLine(String.Format("<span class='help-block'>{0}</span>", _helpText));
+                _helper.WriteLine($"<span class='help-block'>{_helpText}</span>");
 
             if (_validation)
                 _helper.WriteLine(_helper.ValidationMessageFor(_expression));
@@ -105,7 +105,7 @@ namespace sidekick
             _helper.WriteLine(_helper.TextAreaFor(_expression, _rows, _columns, BuilderUtils.MergeAttributes(_baseAttributes, _htmlAttributes)));
 
             if (!String.IsNullOrEmpty(_helpText))
-                _helper.WriteLine(String.Format("<span class='help-block'>{0}</span>", _helpText));
+                _helper.WriteLine($"<span class='help-block'>{_helpText}</span>");
 
             if (_validation)
                 _helper.WriteLine(_helper.ValidationMessageFor(_expression));

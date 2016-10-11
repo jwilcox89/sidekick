@@ -30,7 +30,7 @@ namespace sidekick
         /// <returns></returns>
         public static string ToShortDateTimeString(this DateTime date)
         {
-            return String.Format("{0} {1}", date.ToShortDateString(), date.ToShortTimeString());
+            return $"{date.ToShortDateString()} {date.ToShortTimeString()}";
         }
 
         /// <summary>

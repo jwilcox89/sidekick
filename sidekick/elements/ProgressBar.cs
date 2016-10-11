@@ -13,7 +13,7 @@ namespace sidekick
         internal bool _striped;
         internal bool _animated;
 
-        internal string _contextualClass => _color != Colors.Default ? String.Format("progress-bar-{0}", _color.GetAttribute<HtmlBuilderAttribute>().Class) : String.Empty;
+        internal string _contextualClass => _color != Colors.Default ? $"progress-bar-{_color.GetAttribute<HtmlBuilderAttribute>().Class}" : String.Empty;
         internal string _stripedClass => _striped ? "progress-bar-striped" : String.Empty;
         internal string _animatedClass => _animated ? "active" : String.Empty;
 

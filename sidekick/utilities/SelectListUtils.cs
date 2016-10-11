@@ -52,7 +52,29 @@ namespace sidekick
                 list.Add(new SelectListItem
                 {
                     Text = state.ToString(),
-                    Value = state.ToString()
+                    Value = state.ToString(),
+                });
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        ///     Generates a dropdown of all the United States. Abbreviations used for both display and value. 
+        /// </summary>
+        /// <param name="selectedState">Default selected state if no state already selected</param>
+        /// <returns></returns>
+        public static IEnumerable<SelectListItem> StateDropdown(UsStates selectedState)
+        {
+            IList<SelectListItem> list = new List<SelectListItem>();
+
+            foreach (UsStates state in Enum.GetValues(typeof(UsStates)))
+            {
+                list.Add(new SelectListItem
+                {
+                    Text = state.ToString(),
+                    Value = state.ToString(),
+                    Selected = state.ToString() == selectedState.ToString() ? true : false
                 });
             }
 
@@ -145,6 +167,64 @@ namespace sidekick
         }
 
         /// <summary>
+        ///     Generates a grouped dropdown list
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <param name="items"></param>
+        /// <param name="value"></param>
+        /// <param name="display"></param>
+        /// <param name="groupBy"></param>
+        /// <returns></returns>
+        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, Expression<Func<TSource, object>> value, Expression<Func<TSource, object>> display, Expression<Func<TSource, object>> groupBy)
+        {
+            return BuildSelectList(items, value.GetMemberName(), display.GetMemberName(), groupBy.GetMemberName(), null);
+        }
+
+        /// <summary>
+        ///     Generates a grouped dropdown list
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <param name="items"></param>
+        /// <param name="value"></param>
+        /// <param name="display"></param>
+        /// <param name="groupBy"></param>
+        /// <param name="selectedValue"></param>
+        /// <returns></returns>
+        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, Expression<Func<TSource, object>> value, Expression<Func<TSource, object>> display, Expression<Func<TSource, object>> groupBy, object selectedValue)
+        {
+            return BuildSelectList(items, value.GetMemberName(), display.GetMemberName(), groupBy.GetMemberName(), selectedValue);
+        }
+
+        /// <summary>
+        ///     Generates a grouped dropdown list
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <param name="items"></param>
+        /// <param name="value"></param>
+        /// <param name="display"></param>
+        /// <param name="groupBy"></param>
+        /// <returns></returns>
+        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, Expression<Func<TSource, object>> value, Expression<Func<TSource, object>> display, string groupBy)
+        {
+            return BuildSelectList(items, value.GetMemberName(), display.GetMemberName(), groupBy, null);
+        }
+
+        /// <summary>
+        ///     Generates a grouped dropdown list
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <param name="items"></param>
+        /// <param name="value"></param>
+        /// <param name="display"></param>
+        /// <param name="groupBy"></param>
+        /// <param name="selectedValue"></param>
+        /// <returns></returns>
+        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, Expression<Func<TSource, object>> value, Expression<Func<TSource, object>> display, string groupBy, object selectedValue)
+        {
+            return BuildSelectList(items, value.GetMemberName(), display.GetMemberName(), groupBy, selectedValue);
+        }
+
+        /// <summary>
         ///     Generates a dropdown list
         /// </summary>
         /// <typeparam name="TSource"></typeparam>
@@ -157,6 +237,22 @@ namespace sidekick
         {
             items = items as IList<TSource> ?? items.ToList();
             return new SelectList(items, value, display, selectedValue);
+        }
+
+        /// <summary>
+        ///     Generates a grouped dropdown list
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <param name="items"></param>
+        /// <param name="value"></param>
+        /// <param name="display"></param>
+        /// <param name="groupBy"></param>
+        /// <param name="selectedValue"></param>
+        /// <returns></returns>
+        public static SelectList BuildSelectList<TSource>(IEnumerable<TSource> items, string value, string display, string groupBy, object selectedValue)
+        {
+            items = items as IList<TSource> ?? items.ToList();
+            return new SelectList(items, value, display, groupBy, selectedValue);
         }
     }
 }

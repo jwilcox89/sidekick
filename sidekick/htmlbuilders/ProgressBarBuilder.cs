@@ -34,10 +34,10 @@ namespace sidekick
 
             foreach (ProgressBar bar in _bar)
             {
-                _helper.WriteLine(String.Format("<div class='progress-bar {0} {1} {2}' role='progressbar' style='width: {3}%;'>", bar._contextualClass, bar._stripedClass, bar._animatedClass, bar._currentValue));
+                _helper.WriteLine($"<div class='progress-bar {bar._contextualClass} {bar._stripedClass} {bar._animatedClass}' role='progressbar' style='width: {bar._currentValue}%;'>");
 
                 if (!String.IsNullOrEmpty(bar._label))
-                    _helper.WriteLine(String.Format("<span>{0}</span>", bar._label));
+                    _helper.WriteLine($"<span>{bar._label}</span>");
 
                 _helper.WriteLine("</div>");
             }

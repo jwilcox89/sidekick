@@ -11,32 +11,6 @@ namespace sidekick
     public static class HtmlBuilder
     {
         /// <summary>
-        ///     Builds a card element (only available with Bootstrap v4)
-        /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="helper"></param>
-        /// <param name="block"></param>
-        /// <param name="inverse"></param>
-        /// <returns></returns>
-        public static CardBuilder<TModel> BeginCard<TModel>(this HtmlHelper<TModel> helper, bool block, bool inverse)
-        {
-            return new CardBuilder<TModel>(helper, block, inverse);
-        }
-
-        /// <summary>
-        ///     Builds a card element (only available with Bootstrap v4)
-        /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="helper"></param>
-        /// <param name="block"></param>
-        /// <param name="color"></param>
-        /// <returns></returns>
-        public static CardBuilder<TModel> BeginCard<TModel>(this HtmlHelper<TModel> helper, bool block, Colors color)
-        {
-            return new CardBuilder<TModel>(helper, block, color);
-        }
-
-        /// <summary>
         ///     Builds a button dropdown
         /// </summary>
         /// <param name="helper"></param>
@@ -143,6 +117,17 @@ namespace sidekick
         }
 
         /// <summary>
+        ///     Begins a custom workflow process. Must include the 'bootstrap-progress.css' file in your project.
+        /// </summary>
+        /// <param name="helper"></param>
+        /// <param name="totalSteps"></param>
+        /// <returns></returns>
+        public static StepsBuilder<TModel> BeginSteps<TModel>(this HtmlHelper<TModel> helper)
+        {
+            return new StepsBuilder<TModel>(helper);
+        }
+
+        /// <summary>
         ///     Builds a Bootstrap breadcrumb
         /// </summary>
         /// <param name="helper"></param>
@@ -150,6 +135,18 @@ namespace sidekick
         public static BreadcrumbBuilder<TModel> BeginBreadcrumbs<TModel>(this HtmlHelper<TModel> helper)
         {
             return new BreadcrumbBuilder<TModel>(helper);
+        }
+
+        /// <summary>
+        ///     Builds a Bootstrap breadcrumb
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="helper"></param>
+        /// <param name="additionalClass"></param>
+        /// <returns></returns>
+        public static BreadcrumbBuilder<TModel> BeginBreadcrumbs<TModel>(this HtmlHelper<TModel> helper, string additionalClass)
+        {
+            return new BreadcrumbBuilder<TModel>(helper, additionalClass);
         }
 
         /// <summary>

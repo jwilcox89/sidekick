@@ -17,15 +17,21 @@ namespace sidekick
             _helper.WriteLine("<ol class='breadcrumb'>");
         }
 
+        public BreadcrumbBuilder(HtmlHelper<TModel> helper, string @class)
+        {
+            _helper = helper;
+            _helper.WriteLine($"<ol class='breadcrumb {@class}'>");
+        }
+
         public MvcHtmlString AddCrumb(string url, string title, bool active = false)
         {
             if (active)
             {
-                _helper.WriteLine(String.Format("<li class='active'>{0}</li>", title));
+                _helper.WriteLine($"<li class='active'>{title}</li>");
             }
             else
             {
-                _helper.WriteLine(String.Format("<li><a href='{0}'>{1}</a></li>", url, title));
+                _helper.WriteLine($"<li><a href='{url}' >{title}</a></li>");
             }
 
             return new MvcHtmlString(String.Empty);

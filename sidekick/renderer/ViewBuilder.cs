@@ -101,7 +101,7 @@ namespace sidekick
 
         public void Dispose()
         {
-            GC.SuppressFinalize(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

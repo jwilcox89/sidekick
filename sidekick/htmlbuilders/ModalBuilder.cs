@@ -16,12 +16,12 @@ namespace sidekick
         {
             _model = modal;
             _helper = helper;
-            _helper.WriteLine(String.Format("<div class='modal fade' id='{0}'>", _model._id));
-            _helper.WriteLine(String.Format("<div class='modal-dialog {0}'>", _model._modalSize.GetAttribute<HtmlBuilderAttribute>().Class));
+            _helper.WriteLine($"<div class='modal fade' id='{_model._id}'>");
+            _helper.WriteLine($"<div class='modal-dialog {_model._modalSize.GetAttribute<HtmlBuilderAttribute>().Class}'>");
             _helper.WriteLine("<div class='modal-content'>");
             _helper.WriteLine("<div class='modal-header'>");
             _helper.WriteLine("<button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>");
-            _helper.WriteLine(String.Format("<h4 class='modal-title'>{0} {1}</h4>", new IconBuilder(_model._icon).ToHtmlString(), _model._title));
+            _helper.WriteLine($"<h4 class='modal-title'>{new IconBuilder(_model._icon).ToHtmlString()} {_model._title}</h4>");
             _helper.WriteLine("</div>");
         }
 
@@ -52,10 +52,10 @@ namespace sidekick
             _model = model;
             _helper.WriteLine("<div class='modal-body'>");
             if (!String.IsNullOrEmpty(model._errorAreaID))
-                _helper.WriteLine(String.Format("<div id='{0}'></div>", model._errorAreaID));
+                _helper.WriteLine($"<div id='{model._errorAreaID}'></div>");
 
             if (writeBody)
-                _helper.WriteLine(String.Format("<p>{0}</p>", model._body));
+                _helper.WriteLine($"<p>{model._body}</p>");
         }
 
         /// <summary>
@@ -76,16 +76,11 @@ namespace sidekick
             {
                 if (_model._submitIcon == null)
                 {
-                    _helper.WriteLine(String.Format("<button type='submit' class='btn btn-{0}'>{1}</button>",
-                                            _model._submitColor.GetAttribute<HtmlBuilderAttribute>().Class,
-                                            _model._submitText));
+                    _helper.WriteLine($"<button type='submit' class='btn btn-{_model._submitColor.GetAttribute<HtmlBuilderAttribute>().Class}'>{_model._submitText}</button>");
                 }
                 else
                 {
-                    _helper.WriteLine(String.Format("<button type='submit' class='btn btn-{0}'>{2} {1}</button>",
-                        _model._submitColor.GetAttribute<HtmlBuilderAttribute>().Class,
-                        _model._submitText,
-                        new IconBuilder(_model._submitIcon).ToHtmlString()));
+                    _helper.WriteLine($"<button type='submit' class='btn btn-{_model._submitColor.GetAttribute<HtmlBuilderAttribute>().Class}'>{new IconBuilder(_model._submitIcon).ToHtmlString()} {_model._submitText} </button>");
                 }
             }
 
@@ -93,16 +88,11 @@ namespace sidekick
             {
                 if (_model._closeIcon == null)
                 {
-                    _helper.WriteLine(String.Format("<button type='button' class='btn btn-{0}' data-dismiss='modal'>{1}</button>",
-                                            _model._closeColor.GetAttribute<HtmlBuilderAttribute>().Class,
-                                            _model._closeText));
+                    _helper.WriteLine($"<button type='button' class='btn btn-{_model._closeColor.GetAttribute<HtmlBuilderAttribute>().Class}' data-dismiss='modal'>{_model._closeText}</button>");
                 }
                 else
                 {
-                    _helper.WriteLine(String.Format("<button type='button' class='btn btn-{0}' data-dismiss='modal'>{2} {1}</button>",
-                        _model._closeColor.GetAttribute<HtmlBuilderAttribute>().Class,
-                        _model._closeText,
-                        new IconBuilder(_model._closeIcon).ToHtmlString()));
+                    _helper.WriteLine($"<button type='button' class='btn btn-{_model._closeColor.GetAttribute<HtmlBuilderAttribute>().Class}' data-dismiss='modal'>{new IconBuilder(_model._closeIcon).ToHtmlString()} {_model._closeText}</button>");
                 }
             }
 

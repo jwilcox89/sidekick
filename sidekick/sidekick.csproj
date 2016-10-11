@@ -132,9 +132,7 @@
     <Compile Include="htmlbuilders\BreadcrumbBuilder.cs" />
     <Compile Include="htmlbuilders\CardBuilder.cs" />
     <Compile Include="htmlbuilders\CheckboxBuilder.cs" />
-    <Compile Include="connection\NetworkConnection.cs" />
     <Compile Include="connection\NetworkConnectionManager.cs" />
-    <Compile Include="connection\UserImpersonation.cs" />
     <Compile Include="utilities\GeneralUtils.cs" />
     <Compile Include="utilities\IdentityUtils.cs" />
     <Compile Include="utilities\NavUtils.cs" />
@@ -153,7 +151,6 @@
     <Compile Include="htmlbuilders\FormGroupBuilder.cs" />
     <Compile Include="elements\FormControl.cs" />
     <Compile Include="utilities\RenderUtils.cs" />
-    <Compile Include="helpers\TempDataManager.cs" />
     <Compile Include="validation\ActiveDirectorySecurity.cs" />
     <Compile Include="validation\CommonRegexes.cs" />
     <Compile Include="renderer\ViewBuilder.cs" />

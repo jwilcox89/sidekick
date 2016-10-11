@@ -29,7 +29,7 @@ namespace sidekick
             }
 
             if (!AcceptedFileExtensions.Any(x => x.GetAttribute<ExtensionAttribute>().Extension == upload.FileName.GetFileExtention()))
-                return new ValidationResult(String.Format("Template file must be in one of these formats: {0}", String.Join(", ", AcceptedFileExtensions.Select(x => x))), new[] { validationContext.MemberName });
+                return new ValidationResult($"Template file must be in one of these formats: {String.Join(", ", AcceptedFileExtensions.Select(x => x))}", new[] { validationContext.MemberName });
 
             return ValidationResult.Success;
         }

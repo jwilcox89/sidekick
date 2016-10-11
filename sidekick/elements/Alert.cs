@@ -51,6 +51,19 @@ namespace sidekick
         }
 
         /// <summary>
+        ///     Create an alert populated with a list of errors from the <see cref="ModelStateDictionary"/>
+        /// </summary>
+        /// <param name="modelState"></param>
+        /// <param name="type">Custom <see cref="AlertType"/></param>
+        /// <param name="heading">Custom heading</param>
+        public Alert(ModelStateDictionary modelState, AlertType type, string heading)
+        {
+            _type = type;
+            _heading = heading;
+            _messageList = modelState.GetModelErrors();
+        }
+
+        /// <summary>
         ///     Set body of alert
         /// </summary>
         /// <param name="text"></param>

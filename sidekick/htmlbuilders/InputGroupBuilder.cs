@@ -140,7 +140,7 @@ namespace sidekick
             if (_label)
                 _helper.WriteLine(_helper.LabelForNoColon(_expression, _required));
 
-            _helper.WriteLine(String.Format("<div class='input-group {0} {1}' id='{2}'>", _inputGroupSize.GetAttribute<HtmlBuilderAttribute>().Class, _datetimepickerClass, _datetimepickerId));
+            _helper.WriteLine($"<div class='input-group {_inputGroupSize.GetAttribute<HtmlBuilderAttribute>().Class} {_datetimepickerClass}' id='{_datetimepickerId}'>");
 
             if (_prependIcon != null || !String.IsNullOrEmpty(_prependText))
             {
@@ -150,7 +150,7 @@ namespace sidekick
                     _helper.WriteLine(new IconBuilder(_prependIcon).ToHtmlString());
 
                 if (!String.IsNullOrEmpty(_prependText))
-                    _helper.WriteLine(String.Format(" {0}", _prependText));
+                    _helper.WriteLine($" {_prependText}");
 
                 _helper.WriteLine("</span>");
             }
@@ -172,7 +172,7 @@ namespace sidekick
                     _helper.WriteLine(new IconBuilder(_appendIcon).ToHtmlString());
 
                 if (!String.IsNullOrEmpty(_appendText))
-                    _helper.WriteLine(String.Format(" {0}", _appendText));
+                    _helper.WriteLine($" {_appendText}");
 
                 _helper.WriteLine("</span>");
             }
@@ -197,7 +197,7 @@ namespace sidekick
             if (_label)
                 _helper.WriteLine(_helper.LabelForNoColon(_expression, _required));
 
-            _helper.WriteLine(String.Format("<div class='input-group {0} {1}' id='{2}'>", _inputGroupSize.GetAttribute<HtmlBuilderAttribute>().Class, _datetimepickerClass, _datetimepickerId));
+            _helper.WriteLine($"<div class='input-group {_inputGroupSize.GetAttribute<HtmlBuilderAttribute>().Class} {_datetimepickerClass}' id='{_datetimepickerId}'>");
 
             if (_prependIcon != null || !String.IsNullOrEmpty(_prependText))
             {
@@ -207,7 +207,7 @@ namespace sidekick
                     _helper.WriteLine(new IconBuilder(_prependIcon).ToHtmlString());
 
                 if (!String.IsNullOrEmpty(_prependText))
-                    _helper.WriteLine(String.Format(" {0}", _prependText));
+                    _helper.WriteLine($" {_prependText}");
 
                 _helper.WriteLine("</span>");
             }
@@ -222,7 +222,7 @@ namespace sidekick
                     _helper.WriteLine(new IconBuilder(_appendIcon).ToHtmlString());
 
                 if (!String.IsNullOrEmpty(_appendText))
-                    _helper.WriteLine(String.Format(" {0}", _appendText));
+                    _helper.WriteLine($" {_appendText}");
 
                 _helper.WriteLine("</span>");
             }
@@ -239,8 +239,8 @@ namespace sidekick
 
         public string ToHtmlString()
         {
-            return (_selectListItems == null) ? 
-                   BuildTextBoxInputGroup().ToString() : 
+            return (_selectListItems == null) ?
+                   BuildTextBoxInputGroup().ToString() :
                    BuildDropdownInputGroup().ToString();
         }
     }

@@ -14,14 +14,11 @@ namespace sidekick
         public PanelBuilder(HtmlHelper<TModel> helper, Panel panel)
         {
             _helper = helper;
-            _helper.WriteLine(String.Format("<div class='panel panel-{0} {1}'>", panel._color.GetAttribute<HtmlBuilderAttribute>().Class, panel._class));
+            _helper.WriteLine($"<div class='panel panel-{panel._color.GetAttribute<HtmlBuilderAttribute>().Class} {panel._class}'>");
             if (!String.IsNullOrEmpty(panel._title) || panel._icon != null)
             {
                 _helper.WriteLine("<div class='panel-heading'>");
-                _helper.WriteLine(String.Format("<{0} class='panel-title'>{1} {2}</{0}>",
-                    panel._headingSize.GetAttribute<HtmlBuilderAttribute>().Tag,
-                    new IconBuilder(panel._icon).ToHtmlString(),
-                    panel._title));
+                _helper.WriteLine($"<{panel._headingSize.GetAttribute<HtmlBuilderAttribute>().Tag} class='panel-title'>{new IconBuilder(panel._icon).ToHtmlString()} {panel._title}</{panel._headingSize.GetAttribute<HtmlBuilderAttribute>().Tag}>");
                 _helper.WriteLine("</div>");
             }
         }
@@ -81,13 +78,13 @@ namespace sidekick
         public PanelSection(HtmlHelper<TModel> helper, string @class)
         {
             _helper = helper;
-            _helper.WriteLine(String.Format("<div class='{0}'>", @class));
+            _helper.WriteLine($"<div class='{@class}'>");
         }
 
         public PanelSection(HtmlHelper<TModel> helper, string @class, string additionalClass)
         {
             _helper = helper;
-            _helper.WriteLine(String.Format("<div class='{0} {1}'>", @class, additionalClass));
+            _helper.WriteLine($"<div class='{@class} {additionalClass}'>");
         }
 
         public void Dispose()

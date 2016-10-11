@@ -30,7 +30,7 @@ namespace sidekick
         public string ToHtmlString()
         {
             string link = _helper.ActionLink(REPLACEMENT_TEXT, _action, _controller, _routeValues, _htmlAttributes).ToString();
-            return link.Replace(REPLACEMENT_TEXT, String.Format("{0} {1}", new IconBuilder(_icon).ToHtmlString(), _text));
+            return link.Replace(REPLACEMENT_TEXT, $"{new IconBuilder(_icon).ToHtmlString()} {_text}");
         }
     }
 }

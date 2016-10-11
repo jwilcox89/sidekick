@@ -17,12 +17,12 @@ namespace sidekick
         {
             _helper = helper;
             _model = alert;
-            _helper.WriteLine(String.Format("<div class='alert {0}'>", _model._alertClass));
+            _helper.WriteLine($"<div class='alert {_model._alertClass}'>");
 
             if (_model._dismissible)
                 _helper.WriteLine("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
 
-            _helper.WriteLine(String.Format("<strong><i class='{0}'></i>&nbsp;{1}</strong>", _model._type.GetAttribute<HtmlBuilderAttribute>().Icon, _model._heading));
+            _helper.WriteLine($"<strong><i class='{_model._type.GetAttribute<HtmlBuilderAttribute>().Icon}'></i>&nbsp;{_model._heading}</strong>");
         }
 
         public MvcHtmlString WriteBody()
@@ -35,7 +35,7 @@ namespace sidekick
 
                 foreach (string message in _model._messageList)
                 {
-                    _helper.WriteLine(String.Format("<li>{0}</li>", message));
+                    _helper.WriteLine($"<li>{message}</li>");
                 }
 
                 _helper.WriteLine("</ul>");
