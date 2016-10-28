@@ -8,27 +8,38 @@ namespace sidekick
     /// </summary>
     public class CustomSelectList
     {
-        private IList<SelectListItem> _items;
-        public IList<SelectListItem> Items => _items;
+        public IList<SelectListItem> Items { get; set; }
 
         public CustomSelectList(string text, string value)
         {
-            _items = new List<SelectListItem>();
-            _items.Add(new SelectListItem
+            Items = new List<SelectListItem>();
+            Items.Add(new SelectListItem
             {
                 Text = text,
                 Value = value
             });
         }
 
+        public CustomSelectList(SelectListItem option)
+        {
+            Items = new List<SelectListItem>();
+            Items.Add(option);
+        }
+
         public CustomSelectList Add(string text, string value)
         {
-            _items.Add(new SelectListItem
+            Items.Add(new SelectListItem
             {
                 Text = text,
                 Value = value
             });
 
+            return this;
+        }
+
+        public CustomSelectList Add(SelectListItem option)
+        {
+            Items.Add(option);
             return this;
         }
     }

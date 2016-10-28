@@ -25,6 +25,17 @@
 
         /// <summary>
         ///     DEFAULTS:
+        ///     <para>HeadingSize = H3</para>
+        /// </summary>
+        /// <param name="color"></param>
+        public Panel(Colors color)
+        {
+            _color = color;
+            _headingSize = HeadingSize.H3;
+        }
+
+        /// <summary>
+        ///     DEFAULTS:
         ///     <para>Color = Default</para>
         ///     <para>HeadingSize = H3</para>
         /// </summary>
@@ -37,6 +48,19 @@
         }
 
         /// <summary>
+        ///     DEFAULTS:
+        ///     <para>HeadingSize: H3</para>
+        /// </summary>
+        /// <param name="panelID"></param>
+        /// <param name="color"></param>
+        public Panel(string panelID, Colors color)
+        {
+            _id = panelID;
+            _color = color;
+            _headingSize = HeadingSize.H3;
+        }
+
+        /// <summary>
         ///     Set the class for the panel
         /// </summary>
         /// <param name="class"></param>
@@ -44,17 +68,6 @@
         public Panel Class(string @class)
         {
             _class = @class;
-            return this;
-        }
-
-        /// <summary>
-        ///     Set the color of the panel
-        /// </summary>
-        /// <param name="color"></param>
-        /// <returns></returns>
-        public Panel Color(Colors color)
-        {
-            _color = color;
             return this;
         }
 

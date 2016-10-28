@@ -15,18 +15,17 @@ namespace sidekick
     public class BaseRepo<TContext> : IDisposable
         where TContext : DbContext, new()
     {
-        private TContext _context;
         /// <summary>
         ///     Reference to the database context.
         /// </summary>
-        protected TContext DB => _context = _context ?? new TContext();
+        protected TContext Context { get; set; }
 
         /// <summary>
         ///     Generates a new instance of the specified database context.
         /// </summary>
         public BaseRepo()
         {
-            _context = new TContext();
+            Context = new TContext();
         }
 
         /// <summary>
@@ -35,7 +34,7 @@ namespace sidekick
         /// <param name="context"></param>
         public BaseRepo(TContext context)
         {
-            _context = context;
+            Context = context;
         }
 
         /// <summary>
@@ -47,7 +46,7 @@ namespace sidekick
         public TEntity Get<TEntity>(params object[] id)
             where TEntity : class
         {
-            return DB.Set<TEntity>().Find(id);
+            return Context.Set<TEntity>().Find(id);
         }
 
         /// <summary>
@@ -59,7 +58,7 @@ namespace sidekick
         public async Task<TEntity> GetAsync<TEntity>(params object[] id)
             where TEntity : class
         {
-            return await DB.Set<TEntity>().FindAsync(id);
+            return await Context.Set<TEntity>().FindAsync(id);
         }
 
         /// <summary>
@@ -70,7 +69,7 @@ namespace sidekick
         public IQueryable<TEntity> GetAll<TEntity>()
             where TEntity : class
         {
-            return DB.Set<TEntity>();
+            return Context.Set<TEntity>();
         }
 
         /// <summary>
@@ -93,7 +92,7 @@ namespace sidekick
         public IQueryable<TEntity> FindBy<TEntity>(Expression<Func<TEntity, bool>> query)
             where TEntity : class
         {
-            return DB.Set<TEntity>().Where(query);
+            return Context.Set<TEntity>().Where(query);
         }
 
         /// <summary>
@@ -116,19 +115,19 @@ namespace sidekick
         public BaseRepo<TContext> Add<TEntity>(TEntity entity)
             where TEntity : class
         {
-            DB.Set<TEntity>().Add(entity);
+            Context.Set<TEntity>().Add(entity);
             return this;
         }
 
         /// <summary>
-        ///     Adds a list of entities to teh specified set.
+        ///     Adds a list of entities to the specified set.
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="entities"></param>
         public BaseRepo<TContext> Add<TEntity>(IEnumerable<TEntity> collection)
             where TEntity : class
         {
-            DB.Set<TEntity>().AddRange(collection);
+            Context.Set<TEntity>().AddRange(collection);
             return this;
         }
 
@@ -140,7 +139,7 @@ namespace sidekick
         public BaseRepo<TContext> Remove<TEntity>(TEntity entity)
             where TEntity : class
         {
-            DB.Set<TEntity>().Remove(entity);
+            Context.Set<TEntity>().Remove(entity);
             return this;
         }
 
@@ -152,7 +151,7 @@ namespace sidekick
         public BaseRepo<TContext> Remove<TEntity>(IEnumerable<TEntity> collection)
             where TEntity : class
         {
-            DB.Set<TEntity>().RemoveRange(collection);
+            Context.Set<TEntity>().RemoveRange(collection);
             return this;
         }
 
@@ -232,11 +231,11 @@ namespace sidekick
         {
             try
             {
-                return DB.SaveChanges();
+                return Context.SaveChanges();
             }
             catch (Exception ex)
             {
-                throw new RepoException(ex, DB.GetValidationErrors());
+                throw new RepoException(ex, Context.GetValidationErrors());
             }
         }
 
@@ -253,33 +252,26 @@ namespace sidekick
         ///     Execute a custom SQL script on the database.
         /// </summary>
         /// <param name="sql"></param>
-        /// <param name="ensureTransaction"></param>
-        public void ExecuteSqlScript(string sql, bool ensureTransaction = true)
+        /// <returns></returns>
+        public void ExecuteSql(string sql)
         {
-            if (ensureTransaction)
-            {
-                DB.Database.ExecuteSqlCommand(sql);
-            }
-            else
-            {
-                DB.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction, sql);
-            }
+            Context.Database.ExecuteSqlCommand(sql);
         }
 
         /// <summary>
         ///     Execute a custom SQL script on the database.
         /// </summary>
         /// <param name="sql"></param>
-        /// <param name="ensureTransaction"></param>
+        /// <param name="behavior"></param>
         /// <returns></returns>
-        public async Task ExecuteSqlScriptAsync(string sql, bool ensureTransaction = true)
+        public void ExecuteSql(string sql, TransactionalBehavior behavior)
         {
-            await Task.Run(() => ExecuteSqlScript(sql, ensureTransaction));
+            Context.Database.ExecuteSqlCommand(behavior, sql);
         }
 
         public void Dispose()
         {
-            _context?.Dispose();
+            Context?.Dispose();
             GC.SuppressFinalize(this);
         }
     }

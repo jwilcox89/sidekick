@@ -7,7 +7,7 @@
     ViewBag.Title = "Home Page";
 }
 
-@Html.BuildHeading(HeadingSize.H2, "Cards (Only available with Bootstrap v4)")
+@*@Html.BuildHeading(HeadingSize.H2, "Cards (Only available with Bootstrap v4)")
 @using (var card = Html.BeginCard(false, false))
 {
     using (card.BeginHeader())
@@ -24,7 +24,7 @@
     {
         @:Footer goes here
     }
-}
+}*@
 
 
 @Html.BuildHeading(HeadingSize.H2, "Progress Bar")
@@ -194,12 +194,12 @@
         <p>The content for the first section </p>
     }
 
-    using (accordion.BeginPanel(new Panel("2").Title("Section 2").Color(Colors.Danger)))
+    using (accordion.BeginPanel(new Panel("2", Colors.Danger).Title("Section 2")))
     {
         <p>The content for second section</p>
     }
 
-    using (accordion.BeginPanel(new Panel("3").Title("Section 3").Color(Colors.Success)))
+    using (accordion.BeginPanel(new Panel("3", Colors.Success).Title("Section 3")))
     {
         <p>The content for third section</p>
     }

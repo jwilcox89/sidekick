@@ -9,6 +9,16 @@ namespace sidekick
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
     public class NoFutureDateAttribute : ValidationAttribute
     {
+        public NoFutureDateAttribute()
+            : base("Date cannot be a future date")
+        {
+        }
+
+        public NoFutureDateAttribute(string errorMessage)
+            : base(errorMessage)
+        {
+        }
+
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             if (value == null)
@@ -16,7 +26,7 @@ namespace sidekick
 
             DateTime date = Convert.ToDateTime(value);
             return date > DateTime.Now ?
-                   new ValidationResult("Date cannot be a future date", new[] { validationContext.MemberName }) :
+                   new ValidationResult(ErrorMessage, new[] { validationContext.MemberName }) :
                    ValidationResult.Success;
         }
     }

@@ -19,8 +19,8 @@ namespace sidekick
         /// <summary>
         ///     Class used with alert
         /// </summary>
-        internal string _alertClass => (_dismissible) 
-            ? _type.GetAttribute<HtmlBuilderAttribute>().Class.Insert("alert-dismissable") 
+        internal string _alertClass => _dismissible
+            ? _type.GetAttribute<HtmlBuilderAttribute>().Class.Insert("alert-dismissable")
             : _type.GetAttribute<HtmlBuilderAttribute>().Class;
 
         /// <summary>
@@ -71,17 +71,6 @@ namespace sidekick
         public Alert Body(string text)
         {
             _body = text;
-            return this;
-        }
-
-        /// <summary>
-        ///     Set the type of alert
-        /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        public Alert Type(AlertType type)
-        {
-            _type = type;
             return this;
         }
 
