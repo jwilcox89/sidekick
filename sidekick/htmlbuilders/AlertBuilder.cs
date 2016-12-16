@@ -11,48 +11,43 @@ namespace sidekick
     public class AlertBuilder<TModel> : IDisposable
     {
         private HtmlHelper<TModel> _helper;
-        private Alert _model;
+        private Alert _alert;
 
         public AlertBuilder(HtmlHelper<TModel> helper, Alert alert)
         {
             _helper = helper;
-            _model = alert;
-            _helper.WriteLine($"<div class='alert {_model._alertClass}'>");
+            _alert = alert;
+            _helper.WriteLine($"<div class='alert {_alert._alertClass}'>");
 
-            if (_model._dismissible)
+            if (_alert._dismissible)
                 _helper.WriteLine("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
 
-            _helper.WriteLine($"<strong><i class='{_model._type.GetAttribute<HtmlBuilderAttribute>().Icon}'></i>&nbsp;{_model._heading}</strong>");
+            _helper.WriteLine($"<strong><i class='{_alert._type.GetAttribute<HtmlBuilderAttribute>().Icon}'></i>&nbsp;{_alert._heading}</strong>");
         }
 
-        public MvcHtmlString WriteBody()
+        public MvcHtmlString WriteMessageList()
         {
-            _helper.WriteLine("<p>");
-
-            if (_model._messageList.Any())
+            if (_alert._messageList.Any())
             {
                 _helper.WriteLine("<ul>");
 
-                foreach (string message in _model._messageList)
+                foreach (string message in _alert._messageList)
                 {
                     _helper.WriteLine($"<li>{message}</li>");
                 }
 
                 _helper.WriteLine("</ul>");
             }
-            else
-            {
-                if (String.IsNullOrEmpty(_model._body))
-                {
-                    _helper.WriteLine("No errors!");
-                }
-                else
-                {
-                    _helper.WriteLine(_model._body);
-                }
-            }
 
-            _helper.WriteLine("</p>");
+            return new MvcHtmlString(String.Empty);
+        }
+
+        public MvcHtmlString WriteBody()
+        {
+            if (!String.IsNullOrEmpty(_alert._body))
+            {
+                _helper.WriteLine(_alert._body);
+            }
 
             return new MvcHtmlString(String.Empty);
         }

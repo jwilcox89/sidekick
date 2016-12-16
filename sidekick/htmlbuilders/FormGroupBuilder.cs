@@ -37,11 +37,8 @@ namespace sidekick
         {
             _helper.WriteLine("<div class='form-group'>");
 
-            if (_labelWithColon)
-                _helper.WriteLine(_helper.LabelForWithColon(_expression, _required));
-
             if (_label)
-                _helper.WriteLine(_helper.LabelForNoColon(_expression, _required));
+                _helper.WriteLine(_helper.LabelFor(_expression, _labelAppend, _required));
 
             switch (_type)
             {
@@ -67,11 +64,8 @@ namespace sidekick
         {
             _helper.WriteLine("<div class='form-group'>");
 
-            if (_labelWithColon)
-                _helper.WriteLine(_helper.LabelForWithColon(_expression, _required));
-
             if (_label)
-                _helper.WriteLine(_helper.LabelForNoColon(_expression, _required));
+                _helper.WriteLine(_helper.LabelFor(_expression, _labelAppend, _required));
 
             if (_multiselect)
             {
@@ -96,11 +90,8 @@ namespace sidekick
         {
             _helper.WriteLine("<div class='form-group'>");
 
-            if (_labelWithColon)
-                _helper.WriteLine(_helper.LabelForWithColon(_expression, _required));
-
             if (_label)
-                _helper.WriteLine(_helper.LabelForNoColon(_expression, _required));
+                _helper.WriteLine(_helper.LabelFor(_expression, _labelAppend, _required));
 
             _helper.WriteLine(_helper.TextAreaFor(_expression, _rows, _columns, BuilderUtils.MergeAttributes(_baseAttributes, _htmlAttributes)));
 

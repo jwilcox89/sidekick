@@ -8,13 +8,13 @@ namespace sidekick
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class FileUploadAttribute : ValidationAttribute
     {
-        public FileType[] AcceptedFileExtensions { get; set; }
+        public string[] AcceptedFileExtensions { get; set; }
         public bool Required { get; set; }
 
-        public FileUploadAttribute(bool required, params FileType[] fileTypes)
+        public FileUploadAttribute(bool required, params string[] acceptedExtensions)
         {
             Required = required;
-            AcceptedFileExtensions = fileTypes;
+            AcceptedFileExtensions = acceptedExtensions;
         }
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
@@ -28,7 +28,7 @@ namespace sidekick
                 return ValidationResult.Success;
             }
 
-            if (!AcceptedFileExtensions.Any(x => x.GetAttribute<ExtensionAttribute>().Extension == upload.FileName.GetFileExtention()))
+            if (!AcceptedFileExtensions.Any(x => x == upload.FileName.GetFileExtention()))
                 return new ValidationResult($"Template file must be in one of these formats: {String.Join(", ", AcceptedFileExtensions.Select(x => x))}", new[] { validationContext.MemberName });
 
             return ValidationResult.Success;

@@ -26,11 +26,20 @@ namespace sidekick
         }
 
         /// <summary>
+        ///     Begins the body section of the modal
+        /// </summary>
+        /// <returns></returns>
+        public ModalBody<TModel> BeginBody()
+        {
+            return BeginBody(false);
+        }
+
+        /// <summary>
         ///     Make 'writeBody' parameter true if you want to use the body content inside the Modal object. False if you wish to write the HTML for the modal.
         /// </summary>
         /// <param name="writeBody"></param>
         /// <returns></returns>
-        public ModalBody<TModel> BeginBody(bool writeBody = false)
+        public ModalBody<TModel> BeginBody(bool writeBody)
         {
             return new ModalBody<TModel>(_helper, _model, writeBody);
         }

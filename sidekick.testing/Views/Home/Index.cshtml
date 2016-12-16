@@ -7,30 +7,10 @@
     ViewBag.Title = "Home Page";
 }
 
-@*@Html.BuildHeading(HeadingSize.H2, "Cards (Only available with Bootstrap v4)")
-@using (var card = Html.BeginCard(false, false))
-{
-    using (card.BeginHeader())
-    {
-        @:Header
-    }
-
-    using (card.BeginBlock())
-    {
-        <p>block body</p>
-    }
-
-    using (card.BeginFooter())
-    {
-        @:Footer goes here
-    }
-}*@
-
-
-@Html.BuildHeading(HeadingSize.H2, "Progress Bar")
+<h2>Progress Bar</h2>
 @Html.BuildProgressBar(new ProgressBar(60).Label("60%")).AddStack(new ProgressBar(20, Colors.Success).Label("20%").Striped(true))
 
-@Html.BuildHeading(HeadingSize.H2, "Button Dropdown")
+<h2>Button Dropdown</h2>
 @using (Html.Begin(new ButtonDropdown().Title("My Menu", "fa fa-edit")))
 {
     <li>
@@ -44,15 +24,15 @@
     </li>
 }
 
-@Html.BuildHeading(HeadingSize.H2, "Icons")
+<h2>Icons</h2>
 @Html.Begin(new Icon("fa fa-square-o").Stacked("fa fa-twitter"))
 @Html.Begin(new Icon("fa fa-circle-o fa-stack-2x").StackedText("1"))
 @Html.Begin(new Icon("fa fa-edit fa-2x"))
 
 <hr />
 
-@Html.BuildHeading(HeadingSize.H2, "Breadcrumbs")
-@using (var breadcrumbs = Html.BeginBreadcrumbs()) 
+<h2>Breadcrumbs</h2>
+@using (var breadcrumbs = Html.BeginBreadcrumbs())
 {
     @breadcrumbs.AddCrumb(Url.Action("Index", "Home"), "Home")
     @breadcrumbs.AddCrumb(Url.Action("About", "Home"), "Page 2", true)
@@ -60,7 +40,7 @@
 
 <hr />
 
-@Html.BuildHeading(HeadingSize.H2, "Alerts")
+<h2>Alerts</h2>
 @using (Html.Begin(new Alert(AlertType.Danger).Heading("Uh Oh!").Dismissible()))
 {
     <p>There was an error on the page</p>
@@ -73,7 +53,7 @@
 
 <hr />
 
-@Html.BuildHeading(HeadingSize.H2, "Modals")
+<h2>Modals</h2>
 <button id="modal-button" class="btn btn-default">Open Modal</button>
 @using (var modal = Html.Begin(new Modal("test-modal").Title("My Modal", "fa fa-edit").SubmitButton("Submit", "fa fa-check")))
 {
@@ -90,9 +70,20 @@
 
 <hr />
 
-@Html.BuildHeading(HeadingSize.H2, "Panels")
-@using (var panel = Html.Begin(new Panel().Title("My Panel", "fa fa-truck")))
+<h2>Panels</h2>
+@using (var panel = Html.Begin(new Panel(Colors.Info)))
 {
+    using (panel.BeginHeading())
+    {
+        <h2 class="panel-title">
+            <i class="fa fa-truck"></i>
+            My Panel
+            <span class="pull-right">
+                @Html.BuildActionLink("", "", "Add").Icon("fa fa-plus")
+            </span>
+        </h2>
+    }
+
     using (panel.BeginBody())
     {
         <p>
@@ -119,7 +110,9 @@
 
     using (panel.BeginFooter())
     {
-        <p>Testing the footer</p>
+        <p>
+            This is the footer
+        </p>
     }
 }
 
@@ -133,7 +126,7 @@
 
 <hr />
 
-@Html.BuildHeading(HeadingSize.H2, "Tabs")
+<h2>Tabs</h2>
 @using (var tabs = Html.Begin(TabType.Tabs, stacked: false, justified: true, fade: true))
 {
     @tabs.Tab(new Tab("Baseball", "fa fa-user", "baseball", true))
@@ -150,7 +143,7 @@
 
     using (tabs.BeginTab())
     {
-            <p>The baseball tab</p>
+        <p>The baseball tab</p>
     }
 
     using (tabs.BeginTab())
@@ -186,20 +179,20 @@
 
 <hr />
 
-@Html.BuildHeading(HeadingSize.H2, "Accordion")
+<h2>Accordian</h2>
 @using (var accordion = Html.Begin(new Accordion("test-accordion")))
 {
-    using (accordion.BeginPanel(new Panel("1").Title("Section 1")))
+    using (accordion.BeginPanel(new Panel("1"), "Section 1", ""))
     {
         <p>The content for the first section </p>
     }
 
-    using (accordion.BeginPanel(new Panel("2", Colors.Danger).Title("Section 2")))
+    using (accordion.BeginPanel(new Panel("2", Colors.Danger), "Section 2", ""))
     {
         <p>The content for second section</p>
     }
 
-    using (accordion.BeginPanel(new Panel("3", Colors.Success).Title("Section 3")))
+    using (accordion.BeginPanel(new Panel("3", Colors.Success), "Section 3", ""))
     {
         <p>The content for third section</p>
     }
@@ -207,47 +200,41 @@
 
 <hr />
 
-@Html.BuildHeading(HeadingSize.H2, "Input Groups")
-@Html.InputGroupFor(x => x.Email).HtmlAttributes(new { @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").HasLabelWithColon().HasValidation()
-@Html.InputGroupFor(x => x.Email, SelectListUtils.BuildSelectList(new CustomSelectList("Option 1", "Option 1").Add("Option 2", "Option 2")), "---Select One---").HasLabelWithColon()
+<h2>Input Groups</h2>
+@Html.InputGroupFor(x => x.Email).HtmlAttributes(new { @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").HasLabel(":").HasValidation()
+@Html.InputGroupFor(x => x.Email, SelectListUtils.BuildSelectList(new CustomSelectList("Option 1", "Option 1").Add("Option 2", "Option 2")), "---Select One---").HasLabel(":")
 
-@Html.BuildHeading(HeadingSize.H2, "Datetimepicker")
+<h2>Datetimepicker</h2>
 @Html.InputGroupFor(x => x.Email).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel().IsRequired()
 
-@Html.BuildHeading(HeadingSize.H2, "Form Groups")
+<h2>Form Groups</h2>
 @Html.FormGroupFor(x => x.Email, ControlType.Textbox).HtmlAttributes(new { @placeholder = "Email Address..." }).IsRequired().HelpText("This is the help text")
 
-@Html.BuildHeading(HeadingSize.H2, "Textarea")
+<h2>Textarea</h2>
 @Html.FormGroupFor(x => x.Email, ControlType.TextArea).HtmlAttributes(new { @placeholder = "Enter text..." }).Rows(10).Columns(4).HelpText("This is the help text section")
 
-@Html.BuildHeading(HeadingSize.H2, "Dropdown")
-@Html.FormGroupFor(x => x.Email, SelectListUtils.YesNoDropdown(), "--Select One--")
+<h2>Dropdowns</h2>
+@Html.FormGroupFor(x => x.Email, SelectListUtils.YesNoDropdown(), "--Select One--").HasLabel()
 <br />
 @Html.FormGroupFor(x => x.Email, SelectListUtils.BuildSelectList(new CustomSelectList("Option 1", "1").Add("Option 2", "2")), "--Select One--")
 
-@Html.BuildHeading(HeadingSize.H2, "Checkbox")
-@Html.BuildCheckBoxFor(x => x.RememberMe, CheckboxType.Checkbox).HasLabel().IsRequired()
+<h2>Checkbox</h2>
+@Html.BuildCheckBoxFor(x => x.RememberMe, CheckboxType.Checkbox).HasLabel(":").IsRequired()
 
-@Html.BuildHeading(HeadingSize.H2, "Labels")
-<div class="form-group">
-    @Html.BuildLabel(Colors.Danger, "Help!")
-    @Html.BuildLabel(Colors.Primary, "Good Job!")
-</div>
-
-@Html.BuildHeading(HeadingSize.H2, "Links")
+<h2>Links</h2>
 <div class="form-gorup">
     @Html.BuildActionLink("Home", "Index", "Go Home").Icon("fa fa-home").HtmlAttributes(new { @class = "btn btn-primary" }).RouteValues(new { @id = 50 })
     @Ajax.BuildActionLink("Home", "Index", "Test Link").HtmlAttributes(new { @class = "btn btn-success" }).Icon("fa fa-check")
 </div>
 
-@Html.BuildHeading(HeadingSize.H2, "Validation Tests")
+<h2>Validation Tests</h2>
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
-    @Html.FormGroupFor(x => x.Email, ControlType.Textbox).HtmlAttributes(new { @placeholder = "Enter email..." }).HasLabelWithColon()
-    @Html.FormGroupFor(x => x.Password, ControlType.Password).HtmlAttributes(new { @placeholder = "Enter password..." }).HasLabelWithColon()
-    @Html.InputGroupFor(x => x.NoFutureDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()
-    @Html.InputGroupFor(x => x.NoPastDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabelWithColon().HasValidation()
+    @Html.FormGroupFor(x => x.Email, ControlType.Textbox).HtmlAttributes(new { @placeholder = "Enter email..." }).HasLabel(":")
+    @Html.FormGroupFor(x => x.Password, ControlType.Password).HtmlAttributes(new { @placeholder = "Enter password..." }).HasLabel(":")
+    @Html.InputGroupFor(x => x.NoFutureDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel(":").HasValidation()
+    @Html.InputGroupFor(x => x.NoPastDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel(":").HasValidation()
     @Html.BuildCheckBoxFor(x => x.RememberMe, CheckboxType.Checkbox).HasLabel().IsRequired()
 
     <div class="well">

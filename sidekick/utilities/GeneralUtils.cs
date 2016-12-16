@@ -63,30 +63,5 @@ namespace sidekick
         {
             return !value;
         }
-
-        /// <summary>
-        ///     Turns a boolean value into a Yes or No
-        /// </summary>
-        /// <param name="htmlHelper"></param>
-        /// <param name="yesNo"></param>
-        /// <returns></returns>
-        public static MvcHtmlString YesNo(this HtmlHelper helper, bool yesNo)
-        {
-            return new MvcHtmlString(yesNo ? "Yes" : "No");
-        }
-
-        /// <summary>
-        ///     Turns a boolean value into a Yes or No
-        /// </summary>
-        /// <param name="helper"></param>
-        /// <param name="yesNo"></param>
-        /// <returns></returns>
-        public static MvcHtmlString YesNo(this HtmlHelper helper, bool? yesNo)
-        {
-            if (!yesNo.HasValue)
-                return new MvcHtmlString(String.Empty);
-
-            return new MvcHtmlString(yesNo.Value ? "Yes" : "No");
-        }
     }
 }

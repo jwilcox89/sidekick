@@ -24,9 +24,9 @@ namespace sidekick
         /// </summary>
         /// <param name="panel"></param>
         /// <returns></returns>
-        public AccordionPanel<TModel> BeginPanel(Panel panel)
+        public AccordionPanel<TModel> BeginPanel(Panel panel, string title, string icon)
         {
-            return new AccordionPanel<TModel>(_helper, _accordion, panel);
+            return new AccordionPanel<TModel>(_helper, _accordion, panel, title, icon);
         }
 
         public void Dispose()
@@ -39,17 +39,17 @@ namespace sidekick
     {
         private HtmlHelper<TModel> _helper;
 
-        public AccordionPanel(HtmlHelper<TModel> helper, Accordion accordion, Panel panel)
+        public AccordionPanel(HtmlHelper<TModel> helper, Accordion accordion, Panel panel, string title, string icon)
         {
             _helper = helper;
             _helper.WriteLine($"<div class='panel panel-{panel._color.GetAttribute<HtmlBuilderAttribute>().Class}'>");
             _helper.WriteLine($"<div class='panel-heading' role='tab' id='heading{panel._id}'>");
             _helper.WriteLine("<h4 class='panel-title'>");
             _helper.WriteLine($"<a role='button' data-toggle='collapse' data-parent='#{accordion._parentID}' href='#collapsed{panel._id}' aria-expanded='false' aria-controls='{panel._id}'>");
-            if (panel._icon != null)
-                _helper.WriteLine(new IconBuilder(panel._icon).ToHtmlString());
+            if (!String.IsNullOrEmpty(icon))
+                _helper.WriteLine(new IconBuilder(new Icon(icon)).ToHtmlString());
 
-            _helper.WriteLine(panel._title);
+            _helper.WriteLine(title);
             _helper.WriteLine("</a></h4></div>");
             _helper.WriteLine($"<div id='collapsed{panel._id}' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading{panel._id}'>");
             _helper.WriteLine("<div class='panel-body'>");

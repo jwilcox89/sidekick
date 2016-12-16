@@ -15,12 +15,25 @@ namespace sidekick
         {
             _helper = helper;
             _helper.WriteLine($"<div class='panel panel-{panel._color.GetAttribute<HtmlBuilderAttribute>().Class} {panel._class}'>");
-            if (!String.IsNullOrEmpty(panel._title) || panel._icon != null)
-            {
-                _helper.WriteLine("<div class='panel-heading'>");
-                _helper.WriteLine($"<{panel._headingSize.GetAttribute<HtmlBuilderAttribute>().Tag} class='panel-title'>{new IconBuilder(panel._icon).ToHtmlString()} {panel._title}</{panel._headingSize.GetAttribute<HtmlBuilderAttribute>().Tag}>");
-                _helper.WriteLine("</div>");
-            }
+        }
+
+        /// <summary>
+        ///     Heading of the panel. Title element class 'panel-title'.
+        /// </summary>
+        /// <returns></returns>
+        public PanelSection<TModel> BeginHeading()
+        {
+            return new PanelSection<TModel>(_helper, "panel-heading");
+        }
+
+        /// <summary>
+        ///     Heading of the panel. Title element class 'panel-title'.
+        /// </summary>
+        /// <param name="class">Additional class(es) beyond the class required for the heading</param>
+        /// <returns></returns>
+        public PanelSection<TModel> BeginHeading(string @class)
+        {
+            return new PanelSection<TModel>(_helper, "panel-heading", @class);
         }
 
         /// <summary>

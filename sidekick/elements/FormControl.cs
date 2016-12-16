@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Linq.Expressions;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace sidekick
@@ -14,7 +16,7 @@ namespace sidekick
         internal object _baseAttributes;
         internal ControlType _type;
         internal bool _label;
-        internal bool _labelWithColon;
+        internal string _labelAppend;
         internal bool _validation;
         internal bool _required;
         internal string _helpText;
@@ -49,35 +51,24 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Show label without a semi colon
+        ///     Show label
         /// </summary>
         /// <returns></returns>
         public T HasLabel()
         {
             _label = true;
-            _labelWithColon = false;
             return (T)this;
         }
 
         /// <summary>
-        ///     Show label with a semi colon
+        ///     Show label with text appended to it (ex ':' or '?')
         /// </summary>
+        /// <param name="append"></param>
         /// <returns></returns>
-        public T HasLabelWithColon()
+        public T HasLabel(string append)
         {
-            _label = false;
-            _labelWithColon = true;
-            return (T)this;
-        }
-
-        /// <summary>
-        ///     Turns off all labels
-        /// </summary>
-        /// <returns></returns>
-        public T NoLabel()
-        {
-            _label = false;
-            _labelWithColon = false;
+            _label = true;
+            _labelAppend = append;
             return (T)this;
         }
 

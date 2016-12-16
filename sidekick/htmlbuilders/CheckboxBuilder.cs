@@ -36,14 +36,10 @@ namespace sidekick
                     break;
             }
 
-            if (_label || _labelWithColon)
+            if (_label)
             {
                 _helper.WriteLine("&nbsp;");
-                if (_label)
-                    _helper.WriteLine(_helper.LabelForNoColon(_expression, _isRequired));
-
-                if (_labelWithColon)
-                    _helper.WriteLine(_helper.LabelForWithColon(_expression, _isRequired));
+                _helper.WriteLine(_helper.LabelFor(_expression, _appendText, _required));
             }
 
             _helper.WriteLine("</div>");

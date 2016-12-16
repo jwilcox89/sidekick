@@ -1,5 +1,0 @@
-﻿@using sidekick
-
-@model Alert
-
-@Html.BuildAlert(Model)

@@ -7,8 +7,8 @@
     {
         internal CheckboxType _type;
         internal bool _label;
-        internal bool _labelWithColon;
-        internal bool _isRequired;
+        internal string _appendText;
+        internal bool _required;
         internal object _htmlAttributes;
 
         /// <summary>
@@ -18,18 +18,17 @@
         public Checkbox HasLabel()
         {
             _label = true;
-            _labelWithColon = false;
             return this;
         }
 
         /// <summary>
-        ///     Display a label with a colon next to the checkbox
+        ///     Display a label next to the checkbox
         /// </summary>
         /// <returns></returns>
-        public Checkbox HasLabelWithColon()
+        public Checkbox HasLabel(string appendText)
         {
-            _label = false;
-            _labelWithColon = true;
+            _label = true;
+            _appendText = appendText;
             return this;
         }
 
@@ -39,7 +38,7 @@
         /// <returns></returns>
         public Checkbox IsRequired()
         {
-            _isRequired = true;
+            _required = true;
             return this;
         }
 
