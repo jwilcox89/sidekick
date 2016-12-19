@@ -15,7 +15,7 @@ namespace sidekick
         /// 
         /// </summary>
         /// <param name="helper"></param>
-        /// <param name="controllers">Separate multiple values with a ','</param>
+        /// <param name="controllers"></param>
         /// <returns></returns>
         public static string IsActiveNavItem(this HtmlHelper helper, string[] controllers)
         {
@@ -26,8 +26,8 @@ namespace sidekick
         /// 
         /// </summary>
         /// <param name="helper"></param>
-        /// <param name="controllers">Separate multiple values with a ','</param>
-        /// <param name="actions">Separate multiple values with a ','</param>
+        /// <param name="controllers"></param>
+        /// <param name="actions"></param>
         /// <returns></returns>
         public static string IsActiveNavItem(this HtmlHelper helper, string[] controllers, string[] actions)
         {
@@ -38,9 +38,9 @@ namespace sidekick
         /// 
         /// </summary>
         /// <param name="helper"></param>
-        /// <param name="controllers">Separate multiple values with a ','</param>
-        /// <param name="actions">Separate multiple values with a ','</param>
-        /// <param name="areas">Separate multiple values with a ','</param>
+        /// <param name="controllers"></param>
+        /// <param name="actions"></param>
+        /// <param name="areas"></param>
         /// <returns></returns>
         public static string IsActiveNavItem(this HtmlHelper helper, string[] controllers, string[] actions, string[] areas)
         {
@@ -51,9 +51,9 @@ namespace sidekick
         /// 
         /// </summary>
         /// <param name="helper"></param>
-        /// <param name="controllers">Separate multiple values with a ','</param>
-        /// <param name="actions">Separate multiple values with a ','</param>
-        /// <param name="areas">Separate multiple values with a ','</param>
+        /// <param name="controllers"></param>
+        /// <param name="actions"></param>
+        /// <param name="areas"></param>
         /// <param name="routeParam"><para>Key: Part of route that you wish to match the value with</para>
         /// <para>Value: value that you want to check the key for</para>
         /// </param>
@@ -67,9 +67,9 @@ namespace sidekick
         /// 
         /// </summary>
         /// <param name="helper"></param>
-        /// <param name="controllers">Separate multiple values with a ','</param>
-        /// <param name="actions">Separate multiple values with a ','</param>
-        /// <param name="areas">Separate multiple values with a ','</param>
+        /// <param name="controllers"></param>
+        /// <param name="actions"></param>
+        /// <param name="areas"></param>
         /// <param name="routeParam"><para>Key: Part of route that you wish to match the value with</para>
         /// <para>Value: value that you want to check the key for</para></param>
         /// <param name="activeClass"></param>
@@ -83,9 +83,9 @@ namespace sidekick
         /// 
         /// </summary>
         /// <param name="helper"></param>
-        /// <param name="controllers">Separate multiple values with a ','</param>
-        /// <param name="actions">Separate multiple values with a ','</param>
-        /// <param name="areas">Separate multiple values with a ','</param>
+        /// <param name="controllers"></param>
+        /// <param name="actions"></param>
+        /// <param name="areas"></param>
         /// <param name="routeParam"><para>Key: Part of route that you wish to match the value with</para>
         /// <para>Value: value that you want to check the key for</para></param>
         /// <param name="activeClass"></param>
@@ -103,17 +103,17 @@ namespace sidekick
             if (!currentArea.Any())
                 currentArea = String.Empty;
 
-            actions = !actions.Any() ? new[] { currentAction } : actions;
-            controllers = !controllers.Any() ? new[] { currentController } : controllers;
-            areas = !areas.Any() ? new[] { currentArea } : areas;
+            actions = actions == null ? new[] { currentAction } : actions;
+            controllers = controllers == null ? new[] { currentController } : controllers;
+            areas = areas == null ? new[] { currentArea } : areas;
 
-            if (!actions.Any())
+            if (actions == null)
                 actions = new[] { "" };
 
-            if (!controllers.Any())
+            if (controllers == null)
                 controllers = new[] { "" };
 
-            if (!areas.Any())
+            if (areas == null)
                 areas = new[] { "" };
 
             IEnumerable<string> acceptedActions = actions.Select(x => x.Trim()).Distinct();

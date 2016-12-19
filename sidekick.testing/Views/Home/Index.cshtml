@@ -7,8 +7,17 @@
     ViewBag.Title = "Home Page";
 }
 
+<div class="jumbotron">
+    <h2>Readme</h2>
+</div>
+
 <h2>Progress Bar</h2>
 @Html.BuildProgressBar(new ProgressBar(60).Label("60%")).AddStack(new ProgressBar(20, Colors.Success).Label("20%").Striped(true))
+<br />
+<pre>
+    Html.BuildProgressBar(new ProgressBar(60).Label("60%")).AddStack(new ProgressBar(20, Colors.Success).Label("20%").Striped(true))
+</pre>
+
 
 <h2>Button Dropdown</h2>
 @using (Html.Begin(new ButtonDropdown().Title("My Menu", "fa fa-edit")))
@@ -23,11 +32,32 @@
         <a href="#">Report 3</a>
     </li>
 }
+<br />
+<pre>
+    using (Html.Begin(new ButtonDropdown().Title("My Menu", "fa fa-edit")))
+    {
+            &lt;li>
+                &lt;a href="#"&gt;Report 1&lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;li>
+                &lt;a href="#"&gt;Report 2&lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;li&gt;
+                &lt;a href="#">Report 3&lt;/a&gt;
+            &lt;/li&gt;
+    }
+</pre>
 
 <h2>Icons</h2>
 @Html.Begin(new Icon("fa fa-square-o").Stacked("fa fa-twitter"))
 @Html.Begin(new Icon("fa fa-circle-o fa-stack-2x").StackedText("1"))
 @Html.Begin(new Icon("fa fa-edit fa-2x"))
+<br />
+<pre>
+    Html.Begin(new Icon("fa fa-square-o").Stacked("fa fa-twitter"))
+    Html.Begin(new Icon("fa fa-circle-o fa-stack-2x").StackedText("1"))
+    Html.Begin(new Icon("fa fa-edit fa-2x"))
+</pre>
 
 <hr />
 
@@ -37,6 +67,14 @@
     @breadcrumbs.AddCrumb(Url.Action("Index", "Home"), "Home")
     @breadcrumbs.AddCrumb(Url.Action("About", "Home"), "Page 2", true)
 }
+<br />
+<pre>
+    using (var breadcrumbs = Html.BeginBreadcrumbs())
+    {
+        breadcrumbs.AddCrumb(Url.Action("Index", "Home"), "Home")
+        breadcrumbs.AddCrumb(Url.Action("About", "Home"), "Page 2", true)
+    }
+</pre>
 
 <hr />
 
@@ -45,11 +83,25 @@
 {
     <p>There was an error on the page</p>
 }
+<br />
+<pre>
+    using (Html.Begin(new Alert(AlertType.Danger).Heading("Uh Oh!").Dismissible()))
+    {
+        &lt;p>There was an error on the page&lt;/p>
+    }
+</pre>
 
 @using (var alert = Html.Begin(new Alert(AlertType.Success).Heading("Good Job!")))
 {
     @alert.WriteBody()
 }
+<br />
+<pre>
+    using (var alert = Html.Begin(new Alert(AlertType.Success).Heading("Good Job!")))
+    {
+        alert.WriteBody()
+    }
+</pre>
 
 <hr />
 
@@ -67,6 +119,22 @@
         }
     }
 }
+
+<br />
+<pre>
+    using (var modal = Html.Begin(new Modal("test-modal").Title("My Modal", "fa fa-edit").SubmitButton("Submit", "fa fa-check")))
+    {
+        using (Html.BeginForm())
+        {
+            using (modal.BeginBody().HasFooter())
+            {
+                &lt;p>
+                    Modal content
+                &lt;/p>
+            }
+        }
+    }
+</pre>
 
 <hr />
 
@@ -116,6 +184,54 @@
     }
 }
 
+<br />
+<pre>
+    using (var panel = Html.Begin(new Panel(Colors.Info)))
+    {
+        using (panel.BeginHeading())
+        {
+            &lt;h2 class="panel-title">
+                &lt;i class="fa fa-truck">&lt;/i>
+                My Panel
+                &lt;span class="pull-right">
+                    Html.BuildActionLink("", "", "Add").Icon("fa fa-plus")
+                &lt;/span>
+            &lt;/h2>
+        }
+
+        using (panel.BeginBody())
+        {
+            &lt;p>
+            Panel content
+            &lt;/p>
+        }
+
+        &lt;table class="table">
+            &lt;thead>
+                &lt;tr>
+                    &lt;th>First</th>
+                    &lt;th>Last</th>
+                    &lt;th>DOB</th>
+                &lt;/tr>
+            &lt;/thead>
+            &lt;tbody>
+                &lt;tr>
+                    &lt;td>Frank</td>
+                    &lt;td>Sinatra</td>
+                    &lt;td>07/04/1922/td>
+                &lt;/tr>
+            &lt;/tbody>
+        &lt;/table>
+
+        using (panel.BeginFooter())
+        {
+            &lt;p>
+            This is the footer
+            &lt;/p>
+        }
+    }
+</pre>
+
 @using (var panel = Html.Begin(new Panel()))
 {
     using (panel.BeginBody())
@@ -123,6 +239,16 @@
         <p>Basic panel body</p>
     }
 }
+<br />
+<pre>
+    using (var panel = Html.Begin(new Panel()))
+    {
+        using (panel.BeginBody())
+        {
+            &lt;p>Basic panel body&lt;/p>
+        }
+    }
+</pre>
 
 <hr />
 
@@ -135,10 +261,10 @@
     @tabs.Tab(new Tab("Tennis", "fa fa-truck", "tennis"))
     @tabs.Tab(new Tab("Swimming", "fa fa-truck", "swimming"))
 
-    using (var dd = tabs.BeginTabDropdown(new Tab("Dropdown", "fa fa-star", "dropdown")))
+    using (var dropdown = tabs.BeginTabDropdown(new Tab("Dropdown", "fa fa-star", "dropdown")))
     {
-        @dd.Option(new Tab("Option 1", "fa fa-phone", "option1"))
-        @dd.Option(new Tab("Option 2", "", "option2"))
+        @dropdown.Option(new Tab("Option 1", "fa fa-phone", "option1"))
+        @dropdown.Option(new Tab("Option 2", "", "option2"))
     }
 
     using (tabs.BeginTab())
@@ -176,6 +302,59 @@
         <p>Option 2</p>
     }
 }
+<br />
+
+<pre>
+    using (var tabs = Html.Begin(TabType.Tabs, stacked: false, justified: true, fade: true))
+    {
+        tabs.Tab(new Tab("Baseball", "fa fa-user", "baseball", true))
+        tabs.Tab(new Tab("Football", "fa fa-truck", "football"))
+        tabs.Tab(new Tab("Soccer", "fa fa-truck", "soccer"))
+        tabs.Tab(new Tab("Tennis", "fa fa-truck", "tennis"))
+        tabs.Tab(new Tab("Swimming", "fa fa-truck", "swimming"))
+
+        using (var dropdown = tabs.BeginTabDropdown(new Tab("Dropdown", "fa fa-star", "dropdown")))
+        {
+            dropdown.Option(new Tab("Option 1", "fa fa-phone", "option1"))
+            dropdown.Option(new Tab("Option 2", "", "option2"))
+        }
+
+        using (tabs.BeginTab())
+        {
+            &lt;p>The baseball tab&lt;/p>
+        }
+
+        using (tabs.BeginTab())
+        {
+            &lt;p>The football tab&lt;/p>
+        }
+
+        using (tabs.BeginTab())
+        {
+            &lt;p>The soccer tab&lt;/p>
+        }
+
+        using (tabs.BeginTab())
+        {
+            &lt;p>The tennis tab&lt;/p>
+        }
+
+        using (tabs.BeginTab())
+        {
+            &lt;p>The swimming tab&lt;/p>
+        }
+
+        using (tabs.BeginTab("option1"))
+        {
+            &lt;p>Option 1&lt;/p>
+        }
+
+        using (tabs.BeginTab("option2"))
+        {
+            &lt;p>Option 2&lt;/p>
+        }
+    }
+</pre>
 
 <hr />
 
@@ -198,34 +377,86 @@
     }
 }
 
+<br />
+<pre>
+using (var accordion = Html.Begin(new Accordion("test-accordion")))
+{
+    using (accordion.BeginPanel(new Panel("1"), "Section 1", ""))
+    {
+        &lt;p>The content for the first section&lt;/p>
+    }
+
+    using (accordion.BeginPanel(new Panel("2", Colors.Danger), "Section 2", ""))
+    {
+        &lt;p>The content for second section&lt;/p>
+    }
+
+    using (accordion.BeginPanel(new Panel("3", Colors.Success), "Section 3", ""))
+    {
+        &lt;p>The content for third section&lt;/p>
+    }
+}
+</pre>
+
 <hr />
 
 <h2>Input Groups</h2>
 @Html.InputGroupFor(x => x.Email).HtmlAttributes(new { @placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").HasLabel(":").HasValidation()
 @Html.InputGroupFor(x => x.Email, SelectListUtils.BuildSelectList(new CustomSelectList("Option 1", "Option 1").Add("Option 2", "Option 2")), "---Select One---").HasLabel(":")
+<br />
+<pre>
+    Html.InputGroupFor(x => x.Email).HtmlAttributes(new { placeholder = "Email Address..." }).PrependIcon("fa fa-envelope").HasLabel(":").HasValidation()
+    Html.InputGroupFor(x => x.Email, SelectListUtils.BuildSelectList(new CustomSelectList("Option 1", "Option 1").Add("Option 2", "Option 2")), "---Select One---").HasLabel(":")
+</pre>
 
 <h2>Datetimepicker</h2>
 @Html.InputGroupFor(x => x.Email).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel().IsRequired()
+<br />
+<pre>
+    Html.InputGroupFor(x => x.Email).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel().IsRequired()
+</pre>
 
 <h2>Form Groups</h2>
 @Html.FormGroupFor(x => x.Email, ControlType.Textbox).HtmlAttributes(new { @placeholder = "Email Address..." }).IsRequired().HelpText("This is the help text")
+<br />
+<pre>
+    Html.FormGroupFor(x => x.Email, ControlType.Textbox).HtmlAttributes(new { placeholder = "Email Address..." }).IsRequired().HelpText("This is the help text")
+</pre>
 
 <h2>Textarea</h2>
 @Html.FormGroupFor(x => x.Email, ControlType.TextArea).HtmlAttributes(new { @placeholder = "Enter text..." }).Rows(10).Columns(4).HelpText("This is the help text section")
+<br />
+<pre>
+    Html.FormGroupFor(x => x.Email, ControlType.TextArea).HtmlAttributes(new { placeholder = "Enter text..." }).Rows(10).Columns(4).HelpText("This is the help text section")
+</pre>
 
 <h2>Dropdowns</h2>
 @Html.FormGroupFor(x => x.Email, SelectListUtils.YesNoDropdown(), "--Select One--").HasLabel()
 <br />
 @Html.FormGroupFor(x => x.Email, SelectListUtils.BuildSelectList(new CustomSelectList("Option 1", "1").Add("Option 2", "2")), "--Select One--")
+<br />
+<pre>
+    Html.FormGroupFor(x => x.Email, SelectListUtils.YesNoDropdown(), "--Select One--").HasLabel()
+    Html.FormGroupFor(x => x.Email, SelectListUtils.BuildSelectList(new CustomSelectList("Option 1", "1").Add("Option 2", "2")), "--Select One--")
+</pre>
 
 <h2>Checkbox</h2>
 @Html.BuildCheckBoxFor(x => x.RememberMe, CheckboxType.Checkbox).HasLabel(":").IsRequired()
+<br />
+<pre>
+    Html.BuildCheckBoxFor(x => x.RememberMe, CheckboxType.Checkbox).HasLabel(":").IsRequired()
+</pre>
 
 <h2>Links</h2>
 <div class="form-gorup">
     @Html.BuildActionLink("Home", "Index", "Go Home").Icon("fa fa-home").HtmlAttributes(new { @class = "btn btn-primary" }).RouteValues(new { @id = 50 })
     @Ajax.BuildActionLink("Home", "Index", "Test Link").HtmlAttributes(new { @class = "btn btn-success" }).Icon("fa fa-check")
 </div>
+<br />
+<pre>
+    Html.BuildActionLink("Home", "Index", "Go Home").Icon("fa fa-home").HtmlAttributes(new { class = "btn btn-primary" }).RouteValues(new { id = 50 })
+    Ajax.BuildActionLink("Home", "Index", "Test Link").HtmlAttributes(new { class = "btn btn-success" }).Icon("fa fa-check")
+</pre>
 
 <h2>Validation Tests</h2>
 @using (Html.BeginForm())
@@ -241,6 +472,14 @@
         <button type="submit" class="btn btn-success">Submit</button>
     </div>
 }
+<br />
+<pre>
+    Html.FormGroupFor(x => x.Email, ControlType.Textbox).HtmlAttributes(new { placeholder = "Enter email..." }).HasLabel(":")
+    Html.FormGroupFor(x => x.Password, ControlType.Password).HtmlAttributes(new { placeholder = "Enter password..." }).HasLabel(":")
+    Html.InputGroupFor(x => x.NoFutureDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel(":").HasValidation()
+    Html.InputGroupFor(x => x.NoPastDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel(":").HasValidation()
+    Html.BuildCheckBoxFor(x => x.RememberMe, CheckboxType.Checkbox).HasLabel().IsRequired()
+</pre>
 
 @section scripts {
     <script type="text/javascript">

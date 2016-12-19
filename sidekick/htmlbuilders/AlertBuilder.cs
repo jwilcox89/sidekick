@@ -20,11 +20,17 @@ namespace sidekick
             _helper.WriteLine($"<div class='alert {_alert._alertClass}'>");
 
             if (_alert._dismissible)
+            {
                 _helper.WriteLine("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>");
+            }
 
             _helper.WriteLine($"<strong><i class='{_alert._type.GetAttribute<HtmlBuilderAttribute>().Icon}'></i>&nbsp;{_alert._heading}</strong>");
         }
 
+        /// <summary>
+        ///     Write the list of messages
+        /// </summary>
+        /// <returns></returns>
         public MvcHtmlString WriteMessageList()
         {
             if (_alert._messageList.Any())
@@ -42,6 +48,10 @@ namespace sidekick
             return new MvcHtmlString(String.Empty);
         }
 
+        /// <summary>
+        ///     Write the predefined body
+        /// </summary>
+        /// <returns></returns>
         public MvcHtmlString WriteBody()
         {
             if (!String.IsNullOrEmpty(_alert._body))
