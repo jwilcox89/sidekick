@@ -77,7 +77,8 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Builds the tab content area
+        ///     Builds the tab content area.
+        ///     <para>*Note: cannot be used with a tab dropdown.</para>
         /// </summary>
         /// <returns></returns>
         public TabsContent<TModel> BeginTab()
@@ -98,7 +99,7 @@ namespace sidekick
         /// </summary>
         /// <param name="tab"></param>
         /// <returns></returns>
-        public TabsContent<TModel> BeginTab(string name)
+        public TabsContent<TModel> BeginTab(string tabName)
         {
             if (!_contentStarted)
             {
@@ -107,7 +108,7 @@ namespace sidekick
                 _contentStarted = true;
             }
 
-            return new TabsContent<TModel>(_helper, new Tab("", "", name, false), _fade);
+            return new TabsContent<TModel>(_helper, new Tab("", "", tabName, false), _fade);
         }
 
         /// <summary>
@@ -116,7 +117,7 @@ namespace sidekick
         /// </summary>
         /// <param name="tab"></param>
         /// <returns></returns>
-        public TabsContent<TModel> BeginTab(string name, bool active)
+        public TabsContent<TModel> BeginTab(string tabName, bool active)
         {
             if (!_contentStarted)
             {
@@ -125,7 +126,7 @@ namespace sidekick
                 _contentStarted = true;
             }
 
-            return new TabsContent<TModel>(_helper, new Tab("", "", name, active), _fade);
+            return new TabsContent<TModel>(_helper, new Tab("", "", tabName, active), _fade);
         }
 
         public void Dispose()

@@ -253,7 +253,7 @@
 <hr />
 
 <h2>Tabs</h2>
-@using (var tabs = Html.Begin(TabType.Tabs, stacked: false, justified: true, fade: true))
+@using (var tabs = Html.Begin(tabType: TabType.Tabs, stacked: false, justified: true, fade: true))
 {
     @tabs.Tab(new Tab("Baseball", "fa fa-user", "baseball", true))
     @tabs.Tab(new Tab("Football", "fa fa-truck", "football"))
@@ -305,7 +305,7 @@
 <br />
 
 <pre>
-    using (var tabs = Html.Begin(TabType.Tabs, stacked: false, justified: true, fade: true))
+    using (var tabs = Html.Begin(tabType: TabType.Tabs, stacked: false, justified: true, fade: true))
     {
         tabs.Tab(new Tab("Baseball", "fa fa-user", "baseball", true))
         tabs.Tab(new Tab("Football", "fa fa-truck", "football"))
