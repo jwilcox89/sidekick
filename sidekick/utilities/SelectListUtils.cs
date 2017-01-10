@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Linq.Expressions;
 using System.Linq;
+using System.ComponentModel;
 
 namespace sidekick
 {
@@ -43,7 +44,7 @@ namespace sidekick
         ///     Generates a dropdown of all the United States. Abbreviations used for both display and value.
         /// </summary>
         /// <returns></returns>
-        public static IEnumerable<SelectListItem> StateDropdown()
+        public static IEnumerable<SelectListItem> StateDropdown(bool useAbbreviation)
         {
             IList<SelectListItem> list = new List<SelectListItem>();
 
@@ -51,7 +52,7 @@ namespace sidekick
             {
                 list.Add(new SelectListItem
                 {
-                    Text = state.ToString(),
+                    Text = useAbbreviation ? state.ToString() : state.GetAttribute<DescriptionAttribute>().Description,
                     Value = state.ToString(),
                 });
             }
@@ -64,7 +65,7 @@ namespace sidekick
         /// </summary>
         /// <param name="selectedState">Default selected state if no state already selected</param>
         /// <returns></returns>
-        public static IEnumerable<SelectListItem> StateDropdown(UsStates selectedState)
+        public static IEnumerable<SelectListItem> StateDropdown(bool useAbbreviation, UsStates selectedState)
         {
             IList<SelectListItem> list = new List<SelectListItem>();
 
@@ -72,7 +73,7 @@ namespace sidekick
             {
                 list.Add(new SelectListItem
                 {
-                    Text = state.ToString(),
+                    Text = useAbbreviation ? state.ToString() : state.GetAttribute<DescriptionAttribute>().Description,
                     Value = state.ToString(),
                     Selected = state.ToString() == selectedState.ToString() ? true : false
                 });

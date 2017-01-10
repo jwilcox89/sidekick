@@ -98,7 +98,6 @@
     <Compile Include="elements\Panel.cs" />
     <Compile Include="elements\CustomSelectList.cs" />
     <Compile Include="elements\ProgressBar.cs" />
-    <Compile Include="elements\Switch.cs" />
     <Compile Include="elements\Tab.cs" />
     <Compile Include="enums\AlertType.cs" />
     <Compile Include="enums\CheckboxType.cs" />
@@ -142,7 +141,6 @@
     <Compile Include="htmlbuilders\LabelBuilder.cs" />
     <Compile Include="htmlbuilders\ModalBuilder.cs" />
     <Compile Include="htmlbuilders\PanelBuilder.cs" />
-    <Compile Include="htmlbuilders\SwitchBuilder.cs" />
     <Compile Include="htmlbuilders\TabsBuilder.cs" />
     <Compile Include="htmlbuilders\BuilderUtils.cs" />
     <Compile Include="htmlbuilders\FormGroupBuilder.cs" />

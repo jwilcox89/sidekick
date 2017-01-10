@@ -260,19 +260,6 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Builds a bootstrap switch element (http://www.bootstrap-switch.org/options.html)
-        /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="helper"></param>
-        /// <param name="elementName"></param>
-        /// <param name="switchState"></param>
-        /// <returns></returns>
-        public static SwitchBuilder<TModel> BuildSwitch<TModel>(this HtmlHelper<TModel> helper, string elementName, bool switchState)
-        {
-            return new SwitchBuilder<TModel>(helper, elementName, switchState);
-        }
-
-        /// <summary>
         ///     Builds a checkbox or radio button depending on the checkbox type selected
         /// </summary>
         /// <typeparam name="TModel"></typeparam>

@@ -11,7 +11,7 @@ namespace sidekick
     {
         public static string GetIdentityProperty(this IIdentity identity, string propertyName) 
         {
-            return ((ClaimsIdentity)identity).Claims.FirstOrDefault(x => x.Type == propertyName).Value;
+            return ((ClaimsIdentity)identity).Claims.FirstOrDefault(x => x.Type == propertyName)?.Value;
         }
     }
 }
