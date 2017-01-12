@@ -440,13 +440,6 @@ using (var accordion = Html.Begin(new Accordion("test-accordion")))
     Html.FormGroupFor(x => x.Email, SelectListUtils.BuildSelectList(new CustomSelectList("Option 1", "1").Add("Option 2", "2")), "--Select One--")
 </pre>
 
-<h2>Checkbox</h2>
-@Html.BuildCheckBoxFor(x => x.RememberMe, CheckboxType.Checkbox).HasLabel(":").IsRequired()
-<br />
-<pre>
-    Html.BuildCheckBoxFor(x => x.RememberMe, CheckboxType.Checkbox).HasLabel(":").IsRequired()
-</pre>
-
 <h2>Links</h2>
 <div class="form-gorup">
     @Html.BuildActionLink("Home", "Index", "Go Home").Icon("fa fa-home").HtmlAttributes(new { @class = "btn btn-primary" }).RouteValues(new { @id = 50 })
@@ -466,7 +459,6 @@ using (var accordion = Html.Begin(new Accordion("test-accordion")))
     @Html.FormGroupFor(x => x.Password, ControlType.Password).HtmlAttributes(new { @placeholder = "Enter password..." }).HasLabel(":")
     @Html.InputGroupFor(x => x.NoFutureDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel(":").HasValidation()
     @Html.InputGroupFor(x => x.NoPastDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel(":").HasValidation()
-    @Html.BuildCheckBoxFor(x => x.RememberMe, CheckboxType.Checkbox).HasLabel().IsRequired()
 
     <div class="well">
         <button type="submit" class="btn btn-success">Submit</button>
@@ -478,7 +470,6 @@ using (var accordion = Html.Begin(new Accordion("test-accordion")))
     Html.FormGroupFor(x => x.Password, ControlType.Password).HtmlAttributes(new { placeholder = "Enter password..." }).HasLabel(":")
     Html.InputGroupFor(x => x.NoFutureDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel(":").HasValidation()
     Html.InputGroupFor(x => x.NoPastDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel(":").HasValidation()
-    Html.BuildCheckBoxFor(x => x.RememberMe, CheckboxType.Checkbox).HasLabel().IsRequired()
 </pre>
 
 @section scripts {

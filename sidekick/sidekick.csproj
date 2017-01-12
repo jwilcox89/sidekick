@@ -93,7 +93,6 @@
     <Compile Include="elements\Accordion.cs" />
     <Compile Include="elements\ActionLinkBase.cs" />
     <Compile Include="elements\ButtonDropdown.cs" />
-    <Compile Include="elements\Checkbox.cs" />
     <Compile Include="elements\Icon.cs" />
     <Compile Include="elements\Panel.cs" />
     <Compile Include="elements\CustomSelectList.cs" />
@@ -128,7 +127,6 @@
     <Compile Include="htmlbuilders\AccordionBuilder.cs" />
     <Compile Include="htmlbuilders\AjaxActionLinkBuilder.cs" />
     <Compile Include="htmlbuilders\BreadcrumbBuilder.cs" />
-    <Compile Include="htmlbuilders\CheckboxBuilder.cs" />
     <Compile Include="connection\NetworkConnectionManager.cs" />
     <Compile Include="utilities\GeneralUtils.cs" />
     <Compile Include="utilities\IdentityUtils.cs" />

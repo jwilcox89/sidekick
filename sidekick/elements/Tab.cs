@@ -6,8 +6,8 @@
     public class Tab
     {
         internal string DisplayText { get; set; }
-        internal virtual bool Active { get; set; }
         internal virtual string Name { get; set; }
+        internal virtual bool Active { get; set; }
         internal virtual Icon Icon { get; set; }
 
         /// <summary>

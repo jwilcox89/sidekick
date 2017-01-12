@@ -13,8 +13,8 @@ namespace sidekick
         internal AlertType _type;
         internal bool _dismissible;
         internal string _heading;
-        internal IEnumerable<string> _messageList;
         internal string _body;
+        internal IEnumerable<string> _messageList;
 
         /// <summary>
         ///     Class used with alert

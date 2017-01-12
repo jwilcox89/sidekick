@@ -258,18 +258,5 @@ namespace sidekick
         {
             return new AjaxActionLinkBuilder(helper, controller, action, text);
         }
-
-        /// <summary>
-        ///     Builds a checkbox or radio button depending on the checkbox type selected
-        /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="helper"></param>
-        /// <param name="expression"></param>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        public static CheckboxBuilder<TModel> BuildCheckBoxFor<TModel>(this HtmlHelper<TModel> helper, Expression<Func<TModel, bool>> expression, CheckboxType type)
-        {
-            return new CheckboxBuilder<TModel>(helper, expression, type);
-        }
     }
 }

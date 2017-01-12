@@ -12,26 +12,26 @@ namespace sidekick
     public class FormControl<T> 
         where T : FormControl<T>
     {
-        internal object _htmlAttributes;
-        internal object _baseAttributes;
-        internal ControlType _type;
-        internal bool _label;
         internal string _labelAppend;
-        internal bool _validation;
-        internal bool _required;
         internal string _helpText;
-        internal IEnumerable<SelectListItem> _selectListItems;
-        internal bool _multiselect;
         internal string _optionLabel;
         internal string _appendText;
         internal string _prependText;
-        internal Icon _appendIcon;
-        internal Icon _prependIcon;
-        internal InputGroupSize _inputGroupSize;
         internal string _datetimepickerClass;
         internal string _datetimepickerId;
+        internal bool _label;
+        internal bool _validation;
+        internal bool _required;
+        internal bool _multiselect;
         internal int _rows;
         internal int _columns;
+        internal object _htmlAttributes;
+        internal object _baseAttributes;
+        internal Icon _appendIcon;
+        internal Icon _prependIcon;
+        internal ControlType _type;
+        internal InputGroupSize _inputGroupSize;
+        internal IEnumerable<SelectListItem> _selectListItems;
 
         public FormControl()
         {

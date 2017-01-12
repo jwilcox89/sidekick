@@ -9,9 +9,9 @@ namespace sidekick
     {
         internal int _currentValue;
         internal string _label;
-        internal Colors _color;
         internal bool _striped;
         internal bool _animated;
+        internal Colors _color;
 
         internal string _contextualClass => _color != Colors.Default ? $"progress-bar-{_color.GetAttribute<HtmlBuilderAttribute>().Class}" : String.Empty;
         internal string _stripedClass => _striped ? "progress-bar-striped" : String.Empty;

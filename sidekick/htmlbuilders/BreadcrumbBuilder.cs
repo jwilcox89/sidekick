@@ -23,7 +23,17 @@ namespace sidekick
             _helper.WriteLine($"<ol class='breadcrumb {@class}'>");
         }
 
-        public MvcHtmlString AddCrumb(string url, string title, bool active = false)
+        public MvcHtmlString AddCrumb(string url, string title)
+        {
+            return WriteCrumb(url, title, false);
+        }
+
+        public MvcHtmlString AddCrumb(string url, string title, bool active)
+        {
+            return WriteCrumb(url, title, active);
+        }
+
+        private MvcHtmlString WriteCrumb(string url, string title, bool active)
         {
             if (active)
             {

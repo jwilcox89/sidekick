@@ -7,21 +7,21 @@ namespace sidekick
     /// </summary>
     public class Modal
     {
-        internal ModalSize _modalSize;
         internal string _id;
         internal string _title;
-        internal Icon _icon;
         internal string _errorAreaID;
         internal string _body;
         internal string _closeText;
-        internal Icon _closeIcon;
         internal string _submitText;
-        internal Icon _submitIcon;
         internal bool _dismissable;
-        internal Colors _submitColor;
-        internal Colors _closeColor;
         internal bool _showSubmitButton;
         internal bool _hasFooter;
+        internal Icon _closeIcon;
+        internal Icon _submitIcon;
+        internal Icon _icon;
+        internal Colors _submitColor;
+        internal Colors _closeColor;
+        internal ModalSize _modalSize;
 
         /// <summary>
         ///     <para>No HTML ID</para>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Runtime.InteropServices;
@@ -63,16 +62,6 @@ namespace sidekick
             where TEntity : class, IErrorLog
         {
             Add(error).Save();
-        }
-
-        /// <summary>
-        ///     Clears out all the log entries.
-        /// </summary>
-        /// <typeparam name="TEntity"></typeparam>
-        public void ClearLogs<TEntity>()
-            where TEntity : class, IErrorLog
-        {
-            Remove<TEntity>(GetAll<TEntity>()).Save();
         }
     }
 }
