@@ -121,9 +121,9 @@ namespace sidekick
         /// </summary>
         /// <param name="helper"></param>
         /// <returns></returns>
-        public static BreadcrumbBuilder<TModel> BeginBreadcrumbs<TModel>(this HtmlHelper<TModel> helper)
+        public static BreadcrumbBuilder BeginBreadcrumbs(this HtmlHelper helper)
         {
-            return new BreadcrumbBuilder<TModel>(helper);
+            return new BreadcrumbBuilder(helper);
         }
 
         /// <summary>
@@ -133,9 +133,9 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="additionalClass"></param>
         /// <returns></returns>
-        public static BreadcrumbBuilder<TModel> BeginBreadcrumbs<TModel>(this HtmlHelper<TModel> helper, string additionalClass)
+        public static BreadcrumbBuilder BeginBreadcrumbs(this HtmlHelper helper, string additionalClass)
         {
-            return new BreadcrumbBuilder<TModel>(helper, additionalClass);
+            return new BreadcrumbBuilder(helper, additionalClass);
         }
 
         /// <summary>
@@ -257,6 +257,19 @@ namespace sidekick
         public static AjaxActionLinkBuilder BuildActionLink(this AjaxHelper helper, string controller, string action, string text)
         {
             return new AjaxActionLinkBuilder(helper, controller, action, text);
+        }
+
+        /// <summary>
+        ///     Builds a bootstrap toggle element (http://www.bootstraptoggle.com/)
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="helper"></param>
+        /// <param name="elementName">Unique identifier for element</param>
+        /// <param name="toggleState">Default to On or Off?</param>
+        /// <returns></returns>
+        public static ToggleBuilder BuildToggle(this HtmlHelper helper, string elementName, bool toggleState)
+        {
+            return new ToggleBuilder(elementName, toggleState);
         }
     }
 }

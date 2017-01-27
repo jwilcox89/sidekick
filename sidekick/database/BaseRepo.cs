@@ -38,7 +38,18 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Returns an entity object based on the specified entity and primary key value.
+        ///     Returns all entities
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <returns></returns>
+        public IQueryable<TEntity> Get<TEntity>()
+            where TEntity : class
+        {
+            return Context.Set<TEntity>();
+        }
+
+        /// <summary>
+        ///     Returns a single entity object based on primary key value
         /// </summary>
         /// <typeparam name="TEntity">Entity object type to be returned</typeparam>
         /// <param name="id">Primary key value</param>
@@ -50,9 +61,32 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Asynchronously returns an entity object based on the specified entity and primary key value.
+        ///     Returns all entities based on the query
         /// </summary>
-        /// <typeparam name="TEntity">Entity object type to be returned</typeparam>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="query">Query to filter results</param>
+        /// <returns></returns>
+        public IQueryable<TEntity> Get<TEntity>(Expression<Func<TEntity, bool>> query)
+            where TEntity : class
+        {
+            return Context.Set<TEntity>().Where(query);
+        }
+
+        /// <summary>
+        ///     Asynchronously returns all entities
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <returns></returns>
+        public async Task<IQueryable<TEntity>> GetAsync<TEntity>()
+            where TEntity : class
+        {
+            return await Task.Run(() => Get<TEntity>());
+        }
+
+        /// <summary>
+        ///     Asynchronously returns a single entity object based on primary key value
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
         /// <param name="id">Primary key value</param>
         /// <returns></returns>
         public async Task<TEntity> GetAsync<TEntity>(params object[] id)
@@ -62,49 +96,15 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Returns all entity objects of the specified entity.
-        /// </summary>
-        /// <typeparam name="TEntity">Entity object type to be returned</typeparam>
-        /// <returns></returns>
-        public IQueryable<TEntity> GetAll<TEntity>()
-            where TEntity : class
-        {
-            return Context.Set<TEntity>();
-        }
-
-        /// <summary>
-        ///     Asynchronously returns all entity objects of the specified entity.
-        /// </summary>
-        /// <typeparam name="TEntity">Entity object type to be returned</typeparam>
-        /// <returns></returns>
-        public async Task<IQueryable<TEntity>> GetAllAsync<TEntity>()
-            where TEntity : class
-        {
-            return await Task.Run(() => GetAll<TEntity>());
-        }
-
-        /// <summary>
-        ///     Returns all entity objects of the specified entity that meet the requirements of the provided query.
+        ///     Asynchronously returns all entities based on the query
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
-        /// <param name="query"></param>
+        /// <param name="query">Query to filter results</param>
         /// <returns></returns>
-        public IQueryable<TEntity> FindBy<TEntity>(Expression<Func<TEntity, bool>> query)
+        public async Task<IQueryable<TEntity>> GetAsync<TEntity>(Expression<Func<TEntity, bool>> query)
             where TEntity : class
         {
-            return Context.Set<TEntity>().Where(query);
-        }
-
-        /// <summary>
-        ///     Asynchronously returns all entity objects of the specified entity that meet the requirements of the provided query.
-        /// </summary>
-        /// <typeparam name="TEntity"></typeparam>
-        /// <param name="query"></param>
-        /// <returns></returns>
-        public async Task<IQueryable<TEntity>> FindByAsync<TEntity>(Expression<Func<TEntity, bool>> query)
-            where TEntity : class
-        {
-            return await Task.Run(() => FindBy<TEntity>(query));
+            return await Task.Run(() => Get(query));
         }
 
         /// <summary>
@@ -152,22 +152,6 @@ namespace sidekick
             where TEntity : class
         {
             Context.Set<TEntity>().RemoveRange(collection);
-            return this;
-        }
-
-        /// <summary>
-        ///     Removes a single entity (found by primary key) from the specified set.
-        /// </summary>
-        /// <typeparam name="TEntity"></typeparam>
-        /// <typeparam name="TKey"></typeparam>
-        /// <param name="id"></param>
-        public BaseRepo<TContext> Remove<TEntity>(params object[] id)
-            where TEntity : class
-        {
-            TEntity entity = Get<TEntity>(id);
-            if (entity != null)
-                Remove(entity);
-
             return this;
         }
 

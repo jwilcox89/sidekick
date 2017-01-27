@@ -22,16 +22,13 @@ namespace sidekick
             if (String.IsNullOrEmpty(domain))
                 return false;
 
-            using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, domain))
+            using (PrincipalContext context = new PrincipalContext(ContextType.Domain, domain))
             {
                 if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
                     return false;
 
-                if (pc.ValidateCredentials(username, password))
-                    return true;
+                return context.ValidateCredentials(username, password);
             }
-
-            return false;
         }
 
         /// <summary>
@@ -47,16 +44,13 @@ namespace sidekick
             if (String.IsNullOrEmpty(contextName))
                 return false;
 
-            using (PrincipalContext pc = new PrincipalContext(contextType, contextName))
+            using (PrincipalContext context = new PrincipalContext(contextType, contextName))
             {
                 if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
                     return false;
 
-                if (pc.ValidateCredentials(username, password))
-                    return true;
+                return context.ValidateCredentials(username, password);
             }
-
-            return false;
         }
 
         /// <summary>
@@ -70,9 +64,9 @@ namespace sidekick
             if (String.IsNullOrEmpty(domain))
                 return new List<string>();
 
-            using (PrincipalContext pc = new PrincipalContext(ContextType.Domain, domain))
+            using (PrincipalContext context = new PrincipalContext(ContextType.Domain, domain))
             {
-                UserPrincipal user = UserPrincipal.FindByIdentity(pc, username);
+                UserPrincipal user = UserPrincipal.FindByIdentity(context, username);
                 if (user == null)
                     return new List<string>();
 
@@ -89,9 +83,9 @@ namespace sidekick
         /// <returns></returns>
         public static IList<string> GetUserRoles(string username, ContextType contextType, string contextName)
         {
-            using (PrincipalContext pc = new PrincipalContext(contextType, contextName))
+            using (PrincipalContext context = new PrincipalContext(contextType, contextName))
             {
-                UserPrincipal user = UserPrincipal.FindByIdentity(pc, username);
+                UserPrincipal user = UserPrincipal.FindByIdentity(context, username);
                 if (user == null)
                     return new List<string>();
 

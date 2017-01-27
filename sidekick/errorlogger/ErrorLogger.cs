@@ -7,52 +7,12 @@ using System.Runtime.InteropServices;
 namespace sidekick
 {
     /// <summary>
-    ///     Error logger to be used with MVC exceptions and standard exceptions. Logs error in to a database table.
+    ///     Exception logger
     /// </summary>
     /// <typeparam name="TContext"></typeparam>
     public class ErrorLogger<TContext> : BaseRepo<TContext>
         where TContext : DbContext, new()
     {
-        /// <summary>
-        ///     Logs the error using the ExceptionContext data provided.
-        /// </summary>
-        /// <typeparam name="TEntity"></typeparam>
-        /// <param name="ex"></param>
-        public void LogError<TEntity>(ExceptionContext ex, string comments = null)
-            where TEntity : class, IErrorLog, new()
-        {
-            Add(new TEntity
-            {
-                Time = DateTime.Now,
-                Exception = ex.GetExceptionMessage(),
-                InnerException = ex.GetInnerExceptionMessage(),
-                StackTrace = ex.GetStackTraceMessage(),
-                User = Thread.CurrentPrincipal.Identity.Name,
-                Route = ex.GetRoute(),
-                Query = ex.GetQuery(),
-                Comments = comments
-            }).Save();
-        }
-
-        /// <summary>
-        ///     Logs the error using the Exception data provided.
-        /// </summary>
-        /// <typeparam name="TEntity"></typeparam>
-        /// <param name="ex"></param>
-        /// <param name="route"></param>
-        public void LogError<TEntity>(_Exception ex, string comments = null)
-            where TEntity : class, IErrorLog, new()
-        {
-            Add(new TEntity
-            {
-                Time = DateTime.Now,
-                Exception = ex.GetExceptionMessage(),
-                InnerException = ex.GetInnerExceptionMessage(),
-                StackTrace = ex.GetStackTraceMessage(),
-                Comments = comments
-            }).Save();
-        }
-
         /// <summary>
         ///     Logs the error using the data the user has provided.
         /// </summary>
@@ -62,6 +22,48 @@ namespace sidekick
             where TEntity : class, IErrorLog
         {
             Add(error).Save();
+        }
+
+        /// <summary>
+        ///     Logs the error using the ExceptionContext data provided.
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="exception"></param>
+        /// <param name="comments"></param>
+        public void LogError<TEntity>(ExceptionContext exception, string comments = null)
+            where TEntity : class, IErrorLog, new()
+        {
+            Add(new TEntity
+            {
+                Time = DateTime.Now,
+                Exception = exception.GetExceptionMessage(),
+                InnerException = exception.GetInnerExceptionMessage(),
+                StackTrace = exception.GetStackTraceMessage(),
+                User = Thread.CurrentPrincipal.Identity.Name,
+                Route = exception.GetRoute(),
+                Query = exception.GetQuery(),
+                Comments = comments
+            }).Save();
+        }
+
+        /// <summary>
+        ///     Logs the error using the Exception data provided.
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <param name="exception"></param>
+        /// <param name="route"></param>
+        /// <param name="comments"></param>
+        public void LogError<TEntity>(_Exception exception, string comments = null)
+            where TEntity : class, IErrorLog, new()
+        {
+            Add(new TEntity
+            {
+                Time = DateTime.Now,
+                Exception = exception.GetExceptionMessage(),
+                InnerException = exception.GetInnerExceptionMessage(),
+                StackTrace = exception.GetStackTraceMessage(),
+                Comments = comments
+            }).Save();
         }
     }
 }

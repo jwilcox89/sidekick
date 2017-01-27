@@ -98,6 +98,7 @@
     <Compile Include="elements\CustomSelectList.cs" />
     <Compile Include="elements\ProgressBar.cs" />
     <Compile Include="elements\Tab.cs" />
+    <Compile Include="elements\Toggle.cs" />
     <Compile Include="enums\AlertType.cs" />
     <Compile Include="enums\CheckboxType.cs" />
     <Compile Include="enums\Colors.cs" />
@@ -107,7 +108,7 @@
     <Compile Include="enums\InputGroupSize.cs" />
     <Compile Include="enums\ModalSize.cs" />
     <Compile Include="enums\Months.cs" />
-    <Compile Include="enums\SwitchSize.cs" />
+    <Compile Include="enums\ToggleSize.cs" />
     <Compile Include="enums\TabType.cs" />
     <Compile Include="enums\UsStates.cs" />
     <Compile Include="errorlogger\ErrorLogger.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="htmlbuilders\ButtonDropdownBuilder.cs" />
     <Compile Include="htmlbuilders\IconBuilder.cs" />
     <Compile Include="htmlbuilders\ProgressBarBuilder.cs" />
+    <Compile Include="htmlbuilders\ToggleBuilder.cs" />
     <Compile Include="mockup\MockupInputBuilder.cs" />
     <Compile Include="mockup\MockupHtmlBuilder.cs" />
     <Compile Include="renderer\HtmlRenderer.cs" />

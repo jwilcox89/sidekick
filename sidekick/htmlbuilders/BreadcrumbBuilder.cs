@@ -7,17 +7,17 @@ namespace sidekick
     ///     HTML builder for a Bootstrap 'Breadcrumb' element.
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
-    public class BreadcrumbBuilder<TModel> : IDisposable
+    public class BreadcrumbBuilder : IDisposable
     {
-        private HtmlHelper<TModel> _helper;
+        private HtmlHelper _helper;
 
-        public BreadcrumbBuilder(HtmlHelper<TModel> helper)
+        public BreadcrumbBuilder(HtmlHelper helper)
         {
             _helper = helper;
             _helper.WriteLine("<ol class='breadcrumb'>");
         }
 
-        public BreadcrumbBuilder(HtmlHelper<TModel> helper, string @class)
+        public BreadcrumbBuilder(HtmlHelper helper, string @class)
         {
             _helper = helper;
             _helper.WriteLine($"<ol class='breadcrumb {@class}'>");
