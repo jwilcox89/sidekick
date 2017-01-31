@@ -156,58 +156,6 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Method will toggle the boolean type property name that is supplied.
-        ///     *Note : Will only work if you provide a boolean property and the primary key of the table you wish to toggle.
-        ///     Otherwise will need to write a custom method.
-        /// </summary>
-        /// <typeparam name="TEntity">Database table object</typeparam>
-        /// <typeparam name="TKey">Primary key column type (int, short etc)</typeparam>
-        /// <param name="property">Property you wish to toggle</param>
-        /// <param name="id">Value of the primary key of the row you wish to toggle</param>
-        /// <returns></returns>
-        public bool ToggleProperty<TEntity>(Expression<Func<TEntity, object>> property, params object[] id)
-            where TEntity : class
-        {
-            return ToggleProperty<TEntity>(property.GetMemberName(), id);
-        }
-
-        /// <summary>
-        ///     Method will toggle the boolean type property name that is supplied.
-        ///     *Note : Will only work if you provide a boolean property and the primary key of the table you wish to toggle.
-        ///     Otherwise will need to write a custom method.
-        /// </summary>
-        /// <typeparam name="TEntity">Database table object</typeparam>
-        /// <typeparam name="TKey">Primary key column type (int, short etc)</typeparam>
-        /// <param name="property">Property you wish to toggle ("Active", "Locked" etc)</param>
-        /// <param name="id">Value of the primary key of the row you wish to toggle</param>
-        /// <returns>Returns the value that the property was toggled to.</returns>
-        /// <returns></returns>
-        public async Task<bool> TogglePropertyAsync<TEntity>(Expression<Func<TEntity, object>> property, params object[] id)
-            where TEntity : class
-        {
-            return await Task.Run(() => ToggleProperty<TEntity>(property.GetMemberName(), id));
-        }
-
-        private bool ToggleProperty<TEntity>(string propertyName, params object[] id)
-            where TEntity : class
-        {
-            TEntity entity = Get<TEntity>(id);
-            if (entity == null)
-                throw new NullReferenceException("No record found");
-
-            PropertyInfo currentProperty = entity.GetProperty(propertyName);
-            if (currentProperty.PropertyType != (typeof(Boolean)) && currentProperty.PropertyType != (typeof(Nullable<Boolean>)))
-                throw new ArgumentException("Not a boolean or nullable boolean type");
-
-            object currentValue = currentProperty.GetValue(entity, null);
-            bool newValue = Convert.ToBoolean(currentValue).Toggle();
-
-            currentProperty.SetValue(entity, newValue);
-
-            return newValue;
-        }
-
-        /// <summary>
         ///     Saves changes made
         /// </summary>
         /// <returns></returns>
