@@ -7,12 +7,12 @@ namespace sidekick
     ///     HTML builder for a Bootstrap 'Modal' element.
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
-    public class ModalBuilder<TModel> : IDisposable
+    public class ModalBuilder : IDisposable
     {
-        private HtmlHelper<TModel> _helper;
+        private HtmlHelper _helper;
         private Modal _model;
 
-        public ModalBuilder(HtmlHelper<TModel> helper, Modal modal)
+        public ModalBuilder(HtmlHelper helper, Modal modal)
         {
             _model = modal;
             _helper = helper;
@@ -29,7 +29,7 @@ namespace sidekick
         ///     Begins the body section of the modal
         /// </summary>
         /// <returns></returns>
-        public ModalBody<TModel> BeginBody()
+        public ModalBody BeginBody()
         {
             return BeginBody(false);
         }
@@ -39,9 +39,9 @@ namespace sidekick
         /// </summary>
         /// <param name="writeBody"></param>
         /// <returns></returns>
-        public ModalBody<TModel> BeginBody(bool writeBody)
+        public ModalBody BeginBody(bool writeBody)
         {
-            return new ModalBody<TModel>(_helper, _model, writeBody);
+            return new ModalBody(_helper, _model, writeBody);
         }
 
         public void Dispose()
@@ -50,12 +50,12 @@ namespace sidekick
         }
     }
 
-    public class ModalBody<TModel> : IDisposable
+    public class ModalBody : IDisposable
     {
-        private HtmlHelper<TModel> _helper;
+        private HtmlHelper _helper;
         private Modal _model;
 
-        public ModalBody(HtmlHelper<TModel> helper, Modal model, bool writeBody)
+        public ModalBody(HtmlHelper helper, Modal model, bool writeBody)
         {
             _helper = helper;
             _model = model;
@@ -71,7 +71,7 @@ namespace sidekick
         ///     Build the footer for the modal
         /// </summary>
         /// <returns></returns>
-        public ModalBody<TModel> HasFooter()
+        public ModalBody HasFooter()
         {
             _model._hasFooter = true;
             return this;

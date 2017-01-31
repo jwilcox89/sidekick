@@ -8,14 +8,14 @@ namespace sidekick
     ///     HTML builder for a Bootstrap 'Tab' element
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
-    public class TabsBuilder<TModel> : IDisposable
+    public class TabsBuilder : IDisposable
     {
-        private HtmlHelper<TModel> _helper;
+        private HtmlHelper _helper;
         private readonly Queue<Tab> _tabList;
         private bool _contentStarted;
         private bool _fade;
 
-        public TabsBuilder(HtmlHelper<TModel> helper, TabType tabType)
+        public TabsBuilder(HtmlHelper helper, TabType tabType)
         {
             _helper = helper;
             _tabList = new Queue<Tab>();
@@ -23,7 +23,7 @@ namespace sidekick
             _helper.WriteLine($"<ul role='tablist' class='nav {tabType.GetAttribute<HtmlBuilderAttribute>().Class}'>");
         }
 
-        public TabsBuilder(HtmlHelper<TModel> helper, TabType tabType, bool fade)
+        public TabsBuilder(HtmlHelper helper, TabType tabType, bool fade)
         {
             _helper = helper;
             _fade = fade;
@@ -32,7 +32,7 @@ namespace sidekick
             _helper.WriteLine($"<ul role='tablist' class='nav {tabType.GetAttribute<HtmlBuilderAttribute>().Class}'>");
         }
 
-        public TabsBuilder(HtmlHelper<TModel> helper, TabType tabType, bool stacked, bool justified, bool fade)
+        public TabsBuilder(HtmlHelper helper, TabType tabType, bool stacked, bool justified, bool fade)
         {
             _helper = helper;
             _fade = fade;
@@ -71,9 +71,9 @@ namespace sidekick
         /// </summary>
         /// <param name="tab"></param>
         /// <returns></returns>
-        public TabDropdown<TModel> BeginTabDropdown(Tab tab)
+        public TabDropdown BeginTabDropdown(Tab tab)
         {
-            return new TabDropdown<TModel>(_helper, tab);
+            return new TabDropdown(_helper, tab);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace sidekick
         ///     <para>*Note: cannot be used with a tab dropdown.</para>
         /// </summary>
         /// <returns></returns>
-        public TabsContent<TModel> BeginTab()
+        public TabsContent BeginTab()
         {
             if (!_contentStarted)
             {
@@ -90,7 +90,7 @@ namespace sidekick
                 _contentStarted = true;
             }
 
-            return new TabsContent<TModel>(_helper, _tabList.Dequeue(), _fade);
+            return new TabsContent(_helper, _tabList.Dequeue(), _fade);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace sidekick
         /// </summary>
         /// <param name="tab"></param>
         /// <returns></returns>
-        public TabsContent<TModel> BeginTab(string tabName)
+        public TabsContent BeginTab(string tabName)
         {
             if (!_contentStarted)
             {
@@ -108,7 +108,7 @@ namespace sidekick
                 _contentStarted = true;
             }
 
-            return new TabsContent<TModel>(_helper, new Tab("", "", tabName, false), _fade);
+            return new TabsContent(_helper, new Tab("", "", tabName, false), _fade);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace sidekick
         /// </summary>
         /// <param name="tab"></param>
         /// <returns></returns>
-        public TabsContent<TModel> BeginTab(string tabName, bool active)
+        public TabsContent BeginTab(string tabName, bool active)
         {
             if (!_contentStarted)
             {
@@ -126,7 +126,7 @@ namespace sidekick
                 _contentStarted = true;
             }
 
-            return new TabsContent<TModel>(_helper, new Tab("", "", tabName, active), _fade);
+            return new TabsContent(_helper, new Tab("", "", tabName, active), _fade);
         }
 
         public void Dispose()
@@ -139,11 +139,11 @@ namespace sidekick
     ///     Build the content area for tab
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
-    public class TabsContent<TModel> : IDisposable
+    public class TabsContent : IDisposable
     {
-        private HtmlHelper<TModel> _helper;
+        private HtmlHelper _helper;
 
-        public TabsContent(HtmlHelper<TModel> helper, Tab tab, bool fade)
+        public TabsContent(HtmlHelper helper, Tab tab, bool fade)
         {
             _helper = helper;
             string active = (tab.Active) ? "active" : null;
@@ -163,11 +163,11 @@ namespace sidekick
     ///     Build a tab dropdown menu
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
-    public class TabDropdown<TModel> : IDisposable
+    public class TabDropdown : IDisposable
     {
-        private HtmlHelper<TModel> _helper;
+        private HtmlHelper _helper;
 
-        public TabDropdown(HtmlHelper<TModel> helper, Tab tab)
+        public TabDropdown(HtmlHelper helper, Tab tab)
         {
             _helper = helper;
             _helper.WriteLine("<li class='dropdown' role='presentation'>");

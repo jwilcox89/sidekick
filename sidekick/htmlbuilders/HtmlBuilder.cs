@@ -38,9 +38,9 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="modal"></param>
         /// <returns></returns>
-        public static ModalBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, Modal modal)
+        public static ModalBuilder Begin(this HtmlHelper helper, Modal modal)
         {
-            return new ModalBuilder<TModel>(helper, modal);
+            return new ModalBuilder(helper, modal);
         }
 
         /// <summary>
@@ -49,9 +49,9 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="alert"></param>
         /// <returns></returns>
-        public static AlertBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, Alert alert)
+        public static AlertBuilder Begin(this HtmlHelper helper, Alert alert)
         {
-            return new AlertBuilder<TModel>(helper, alert);
+            return new AlertBuilder(helper, alert);
         }
 
         /// <summary>
@@ -61,9 +61,9 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="tabType">Specify which style of tabs you would like</param>
         /// <returns></returns>
-        public static TabsBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, TabType tabType)
+        public static TabsBuilder Begin(this HtmlHelper helper, TabType tabType)
         {
-            return new TabsBuilder<TModel>(helper, tabType);
+            return new TabsBuilder(helper, tabType);
         }
 
         /// <summary>
@@ -74,9 +74,9 @@ namespace sidekick
         /// <param name="tabType">Specify which style of tabs you would like</param>
         /// <param name="fade">True will enable the javascript fade in/out when toggling tabs</param>
         /// <returns></returns>
-        public static TabsBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, TabType tabType, bool fade)
+        public static TabsBuilder Begin(this HtmlHelper helper, TabType tabType, bool fade)
         {
-            return new TabsBuilder<TModel>(helper, tabType, fade);
+            return new TabsBuilder(helper, tabType, fade);
         }
 
         /// <summary>
@@ -88,9 +88,9 @@ namespace sidekick
         /// <param name="stacked">True if you want the tabs stacked on top of one another</param>
         /// <param name="justified">True if you want the tabs equal widths of their parent</param>
         /// <returns></returns>
-        public static TabsBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, TabType tabType, bool stacked, bool justified, bool fade)
+        public static TabsBuilder Begin(this HtmlHelper helper, TabType tabType, bool stacked, bool justified, bool fade)
         {
-            return new TabsBuilder<TModel>(helper, tabType, stacked, justified, fade);
+            return new TabsBuilder(helper, tabType, stacked, justified, fade);
         }
 
         /// <summary>
@@ -99,9 +99,9 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="panel"></param>
         /// <returns></returns>
-        public static PanelBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, Panel panel)
+        public static PanelBuilder Begin(this HtmlHelper helper, Panel panel)
         {
-            return new PanelBuilder<TModel>(helper, panel);
+            return new PanelBuilder(helper, panel);
         }
 
         /// <summary>
@@ -111,9 +111,9 @@ namespace sidekick
         /// <param name="helper"></param>
         /// <param name="accordion"></param>
         /// <returns></returns>
-        public static AccordionBuilder<TModel> Begin<TModel>(this HtmlHelper<TModel> helper, Accordion accordion)
+        public static AccordionBuilder Begin(this HtmlHelper helper, Accordion accordion)
         {
-            return new AccordionBuilder<TModel>(helper, accordion);
+            return new AccordionBuilder(helper, accordion);
         }
 
         /// <summary>

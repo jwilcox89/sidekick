@@ -8,12 +8,12 @@ namespace sidekick
     ///     HTML builder for a Bootstrap 'Alert' element.
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
-    public class AlertBuilder<TModel> : IDisposable
+    public class AlertBuilder : IDisposable
     {
-        private HtmlHelper<TModel> _helper;
+        private HtmlHelper _helper;
         private Alert _alert;
 
-        public AlertBuilder(HtmlHelper<TModel> helper, Alert alert)
+        public AlertBuilder(HtmlHelper helper, Alert alert)
         {
             _helper = helper;
             _alert = alert;

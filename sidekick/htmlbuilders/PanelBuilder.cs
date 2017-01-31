@@ -7,11 +7,11 @@ namespace sidekick
     ///     HTML builder for a Bootstrap 'Panel' element.
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
-    public class PanelBuilder<TModel> : IDisposable
+    public class PanelBuilder : IDisposable
     {
-        private HtmlHelper<TModel> _helper;
+        private HtmlHelper _helper;
 
-        public PanelBuilder(HtmlHelper<TModel> helper, Panel panel)
+        public PanelBuilder(HtmlHelper helper, Panel panel)
         {
             _helper = helper;
             _helper.WriteLine($"<div class='panel panel-{panel._color.GetAttribute<HtmlBuilderAttribute>().Class} {panel._class}'>");
@@ -21,9 +21,9 @@ namespace sidekick
         ///     Heading of the panel. Title element class 'panel-title'.
         /// </summary>
         /// <returns></returns>
-        public PanelSection<TModel> BeginHeading()
+        public PanelSection BeginHeading()
         {
-            return new PanelSection<TModel>(_helper, "panel-heading");
+            return new PanelSection(_helper, "panel-heading");
         }
 
         /// <summary>
@@ -31,18 +31,18 @@ namespace sidekick
         /// </summary>
         /// <param name="class">Additional class(es) beyond the class required for the heading</param>
         /// <returns></returns>
-        public PanelSection<TModel> BeginHeading(string @class)
+        public PanelSection BeginHeading(string @class)
         {
-            return new PanelSection<TModel>(_helper, "panel-heading", @class);
+            return new PanelSection(_helper, "panel-heading", @class);
         }
 
         /// <summary>
         ///     Body of the panel
         /// </summary>
         /// <returns></returns>
-        public PanelSection<TModel> BeginBody()
+        public PanelSection BeginBody()
         {
-            return new PanelSection<TModel>(_helper, "panel-body");
+            return new PanelSection(_helper, "panel-body");
         }
 
         /// <summary>
@@ -50,18 +50,18 @@ namespace sidekick
         /// </summary>
         /// <param name="class">Additional class(es) beyond the class required for the body</param>
         /// <returns></returns>
-        public PanelSection<TModel> BeginBody(string @class)
+        public PanelSection BeginBody(string @class)
         {
-            return new PanelSection<TModel>(_helper, "panel-body", @class);
+            return new PanelSection(_helper, "panel-body", @class);
         }
 
         /// <summary>
         ///     Footer of the panel
         /// </summary>
         /// <returns></returns>
-        public PanelSection<TModel> BeginFooter()
+        public PanelSection BeginFooter()
         {
-            return new PanelSection<TModel>(_helper, "panel-footer");
+            return new PanelSection(_helper, "panel-footer");
         }
 
         /// <summary>
@@ -69,9 +69,9 @@ namespace sidekick
         /// </summary>
         /// <param name="class">Additional class(es) beyond the class required for the footer</param>
         /// <returns></returns>
-        public PanelSection<TModel> BeginFooter(string @class)
+        public PanelSection BeginFooter(string @class)
         {
-            return new PanelSection<TModel>(_helper, "panel-footer", @class);
+            return new PanelSection(_helper, "panel-footer", @class);
         }
 
         public void Dispose()
@@ -84,17 +84,17 @@ namespace sidekick
     ///     Build a section of the panel by providing the class for that section
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
-    public class PanelSection<TModel> : IDisposable
+    public class PanelSection : IDisposable
     {
-        private HtmlHelper<TModel> _helper;
+        private HtmlHelper _helper;
 
-        public PanelSection(HtmlHelper<TModel> helper, string @class)
+        public PanelSection(HtmlHelper helper, string @class)
         {
             _helper = helper;
             _helper.WriteLine($"<div class='{@class}'>");
         }
 
-        public PanelSection(HtmlHelper<TModel> helper, string @class, string additionalClass)
+        public PanelSection(HtmlHelper helper, string @class, string additionalClass)
         {
             _helper = helper;
             _helper.WriteLine($"<div class='{@class} {additionalClass}'>");

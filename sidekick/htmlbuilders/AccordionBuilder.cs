@@ -7,12 +7,12 @@ namespace sidekick
     ///     HTML builder for a Bootstrap 'Accordion' element.
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
-    public class AccordionBuilder<TModel> : IDisposable
+    public class AccordionBuilder : IDisposable
     {
-        private HtmlHelper<TModel> _helper;
+        private HtmlHelper _helper;
         private Accordion _accordion;
 
-        public AccordionBuilder(HtmlHelper<TModel> helper, Accordion accordion)
+        public AccordionBuilder(HtmlHelper helper, Accordion accordion)
         {
             _helper = helper;
             _accordion = accordion;
@@ -24,9 +24,9 @@ namespace sidekick
         /// </summary>
         /// <param name="panel"></param>
         /// <returns></returns>
-        public AccordionPanel<TModel> BeginPanel(Panel panel, string title, string icon)
+        public AccordionPanel BeginPanel(Panel panel, string title, string icon)
         {
-            return new AccordionPanel<TModel>(_helper, _accordion, panel, title, icon);
+            return new AccordionPanel(_helper, _accordion, panel, title, icon);
         }
 
         public void Dispose()
@@ -35,11 +35,11 @@ namespace sidekick
         }
     }
 
-    public class AccordionPanel<TModel> : IDisposable
+    public class AccordionPanel : IDisposable
     {
-        private HtmlHelper<TModel> _helper;
+        private HtmlHelper _helper;
 
-        public AccordionPanel(HtmlHelper<TModel> helper, Accordion accordion, Panel panel, string title, string icon)
+        public AccordionPanel(HtmlHelper helper, Accordion accordion, Panel panel, string title, string icon)
         {
             _helper = helper;
             _helper.WriteLine($"<div class='panel panel-{panel._color.GetAttribute<HtmlBuilderAttribute>().Class}'>");
