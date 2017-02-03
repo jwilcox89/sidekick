@@ -129,7 +129,6 @@
     <Compile Include="htmlbuilders\AccordionBuilder.cs" />
     <Compile Include="htmlbuilders\AjaxActionLinkBuilder.cs" />
     <Compile Include="htmlbuilders\BreadcrumbBuilder.cs" />
-    <Compile Include="connection\NetworkConnectionManager.cs" />
     <Compile Include="utilities\GeneralUtils.cs" />
     <Compile Include="utilities\IdentityUtils.cs" />
     <Compile Include="utilities\NavUtils.cs" />

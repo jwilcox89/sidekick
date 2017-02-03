@@ -12,7 +12,7 @@ namespace sidekick
     ///     Generic repository designed to account for all generic query functionality
     /// </summary>
     /// <typeparam name="TContext">The database context you would like to query</typeparam>
-    public class BaseRepo<TContext> : IDisposable
+    public abstract class BaseRepo<TContext> : IDisposable
         where TContext : DbContext, new()
     {
         /// <summary>
