@@ -11,13 +11,11 @@ namespace sidekick
     {
         public NoPastDateAttribute()
             : base("Date cannot be a past date")
-        {
-        }
+        { }
 
         public NoPastDateAttribute(string errorMessage)
             : base(errorMessage)
-        {
-        }
+        { }
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {

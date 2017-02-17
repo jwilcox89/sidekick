@@ -11,13 +11,11 @@ namespace sidekick
     {
         public NoFutureDateAttribute()
             : base("Date cannot be a future date")
-        {
-        }
+        { }
 
         public NoFutureDateAttribute(string errorMessage)
             : base(errorMessage)
-        {
-        }
+        { }
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {

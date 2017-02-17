@@ -89,13 +89,11 @@
     <Compile Include="attributes\ExtensionAttribute.cs" />
     <Compile Include="database\BaseRepo.cs" />
     <Compile Include="database\RepoException.cs" />
-    <Compile Include="database\RepoUtils.cs" />
     <Compile Include="elements\Accordion.cs" />
     <Compile Include="elements\ActionLinkBase.cs" />
     <Compile Include="elements\ButtonDropdown.cs" />
     <Compile Include="elements\Icon.cs" />
     <Compile Include="elements\Panel.cs" />
-    <Compile Include="elements\CustomSelectList.cs" />
     <Compile Include="elements\ProgressBar.cs" />
     <Compile Include="elements\Tab.cs" />
     <Compile Include="elements\Toggle.cs" />

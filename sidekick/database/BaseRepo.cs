@@ -16,12 +16,12 @@ namespace sidekick
         where TContext : DbContext, new()
     {
         /// <summary>
-        ///     Reference to the database context.
+        ///     Reference to the database context
         /// </summary>
         protected TContext Context { get; set; }
 
         /// <summary>
-        ///     Generates a new instance of the specified database context.
+        ///     Generates a new instance of the database context
         /// </summary>
         public BaseRepo()
         {
@@ -29,7 +29,7 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Uses the instance of the database context provided.
+        ///     Uses the instance of the database context
         /// </summary>
         /// <param name="context"></param>
         public BaseRepo(TContext context)
@@ -108,7 +108,7 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Adds a single entity to the specified set.
+        ///     Adds a single entity to the specified set
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="entity"></param>
@@ -120,7 +120,7 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Adds a list of entities to the specified set.
+        ///     Adds a list of entities to the specified set
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="entities"></param>
@@ -132,7 +132,7 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Removes a single entity from the specified set.
+        ///     Removes a single entity from the specified set
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="entity"></param>
@@ -144,7 +144,7 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Removes a list of entities from the specified set.
+        ///     Removes a list of entities from the specified set
         /// </summary>
         /// <typeparam name="TEntity"></typeparam>
         /// <param name="collection"></param>
@@ -177,11 +177,18 @@ namespace sidekick
         /// <returns></returns>
         public async Task<int> SaveAsync()
         {
-            return await Task.Run(() => Save());
+            try
+            {
+                return await Context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new RepoException(ex, Context.GetValidationErrors());
+            }
         }
 
         /// <summary>
-        ///     Execute a custom SQL script on the database.
+        ///     Execute a custom SQL script on the database
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>
@@ -191,7 +198,7 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Execute a custom SQL script on the database.
+        ///     Execute a custom SQL script on the database
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="behavior"></param>

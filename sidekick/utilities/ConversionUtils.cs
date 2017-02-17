@@ -30,9 +30,7 @@ namespace sidekick
         {
             IList<int> final = new List<int>();
             foreach (T item in list)
-            {
                 final.Add(item.ToInt());
-            }
 
             return final;
         }
@@ -80,9 +78,7 @@ namespace sidekick
         {
             IList<short> final = new List<short>();
             foreach (T item in list)
-            {
                 final.Add(item.ToShort());
-            }
 
             return final;
         }

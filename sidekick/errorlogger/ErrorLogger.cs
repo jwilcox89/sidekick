@@ -7,12 +7,19 @@ using System.Runtime.InteropServices;
 namespace sidekick
 {
     /// <summary>
-    ///     Exception logger
+    ///     Error logger that creates new instance of DbContext so error can save without entity errors.
     /// </summary>
     /// <typeparam name="TContext"></typeparam>
-    public class ErrorLogger<TContext> : BaseRepo<TContext>
+    public class ErrorLogger<TContext> : IDisposable
         where TContext : DbContext, new()
     {
+        private TContext Context;
+
+        public ErrorLogger()
+        {
+            Context = new TContext();
+        }
+
         /// <summary>
         ///     Logs the error using the data the user has provided.
         /// </summary>
@@ -21,7 +28,8 @@ namespace sidekick
         public void LogError<TEntity>(TEntity error)
             where TEntity : class, IErrorLog
         {
-            Add(error).Save();
+            Context.Set<TEntity>().Add(error);
+            Context.SaveChanges();
         }
 
         /// <summary>
@@ -33,7 +41,7 @@ namespace sidekick
         public void LogError<TEntity>(ExceptionContext exception, string comments = null)
             where TEntity : class, IErrorLog, new()
         {
-            Add(new TEntity
+            Context.Set<TEntity>().Add(new TEntity
             {
                 Time = DateTime.Now,
                 Exception = exception.GetExceptionMessage(),
@@ -43,7 +51,9 @@ namespace sidekick
                 Route = exception.GetRoute(),
                 Query = exception.GetQuery(),
                 Comments = comments
-            }).Save();
+            });
+
+            Context.SaveChanges();
         }
 
         /// <summary>
@@ -56,14 +66,21 @@ namespace sidekick
         public void LogError<TEntity>(_Exception exception, string comments = null)
             where TEntity : class, IErrorLog, new()
         {
-            Add(new TEntity
+            Context.Set<TEntity>().Add(new TEntity
             {
                 Time = DateTime.Now,
                 Exception = exception.GetExceptionMessage(),
                 InnerException = exception.GetInnerExceptionMessage(),
                 StackTrace = exception.GetStackTraceMessage(),
                 Comments = comments
-            }).Save();
+            });
+
+            Context.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            Context?.Dispose();
         }
     }
 }
