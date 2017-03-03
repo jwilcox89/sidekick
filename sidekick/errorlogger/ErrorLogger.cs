@@ -44,6 +44,7 @@ namespace sidekick
             Context.Set<TEntity>().Add(new TEntity
             {
                 Time = DateTime.Now,
+                BrowserInfo = exception.GetBrowserInfo(),
                 Exception = exception.GetExceptionMessage(),
                 InnerException = exception.GetInnerExceptionMessage(),
                 StackTrace = exception.GetStackTraceMessage(),

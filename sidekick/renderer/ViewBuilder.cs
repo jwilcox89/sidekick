@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace sidekick
 {
-    public class ViewBuilder : ControllerBase, IDisposable
+    public class ViewBuilder : ControllerBase
     {
         public HttpContextBase CurrentHttpContext { get; set; }
 
@@ -18,8 +18,7 @@ namespace sidekick
         }
 
         protected override void ExecuteCore()
-        {
-        }
+        { }
 
         /// <summary>
         ///     Returns a string of the HTML for a view
@@ -97,11 +96,6 @@ namespace sidekick
 
             RouteData routeData = RouteTable.Routes.GetRouteData(CurrentHttpContext);
             ControllerContext = new ControllerContext(CurrentHttpContext, routeData, this);
-        }
-
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
         }
     }
 }

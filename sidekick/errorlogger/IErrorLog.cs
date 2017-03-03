@@ -13,6 +13,11 @@ namespace sidekick
         DateTime Time { get; set; }
 
         /// <summary>
+        ///     Browser name and version
+        /// </summary>
+        string BrowserInfo { get; set; }
+
+        /// <summary>
         ///     Exception
         /// </summary>
         string Exception { get; set; }

@@ -41,8 +41,9 @@ namespace sidekick
 
         public string ToHtmlString()
         {
-            string link = _helper.ActionLink(REPLACEMENT_TEXT, _action, _controller, _routeValues, _options, _htmlAttributes).ToString();
-            return link.Replace(REPLACEMENT_TEXT, $"{new IconBuilder(_icon).ToHtmlString()} {_text}");
+            return _helper.ActionLink(REPLACEMENT_TEXT, _action, _controller, _routeValues, _options, _htmlAttributes)
+                .ToString()
+                .Replace(REPLACEMENT_TEXT, $"{new IconBuilder(_icon).ToHtmlString()} {_text}");
         }
     }
 }

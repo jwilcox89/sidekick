@@ -79,90 +79,6 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Formats decimal into currency
-        /// </summary>
-        /// <param name="helper"></param>
-        /// <param name="amount"></param>
-        /// <returns></returns>
-        public static string FormatCurrency(this HtmlHelper helper, decimal? amount) 
-        {
-            return amount.FormatCurrency();
-        }
-
-        /// <summary>
-        ///     Formats decimal into currency
-        /// </summary>
-        /// <param name="amount"></param>
-        /// <returns></returns>
-        public static string FormatCurrency(this decimal? amount) 
-        {
-            return amount.HasValue ? amount.Value.ToString("C") : String.Empty;
-        }
-
-        /// <summary>
-        ///     Formats decimal into currency
-        /// </summary>
-        /// <param name="helper"></param>
-        /// <param name="amount"></param>
-        /// <returns></returns>
-        public static string FormatCurrency(this HtmlHelper helper, decimal amount) 
-        {
-            return amount.FormatCurrency();
-        }
-
-        /// <summary>
-        ///     Formats decimal into currency
-        /// </summary>
-        /// <param name="amount"></param>
-        /// <returns></returns>
-        public static string FormatCurrency(this decimal amount) 
-        {
-            return amount.ToString("C");
-        }
-
-        /// <summary>
-        ///     Formats int into currency
-        /// </summary>
-        /// <param name="helper"></param>
-        /// <param name="amount"></param>
-        /// <returns></returns>
-        public static string FormatCurrency(this HtmlHelper helper, int? amount) 
-        {
-            return amount.FormatCurrency();
-        }
-
-        /// <summary>
-        ///     Formats int into currency
-        /// </summary>
-        /// <param name="amount"></param>
-        /// <returns></returns>
-        public static string FormatCurrency(this int? amount) 
-        {
-            return amount.HasValue ? amount.Value.ToString("C") : String.Empty;
-        }
-
-        /// <summary>
-        ///     Formats int into currency
-        /// </summary>
-        /// <param name="helper"></param>
-        /// <param name="amount"></param>
-        /// <returns></returns>
-        public static string FormatCurrency(this HtmlHelper helper, int amount) 
-        {
-            return amount.FormatCurrency();
-        }
-
-        /// <summary>
-        ///     Formats int into currency
-        /// </summary>
-        /// <param name="amount"></param>
-        /// <returns></returns>
-        public static string FormatCurrency(this int amount) 
-        {
-            return amount.ToString("C");
-        }
-
-        /// <summary>
         ///     Formats a string into a phone number
         /// </summary>
         /// <param name="helper"></param>
@@ -194,7 +110,6 @@ namespace sidekick
                 return areaCodeParens ? Regex.Replace(number, "(\\d{3})(\\d{3})(\\d{4})", "($1) $2-$3") : Regex.Replace(number, "(\\d{3})(\\d{3})(\\d{4})", "$1-$2-$3");
             }
         }
-
 
         /// <summary>
         ///     Turns a boolean value into a Yes or No

@@ -106,5 +106,19 @@ namespace sidekick
                 new SelectListItem { Text = falseValue, Value = "False" }
             };
         }
+
+        /// <summary>
+        ///     Build a custom dropdown
+        /// </summary>
+        /// <param name="items">List of select items</param>
+        /// <returns></returns>
+        public static IEnumerable<SelectListItem> BuildDropdown(params SelectListItem[] items)
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+            foreach (var item in items)
+                list.Add(item);
+
+            return list;
+        }
     }
 }

@@ -10,141 +10,95 @@ namespace sidekick
     public static class ExceptionUtils
     {
         /// <summary>
-        ///     Returns the exception or a null string
+        ///     Get browser name and version that error occured on
         /// </summary>
-        /// <param name="ex"></param>
+        /// <param name="context"></param>
         /// <returns></returns>
-        public static string GetExceptionMessage(this ExceptionContext ex)
+        public static string GetBrowserInfo(this ExceptionContext context)
         {
-            if (ex != null &&
-                ex.Exception != null)
-                return ex.Exception.Message;
-
-            return String.Empty;
+            return context?.RequestContext?.HttpContext?.Request?.Browser?.Type;
         }
 
         /// <summary>
         ///     Returns the exception or a null string
         /// </summary>
-        /// <param name="ex"></param>
+        /// <param name="context"></param>
         /// <returns></returns>
-        public static string GetExceptionMessage(this _Exception ex)
+        public static string GetExceptionMessage(this ExceptionContext context)
         {
-            if (ex != null)
-                return ex.Message;
+            return context?.Exception?.Message;
+        }
 
-            return String.Empty;
+        /// <summary>
+        ///     Returns the exception or a null string
+        /// </summary>
+        /// <param name="exception"></param>
+        /// <returns></returns>
+        public static string GetExceptionMessage(this _Exception exception)
+        {
+            return exception?.Message;
         }
 
         /// <summary>
         ///     Returns the inner exception message or a null string
         /// </summary>
-        /// <param name="ex"></param>
+        /// <param name="context"></param>
         /// <returns></returns>
-        public static string GetInnerExceptionMessage(this ExceptionContext ex)
+        public static string GetInnerExceptionMessage(this ExceptionContext context)
         {
-            if (ex != null &&
-                ex.Exception != null &&
-                ex.Exception.InnerException != null)
-            {
-                if (!String.IsNullOrEmpty(ex.Exception.InnerException.Message))
-                    return ex.Exception.InnerException.Message;
-
-                Exception originalException = ex.Exception.InnerException.GetBaseException();
-
-                if (originalException.InnerException != null)
-                    return originalException.InnerException.Message;
-            }
-
-            return String.Empty;
+            return context?.Exception?.InnerException?.Message;
         }
 
         /// <summary>
         ///     Returns the inner exception message or a null string
         /// </summary>
-        /// <param name="ex"></param>
+        /// <param name="exception"></param>
         /// <returns></returns>
-        public static string GetInnerExceptionMessage(this _Exception ex)
+        public static string GetInnerExceptionMessage(this _Exception exception)
         {
-            if (ex != null &&
-                ex.InnerException != null)
-            {
-                if (!String.IsNullOrEmpty(ex.InnerException.Message))
-                    return ex.InnerException.Message;
-
-                Exception originalException = ex.InnerException.GetBaseException();
-
-                if (originalException.InnerException != null)
-                    return originalException.InnerException.Message;
-            }
-
-            return String.Empty;
+            return exception?.InnerException.Message;
         }
 
         /// <summary>
         ///     Returns the stack trace message or a null string
         /// </summary>
-        /// <param name="ex"></param>
+        /// <param name="context"></param>
         /// <returns></returns>
-        public static string GetStackTraceMessage(this ExceptionContext ex)
+        public static string GetStackTraceMessage(this ExceptionContext context)
         {
-            if (ex != null &&
-                ex.Exception != null &&
-                !String.IsNullOrEmpty(ex.Exception.StackTrace))
-                return ex.Exception.StackTrace;
-
-            return String.Empty;
+            return context?.Exception?.StackTrace;
         }
 
         /// <summary>
         ///     Returns the stack trace message or a null string
         /// </summary>
-        /// <param name="ex"></param>
+        /// <param name="exception"></param>
         /// <returns></returns>
-        public static string GetStackTraceMessage(this _Exception ex)
+        public static string GetStackTraceMessage(this _Exception exception)
         {
-            if (ex != null && 
-                !String.IsNullOrEmpty(ex.StackTrace))
-                return ex.StackTrace;
-
-            return String.Empty;
+            return exception?.StackTrace;
         }
 
         /// <summary>
         ///     Returns the route
         /// </summary>
-        /// <param name="ex"></param>
+        /// <param name="context"></param>
         /// <returns></returns>
-        public static string GetRoute(this ExceptionContext ex)
+        public static string GetRoute(this ExceptionContext context)
         {
-            if (ex != null && 
-                ex.RequestContext != null && 
-                ex.RequestContext.RouteData != null)
-            {
-                string route = String.Join(", ", ex.RequestContext.RouteData.Values);
-                return !String.IsNullOrEmpty(route) ? route : String.Empty;
-            }
-
-            return String.Empty;
+            string route = String.Join(", ", context?.RequestContext?.RouteData?.Values);
+            return !String.IsNullOrWhiteSpace(route) ? route : null;
         }
 
         /// <summary>
         ///     Returns the query associated with the route
         /// </summary>
-        /// <param name="ex"></param>
+        /// <param name="context"></param>
         /// <returns></returns>
-        public static string GetQuery(this ExceptionContext ex)
+        public static string GetQuery(this ExceptionContext context)
         {
-            if (ex != null && 
-                ex.RequestContext != null && 
-                ex.RequestContext.HttpContext != null && 
-                ex.RequestContext.HttpContext.Request != null)
-            {
-                string query = String.Join(", ", ex.RequestContext.HttpContext.Request.QueryString);
-                return !String.IsNullOrEmpty(query) ? query : String.Empty;
-            }
-
-            return String.Empty;
+            string query = String.Join(", ", context?.RequestContext?.HttpContext?.Request?.QueryString);
+            return !String.IsNullOrWhiteSpace(query) ? query : null;
         }
     }
 }
