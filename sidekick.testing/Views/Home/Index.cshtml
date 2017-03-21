@@ -457,6 +457,7 @@ using (var accordion = Html.Begin(new Accordion("test-accordion")))
     @Html.ValidationSummary(true)
     @Html.FormGroupFor(x => x.Email, ControlType.Textbox).HtmlAttributes(new { @placeholder = "Enter email..." }).HasLabel(":")
     @Html.FormGroupFor(x => x.Password, ControlType.Password).HtmlAttributes(new { @placeholder = "Enter password..." }).HasLabel(":")
+    @Html.FormGroupFor(x => x.State, SelectListUtils.StateDropdown(false), "--Select One--").HasLabel(":")
     @Html.InputGroupFor(x => x.NoFutureDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel(":").HasValidation()
     @Html.InputGroupFor(x => x.NoPastDate).AppendIcon("fa fa-calendar").DatetimepickerClass("datetimepicker").HasLabel(":").HasValidation()
 

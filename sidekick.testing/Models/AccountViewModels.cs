@@ -71,6 +71,8 @@ namespace sidekick.testing.Models
 
         public TestEnum TestEnumProperty = TestEnum.Yes;
 
+        public string State { get; set; }
+
         public enum TestEnum
         {
             //[Display(Name="The answer is yes")]

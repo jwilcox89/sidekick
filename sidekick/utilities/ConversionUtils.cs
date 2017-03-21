@@ -28,11 +28,7 @@ namespace sidekick
         /// <returns></returns>
         public static IEnumerable<int> ToInt<T>(this IEnumerable<T> list)
         {
-            IList<int> final = new List<int>();
-            foreach (T item in list)
-                final.Add(item.ToInt());
-
-            return final;
+            return list.Select(x => x.ToInt());
         }
 
         /// <summary>
@@ -76,11 +72,7 @@ namespace sidekick
         /// <returns></returns>
         public static IEnumerable<short> ToShort<T>(this IEnumerable<T> list)
         {
-            IList<short> final = new List<short>();
-            foreach (T item in list)
-                final.Add(item.ToShort());
-
-            return final;
+            return list.Select(x => x.ToShort());
         }
 
         /// <summary>

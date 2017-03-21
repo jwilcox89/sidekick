@@ -41,16 +41,6 @@ namespace sidekick
         }
 
         /// <summary>
-        ///     Show '*' next to label to indicate required field
-        /// </summary>
-        /// <returns></returns>
-        public T IsRequired()
-        {
-            _required = true;
-            return (T)this;
-        }
-
-        /// <summary>
         ///     Show label
         /// </summary>
         /// <returns></returns>
@@ -79,6 +69,16 @@ namespace sidekick
         public T HasValidation()
         {
             _validation = true;
+            return (T)this;
+        }
+
+        /// <summary>
+        ///     Show '*' next to label to indicate required field
+        /// </summary>
+        /// <returns></returns>
+        public T IsRequired()
+        {
+            _required = true;
             return (T)this;
         }
 

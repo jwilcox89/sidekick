@@ -20,24 +20,14 @@ namespace sidekick
         /// <returns></returns>
         public static IEnumerable<SelectListItem> YearDropdown(int yearsForward, int yearsBackward)
         {
-            IList<SelectListItem> list = new List<SelectListItem>();
-
-            int start = DateTime.Now.Year - yearsBackward;
-            int end = DateTime.Now.Year + yearsForward;
-            int placeholder = start;
-
-            while (placeholder >= start && placeholder <= end)
-            {
-                list.Add(new SelectListItem
+            return Enumerable.Range(DateTime.Now.Year - yearsBackward, (DateTime.Now.Year + yearsForward) - (DateTime.Now.Year - yearsBackward))
+                .Union(new[] { DateTime.Now.Year })
+                .OrderBy(x => x)
+                .Select(x => new SelectListItem
                 {
-                    Text = placeholder.ToString(),
-                    Value = placeholder.ToString()
+                    Text = x.ToString(),
+                    Value = x.ToString()
                 });
-
-                placeholder++;
-            }
-
-            return list;
         }
 
         /// <summary>
@@ -46,18 +36,13 @@ namespace sidekick
         /// <returns></returns>
         public static IEnumerable<SelectListItem> StateDropdown(bool useAbbreviation)
         {
-            IList<SelectListItem> list = new List<SelectListItem>();
-
-            foreach (UsStates state in Enum.GetValues(typeof(UsStates)))
-            {
-                list.Add(new SelectListItem
+            return new List<SelectListItem>(Enum.GetValues(typeof(UsStates))
+                .Cast<UsStates>()
+                .Select(x => new SelectListItem
                 {
-                    Text = useAbbreviation ? state.ToString() : state.GetAttribute<DescriptionAttribute>().Description,
-                    Value = state.ToString(),
-                });
-            }
-
-            return list;
+                    Text = useAbbreviation ? x.ToString() : x.GetAttribute<DescriptionAttribute>().Description,
+                    Value = x.ToString()
+                }));
         }
 
         /// <summary>
@@ -67,19 +52,14 @@ namespace sidekick
         /// <returns></returns>
         public static IEnumerable<SelectListItem> StateDropdown(bool useAbbreviation, UsStates selectedState)
         {
-            IList<SelectListItem> list = new List<SelectListItem>();
-
-            foreach (UsStates state in Enum.GetValues(typeof(UsStates)))
-            {
-                list.Add(new SelectListItem
+            return new List<SelectListItem>(Enum.GetValues(typeof(UsStates))
+                .Cast<UsStates>()
+                .Select(x => new SelectListItem
                 {
-                    Text = useAbbreviation ? state.ToString() : state.GetAttribute<DescriptionAttribute>().Description,
-                    Value = state.ToString(),
-                    Selected = state.ToString() == selectedState.ToString() ? true : false
-                });
-            }
-
-            return list;
+                    Text = useAbbreviation ? x.ToString() : x.GetAttribute<DescriptionAttribute>().Description,
+                    Value = x.ToString(),
+                    Selected = x.ToString() == selectedState.ToString() ? true : false
+                }));
         }
 
         /// <summary>
@@ -100,11 +80,7 @@ namespace sidekick
         /// <returns></returns>
         public static IEnumerable<SelectListItem> YesNoDropdown(string trueValue, string falseValue)
         {
-            return new List<SelectListItem>
-            {
-                new SelectListItem { Text = trueValue, Value = "True" },
-                new SelectListItem { Text = falseValue, Value = "False" }
-            };
+            return BuildDropdown(new SelectListItem { Text = trueValue, Value = "True" }, new SelectListItem { Text = falseValue, Value = "False" });
         }
 
         /// <summary>
@@ -114,11 +90,7 @@ namespace sidekick
         /// <returns></returns>
         public static IEnumerable<SelectListItem> BuildDropdown(params SelectListItem[] items)
         {
-            List<SelectListItem> list = new List<SelectListItem>();
-            foreach (var item in items)
-                list.Add(item);
-
-            return list;
+            return new List<SelectListItem>(items);
         }
     }
 }
